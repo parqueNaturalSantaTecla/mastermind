@@ -12,12 +12,12 @@ public class ConsoleView implements ControllerVisitor {
 	
 	private ProposalView proposalView;
 	
-	private ContinueView continueView;
+	private ResumeView continueView;
 	
 	public ConsoleView(){
 		startView = new StartView();
 		proposalView = new ProposalView();
-		continueView = new ContinueView();
+		continueView = new ResumeView();
 	}
 
 	public void interact(Controller controller) {

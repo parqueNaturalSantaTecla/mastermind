@@ -20,5 +20,10 @@ public class Result {
 	public int[] getCodes() {
 		return new int[] { this.blacks, this.whites };
 	}
+	
+	public static void main(String[] args) {
+		assert(new Result(4,0).isWinner());
+		assert(!new Result(2,1).isWinner());
+	}
 
 }

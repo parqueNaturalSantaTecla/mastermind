@@ -10,13 +10,13 @@ public class ProposalView {
 		do {
 			int[] codes = new ProposedCombinationView().read();
 			Error error = proposalController.proposeCombination(codes);
-			if (error != null) {
+			if (error == null) {
 				ok = true;
 			} else {
 				new ErrorView().write(error);
 			}
 		} while (!ok);
-		new SecretCombinationView().writeln(proposalController.getMaxLength());
+		new SecretCombinationView().writeln(proposalController.getWidth());
 		int[][][] allCodes = proposalController.getAllCodes();
 		for(int i=0; i<allCodes.length; i++) {
 			new ProposedCombinationView().write(allCodes[i][0]);

@@ -13,7 +13,7 @@ public abstract class Controller {
 		this.state = state;
 	}
 	
-	public int getMaxLength() {
+	public int getWidth() {
 		return game.getWidth();
 	}
 

@@ -16,5 +16,10 @@ public enum Color {
 	public static int length() {
 		return Color.values().length;
 	}
+	
+	public static void main(String[] args) {
+		assert(Color.getInstance(2) == Color.YELLOW);
+		assert(Color.length()==6);
+	}
 
 }
