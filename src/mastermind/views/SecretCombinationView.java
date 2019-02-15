@@ -9,6 +9,7 @@ public class SecretCombinationView extends WithConsoleView {
 	}
 	
 	public void writeln(int length) {
+		this.console.writeln();
 		for (int i = 0; i < length; i++) {
 			this.console.write(SecretCombinationView.HIDDEN);
 		}

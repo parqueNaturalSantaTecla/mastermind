@@ -8,6 +8,7 @@ public class ProposedCombinationView extends WithConsoleView {
 		for (int code : codes) {
 			ColorView.getInstance(code).write();
 		}
+		this.console.writeln();
 	}
 
 	public int[] read() {

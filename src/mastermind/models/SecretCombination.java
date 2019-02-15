@@ -6,12 +6,12 @@ import java.util.Random;
 public class SecretCombination extends Combination {
 
 	public SecretCombination() {
-		for (Color color : this.colors) {
-			this.colors.add(color);
+		for (int i=0; i<Color.length(); i++){
+			this.colors.add(Color.getInstance(i));
 		}
 		Random random = new Random(System.currentTimeMillis());
 		for (int i = 0; i < Color.length() - Combination.getWidth(); i++) {
-			this.colors.remove(random.nextInt(Color.values().length - i));
+			this.colors.remove(random.nextInt(this.colors.size()));
 		}
 		Collections.shuffle(this.colors);
 	}
