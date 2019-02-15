@@ -1,5 +1,7 @@
 package mastermind.controllers;
 
 public enum Error {
-	DUPLICATED;
+	DUPLICATED,
+	WRONG_CHARACTERS,
+	WRONG_LENGTH;
 }

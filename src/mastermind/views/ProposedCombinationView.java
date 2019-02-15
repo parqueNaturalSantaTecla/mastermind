@@ -1,5 +1,7 @@
 package mastermind.views;
 
+import mastermind.controllers.Error;
+
 public class ProposedCombinationView extends WithConsoleView {
 
 	private static final String TITTLE = "Propón una combinación: ";
@@ -13,25 +15,28 @@ public class ProposedCombinationView extends WithConsoleView {
 
 	public int[] read() {
 		String characters;
-		boolean ok = false;
+		Error error = null;
 		do {
 			characters = this.console.readString(ProposedCombinationView.TITTLE);
-			ok = ProposedCombinationView.isValid(characters);
-		} while (!ok);
+			error = ProposedCombinationView.isValid(characters);
+			if(error!=null) {
+				new ErrorView().write(error);
+			}
+		} while (error!=null);
 		return ProposedCombinationView.toCodes(characters);
 	}
 
-	private static boolean isValid(String characters) {
+	private static Error isValid(String characters) {
 		for (char character : characters.toCharArray()) {
-			if (!ColorView.isValid(character)) {
-				return false;
+			Error error = ColorView.isValid(character);
+			if (error!=null) {
+				return error;
 			}
 		}
-		return true;
+		return null;
 	}
 
 	private static int[] toCodes(String characters) {
-		assert ProposedCombinationView.isValid(characters);
 		int[] codes = new int[characters.length()];
 		for (int i=0; i<characters.length(); i++) {
 			codes[i] = ColorView.getInstance(characters.charAt(i)).ordinal();

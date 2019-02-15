@@ -14,14 +14,16 @@ public class ProposalController extends Controller {
 		assert codes.length == Combination.getWidth();
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
 		if (proposedCombination == null) {
-			return Error.DUPLICATED;
-		} else {
-			this.game.proposeCombination(proposedCombination);
-			if (this.game.isGameOver()) {
-				this.state.next();
-			}
-			return null;
+			return Error.WRONG_LENGTH;
 		}
+		if (proposedCombination.isDuplicated()) {
+			return Error.DUPLICATED;
+		}
+		this.game.proposeCombination(proposedCombination);
+		if (this.game.isGameOver()) {
+			this.state.next();
+		}
+		return null;
 	}
 
 	public int[][][] getAllCodes() {

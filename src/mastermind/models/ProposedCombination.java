@@ -34,4 +34,17 @@ public class ProposedCombination extends Combination {
 		return false;
 	}
 
+	public boolean isDuplicated() {
+		boolean repeat = false;
+		for(int i=0; i<Combination.getWidth()-1; i++) {
+			for(int j=i+1; j<Combination.getWidth(); j++) {
+				repeat = contains(this.colors.get(i),j);
+				if (repeat) {
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+
 }

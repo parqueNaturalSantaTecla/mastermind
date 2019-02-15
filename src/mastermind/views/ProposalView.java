@@ -6,16 +6,14 @@ import mastermind.controllers.ProposalController;
 public class ProposalView {
 
 	public void interact(ProposalController proposalController) {
-		boolean ok = false;
+		Error error = null;
 		do {
 			int[] codes = new ProposedCombinationView().read();
-			Error error = proposalController.proposeCombination(codes);
-			if (error == null) {
-				ok = true;
-			} else {
+			error = proposalController.proposeCombination(codes);
+			if (error != null) {
 				new ErrorView().write(error);
 			}
-		} while (!ok);
+		} while (error!=null);
 		new SecretCombinationView().writeln(proposalController.getWidth());
 		int[][][] allCodes = proposalController.getAllCodes();
 		for(int i=0; i<allCodes.length; i++) {
