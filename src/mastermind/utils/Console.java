@@ -71,7 +71,7 @@ public class Console {
 		System.out.println(integer);
 	}
 
-	private void writeError(String formato) {
-		System.out.println("ERROR DE FORMATO! " + "Introduzca un valor con formato " + formato + ".");
+	private void writeError(String format) {
+		System.out.println("ERROR DE FORMATO! " + "Introduzca un valor con formato " + format + ".");
 	}
 }

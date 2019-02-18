@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.ProposalController;
 
-public class ProposalView extends WithConsoleView {
+class ProposalView extends WithConsoleView {
 
 	private static final String MESSAGES = "#turn intento(s)";
 

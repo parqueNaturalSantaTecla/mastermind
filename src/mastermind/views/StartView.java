@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.StartController;
 
-public class StartView extends WithConsoleView {
+class StartView extends WithConsoleView {
 	
 	private static final String TITTLE = "--------- MASTERMIND ---------";
 	

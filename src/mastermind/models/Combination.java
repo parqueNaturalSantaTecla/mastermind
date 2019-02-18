@@ -3,7 +3,7 @@ package mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Combination {
+abstract class Combination {
 	
 	private static final int WIDTH = 4;
 

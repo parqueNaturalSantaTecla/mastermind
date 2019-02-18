@@ -1,6 +1,6 @@
 package mastermind.controllers;
 
-public enum StateValue {
+enum StateValue {
 	INITIAL,
 	IN_GAME,
 	FINAL,
@@ -12,7 +12,7 @@ public enum StateValue {
 		this.controller = null;
 	}
 	
-	public void set(Controller controller) {
+	void set(Controller controller) {
 		this.controller = controller;
 	}
 	

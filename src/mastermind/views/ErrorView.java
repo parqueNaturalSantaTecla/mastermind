@@ -3,7 +3,7 @@ package mastermind.views;
 import java.util.HashMap;
 import java.util.Map;
 
-public class ErrorView extends WithConsoleView {
+class ErrorView extends WithConsoleView {
 	
 	private static Map<Integer, String> MESSAGES;
 	public static final int NO_ERROR = -1;
