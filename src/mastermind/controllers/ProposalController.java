@@ -1,6 +1,6 @@
 package mastermind.controllers;
 
-import mastermind.models.Combination;
+import mastermind.models.Error;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
@@ -10,33 +10,30 @@ public class ProposalController extends Controller {
 		super(game, state);
 	}
 
-	public Error proposeCombination(int[] codes) {
-		assert codes.length == Combination.getWidth();
+	public int proposeCombination(int[] codes) {
+		Error error = ProposedCombination.isValid(codes);
+		if (error != null) {
+			return error.ordinal();
+		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		if (proposedCombination == null) {
-			return Error.WRONG_LENGTH;
-		}
-		if (proposedCombination.isDuplicated()) {
-			return Error.DUPLICATED;
-		}
 		this.game.proposeCombination(proposedCombination);
 		if (this.game.isGameOver()) {
 			this.state.next();
 		}
-		return null;
+		return -1;
 	}
 
 	public int[][][] getAllCodes() {
 		return this.game.getCodes();
 	}
+	
+	public int getTurn() {
+		return game.getTurn();
+	}
 
 	@Override
 	public void accept(ControllerVisitor controllerVisitor) {
 		controllerVisitor.visit(this);
-	}
-
-	public int getTurn() {
-		return game.getTurn();
 	}
 
 }

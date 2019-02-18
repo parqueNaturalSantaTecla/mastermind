@@ -8,7 +8,7 @@ public class StartView extends WithConsoleView {
 	
 	public void interact(StartController startController) {
 		startController.start();
-		this.console.write(StartView.TITTLE);
+		this.console.writeln(StartView.TITTLE);
 		new SecretCombinationView().writeln(startController.getWidth());
 	}
 

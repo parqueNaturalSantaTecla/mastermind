@@ -1,8 +1,8 @@
 package mastermind.views;
 
+import mastermind.models.Error;
 import mastermind.utils.ClosedInterval;
 import mastermind.utils.Console;
-import mastermind.controllers.Error;
 
 public enum ColorView {
 	RED('r'), BLUE('b'), YELLOW('y'), GREEN('g'), ORANGE('o'), PURPLE('p');
@@ -17,11 +17,12 @@ public enum ColorView {
 		new Console().write("" + this.initial);
 	}
 	
-	public static void writeAll() {
+	public static String allInitials() {
+		String result = "";
 		for(ColorView colorView: ColorView.values()) {
-			colorView.write();
+			result += colorView.initial;
 		}
-		new Console().writeln();
+		return result;
 	}
 
 	public static ColorView getInstance(int code) {
