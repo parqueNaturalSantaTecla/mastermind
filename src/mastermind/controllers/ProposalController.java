@@ -35,4 +35,8 @@ public class ProposalController extends Controller {
 		controllerVisitor.visit(this);
 	}
 
+	public int getTurn() {
+		return game.getTurn();
+	}
+
 }

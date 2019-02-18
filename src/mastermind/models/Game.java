@@ -51,4 +51,8 @@ public class Game {
 		return this.results.get(this.turn-1).isWinner() || this.turn == Game.MAX_LONG;
 	}
 
+	public int getTurn() {
+		return turn;
+	}
+
 }
