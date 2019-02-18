@@ -1,10 +1,10 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import mastermind.models.Error;
 import mastermind.utils.ClosedInterval;
 import mastermind.utils.Console;
 
-enum ColorView {
+public enum ColorView {
 	RED('r'), BLUE('b'), YELLOW('y'), GREEN('g'), ORANGE('o'), PURPLE('p');
 
 	private char initial;

@@ -1,6 +1,6 @@
-package mastermind.views;
+package mastermind.views.console;
 
-class SecretCombinationView extends WithConsoleView {
+public class SecretCombinationView extends WithConsoleView {
 
 	private static final String HIDDEN = "*";
 	

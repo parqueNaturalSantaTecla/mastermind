@@ -1,7 +1,7 @@
 package mastermind;
 import mastermind.controllers.Controller;
 import mastermind.controllers.Logic;
-import mastermind.views.ConsoleView;
+import mastermind.views.console.ConsoleView;
 
 public class Mastermind {
 	

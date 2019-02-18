@@ -1,6 +1,6 @@
-package mastermind.views;
+package mastermind.views.console;
 
-class ResultView extends WithConsoleView {
+public class ResultView extends WithConsoleView {
 
 	private static final String MESSAGES = "-> #blacks negros y #whites blancos";
 

@@ -1,8 +1,8 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import mastermind.controllers.StartController;
 
-class StartView extends WithConsoleView {
+public class StartView extends WithConsoleView {
 	
 	private static final String TITTLE = "--------- MASTERMIND ---------";
 	
