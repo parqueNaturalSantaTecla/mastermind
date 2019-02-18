@@ -5,6 +5,8 @@ import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
 public class ProposalController extends Controller {
+	
+	public static final int NO_ERROR = -1;
 
 	public ProposalController(Game game, State state) {
 		super(game, state);
@@ -20,7 +22,7 @@ public class ProposalController extends Controller {
 		if (this.game.isGameOver()) {
 			this.state.next();
 		}
-		return -1;
+		return ProposalController.NO_ERROR;
 	}
 
 	public int[][][] getAllCodes() {

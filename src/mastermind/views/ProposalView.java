@@ -11,10 +11,10 @@ public class ProposalView extends WithConsoleView {
 		do {
 			int[] codes = new ProposedCombinationView().read();
 			error = proposalController.proposeCombination(codes);
-			if (error != ErrorView.NO_ERROR) {
+			if (error != ProposalController.NO_ERROR) {
 				new ErrorView().write(error);
 			}
-		} while (error != -1);
+		} while (error != ProposalController.NO_ERROR);
 		this.console.writeln();
 		this.console.writeln(MESSAGES.replaceFirst("#turn", "" + proposalController.getTurn()));
 		new SecretCombinationView().writeln(proposalController.getWidth());
