@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.console;
 
 import java.util.HashMap;
 import java.util.Map;

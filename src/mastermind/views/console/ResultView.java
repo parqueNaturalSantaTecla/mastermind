@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.console;
 
 public class ResultView extends WithConsoleView {
 
