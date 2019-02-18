@@ -1,6 +1,6 @@
 package mastermind.models;
 
-public enum Color {
+enum Color {
 	RED, 
 	BLUE, 
 	YELLOW, 

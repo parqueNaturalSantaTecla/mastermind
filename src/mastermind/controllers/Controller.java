@@ -8,7 +8,7 @@ public abstract class Controller {
 	
 	protected State state;
 
-	public Controller(Game game, State state) {
+	Controller(Game game, State state) {
 		this.game = game;
 		this.state = state;
 	}

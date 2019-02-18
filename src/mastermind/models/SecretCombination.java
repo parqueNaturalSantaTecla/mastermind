@@ -3,7 +3,7 @@ package mastermind.models;
 import java.util.Collections;
 import java.util.Random;
 
-public class SecretCombination extends Combination {
+class SecretCombination extends Combination {
 
 	public SecretCombination() {
 		for(Color color: Color.values()) {

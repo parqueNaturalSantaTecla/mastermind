@@ -4,7 +4,7 @@ import mastermind.models.Error;
 import mastermind.utils.ClosedInterval;
 import mastermind.utils.Console;
 
-public enum ColorView {
+enum ColorView {
 	RED('r'), BLUE('b'), YELLOW('y'), GREEN('g'), ORANGE('o'), PURPLE('p');
 
 	private char initial;

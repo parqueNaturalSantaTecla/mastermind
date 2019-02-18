@@ -1,6 +1,6 @@
 package mastermind.views;
 
-public class ProposedCombinationView extends WithConsoleView {
+class ProposedCombinationView extends WithConsoleView {
 
 	private static final String TITTLE = "Propón una combinación: ";
 	
