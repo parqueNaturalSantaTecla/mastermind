@@ -1,6 +1,6 @@
 package mastermind.models;
 
-public class Result {
+class Result {
 
 	private int blacks = 0;
 
