@@ -12,7 +12,7 @@ public class GraphicsView extends View {
 	
 	public GraphicsView() {
 		gameView = new GameView();
-		continueDialog = new ContinueDialog();
+//		continueDialog = new ContinueDialog();
 	}
 	
 	@Override
