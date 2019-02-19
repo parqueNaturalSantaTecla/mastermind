@@ -45,5 +45,9 @@ public enum ColorView {
 		}
 		return null;
 	}
+	
+	public char getInitial() {
+		return this.initial;
+	}
 
 }
