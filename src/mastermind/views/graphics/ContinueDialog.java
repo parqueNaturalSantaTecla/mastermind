@@ -1,46 +1,20 @@
 package mastermind.views.graphics;
 
-import java.awt.BorderLayout;
-
-import javax.swing.JButton;
-import javax.swing.JDialog;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.JOptionPane;
 
 import mastermind.controllers.ResumeController;
 
-public class ContinueDialog extends JDialog{
-	
-	JPanel messagePane;
-	JLabel label;
-	JPanel buttonPane;
-	JButton yesButton;
-	JButton noButton;
-	String message = "";
+public class ContinueDialog {
 
-	public ContinueDialog() {
-		super();
-		message = "¿Desea continuar?";
-		messagePane = new JPanel();
-		label = new JLabel(message);
-		messagePane.add(label);
-		buttonPane = new JPanel();
-		yesButton = new JButton("Sí");
-		noButton = new JButton("No");
-		buttonPane.add(yesButton);
-		buttonPane.add(noButton);
-		this.getContentPane().add(messagePane);
-		this.getContentPane().add(buttonPane, BorderLayout.PAGE_END);
-		this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
-        this.pack();
-        this.setVisible(true);
-        this.setTitle("MASTERMIND");
-        
-	}
+	private static final String MESSAGE = "¿Desea continuar?";
 
-	public void interact(ResumeController continueController) {
-		// TODO Auto-generated method stub
-		
+	public void interact(ResumeController resumeController) {
+		boolean resume = (JOptionPane.showConfirmDialog(null, MESSAGE, "MasterMind",
+				JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION);
+		resumeController.resume(resume);
+		if (!resume) {
+			System.exit(0);
+		}
 	}
 
 }
