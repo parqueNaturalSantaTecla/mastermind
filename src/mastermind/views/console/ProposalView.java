@@ -2,11 +2,11 @@ package mastermind.views.console;
 
 import mastermind.controllers.ProposalController;
 
-public class ProposalView extends WithConsoleView {
+class ProposalView extends WithConsoleView {
 
 	private static final String MESSAGES = "#turn intento(s)";
 
-	public void interact(ProposalController proposalController) {
+	void interact(ProposalController proposalController) {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read();

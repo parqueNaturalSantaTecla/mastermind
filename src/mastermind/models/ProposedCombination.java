@@ -28,7 +28,7 @@ public class ProposedCombination extends Combination {
 		return proposedCombination;
 	}
 
-	public int[] getCodes() {
+	int[] getCodes() {
 		int[] codes = new int[Combination.getWidth()];
 		for (int i = 0; i < codes.length; i++) {
 			codes[i] = this.colors.get(i).ordinal();
@@ -36,11 +36,11 @@ public class ProposedCombination extends Combination {
 		return codes;
 	}
 
-	public boolean contains(Color color, int position) {
+	boolean contains(Color color, int position) {
 		return this.colors.get(position) == color;
 	}
 
-	public boolean contains(Color color) {
+	boolean contains(Color color) {
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (this.colors.get(i) == color) {
 				return true;
