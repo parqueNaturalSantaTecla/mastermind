@@ -1,14 +1,14 @@
 package mastermind.views.console;
 
-public class SecretCombinationView extends WithConsoleView {
+class SecretCombinationView extends WithConsoleView {
 
 	private static final String HIDDEN = "*";
 	
-	public SecretCombinationView() {
+	SecretCombinationView() {
 		super();
 	}
 	
-	public void writeln(int length) {
+	void writeln(int length) {
 		for (int i = 0; i < length; i++) {
 			this.console.write(SecretCombinationView.HIDDEN);
 		}

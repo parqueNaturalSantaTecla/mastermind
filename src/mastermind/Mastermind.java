@@ -1,4 +1,5 @@
 package mastermind;
+
 import mastermind.controllers.Controller;
 import mastermind.controllers.Logic;
 import mastermind.views.console.ConsoleView;
@@ -10,13 +11,13 @@ public class Mastermind {
 	private ConsoleView consoleView;
 	private GraphicsView graphicsView;
 	
-	public Mastermind() {
+	private Mastermind() {
 		this.logic = new Logic();
 		this.graphicsView = new GraphicsView();
 //		this.consoleView = new ConsoleView();
 	}
 	
-	public void play() {
+	private void play() {
 		Controller controller;
 		do {
 			controller = this.logic.getController();

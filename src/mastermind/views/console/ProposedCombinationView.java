@@ -1,18 +1,18 @@
 package mastermind.views.console;
 
-public class ProposedCombinationView extends WithConsoleView {
+class ProposedCombinationView extends WithConsoleView {
 
 	private static final String TITTLE = "Propón una combinación: ";
 	
-	public static final int ERROR_CODE = -1;
+	private static final int ERROR_CODE = -1;
 	
-	public void write(int[] codes) {
+	void write(int[] codes) {
 		for (int code : codes) {
 			ColorView.getInstance(code).write();
 		}
 	}
 
-	public int[] read() {
+	int[] read() {
 		String characters = this.console.readString(ProposedCombinationView.TITTLE);
 		int[] codes = new int[characters.length()];
 		for (int i=0; i<characters.length(); i++) {

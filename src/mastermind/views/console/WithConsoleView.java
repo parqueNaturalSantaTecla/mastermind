@@ -2,11 +2,11 @@ package mastermind.views.console;
 
 import mastermind.utils.Console;
 
-public abstract class WithConsoleView {
+abstract class WithConsoleView {
 
 	protected Console console;
 
-	public WithConsoleView() {
+	protected WithConsoleView() {
 		this.console = new Console();
 	}
 	
