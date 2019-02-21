@@ -12,7 +12,6 @@ public class GraphicsView extends View {
 	
 	public GraphicsView() {
 		gameView = new GameView();
-//		continueDialog = new ContinueDialog();
 	}
 	
 	@Override
@@ -26,8 +25,9 @@ public class GraphicsView extends View {
 	}
 
 	@Override
-	public void visit(ResumeController continueController) {
-		continueDialog.interact(continueController);
+	public void visit(ResumeController resumeController) {
+		continueDialog = new ContinueDialog();
+		continueDialog.interact(resumeController);
 	}
 	
 }

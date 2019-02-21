@@ -7,12 +7,13 @@ import mastermind.views.graphics.GraphicsView;
 public class Mastermind {
 	
 	private Logic logic;
-	
+	private ConsoleView consoleView;
 	private GraphicsView graphicsView;
 	
 	public Mastermind() {
 		this.logic = new Logic();
 		this.graphicsView = new GraphicsView();
+//		this.consoleView = new ConsoleView();
 	}
 	
 	public void play() {
@@ -21,6 +22,7 @@ public class Mastermind {
 			controller = this.logic.getController();
 			if (controller != null){
 				this.graphicsView.interact(controller);
+//				this.consoleView.interact(controller);
 			}
 		} while (controller != null); 
 	}

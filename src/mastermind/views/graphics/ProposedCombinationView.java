@@ -21,11 +21,6 @@ public class ProposedCombinationView extends JPanel{
 	}
 
 	public ProposedCombinationView() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public void draw(int[] codes) {
-		
 	}
 
 	public int[] read(String characters) {
