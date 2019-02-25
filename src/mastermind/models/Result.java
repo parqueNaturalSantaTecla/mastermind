@@ -14,7 +14,7 @@ class Result {
 	}
 
 	boolean isWinner() {
-		return blacks == Combination.getWidth();
+		return this.blacks == Combination.getWidth();
 	}
 
 	int[] getCodes() {

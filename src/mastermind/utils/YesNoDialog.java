@@ -1,6 +1,6 @@
 package mastermind.utils;
 
-public class YesNoDialog {
+public class YesNoDialog  extends WithConsoleView {
 
 	private static final char AFIRMATIVE = 's';
 
@@ -10,12 +10,6 @@ public class YesNoDialog {
 
 	private static final String MESSAGE = "El valor debe ser '" + YesNoDialog.AFIRMATIVE + "' ó '"
 			+ YesNoDialog.NEGATIVE + "'";
-	
-	private Console console;
-	
-	public YesNoDialog() {
-		this.console = new Console();
-	}
 
 	public boolean read(String title) {
 		assert title != null;
@@ -25,7 +19,7 @@ public class YesNoDialog {
 			answer = this.console.readChar(title + YesNoDialog.QUESTION);
 			ok = YesNoDialog.isAfirmative(answer) || YesNoDialog.isNegative(answer);
 			if (!ok) {
-				this.console.writeln(MESSAGE);
+				this.console.writeln(YesNoDialog.MESSAGE);
 			}
 		} while (!ok);
 		return YesNoDialog.isAfirmative(answer);

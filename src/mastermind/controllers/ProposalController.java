@@ -19,7 +19,7 @@ public class ProposalController extends Controller {
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
 		this.game.proposeCombination(proposedCombination);
-		if (this.game.isGameOver()) {
+		if (this.game.isWinner() || this.game.isLooser()) {
 			this.state.next();
 		}
 		return ProposalController.NO_ERROR;
@@ -30,12 +30,20 @@ public class ProposalController extends Controller {
 	}
 	
 	public int getTurn() {
-		return game.getTurn();
+		return this.game.getTurn();
 	}
 
 	@Override
 	public void accept(ControllerVisitor controllerVisitor) {
 		controllerVisitor.visit(this);
+	}
+
+	public boolean isWinner() {
+		return this.game.isWinner();
+	}
+
+	public boolean isLooser() {
+		return this.game.isLooser();
 	}
 
 }

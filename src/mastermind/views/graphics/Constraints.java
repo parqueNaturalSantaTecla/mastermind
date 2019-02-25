@@ -2,20 +2,15 @@ package mastermind.views.graphics;
 
 import java.awt.GridBagConstraints;
 
-public class Constraints {
+@SuppressWarnings("serial")
+class Constraints extends GridBagConstraints {
 
-	private GridBagConstraints gridBagConstrains;
-
-	public Constraints(int gridX, int gridY, int gridWidth, int gridHeight) {
-		this.gridBagConstrains = new GridBagConstraints();
-		this.gridBagConstrains.gridx = gridX;
-		this.gridBagConstrains.gridy = gridY;
-		this.gridBagConstrains.gridwidth = gridWidth;
-		this.gridBagConstrains.gridheight = gridHeight;
-		this.gridBagConstrains.fill = 1;
+	Constraints(int gridX, int gridY, int gridWidth, int gridHeight) {
+		this.gridx = gridX;
+		this.gridy = gridY;
+		this.gridwidth = gridWidth;
+		this.gridheight = gridHeight;
+		this.fill = 1;
 	}
 	
-	public GridBagConstraints getConstraints() {
-		return this.gridBagConstrains;
-	}
 }

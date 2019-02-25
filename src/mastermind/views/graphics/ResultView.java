@@ -1,16 +1,15 @@
 package mastermind.views.graphics;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
+
+import mastermind.views.Message;
 
 @SuppressWarnings("serial")
-public class ResultView extends JPanel {
+class ResultView extends JLabel {
 
-	private static final String MESSAGES = "-> #blacks negros y #whites blancos";
-	private JLabel label;
-
-	public ResultView(int[] results) {
-		label = new JLabel(MESSAGES.replaceFirst("#blacks", "" + results[0]).replaceFirst("#whites", "" + results[1]));
-		this.add(label);
+	ResultView(int[] results) {
+		this.setText(Message.RESULT.getMessage().replaceFirst("#blacks", "" + results[0]).replaceFirst("#whites",
+				"" + results[1]));
 	}
+	
 }

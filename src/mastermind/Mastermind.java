@@ -2,34 +2,28 @@ package mastermind;
 
 import mastermind.controllers.Controller;
 import mastermind.controllers.Logic;
-import mastermind.views.console.ConsoleView;
-import mastermind.views.graphics.GraphicsView;
+import mastermind.views.View;
 
-public class Mastermind {
+public abstract class Mastermind {
 	
 	private Logic logic;
-	private ConsoleView consoleView;
-	private GraphicsView graphicsView;
+	private View view;
 	
-	private Mastermind() {
+	protected Mastermind() {
 		this.logic = new Logic();
-		this.graphicsView = new GraphicsView();
-//		this.consoleView = new ConsoleView();
+		this.view = this.createView();
 	}
 	
-	private void play() {
+	protected abstract View createView();
+
+	protected void play() {
 		Controller controller;
 		do {
 			controller = this.logic.getController();
 			if (controller != null){
-				this.graphicsView.interact(controller);
-//				this.consoleView.interact(controller);
+				this.view.interact(controller);
 			}
 		} while (controller != null); 
-	}
-	
-	public static void main(String[] args) {
-		new Mastermind().play();
 	}
 	
 }

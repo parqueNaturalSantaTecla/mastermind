@@ -6,28 +6,33 @@ import mastermind.controllers.StartController;
 import mastermind.views.View;
 
 public class GraphicsView extends View {
-	
-	GameView gameView;
-	ContinueDialog continueDialog;
-	
+
+	private GameView gameView;
+
 	public GraphicsView() {
-		gameView = new GameView();
+		this.gameView = new GameView();
 	}
-	
+
 	@Override
 	public void visit(StartController startController) {
-		gameView.interact(startController);		
+		this.gameView.interact(startController);
 	}
 
 	@Override
 	public void visit(ProposalController proposalController) {
-		gameView.interact(proposalController);
+		this.gameView.interact(proposalController);
 	}
 
 	@Override
 	public void visit(ResumeController resumeController) {
-		continueDialog = new ContinueDialog();
-		continueDialog.interact(resumeController);
+		ResumeDialog resumeDialog = new ResumeDialog();
+		resumeController.resume(resumeDialog.isResumed());
+		if (resumeDialog.isResumed()) {
+			this.gameView = new GameView();
+		} else {
+			this.gameView.setVisible(false);
+			System.exit(0);
+		}
 	}
-	
+
 }

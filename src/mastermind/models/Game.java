@@ -22,10 +22,10 @@ public class Game {
 	}
 
 	public void clear() {
-		secretCombination = new SecretCombination();
-		proposedCombinations = new ArrayList<ProposedCombination>();
-		results = new ArrayList<Result>();
-		turn = 0;
+		this.secretCombination = new SecretCombination();
+		this.proposedCombinations = new ArrayList<ProposedCombination>();
+		this.results = new ArrayList<Result>();
+		this.turn = 0;
 	}
 
 	public int getWidth() {
@@ -47,12 +47,17 @@ public class Game {
 		return codes;
 	}
 
-	public boolean isGameOver() {
-		return this.results.get(this.turn-1).isWinner() || this.turn == Game.MAX_LONG;
+	public boolean isLooser() {
+		return this.turn == Game.MAX_LONG;
+	}
+	
+	public boolean isWinner() {
+		return this.results.get(this.turn-1).isWinner();
 	}
 
+
 	public int getTurn() {
-		return turn;
+		return this.turn;
 	}
 
 }

@@ -1,5 +1,8 @@
 package mastermind.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import mastermind.models.Game;
 
 public class Logic {
@@ -8,25 +11,20 @@ public class Logic {
 	
 	private Game game;
 	
-	private StartController startController;
-	
-	private ProposalController proposalController;
-	
-	private ResumeController resumeController;
+	private Map<StateValue, Controller> controllers;
 		
 	public Logic() {
 		this.state = new State();
 		this.game = new Game();
-		this.startController = new StartController(this.game, this.state);
-		StateValue.INITIAL.set(this.startController);
-		this.proposalController = new ProposalController(this.game, this.state);
-		StateValue.IN_GAME.set(this.proposalController);
-		this.resumeController = new ResumeController(this.game, this.state);
-		StateValue.FINAL.set(this.resumeController);
+		this.controllers = new HashMap<StateValue, Controller>();
+		this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
+		this.controllers.put(StateValue.IN_GAME, new ProposalController(this.game, this.state));
+		this.controllers.put(StateValue.FINAL, new ResumeController(this.game, this.state));
+		this.controllers.put(StateValue.EXIT, null);
 	}
 	
 	public Controller getController() {
-		return this.state.getValueState().getController();
+		return this.controllers.get(this.state.getValueState());
 	}
 	
 }

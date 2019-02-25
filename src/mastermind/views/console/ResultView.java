@@ -1,11 +1,12 @@
 package mastermind.views.console;
 
+import mastermind.utils.WithConsoleView;
+import mastermind.views.Message;
+
 class ResultView extends WithConsoleView {
 
-	private static final String MESSAGES = "-> #blacks negros y #whites blancos";
-
 	void writeln(int[] results) {
-		this.console.writeln(MESSAGES.replaceFirst("#blacks", "" + results[0])
+		this.console.writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + results[0])
 										.replaceFirst("#whites", "" + results[1]));
 	}
 

@@ -1,32 +1,28 @@
 package mastermind.views.graphics;
 
 import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import mastermind.views.graphics.ColorView;
+import mastermind.views.Color;
 
 @SuppressWarnings("serial")
-public class ProposedCombinationView extends JPanel{
+class ProposedCombinationView extends JLabel {
 
 	public static final int ERROR_CODE = -1;
-	JLabel label;
 
-	public ProposedCombinationView(int[] codes) {
+	ProposedCombinationView(int[] codes) {
 		String initials = "";
 		for (int code : codes) {
-			initials += ColorView.getInstance(code).getInitial();
+			initials += Color.getInstance(code).getInitial();
 		}
-		label = new JLabel(initials);
-		this.add(label);
+		this.setText(initials);
 	}
 
-	public ProposedCombinationView() {
+	ProposedCombinationView() {
 	}
 
-	public int[] read(String characters) {
+	int[] read(String characters) {
 		int[] codes = new int[characters.length()];
 		for (int i=0; i<characters.length(); i++) {
-			ColorView colorView = ColorView.getInstance(characters.charAt(i));
+			Color colorView = Color.getInstance(characters.charAt(i));
 			if (colorView == null) {
 				codes[i] = ProposedCombinationView.ERROR_CODE;
 			} else {

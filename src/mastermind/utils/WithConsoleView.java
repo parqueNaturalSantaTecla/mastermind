@@ -1,8 +1,6 @@
-package mastermind.views.console;
+package mastermind.utils;
 
-import mastermind.utils.Console;
-
-abstract class WithConsoleView {
+public abstract class WithConsoleView {
 
 	protected Console console;
 

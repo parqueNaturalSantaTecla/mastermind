@@ -11,27 +11,27 @@ public class ConsoleView extends View {
 	
 	private ProposalView proposalView;
 	
-	private ResumeView continueView;
+	private ResumeView resumeView;
 	
 	public ConsoleView(){
-		startView = new StartView();
-		proposalView = new ProposalView();
-		continueView = new ResumeView();
+		this.startView = new StartView();
+		this.proposalView = new ProposalView();
+		this.resumeView = new ResumeView();
 	}
 
 	@Override
 	public void visit(StartController startController) {
-		startView.interact(startController);		
+		this.startView.interact(startController);		
 	}
 
 	@Override
 	public void visit(ProposalController proposalController) {
-		proposalView.interact(proposalController);
+		this.proposalView.interact(proposalController);
 	}
 
 	@Override
-	public void visit(ResumeController continueController) {
-		continueView.interact(continueController);
+	public void visit(ResumeController resumeController) {
+		this.resumeView.interact(resumeController);
 	}
 
 }

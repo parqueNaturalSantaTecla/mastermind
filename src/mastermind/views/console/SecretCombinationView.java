@@ -1,8 +1,9 @@
 package mastermind.views.console;
 
-class SecretCombinationView extends WithConsoleView {
+import mastermind.utils.WithConsoleView;
+import mastermind.views.Message;
 
-	private static final String HIDDEN = "*";
+class SecretCombinationView extends WithConsoleView {
 	
 	SecretCombinationView() {
 		super();
@@ -10,7 +11,7 @@ class SecretCombinationView extends WithConsoleView {
 	
 	void writeln(int length) {
 		for (int i = 0; i < length; i++) {
-			this.console.write(SecretCombinationView.HIDDEN);
+			this.console.write(Message.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}

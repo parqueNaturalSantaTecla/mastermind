@@ -1,38 +1,32 @@
 package mastermind.views.graphics;
 
-import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import mastermind.views.Message;
+
 @SuppressWarnings("serial")
-public class SecretCombinationView extends JPanel{
-	
-	private static final String HIDDEN = "*";
-	private JLabel[] labelArray;
-	
-	public SecretCombinationView(int length) {
+class SecretCombinationView extends JPanel {
+
+	private static final String TITLE = "COMBINACIÓN SECRETA:";
+
+	private JLabel title;
+
+	private JLabel secretCombination;
+
+	SecretCombinationView(int length) {
 		super();
 		this.setLayout(new GridBagLayout());
-		labelArray = new JLabel[2];
+		this.title = new JLabel(SecretCombinationView.TITLE);
+		this.add(this.title, new Constraints(0, 0, 3, 1));
 		String text = "";
 		for (int i = 0; i < length; i++) {
-			text += SecretCombinationView.HIDDEN;
+			text += Message.SECRET.getMessage();
 		}
-		labelArray[0] = new JLabel("COMBINACIÓN SECRETA:");
-		GridBagConstraints constraints = new GridBagConstraints();
-		constraints.gridx = 0;
-		constraints.gridy = 0;
-		constraints.gridwidth = 3;
-		constraints.gridheight = 1;
-		this.add (labelArray[0], constraints);
-		labelArray[1] = new JLabel(text);
-		constraints.gridx = 0;
-		constraints.gridy = 1;
-		constraints.gridwidth = 3;
-		constraints.gridheight = 1;
-		this.add (labelArray[1], constraints);
+		this.secretCombination = new JLabel(text);
+		this.add(this.secretCombination, new Constraints(0, 1, 3, 1));
 		this.setVisible(true);
 	}
 }

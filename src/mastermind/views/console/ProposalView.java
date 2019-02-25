@@ -1,10 +1,11 @@
 package mastermind.views.console;
 
 import mastermind.controllers.ProposalController;
+import mastermind.utils.WithConsoleView;
+import mastermind.views.Error;
+import mastermind.views.Message;
 
 class ProposalView extends WithConsoleView {
-
-	private static final String MESSAGES = "#turn intento(s)";
 
 	void interact(ProposalController proposalController) {
 		int error;
@@ -12,16 +13,21 @@ class ProposalView extends WithConsoleView {
 			int[] codes = new ProposedCombinationView().read();
 			error = proposalController.proposeCombination(codes);
 			if (error != ProposalController.NO_ERROR) {
-				new ErrorView().write(error);
+				this.console.writeln(Error.values()[error].getMessage());
 			}
 		} while (error != ProposalController.NO_ERROR);
 		this.console.writeln();
-		this.console.writeln(MESSAGES.replaceFirst("#turn", "" + proposalController.getTurn()));
+		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + proposalController.getTurn()));
 		new SecretCombinationView().writeln(proposalController.getWidth());
 		int[][][] allCodes = proposalController.getAllCodes();
 		for (int i = 0; i < allCodes.length; i++) {
 			new ProposedCombinationView().write(allCodes[i][0]);
 			new ResultView().writeln(allCodes[i][1]);
+		}
+		if (proposalController.isWinner()) {
+			this.console.writeln(Message.WINNER.getMessage());
+		} else if (proposalController.isLooser()) {
+			this.console.writeln(Message.LOOSER.getMessage());
 		}
 	}
 

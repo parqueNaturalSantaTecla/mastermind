@@ -13,7 +13,7 @@ public class Console {
 		do {
 			this.write(title);
 			try {
-				input = bufferedReader.readLine();
+				input = this.bufferedReader.readLine();
 				ok = true;
 			} catch (Exception ex) {
 				this.writeError("de cadena de caracteres");
