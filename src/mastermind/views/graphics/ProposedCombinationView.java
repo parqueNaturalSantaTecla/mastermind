@@ -3,7 +3,7 @@ package mastermind.views.graphics;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import mastermind.views.console.ColorView;
+import mastermind.views.graphics.ColorView;
 
 @SuppressWarnings("serial")
 public class ProposedCombinationView extends JPanel{

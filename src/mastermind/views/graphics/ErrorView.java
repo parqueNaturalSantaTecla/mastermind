@@ -5,7 +5,7 @@ import java.util.Map;
 
 import javax.swing.JOptionPane;
 
-import mastermind.views.console.ColorView;
+import mastermind.views.graphics.ColorView;
 
 public class ErrorView {
 	
