@@ -4,12 +4,12 @@ import mastermind.models.Error;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
-public class ProposalController extends Controller {
+public class ProposalController extends Controller{
 	
 	public static final int NO_ERROR = -1;
 
 	public ProposalController(Game game, State state) {
-		super(game, state);
+		super(game,state);
 	}
 
 	public int proposeCombination(int[] codes) {
@@ -31,11 +31,6 @@ public class ProposalController extends Controller {
 	
 	public int getTurn() {
 		return this.game.getTurn();
-	}
-
-	@Override
-	public void accept(ControllerVisitor controllerVisitor) {
-		controllerVisitor.visit(this);
 	}
 
 	public boolean isWinner() {
