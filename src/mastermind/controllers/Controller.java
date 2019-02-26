@@ -17,6 +17,6 @@ public abstract class Controller {
 		return this.game.getWidth();
 	}
 
-	public abstract void accept(ControllerVisitor controllerVisitor);
+	public abstract void accept(ControllersVisitor controllersVisitor);
 
 }
