@@ -50,14 +50,43 @@ public class Game {
 	public boolean isLooser() {
 		return this.turn == Game.MAX_LONG;
 	}
-	
-	public boolean isWinner() {
-		return this.results.get(this.turn-1).isWinner();
-	}
 
+	public boolean isWinner() {
+		return this.results.get(this.turn - 1).isWinner();
+	}
 
 	public int getTurn() {
 		return this.turn;
+	}
+
+	public Memento createMemento() {
+		Memento memento = new Memento(this.turn);
+		for (int i = 0; i < this.proposedCombinations.size(); i++) {
+			ProposedCombination proposedCombination = new ProposedCombination();
+			int[] codes = new int[Combination.getWidth()];
+			codes = this.proposedCombinations.get(i).getCodes();
+			proposedCombination.setCodes(codes);
+			Result result = new Result(this.secretCombination.getResult(proposedCombination).getBlacks(),
+					this.secretCombination.getResult(proposedCombination).getWhites());
+			memento.set(proposedCombination, result);
+		}
+		return memento;
+	}
+
+	public void set(Memento memento) {
+		this.turn = memento.getTurn();
+		this.proposedCombinations = new ArrayList<ProposedCombination>();
+		this.results = new ArrayList<Result>();
+		for (int i = 0; i<memento.getSize(); i++) {
+			int[] codes = new int[Combination.getWidth()];
+			ProposedCombination proposedCombination = new ProposedCombination();
+			codes = memento.getProposedCombination(i).getCodes();
+			proposedCombination.setCodes(codes);
+//				proposedCombination.colors.add(memento.getProposedCombination(i).colors.get(j));
+			this.proposedCombinations.add(proposedCombination);
+			Result result = new Result(memento.getResult(i).getBlacks(),memento.getResult(i).getWhites());
+			this.results.add(result);			
+		}
 	}
 
 }

@@ -20,5 +20,13 @@ class Result {
 	int[] getCodes() {
 		return new int[] { this.blacks, this.whites };
 	}
+	
+	int getBlacks() {
+		return this.blacks;
+	}
 
+	int getWhites() {
+		return this.whites;
+	}
+	
 }

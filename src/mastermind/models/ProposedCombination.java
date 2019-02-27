@@ -35,6 +35,12 @@ public class ProposedCombination extends Combination {
 		}
 		return codes;
 	}
+	
+	void setCodes(int[] codes) {
+		for (int i = 0; i < codes.length; i++) {
+			this.colors.add(Color.getInstance(codes[i]));
+		}
+	}
 
 	boolean contains(Color color, int position) {
 		return this.colors.get(position) == color;

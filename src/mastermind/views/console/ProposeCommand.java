@@ -26,7 +26,7 @@ public class ProposeCommand extends Command{
 				this.console.writeln(Error.values()[error].getMessage());
 			}
 		} while (error != ProposalController.NO_ERROR);
-		new GameView(playController);
+		new GameView(this.playController);
 	}
 
 	@Override

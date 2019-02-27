@@ -26,9 +26,9 @@ public abstract class Menu extends WithConsoleView {
 			for (int i=0;i<commands.size();i++) {
 				this.console.writeln((i+1) +") " + commands.get(i).getTitle());
 			}
-			int option = this.console.readInt("");
-			if (option>0 && option<=commands.size()) {
-				commands.get(option-1).execute();
+			int option = this.console.readInt("") - 1;
+			if (option>=0 && option<commands.size()) {
+				commands.get(option).execute();
 			}else error=true;
 		}while (error);		
 	}

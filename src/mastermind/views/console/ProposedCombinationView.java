@@ -18,11 +18,11 @@ class ProposedCombinationView extends WithConsoleView {
 		String characters = this.console.readString(Message.PROPOSED_COMBINATION.getMessage());
 		int[] codes = new int[characters.length()];
 		for (int i=0; i<characters.length(); i++) {
-			Color colorView = Color.getInstance(characters.charAt(i));
-			if (colorView == null) {
+			Color color = Color.getInstance(characters.charAt(i));
+			if (color == null) {
 				codes[i] = ProposedCombinationView.ERROR_CODE;
 			} else {
-				codes[i] = colorView.ordinal();
+				codes[i] = color.ordinal();
 			}
 		}
 		return codes;
