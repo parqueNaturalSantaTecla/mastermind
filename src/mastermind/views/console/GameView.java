@@ -1,22 +1,12 @@
 package mastermind.views.console;
 
 import mastermind.controllers.PlayController;
-import mastermind.controllers.ProposalController;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Error;
 import mastermind.views.Message;
 
-class ProposalView extends WithConsoleView {
+public class GameView extends WithConsoleView {
 
-	void interact(PlayController playController) {
-		int error;
-		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = playController.proposeCombination(codes);
-			if (error != ProposalController.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
-			}
-		} while (error != ProposalController.NO_ERROR);
+	public GameView(PlayController playController) {
 		this.console.writeln();
 		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + playController.getTurn()));
 		new SecretCombinationView().writeln(playController.getWidth());
@@ -31,5 +21,5 @@ class ProposalView extends WithConsoleView {
 			this.console.writeln(Message.LOOSER.getMessage());
 		}
 	}
-
+	
 }

@@ -1,7 +1,40 @@
 package mastermind.utils;
 
-public abstract class Menu {
+import java.util.ArrayList;
+
+public abstract class Menu extends WithConsoleView {
 	
-	public abstract void execute();
+	private static final String OPTION = "----- Elige una opción -----";
+	
+	ArrayList<Command> commandList;
+	
+	public Menu() {
+		this.commandList = new ArrayList<Command>();
+	}
+	
+	public void execute() {
+		ArrayList<Command> commands = new ArrayList<Command>();
+		for (int i=0; i<this.commandList.size(); i++) {
+			if (this.commandList.get(i).isActive()) {
+				commands.add(this.commandList.get(i));		
+			}
+		}
+		boolean error = false;
+		do {
+			this.console.writeln();
+			this.console.writeln(Menu.OPTION);
+			for (int i=0;i<commands.size();i++) {
+				this.console.writeln((i+1) +") " + commands.get(i).getTitle());
+			}
+			int option = this.console.readInt("");
+			if (option>0 && option<=commands.size()) {
+				commands.get(option-1).execute();
+			}else error=true;
+		}while (error);		
+	}
+	
+	protected void addCommand(Command command) {
+		this.commandList.add(command);
+	}
 
 }

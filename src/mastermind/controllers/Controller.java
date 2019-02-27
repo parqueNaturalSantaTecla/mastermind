@@ -1,22 +1,22 @@
 package mastermind.controllers;
 
 import mastermind.models.Game;
+import mastermind.models.Session;
 
 public abstract class Controller {
 
-	protected Game game;
+//	protected Game game;
+//	
+//	protected State state;
 	
-	protected State state;
+	protected Session session;
 
-	Controller(Game game, State state) {
-		this.game = game;
-		this.state = state;
+	Controller(Session session) {
+		this.session = session;
 	}
 	
 	public int getWidth() {
-		return this.game.getWidth();
+		return this.session.getWidth();
 	}
-
-	public abstract void accept(ControllerVisitor controllerVisitor);
 
 }

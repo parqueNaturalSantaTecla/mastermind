@@ -1,14 +1,15 @@
 package mastermind.controllers;
 
 import mastermind.models.Game;
+import mastermind.models.Session;
 
-public class PlayController extends Controller{
+public class PlayController extends AcceptorController{
 	
 	ProposalController proposalController;
 
-	PlayController(Game game, State state) {
-		super(game, state);
-		this.proposalController = new ProposalController(this.game, this.state);
+	PlayController(Session session) {
+		super(session);
+		this.proposalController = new ProposalController(this.session);
 	}
 	
 	public int proposeCombination(int[] codes) {
@@ -32,8 +33,8 @@ public class PlayController extends Controller{
 	}
 
 	@Override
-	public void accept(ControllerVisitor controllerVisitor) {
-		controllerVisitor.visit(this);
+	public void accept(ControllersVisitor controllersVisitor) {
+		controllersVisitor.visit(this);
 		
 	}
 }
