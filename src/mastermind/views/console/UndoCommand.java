@@ -9,7 +9,7 @@ public class UndoCommand extends Command{
 	
 	PlayController playController;
 
-	public UndoCommand(PlayController playController) {
+	UndoCommand(PlayController playController) {
 		this.playController = playController;
 		this.title = UndoCommand.TITLE;
 	}

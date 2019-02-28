@@ -11,7 +11,7 @@ public class ProposeCommand extends Command{
 	
 	PlayController playController;
 
-	public ProposeCommand(PlayController playController) {
+	ProposeCommand(PlayController playController) {
 		this.playController = playController;
 		this.title = ProposeCommand.TITLE;
 	}

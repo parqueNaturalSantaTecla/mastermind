@@ -11,19 +11,15 @@ public class Memento {
 
 	private int turn;
 
-	public Memento(int turn) {
+	Memento(int turn) {
 		this.turn = turn;
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 	}
 
-	public void set(ProposedCombination proposedCombination, Result result) {
+	void set(ProposedCombination proposedCombination, Result result) {
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(result);
-	}
-	
-	int getTurn(){
-		return this.turn;
 	}
 	
 	ProposedCombination getProposedCombination(int position){
@@ -37,16 +33,9 @@ public class Memento {
 	int getSize() {
 		return proposedCombinations.size();
 	}
+	
+	int getTurn(){
+		return this.turn;
+	}
 
-//	@Override
-//	public String toString() {
-//		String toString = "GameMemento [\ntokenTurn=" + tokenTurn + "\ntokensBoard=\n";
-//		for(int i=0; i<tokensBoard.length; i++){
-//			for(int j=0; j<tokensBoard[i].length; j++){
-//				toString += tokensBoard[i][j] + " ";
-//			}
-//			toString += "\n";
-//		}
-//		return toString + "]";
-//	}
 }

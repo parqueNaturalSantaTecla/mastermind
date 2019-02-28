@@ -14,10 +14,7 @@ public class GameView extends WithConsoleView {
 		for (int i = 0; i < allCodes.length; i++) {
 			new ProposedCombinationView().write(allCodes[i][0]);
 			new ResultView().writeln(allCodes[i][1]);
-		}
-		
-		playController.printMementos();
-		
+		}		
 		if (playController.isWinner()) {
 			this.console.writeln(Message.WINNER.getMessage());
 		} else if (playController.isLooser()) {

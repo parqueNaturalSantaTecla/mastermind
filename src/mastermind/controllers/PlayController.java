@@ -20,13 +20,21 @@ public class PlayController extends AcceptorController{
 	public int proposeCombination(int[] codes) {
 		return this.proposalController.proposeCombination(codes);
 	}
-	
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
+
+	public void undo() {
+		this.undoController.undo();		
+	}
+
+	public void redo() {
+		this.redoController.redo();
 	}
 	
-	public int getTurn() {
-		return this.proposalController.getTurn();
+	public boolean undoable() {
+		return this.undoController.undoable();
+	}
+	
+	public boolean redoable() {
+		return this.redoController.redoable();
 	}
 	
 	public boolean isWinner() {
@@ -37,29 +45,17 @@ public class PlayController extends AcceptorController{
 		return this.proposalController.isLooser();
 	}
 	
-	public boolean undoable() {
-		return this.session.undoable();
+	public int[][][] getAllCodes() {
+		return this.proposalController.getAllCodes();
 	}
 	
-	public boolean redoable() {
-		return this.session.redoable();
-	}
-
-	public void undo() {
-		this.session.undo();		
+	public int getTurn() {
+		return this.proposalController.getTurn();
 	}
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
 		controllersVisitor.visit(this);		
-	}
-
-	public void redo() {
-		this.session.redo();
-	}
-
-	public void printMementos() {
-		this.session.printMementos();
 	}
 	
 }

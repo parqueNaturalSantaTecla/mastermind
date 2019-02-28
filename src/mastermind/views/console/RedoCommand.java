@@ -9,7 +9,7 @@ public class RedoCommand extends Command{
 	
 	PlayController playController;
 
-	public RedoCommand(PlayController playController) {
+	RedoCommand(PlayController playController) {
 		this.playController = playController;
 		this.title = RedoCommand.TITLE;
 	}

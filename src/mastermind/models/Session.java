@@ -16,10 +16,6 @@ public class Session {
 		this.registry = new Registry(this.game);
 	}
 
-	public int getWidth() {
-		return this.game.getWidth();
-	}
-
 	public void next() {
 		this.state.next();		
 	}
@@ -27,6 +23,28 @@ public class Session {
 	public void proposeCombination(ProposedCombination proposedCombination) {
 		this.game.proposeCombination(proposedCombination);
 		this.registry.registry();
+	}
+
+	public boolean undoable() {
+		return this.registry.undoable();
+	}
+
+	public boolean redoable() {
+		return this.registry.redoable();
+	}
+
+	public void undo() {
+		this.registry.undo(this.game);
+	}
+
+	public void redo() {
+		this.registry.redo(this.game);
+	}
+
+	public void resume() {
+		this.game.clear();
+		this.state.reset();	
+		this.registry.reset();
 	}
 
 	public boolean isWinner() {
@@ -40,6 +58,10 @@ public class Session {
 		return this.game.isLooser();
 	}
 
+	public int getWidth() {
+		return this.game.getWidth();
+	}
+
 	public int[][][] getCodes() {
 		return this.game.getCodes();
 	}
@@ -48,34 +70,8 @@ public class Session {
 		return this.game.getTurn();
 	}
 
-	public void resume() {
-		this.game.clear();
-		this.state.reset();		
-	}
-
 	public Object getValueState() {
 		return this.state.getValueState();
 	}
-
-	public boolean undoable() {
-		return this.registry.undoable();
-	}
-
-	public boolean redoable() {
-		return this.registry.redoable();
-	}
-
-	public void undo() {
-		this.registry.undo(this.game);
-//		this.registry.registry();
-	}
-
-	public void redo() {
-		this.registry.redo(this.game);
-//		this.registry.registry();
-	}
-
-	public void printMementos() {
-		this.registry.printMementos();
-	}
+	
 }
