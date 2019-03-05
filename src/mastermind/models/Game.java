@@ -2,7 +2,6 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import mastermind.models.Combination;
 
 public class Game {
@@ -37,13 +36,7 @@ public class Game {
 	public Memento createMemento() {
 		Memento memento = new Memento(this.turn);
 		for (int i = 0; i < this.proposedCombinations.size(); i++) {
-			ProposedCombination proposedCombination = new ProposedCombination();
-			int[] codes = new int[Combination.getWidth()];
-			codes = this.proposedCombinations.get(i).getCodes();
-			proposedCombination.setCodes(codes);
-			Result result = new Result(this.secretCombination.getResult(proposedCombination).getBlacks(),
-					this.secretCombination.getResult(proposedCombination).getWhites());
-			memento.set(proposedCombination, result);
+			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
 		}
 		return memento;
 	}
@@ -52,14 +45,9 @@ public class Game {
 		this.turn = memento.getTurn();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
-		for (int i = 0; i<memento.getSize(); i++) {
-			int[] codes = new int[Combination.getWidth()];
-			ProposedCombination proposedCombination = new ProposedCombination();
-			codes = memento.getProposedCombination(i).getCodes();
-			proposedCombination.setCodes(codes);
-			this.proposedCombinations.add(proposedCombination);
-			Result result = new Result(memento.getResult(i).getBlacks(),memento.getResult(i).getWhites());
-			this.results.add(result);			
+		for (int i = 0; i < memento.getSize(); i++) {
+			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
+			this.results.add(memento.getResult(i).copy());
 		}
 	}
 
@@ -68,6 +56,9 @@ public class Game {
 	}
 
 	public boolean isWinner() {
+		if (this.turn == 0) {
+			return false;			
+		}
 		return this.results.get(this.turn - 1).isWinner();
 	}
 

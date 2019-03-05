@@ -48,10 +48,7 @@ public class Session {
 	}
 
 	public boolean isWinner() {
-		if(this.game.getTurn()>0) {
-			return this.game.isWinner();
-		}
-		return false;
+		return this.game.isWinner();
 	}
 
 	public boolean isLooser() {

@@ -2,7 +2,7 @@ package mastermind.controllers;
 
 import mastermind.models.Session;
 
-class RedoController extends Controller{
+class RedoController extends Controller {
 
 	RedoController(Session session) {
 		super(session);
@@ -11,7 +11,7 @@ class RedoController extends Controller{
 	void redo() {
 		this.session.redo();
 	}
-	
+
 	boolean redoable() {
 		return this.session.redoable();
 	}

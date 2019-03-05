@@ -4,8 +4,8 @@ import mastermind.models.Error;
 import mastermind.models.ProposedCombination;
 import mastermind.models.Session;
 
-public class ProposalController extends Controller{
-	
+public class ProposalController extends Controller {
+
 	public static final int NO_ERROR = -1;
 
 	public ProposalController(Session session) {
@@ -19,7 +19,6 @@ public class ProposalController extends Controller{
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
 		this.session.proposeCombination(proposedCombination);
-		
 		if (this.session.isWinner() || this.session.isLooser()) {
 			this.session.next();
 		}
@@ -29,7 +28,7 @@ public class ProposalController extends Controller{
 	public int[][][] getAllCodes() {
 		return this.session.getCodes();
 	}
-	
+
 	public int getTurn() {
 		return this.session.getTurn();
 	}

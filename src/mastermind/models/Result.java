@@ -28,5 +28,9 @@ class Result {
 	int getWhites() {
 		return this.whites;
 	}
+
+	public Result copy() {
+		return new Result(this.blacks, this.whites);
+	}
 	
 }

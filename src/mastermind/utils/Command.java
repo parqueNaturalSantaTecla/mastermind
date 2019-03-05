@@ -1,14 +1,18 @@
 package mastermind.utils;
 
-public abstract class Command extends WithConsoleView{
-	
+public abstract class Command extends WithConsoleView {
+
 	protected String title;
 	
-	public abstract void execute();
-	
-	public abstract boolean isActive();
-	
-	public String getTitle() {
+	protected Command(String title) {
+		this.title = title;
+	}
+
+	protected abstract void execute();
+
+	protected abstract boolean isActive();
+
+	String getTitle() {
 		return this.title;
 	}
 

@@ -2,22 +2,18 @@ package mastermind.views.console;
 
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ProposalController;
-import mastermind.utils.Command;
 import mastermind.views.Error;
 
-public class ProposeCommand extends Command{
-	
+class ProposeCommand extends Command {
+
 	public static final String TITLE = "Proponer Combinación";
-	
-	PlayController playController;
 
 	ProposeCommand(PlayController playController) {
-		this.playController = playController;
-		this.title = ProposeCommand.TITLE;
+		super(ProposeCommand.TITLE, playController);
 	}
 
 	@Override
-	public void execute() {
+	protected void execute() {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read();
@@ -30,7 +26,7 @@ public class ProposeCommand extends Command{
 	}
 
 	@Override
-	public boolean isActive() {
+	protected boolean isActive() {
 		return true;
 	}
 
