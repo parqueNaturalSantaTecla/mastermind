@@ -1,6 +1,6 @@
 package mastermind.controllers;
 
-enum StateValue {
+public enum StateValue {
 	INITIAL,
 	IN_GAME,
 	FINAL,

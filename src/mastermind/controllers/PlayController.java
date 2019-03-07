@@ -2,56 +2,29 @@ package mastermind.controllers;
 
 import mastermind.models.Session;
 
-public class PlayController extends AcceptorController {
+public abstract class PlayController extends AcceptorController {
 
-	private ProposalController proposalController;
-
-	private UndoController undoController;
-
-	private RedoController redoController;
-
-	PlayController(Session session) {
+	protected PlayController(Session session) {
 		super(session);
-		this.proposalController = new ProposalController(this.session);
-		this.undoController = new UndoController(this.session);
-		this.redoController = new RedoController(this.session);
 	}
 
-	public int proposeCombination(int[] codes) {
-		return this.proposalController.proposeCombination(codes);
-	}
+	public abstract int proposeCombination(int[] codes);
 
-	public void undo() {
-		this.undoController.undo();
-	}
+	public abstract void undo();
 
-	public void redo() {
-		this.redoController.redo();
-	}
+	public abstract void redo();
 
-	public boolean undoable() {
-		return this.undoController.undoable();
-	}
+	public abstract boolean undoable();
 
-	public boolean redoable() {
-		return this.redoController.redoable();
-	}
+	public abstract boolean redoable();
 
-	public boolean isWinner() {
-		return this.proposalController.isWinner();
-	}
+	public abstract boolean isWinner();
 
-	public boolean isLooser() {
-		return this.proposalController.isLooser();
-	}
+	public abstract boolean isLooser();
 
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
-	}
+	public abstract int[][][] getAllCodes();
 
-	public int getTurn() {
-		return this.proposalController.getTurn();
-	}
+	public abstract int getTurn();
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {

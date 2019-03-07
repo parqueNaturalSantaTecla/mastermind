@@ -11,10 +11,12 @@ public abstract class Mastermind {
 	private View view;
 	
 	protected Mastermind() {
-		this.logic = new Logic();
+		this.logic = this.createLogic();
 		this.view = this.createView();
 	}
 	
+	protected abstract Logic createLogic();
+
 	protected abstract View createView();
 
 	protected void play() {

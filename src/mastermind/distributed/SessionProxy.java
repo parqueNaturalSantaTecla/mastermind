@@ -1,0 +1,27 @@
+package mastermind.distributed;
+
+import mastermind.controllers.StateValue;
+import mastermind.models.Session;
+import mastermind.utils.TCPIP;
+
+public class SessionProxy implements Session {
+	
+	private TCPIP tcpip;
+
+	public SessionProxy(TCPIP tcpip) {
+		this.tcpip = tcpip;
+	}
+	
+	@Override
+	public StateValue getValueState() {
+		this.tcpip.send(FrameType.STATE.name());
+		return StateValue.values()[this.tcpip.receiveInt()];
+	}
+
+	@Override
+	public int getWidth() {
+		this.tcpip.send(FrameType.WIDTH.name());
+		return this.tcpip.receiveInt();
+	}
+
+}

@@ -3,6 +3,7 @@ package mastermind.controllers;
 import mastermind.models.Error;
 import mastermind.models.ProposedCombination;
 import mastermind.models.Session;
+import mastermind.models.SessionImplementation;
 
 public class ProposalController extends Controller {
 
@@ -18,27 +19,27 @@ public class ProposalController extends Controller {
 			return error.ordinal();
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		this.session.proposeCombination(proposedCombination);
-		if (this.session.isWinner() || this.session.isLooser()) {
-			this.session.next();
+		((SessionImplementation) this.session).proposeCombination(proposedCombination);
+		if (((SessionImplementation) this.session).isWinner() || ((SessionImplementation) this.session).isLooser()) {
+			((SessionImplementation) this.session).next();
 		}
 		return ProposalController.NO_ERROR;
 	}
 
 	public int[][][] getAllCodes() {
-		return this.session.getCodes();
+		return ((SessionImplementation) this.session).getCodes();
 	}
 
 	public int getTurn() {
-		return this.session.getTurn();
+		return ((SessionImplementation) this.session).getTurn();
 	}
 
 	public boolean isWinner() {
-		return this.session.isWinner();
+		return ((SessionImplementation) this.session).isWinner();
 	}
 
 	public boolean isLooser() {
-		return this.session.isLooser();
+		return ((SessionImplementation) this.session).isLooser();
 	}
 
 }

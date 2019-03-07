@@ -2,19 +2,13 @@ package mastermind.controllers;
 
 import mastermind.models.Session;
 
-public class ResumeController extends AcceptorController {
+public abstract class ResumeController extends AcceptorController {
 
 	public ResumeController(Session session) {
 		super(session);
 	}
-	
-	public void resume(boolean resume) {
-		if (resume) {
-			this.session.resume();
-		} else {
-			this.session.next();
-		}
-	}
+
+	public abstract void resume(boolean resume);
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
