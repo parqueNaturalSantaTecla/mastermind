@@ -3,7 +3,9 @@ package mastermind.views;
 public enum Message {
 	TURN("#turn intento(s): "),
 	SECRET("*"),
-	RESUME("¿Desea continuar?"),
+	RESUME("¿Deseas continuar?"),
+	SAVE("¿Quieres guardar la partida?"),
+	NAME("Nombre: "),
 	RESULT(" --> #blacks negros y #whites blancos"),
 	PROPOSED_COMBINATION("Propón una combinación: "),
 	TITLE("----- MASTERMIND -----"),

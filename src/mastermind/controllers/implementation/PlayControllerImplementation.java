@@ -1,5 +1,6 @@
 package mastermind.controllers.implementation;
 
+import mastermind.controllers.ExitController;
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.RedoController;
@@ -13,12 +14,15 @@ public class PlayControllerImplementation extends PlayController {
 	private UndoController undoController;
 
 	private RedoController redoController;
+	
+	private ExitController exitController;
 
 	PlayControllerImplementation(Session session) {
 		super(session);
 		this.proposalController = new ProposalController(this.session);
 		this.undoController = new UndoController(this.session);
 		this.redoController = new RedoController(this.session);
+		this.exitController = new ExitController(this.session);
 	}
 
 	@Override
@@ -34,6 +38,11 @@ public class PlayControllerImplementation extends PlayController {
 	@Override
 	public void redo() {
 		this.redoController.redo();
+	}
+
+	@Override
+	public void next() {
+		this.exitController.next();
 	}
 
 	@Override

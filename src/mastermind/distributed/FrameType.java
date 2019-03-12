@@ -14,7 +14,11 @@ public enum FrameType {
 	PROPOSECOMBINATION, 
 	WIDTH,
 	RESUME,
-	CLOSE;
+	EXISTS, 
+	HAS_NAME, 
+	SAVE,
+	NEXT,
+	CLOSE, START_NAME, TITLES, GET_TITLE, SET_TITLE, SAVE_NAMED;
 
 	public static FrameType parser(String string) {
 		for(FrameType frameType : FrameType.values()) {

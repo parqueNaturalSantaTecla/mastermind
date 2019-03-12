@@ -1,5 +1,8 @@
 package mastermind.models;
 
+import java.io.BufferedReader;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import mastermind.models.Combination;
@@ -51,6 +54,38 @@ public class Game {
 		}
 	}
 
+	public void save(FileWriter fileWriter) {
+		try {
+			fileWriter.write(this.turn+"\n");
+			this.secretCombination.save(fileWriter);
+			for(int i=0; i<this.turn; i++) {
+				this.proposedCombinations.get(i).save(fileWriter);
+				this.results.get(i).save(fileWriter);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public void load(BufferedReader bufferedReader) {
+		try {
+			this.turn = Integer.parseInt(bufferedReader.readLine());
+			this.secretCombination.load(bufferedReader);
+			for(int i=0; i<this.turn;i++) {
+				ProposedCombination proposedCombination = new ProposedCombination();
+				proposedCombination.load(bufferedReader);
+				this.proposedCombinations.add(proposedCombination);
+				Result result = new Result();
+				result.load(bufferedReader);
+				this.results.add(result);
+			}
+		} catch (NumberFormatException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+
 	public boolean isLooser() {
 		return this.turn == Game.MAX_LONG;
 	}
@@ -77,6 +112,12 @@ public class Game {
 
 	public int getTurn() {
 		return this.turn;
+	}
+
+	@Override
+	public String toString() {
+		return "Game [secretCombination=" + secretCombination + ", proposedCombinations=" + proposedCombinations
+				+ ", results=" + results + ", turn=" + turn + "]";
 	}
 
 }

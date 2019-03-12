@@ -8,4 +8,8 @@ public interface Session {
 	
 	int getWidth();
 	
+	String getName();
+	
+	void setName(String title);
+	
 }

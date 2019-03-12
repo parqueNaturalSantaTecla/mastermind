@@ -63,4 +63,9 @@ public class ProposedCombination extends Combination {
 		return proposedCombination;
 	}
 
+	@Override
+	public String toString() {
+		return "ProposedCombination [colors=" + colors + "]";
+	}
+
 }

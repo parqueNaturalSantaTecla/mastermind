@@ -17,12 +17,11 @@ class ProposeCommand extends Command {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read();
-			error = playController.proposeCombination(codes);
+			error = ((PlayController) acceptorController).proposeCombination(codes);
 			if (error != ProposalController.NO_ERROR) {
 				this.console.writeln(Error.values()[error].getMessage());
 			}
 		} while (error != ProposalController.NO_ERROR);
-		new GameView(this.playController);
 	}
 
 	@Override

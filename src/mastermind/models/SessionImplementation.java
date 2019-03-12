@@ -1,24 +1,43 @@
 package mastermind.models;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+
 import mastermind.controllers.State;
 import mastermind.controllers.StateValue;
 
 public class SessionImplementation implements Session {
 
+	public static final String EXTENSION = ".mm";
+
+	public static final String DIRECTORY = "/Users/Tamara/git/mastermind.mvp.pm/partidas";
+
+	private static File directory;
+
+	static {
+		SessionImplementation.directory = new File(SessionImplementation.DIRECTORY);
+	}
+
 	private State state;
-	
+
 	private Game game;
-	
+
 	private Registry registry;
-	
+
+	private String name;
+
 	public SessionImplementation() {
 		this.state = new State();
 		this.game = new Game();
 		this.registry = new Registry(this.game);
+		this.name = null;
 	}
 
 	public void next() {
-		this.state.next();		
+		this.state.next();
 	}
 
 	public void proposeCombination(ProposedCombination proposedCombination) {
@@ -44,8 +63,41 @@ public class SessionImplementation implements Session {
 
 	public void resume() {
 		this.game.clear();
-		this.state.reset();	
+		this.state.reset();
 		this.registry.reset();
+		this.name = null;
+	}
+
+	public void load(String name) {
+		this.name = name;
+		File file = new File(SessionImplementation.directory, name);
+		try {
+			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
+			this.game.load(bufferedReader);			
+			bufferedReader.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		this.state.setStateValue(StateValue.IN_GAME);
+		if(this.isLooser() || this.isWinner()) {
+			this.state.setStateValue(StateValue.FINAL);
+		}
+		System.out.println(this.game);
+	}
+
+	public void save() {
+		this.save(this.name);
+	}
+
+	public void save(String name) {
+		File file = new File(SessionImplementation.directory, name+SessionImplementation.EXTENSION);
+		try {
+			FileWriter fileWriter = new FileWriter(file);
+			this.game.save(fileWriter);			
+			fileWriter.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 
 	public boolean isWinner() {
@@ -64,6 +116,28 @@ public class SessionImplementation implements Session {
 		return this.game.getTurn();
 	}
 
+	public String[] getGamesNames() {
+		return SessionImplementation.directory.list();
+	}
+
+	public boolean exists(String name) {
+		for (String auxName : this.getGamesNames()) {
+			if (auxName.equals(name + SessionImplementation.EXTENSION)) {
+				return true;
+			}
+		}
+		return false;
+	}
+
+	public boolean hasName() {
+		return this.name != null;
+	}
+
+	@Override
+	public void setName(String name) {
+		this.name = name;
+	}
+
 	@Override
 	public int getWidth() {
 		return this.game.getWidth();
@@ -73,4 +147,10 @@ public class SessionImplementation implements Session {
 	public StateValue getValueState() {
 		return this.state.getValueState();
 	}
+
+	@Override
+	public String getName() {
+		return this.name;
+	}
+
 }

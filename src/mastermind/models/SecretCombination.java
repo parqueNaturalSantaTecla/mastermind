@@ -1,12 +1,13 @@
 package mastermind.models;
 
+import java.io.BufferedReader;
 import java.util.Collections;
 import java.util.Random;
 
 class SecretCombination extends Combination {
 
 	SecretCombination() {
-		for(Color color: Color.values()) {
+		for (Color color : Color.values()) {
 			this.colors.add(color);
 		}
 		Random random = new Random(System.currentTimeMillis());
@@ -14,6 +15,11 @@ class SecretCombination extends Combination {
 			this.colors.remove(random.nextInt(this.colors.size()));
 		}
 		Collections.shuffle(this.colors);
+	}
+	
+	public void load(BufferedReader bufferedReader) {
+		this.colors.clear();
+		super.load(bufferedReader);
 	}
 
 	Result getResult(ProposedCombination proposedCombination) {
@@ -30,6 +36,11 @@ class SecretCombination extends Combination {
 			}
 		}
 		return new Result(blacks, whites - blacks);
+	}
+
+	@Override
+	public String toString() {
+		return "SecretCombination [colors=" + colors + "]";
 	}
 
 }

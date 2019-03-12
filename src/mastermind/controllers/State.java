@@ -5,7 +5,7 @@ public class State {
 	private StateValue stateValue;
 	
 	public State() {
-		this.stateValue = StateValue.INITIAL;
+		this.reset();
 	}
 	
 	public void next() {
@@ -14,6 +14,10 @@ public class State {
 	
 	public void reset() {
 		this.stateValue = StateValue.INITIAL;
+	}
+
+	public void setStateValue(StateValue stateValue) {
+		this.stateValue = stateValue;
 	}
 
 	public StateValue getValueState() {

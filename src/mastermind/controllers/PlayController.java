@@ -13,6 +13,8 @@ public abstract class PlayController extends AcceptorController {
 	public abstract void undo();
 
 	public abstract void redo();
+	
+	public abstract void next();
 
 	public abstract boolean undoable();
 

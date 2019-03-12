@@ -34,6 +34,11 @@ public class PlayControllerProxy extends PlayController {
 	}
 
 	@Override
+	public void next() {
+		this.tcpip.send(FrameType.NEXT.name());
+	}
+
+	@Override
 	public boolean undoable() {
 		this.tcpip.send(FrameType.UNDOABLE.name());
 		return this.tcpip.receiveBoolean();

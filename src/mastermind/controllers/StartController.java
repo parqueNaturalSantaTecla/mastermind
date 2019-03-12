@@ -10,6 +10,10 @@ public abstract class StartController extends AcceptorController {
 	
 	public abstract void start();
 	
+	public abstract void start(String title);
+
+	public abstract String[] getGamesNames();
+	
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
 		controllersVisitor.visit(this);

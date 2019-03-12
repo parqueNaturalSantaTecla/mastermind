@@ -11,6 +11,12 @@ public class SessionProxy implements Session {
 	public SessionProxy(TCPIP tcpip) {
 		this.tcpip = tcpip;
 	}
+
+	@Override
+	public void setName(String title) {
+		this.tcpip.send(FrameType.SET_TITLE.name());
+		this.tcpip.send(title);
+	}
 	
 	@Override
 	public StateValue getValueState() {
@@ -22,6 +28,12 @@ public class SessionProxy implements Session {
 	public int getWidth() {
 		this.tcpip.send(FrameType.WIDTH.name());
 		return this.tcpip.receiveInt();
+	}
+
+	@Override
+	public String getName() {
+		this.tcpip.send(FrameType.GET_TITLE.name());
+		return this.tcpip.receiveLine();
 	}
 
 }
