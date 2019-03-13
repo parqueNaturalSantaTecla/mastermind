@@ -9,7 +9,7 @@ public class LogicImplementation extends Logic {
 	protected StartControllerImplementation startControllerImplementation;
 
 	protected PlayControllerImplementation playControllerImplementation;
-	
+
 	protected SaveControllerImplementation saveControllerImplementation;
 
 	protected ResumeControllerImplementation resumeControllerImplementation;

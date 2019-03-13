@@ -12,7 +12,7 @@ public class StartControllerImplementation extends StartController {
 
 	@Override
 	public void start() {
-		((SessionImplementation) this.session).next();		
+		((SessionImplementation) this.session).next();
 	}
 
 	@Override
@@ -22,7 +22,27 @@ public class StartControllerImplementation extends StartController {
 
 	@Override
 	public String[] getGamesNames() {
-		return ((SessionImplementation) this.session).getGamesNames();		
+		return ((SessionImplementation) this.session).getGamesNames();
+	}
+
+	@Override
+	public int getTurn() {
+		return ((SessionImplementation) this.session).getTurn();
+	}
+
+	@Override
+	public int[][][] getAllCodes() {
+		return ((SessionImplementation) this.session).getCodes();
+	}
+
+	@Override
+	public boolean isWinner() {
+		return ((SessionImplementation) this.session).isWinner();
+	}
+
+	@Override
+	public boolean isLooser() {
+		return ((SessionImplementation) this.session).isLooser();
 	}
 
 }

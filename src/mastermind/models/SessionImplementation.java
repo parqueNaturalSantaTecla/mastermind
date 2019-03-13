@@ -73,16 +73,15 @@ public class SessionImplementation implements Session {
 		File file = new File(SessionImplementation.directory, name);
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-			this.game.load(bufferedReader);			
+			this.game.load(bufferedReader, this.registry);
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		this.state.setStateValue(StateValue.IN_GAME);
-		if(this.isLooser() || this.isWinner()) {
+		if (this.isLooser() || this.isWinner()) {
 			this.state.setStateValue(StateValue.FINAL);
 		}
-		System.out.println(this.game);
 	}
 
 	public void save() {
@@ -90,10 +89,13 @@ public class SessionImplementation implements Session {
 	}
 
 	public void save(String name) {
-		File file = new File(SessionImplementation.directory, name+SessionImplementation.EXTENSION);
+		if (name.endsWith(SessionImplementation.EXTENSION)) {
+			name = name.replace(SessionImplementation.EXTENSION, "");
+		}
+		File file = new File(SessionImplementation.directory, name + SessionImplementation.EXTENSION);
 		try {
 			FileWriter fileWriter = new FileWriter(file);
-			this.game.save(fileWriter);			
+			this.game.save(fileWriter);
 			fileWriter.close();
 		} catch (IOException e) {
 			e.printStackTrace();

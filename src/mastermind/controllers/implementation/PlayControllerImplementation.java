@@ -14,7 +14,7 @@ public class PlayControllerImplementation extends PlayController {
 	private UndoController undoController;
 
 	private RedoController redoController;
-	
+
 	private ExitController exitController;
 
 	PlayControllerImplementation(Session session) {

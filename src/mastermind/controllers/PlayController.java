@@ -2,7 +2,7 @@ package mastermind.controllers;
 
 import mastermind.models.Session;
 
-public abstract class PlayController extends AcceptorController {
+public abstract class PlayController extends GameController {
 
 	protected PlayController(Session session) {
 		super(session);
@@ -13,20 +13,12 @@ public abstract class PlayController extends AcceptorController {
 	public abstract void undo();
 
 	public abstract void redo();
-	
+
 	public abstract void next();
 
 	public abstract boolean undoable();
 
 	public abstract boolean redoable();
-
-	public abstract boolean isWinner();
-
-	public abstract boolean isLooser();
-
-	public abstract int[][][] getAllCodes();
-
-	public abstract int getTurn();
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {

@@ -56,9 +56,9 @@ public class Game {
 
 	public void save(FileWriter fileWriter) {
 		try {
-			fileWriter.write(this.turn+"\n");
+			fileWriter.write(this.turn + "\n");
 			this.secretCombination.save(fileWriter);
-			for(int i=0; i<this.turn; i++) {
+			for (int i = 0; i < this.turn; i++) {
 				this.proposedCombinations.get(i).save(fileWriter);
 				this.results.get(i).save(fileWriter);
 			}
@@ -67,17 +67,19 @@ public class Game {
 		}
 	}
 
-	public void load(BufferedReader bufferedReader) {
+	public void load(BufferedReader bufferedReader, Registry registry) {
 		try {
-			this.turn = Integer.parseInt(bufferedReader.readLine());
+			int auxTurn = Integer.parseInt(bufferedReader.readLine());
 			this.secretCombination.load(bufferedReader);
-			for(int i=0; i<this.turn;i++) {
+			for (int i = 0; i < auxTurn; i++) {
+				this.turn = i + 1;
 				ProposedCombination proposedCombination = new ProposedCombination();
 				proposedCombination.load(bufferedReader);
 				this.proposedCombinations.add(proposedCombination);
 				Result result = new Result();
 				result.load(bufferedReader);
 				this.results.add(result);
+				registry.registry();
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
@@ -92,7 +94,7 @@ public class Game {
 
 	public boolean isWinner() {
 		if (this.turn == 0) {
-			return false;			
+			return false;
 		}
 		return this.results.get(this.turn - 1).isWinner();
 	}

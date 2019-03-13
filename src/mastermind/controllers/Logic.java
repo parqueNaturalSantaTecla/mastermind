@@ -5,17 +5,17 @@ import java.util.Map;
 import mastermind.models.Session;
 
 public class Logic {
-	
+
 	protected Session session;
-	
+
 	protected Map<StateValue, AcceptorController> acceptorControllers;
-	
-	protected Logic () {
+
+	protected Logic() {
 		this.acceptorControllers = new HashMap<StateValue, AcceptorController>();
 	}
-	
+
 	public AcceptorController getController() {
 		return this.acceptorControllers.get(this.session.getValueState());
 	}
-	
+
 }

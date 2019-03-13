@@ -7,7 +7,7 @@ class PlayView extends WithConsoleView {
 
 	void interact(PlayController playController) {
 		new PlayMenu(playController).execute();	
-		new GameView(playController);
+		new GameView(playController).show();
 	}
 
 }
