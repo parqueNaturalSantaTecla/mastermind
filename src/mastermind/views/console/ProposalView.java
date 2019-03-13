@@ -1,37 +1,48 @@
 package mastermind.views.console;
 
-import mastermind.controllers.Logic;
+import mastermind.models.Game;
+import mastermind.models.ProposedCombination;
 import mastermind.utils.WithConsoleView;
 import mastermind.views.Error;
 import mastermind.views.Message;
 
 class ProposalView extends WithConsoleView {
 
-	boolean interact(Logic logic) {
+	boolean interact(Game game) {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read();
-			error = logic.proposeCombination(codes);
-			if (error != Logic.NO_ERROR) {
+			error = this.proposeCombination(codes, game);
+			if (error != Game.NO_ERROR) {
 				this.console.writeln(Error.values()[error].getMessage());
 			}
-		} while (error != Logic.NO_ERROR);
+		} while (error != Game.NO_ERROR);
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + logic.getTurn()));
-		new SecretCombinationView().writeln(logic.getWidth());
-		int[][][] allCodes = logic.getAllCodes();
+		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + game.getTurn()));
+		new SecretCombinationView().writeln(game.getWidth());
+		int[][][] allCodes = game.getCodes();
 		for (int i = 0; i < allCodes.length; i++) {
 			new ProposedCombinationView().write(allCodes[i][0]);
 			new ResultView().writeln(allCodes[i][1]);
 		}
-		if (logic.isWinner()) {
+		if (game.isWinner()) {
 			this.console.writeln(Message.WINNER.getMessage());
 			return true;
-		} else if (logic.isLooser()) {
+		} else if (game.isLooser()) {
 			this.console.writeln(Message.LOOSER.getMessage());
 			return true;
 		}
 		return false;
+	}
+
+	public int proposeCombination(int[] codes, Game game) {
+		mastermind.models.Error error = ProposedCombination.isValid(codes);
+		if (error != null) {
+			return error.ordinal();
+		}
+		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
+		game.proposeCombination(proposedCombination);
+		return Game.NO_ERROR;
 	}
 
 }

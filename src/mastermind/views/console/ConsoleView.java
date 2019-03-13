@@ -1,6 +1,6 @@
 package mastermind.views.console;
 
-import mastermind.controllers.Logic;
+import mastermind.models.Game;
 import mastermind.views.View;
 
 public class ConsoleView extends View {
@@ -11,8 +11,8 @@ public class ConsoleView extends View {
 
 	private ResumeView resumeView;
 
-	public ConsoleView(Logic logic) {
-		super(logic);
+	public ConsoleView(Game game) {
+		super(game);
 		this.startView = new StartView();
 		this.proposalView = new ProposalView();
 		this.resumeView = new ResumeView();
@@ -20,17 +20,17 @@ public class ConsoleView extends View {
 
 	@Override
 	protected void start() {
-		this.startView.interact(this.logic);
+		this.startView.interact(this.game);
 	}
 
 	@Override
 	protected boolean propose() {
-		return this.proposalView.interact(this.logic);
+		return this.proposalView.interact(this.game);
 	}
 
 	@Override
 	protected boolean resume() {
-		return this.resumeView.interact(this.logic);
+		return this.resumeView.interact(this.game);
 	}
 
 }

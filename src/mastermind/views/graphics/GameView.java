@@ -3,7 +3,8 @@ package mastermind.views.graphics;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
-import mastermind.controllers.Logic;
+import mastermind.models.Game;
+import mastermind.models.ProposedCombination;
 import mastermind.views.Error;
 import mastermind.views.Message;
 import mastermind.views.graphics.ProposedCombinationView;
@@ -29,9 +30,9 @@ public class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start(Logic logic) {
+	void start(Game game) {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(logic.getWidth());
+		this.secretCombinationView = new SecretCombinationView(game.getWidth());
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
 		this.proposedCombinationsView = new ProposedCombinationsView();
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
@@ -40,27 +41,27 @@ public class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	boolean propose(Logic logic) {
+	boolean propose(Game game) {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = logic.proposeCombination(codes);
-			if (error != Logic.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
+			error = this.proposeCombination(codes, game);
+			if (error != Game.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
 				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
-				error = Logic.NO_ERROR;
+				error = Game.NO_ERROR;
 				this.proposalCombinationView.resetCharacters();
 			}
-		} while (error != Logic.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
+		} while (error != Game.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(logic);
+		this.proposedCombinationsView.add(game);
 		this.setVisible(true);
-		return this.drawGameOver(logic);
+		return this.drawGameOver(game);
 	}
 
-	private boolean drawGameOver(Logic logic) {
-		if (logic.isWinner() || logic.isLooser()) {
+	private boolean drawGameOver(Game game) {
+		if (game.isWinner() || game.isLooser()) {
 			String message = "";
-			if (logic.isWinner()) {
+			if (game.isWinner()) {
 				message = Message.WINNER.getMessage();
 			} else {
 				message = Message.LOOSER.getMessage();
@@ -78,6 +79,16 @@ public class GameView extends JFrame {
 		if (this.proposedCombinationsView != null) {
 			this.proposedCombinationsView.removeAll();
 		}
+	}
+	
+	public int proposeCombination(int[] codes, Game game) {
+		mastermind.models.Error error = ProposedCombination.isValid(codes);
+		if (error != null) {
+			return error.ordinal();
+		}
+		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
+		game.proposeCombination(proposedCombination);
+		return Game.NO_ERROR;
 	}
 
 }

@@ -1,13 +1,13 @@
 package mastermind.views;
 
-import mastermind.controllers.Logic;
+import mastermind.models.Game;
 
 public abstract class View {
 
-	protected Logic logic;
+	protected Game game;
 
-	public View(Logic logic) {
-		this.logic = logic;
+	public View(Game game) {
+		this.game = game;
 	}
 
 	public void interact() {

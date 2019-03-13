@@ -1,13 +1,13 @@
 package mastermind;
 
-import mastermind.controllers.Logic;
+import mastermind.models.Game;
 import mastermind.views.View;
 import mastermind.views.graphics.GraphicsView;
 
 public class GraphicsMastermind extends Mastermind{
 
-	protected View createView(Logic logic) {
-		return new GraphicsView(logic);
+	protected View createView(Game game) {
+		return new GraphicsView(game);
 	}
 	
 	public static void main(String[] args) {
