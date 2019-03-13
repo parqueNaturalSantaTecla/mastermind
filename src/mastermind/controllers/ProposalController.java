@@ -5,11 +5,9 @@ import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
 public class ProposalController extends Controller {
-	
-	public static final int NO_ERROR = -1;
 
-	public ProposalController(Game game, State state) {
-		super(game, state);
+	public ProposalController(Game game) {
+		super(game);
 	}
 
 	public int proposeCombination(int[] codes) {
@@ -19,18 +17,11 @@ public class ProposalController extends Controller {
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
 		this.game.proposeCombination(proposedCombination);
-		if (this.game.isWinner() || this.game.isLooser()) {
-			this.state.next();
-		}
-		return ProposalController.NO_ERROR;
+		return Logic.NO_ERROR;
 	}
 
 	public int[][][] getAllCodes() {
 		return this.game.getCodes();
-	}
-	
-	public int getTurn() {
-		return this.game.getTurn();
 	}
 
 	public boolean isWinner() {
@@ -40,10 +31,13 @@ public class ProposalController extends Controller {
 	public boolean isLooser() {
 		return this.game.isLooser();
 	}
+	
+	public int getTurn() {
+		return this.game.getTurn();
+	}
 
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
+	public int getWidth() {
+		return this.game.getWidth();
 	}
 
 }

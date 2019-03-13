@@ -1,37 +1,38 @@
 package mastermind.views.graphics;
 
-import mastermind.controllers.ProposalController;
-import mastermind.controllers.ResumeController;
-import mastermind.controllers.StartController;
+import mastermind.controllers.Logic;
 import mastermind.views.View;
 
 public class GraphicsView extends View {
 
 	private GameView gameView;
 
-	public GraphicsView() {
+	public GraphicsView(Logic logic) {
+		super(logic);
 		this.gameView = new GameView();
 	}
 
 	@Override
-	public void visit(StartController startController) {
-		this.gameView.interact(startController);
+	protected void start() {
+		this.gameView.start(this.logic);
 	}
 
 	@Override
-	public void visit(ProposalController proposalController) {
-		this.gameView.interact(proposalController);
+	protected boolean propose() {
+		return this.gameView.propose(this.logic);
 	}
 
 	@Override
-	public void visit(ResumeController resumeController) {
+	protected boolean resume() {
 		ResumeDialog resumeDialog = new ResumeDialog();
-		resumeController.resume(resumeDialog.isResumed());
+		this.logic.resume(resumeDialog.isResumed());
 		if (resumeDialog.isResumed()) {
 			this.gameView = new GameView();
+			return true;
 		} else {
 			this.gameView.setVisible(false);
 			System.exit(0);
+			return false;
 		}
 	}
 

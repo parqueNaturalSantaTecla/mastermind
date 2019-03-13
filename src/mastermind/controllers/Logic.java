@@ -1,30 +1,49 @@
 package mastermind.controllers;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import mastermind.models.Game;
 
 public class Logic {
-	
-	private State state;
-	
+
+	public static final int NO_ERROR = -1;
+
 	private Game game;
-	
-	private Map<StateValue, Controller> controllers;
-		
+
+	private ProposalController proposalController;
+
+	private ResumeController resumeController;
+
 	public Logic() {
-		this.state = new State();
 		this.game = new Game();
-		this.controllers = new HashMap<StateValue, Controller>();
-		this.controllers.put(StateValue.INITIAL, new StartController(this.game, this.state));
-		this.controllers.put(StateValue.IN_GAME, new ProposalController(this.game, this.state));
-		this.controllers.put(StateValue.FINAL, new ResumeController(this.game, this.state));
-		this.controllers.put(StateValue.EXIT, null);
+		this.proposalController = new ProposalController(this.game);
+		this.resumeController = new ResumeController(this.game);
 	}
-	
-	public Controller getController() {
-		return this.controllers.get(this.state.getValueState());
+
+	public void resume(boolean resume) {
+		this.resumeController.resume(resume);
 	}
-	
+
+	public int proposeCombination(int[] codes) {
+		return this.proposalController.proposeCombination(codes);
+	}
+
+	public boolean isWinner() {
+		return this.proposalController.isWinner();
+	}
+
+	public boolean isLooser() {
+		return this.proposalController.isLooser();
+	}
+
+	public int[][][] getAllCodes() {
+		return this.proposalController.getAllCodes();
+	}
+
+	public int getTurn() {
+		return this.proposalController.getTurn();
+	}
+
+	public int getWidth() {
+		return this.proposalController.getWidth();
+	}
+
 }

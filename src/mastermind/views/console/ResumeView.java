@@ -1,13 +1,15 @@
 package mastermind.views.console;
 
-import mastermind.controllers.ResumeController;
+import mastermind.controllers.Logic;
 import mastermind.utils.YesNoDialog;
 import mastermind.views.Message;
 
 class ResumeView {
 
-	void interact(ResumeController resumeController) {
-		resumeController.resume(new YesNoDialog().read(Message.RESUME.getMessage()));
+	boolean interact(Logic logic) {
+		boolean resume = new YesNoDialog().read(Message.RESUME.getMessage());
+		logic.resume(resume);
+		return resume;
 	}
-	
+
 }
