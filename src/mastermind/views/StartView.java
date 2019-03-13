@@ -1,8 +1,7 @@
-package mastermind.views.console;
+package mastermind.views;
 
 import mastermind.models.Game;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Message;
 
 public class StartView extends WithConsoleView {
 

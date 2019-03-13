@@ -1,10 +1,8 @@
-package mastermind.views.console;
+package mastermind.views;
 
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Error;
-import mastermind.views.Message;
 
 class ProposalView extends WithConsoleView {
 
