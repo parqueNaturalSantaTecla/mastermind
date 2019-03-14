@@ -11,5 +11,5 @@ class ResultView extends JLabel {
 		this.setText(Message.RESULT.getMessage().replaceFirst("#blacks", "" + results[0]).replaceFirst("#whites",
 				"" + results[1]));
 	}
-	
+
 }

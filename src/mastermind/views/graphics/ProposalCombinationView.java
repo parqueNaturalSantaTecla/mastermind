@@ -41,6 +41,14 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
 		this.resetCharacters();
 	}
 
+	void resetCharacters() {
+		this.characters = "";
+	}
+
+	String getCharacters() {
+		return this.characters;
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent event) {
 		this.characters = this.textField.getText();
@@ -59,14 +67,6 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
 
 	@Override
 	public void keyTyped(KeyEvent e) {
-	}
-
-	String getCharacters() {
-		return this.characters;
-	}
-
-	void resetCharacters() {
-		this.characters = "";
 	}
 
 }

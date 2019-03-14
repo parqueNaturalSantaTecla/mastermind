@@ -6,7 +6,7 @@ import mastermind.views.Color;
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
 
-	public static final int ERROR_CODE = -1;
+	static final int ERROR_CODE = -1;
 
 	ProposedCombinationView(int[] codes) {
 		String initials = "";
@@ -21,7 +21,7 @@ class ProposedCombinationView extends JLabel {
 
 	int[] read(String characters) {
 		int[] codes = new int[characters.length()];
-		for (int i=0; i<characters.length(); i++) {
+		for (int i = 0; i < characters.length(); i++) {
 			Color colorView = Color.getInstance(characters.charAt(i));
 			if (colorView == null) {
 				codes[i] = ProposedCombinationView.ERROR_CODE;

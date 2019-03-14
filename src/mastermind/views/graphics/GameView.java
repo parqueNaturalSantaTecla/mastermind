@@ -11,8 +11,8 @@ import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
 @SuppressWarnings("serial")
-public class GameView extends JFrame {
-	
+class GameView extends JFrame {
+
 	private static final String GAME_OVER = "Game Over";
 
 	private SecretCombinationView secretCombinationView;
@@ -47,7 +47,8 @@ public class GameView extends JFrame {
 			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
 			error = this.proposeCombination(codes, game);
 			if (error != Game.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR",
+						JOptionPane.WARNING_MESSAGE);
 				error = Game.NO_ERROR;
 				this.proposalCombinationView.resetCharacters();
 			}
@@ -80,8 +81,8 @@ public class GameView extends JFrame {
 			this.proposedCombinationsView.removeAll();
 		}
 	}
-	
-	public int proposeCombination(int[] codes, Game game) {
+
+	private int proposeCombination(int[] codes, Game game) {
 		mastermind.models.Error error = ProposedCombination.isValid(codes);
 		if (error != null) {
 			return error.ordinal();

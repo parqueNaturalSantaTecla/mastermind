@@ -12,5 +12,5 @@ class Constraints extends GridBagConstraints {
 		this.gridheight = gridHeight;
 		this.fill = 1;
 	}
-	
+
 }

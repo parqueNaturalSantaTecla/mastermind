@@ -6,6 +6,7 @@ import mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermind extends Mastermind{
 
+	@Override
 	protected View createView(Game game) {
 		return new ConsoleView(game);
 	}

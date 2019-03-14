@@ -11,10 +11,10 @@ public abstract class View {
 	}
 
 	public void interact() {
-		boolean finished;
 		boolean resume;
 		do {
 			this.start();
+			boolean finished;
 			do {
 				finished = this.propose();
 			} while (!finished);

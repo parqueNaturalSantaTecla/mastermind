@@ -4,7 +4,7 @@ import mastermind.models.Game;
 import mastermind.utils.WithConsoleView;
 import mastermind.views.Message;
 
-public class StartView extends WithConsoleView {
+class StartView extends WithConsoleView {
 
 	void interact(Game game) {
 		this.console.writeln(Message.TITLE.getMessage());
