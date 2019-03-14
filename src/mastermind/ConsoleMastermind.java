@@ -6,6 +6,7 @@ import mastermind.views.console.ConsoleView;
 
 public class ConsoleMastermind extends Mastermind{
 
+	@Override
 	protected View createView(Logic logic) {
 		return new ConsoleView(logic);
 	}

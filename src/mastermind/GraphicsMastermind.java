@@ -6,6 +6,7 @@ import mastermind.views.graphics.GraphicsView;
 
 public class GraphicsMastermind extends Mastermind{
 
+	@Override
 	protected View createView(Logic logic) {
 		return new GraphicsView(logic);
 	}
