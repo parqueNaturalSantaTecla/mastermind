@@ -13,7 +13,6 @@ public class OpenGameCommand extends Command{
 	@Override
 	protected void execute() {
 		new GameSelectMenu((StartController) this.acceptorController).execute();
-		new GameView((StartController) this.acceptorController).show();
 	}
 
 	@Override

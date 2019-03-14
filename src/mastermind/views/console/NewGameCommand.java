@@ -13,7 +13,6 @@ public class NewGameCommand extends Command {
 	@Override
 	protected void execute() {
 		((StartController) this.acceptorController).start();
-		new SecretCombinationView().writeln(((StartController) this.acceptorController).getWidth());
 	}
 
 	@Override

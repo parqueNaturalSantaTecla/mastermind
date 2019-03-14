@@ -12,7 +12,7 @@ public class GameView extends WithConsoleView {
 		this.gameController = gameController;
 	}
 
-	void show() {
+	void writeln() {
 		this.console.writeln();
 		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.gameController.getTurn()));
 		new SecretCombinationView().writeln(this.gameController.getWidth());

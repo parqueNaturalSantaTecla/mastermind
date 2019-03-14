@@ -67,19 +67,17 @@ public class Game {
 		}
 	}
 
-	public void load(BufferedReader bufferedReader, Registry registry) {
+	public void load(BufferedReader bufferedReader) {
 		try {
-			int auxTurn = Integer.parseInt(bufferedReader.readLine());
+			this.turn = Integer.parseInt(bufferedReader.readLine());
 			this.secretCombination.load(bufferedReader);
-			for (int i = 0; i < auxTurn; i++) {
-				this.turn = i + 1;
+			for (int i = 0; i < this.turn; i++) {
 				ProposedCombination proposedCombination = new ProposedCombination();
 				proposedCombination.load(bufferedReader);
 				this.proposedCombinations.add(proposedCombination);
 				Result result = new Result();
 				result.load(bufferedReader);
 				this.results.add(result);
-				registry.registry();
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

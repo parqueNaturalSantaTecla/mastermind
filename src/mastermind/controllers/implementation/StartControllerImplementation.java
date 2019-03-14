@@ -16,8 +16,8 @@ public class StartControllerImplementation extends StartController {
 	}
 
 	@Override
-	public void start(String title) {
-		((SessionImplementation) this.session).load(title);
+	public void start(String name) {
+		((SessionImplementation) this.session).load(name);
 	}
 
 	@Override

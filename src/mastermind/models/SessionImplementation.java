@@ -73,7 +73,8 @@ public class SessionImplementation implements Session {
 		File file = new File(SessionImplementation.directory, name);
 		try {
 			BufferedReader bufferedReader = new BufferedReader(new FileReader(file));
-			this.game.load(bufferedReader, this.registry);
+			this.game.load(bufferedReader);
+			this.registry.reset();
 			bufferedReader.close();
 		} catch (IOException e) {
 			e.printStackTrace();
