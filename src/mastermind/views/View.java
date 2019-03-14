@@ -18,29 +18,17 @@ public class View {
 		this.proposalView = new ProposalView();
 		this.resumeView = new ResumeView();
 	}
-	
+
 	public void interact() {
-		boolean finished;
 		boolean resume;
 		do {
-			this.start();
+			this.startView.interact(this.game);
+			boolean finished;
 			do {
-				finished = this.propose();
+				finished = this.proposalView.interact(this.game);
 			} while (!finished);
-			resume = this.resume();
+			resume = this.resumeView.interact(this.game);
 		} while (resume);
-	}
-
-	protected void start() {
-		this.startView.interact(this.game);
-	}
-
-	protected boolean propose() {
-		return this.proposalView.interact(this.game);
-	}
-
-	protected boolean resume() {
-		return this.resumeView.interact(this.game);
 	}
 
 }

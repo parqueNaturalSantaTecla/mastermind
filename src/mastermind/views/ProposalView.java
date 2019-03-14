@@ -33,7 +33,7 @@ class ProposalView extends WithConsoleView {
 		return false;
 	}
 
-	public int proposeCombination(int[] codes, Game game) {
+	private int proposeCombination(int[] codes, Game game) {
 		mastermind.models.Error error = ProposedCombination.isValid(codes);
 		if (error != null) {
 			return error.ordinal();
