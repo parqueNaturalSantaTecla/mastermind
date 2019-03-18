@@ -1,9 +1,9 @@
 package mastermind.distributed;
 
-import mastermind.ConsoleMastermind;
+import mastermind.Mastermind;
 import mastermind.controllers.Logic;
 
-public class ConsoleMastermindClient extends ConsoleMastermind{
+public class MastermindClient extends Mastermind{
 	
 	private LogicProxy logicProxy;
 	
@@ -20,7 +20,7 @@ public class ConsoleMastermindClient extends ConsoleMastermind{
 	}
 	
 	public static void main(String[] args) {
-		new ConsoleMastermindClient().play();
+		new MastermindClient().play();
 	}
 
 }

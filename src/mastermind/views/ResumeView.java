@@ -1,8 +1,7 @@
-package mastermind.views.console;
+package mastermind.views;
 
 import mastermind.controllers.ResumeController;
 import mastermind.utils.YesNoDialog;
-import mastermind.views.Message;
 
 class ResumeView {
 

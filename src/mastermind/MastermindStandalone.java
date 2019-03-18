@@ -3,7 +3,7 @@ package mastermind;
 import mastermind.controllers.Logic;
 import mastermind.controllers.implementation.LogicImplementation;
 
-public class ConsoleMastermindStandalone extends ConsoleMastermind{
+public class MastermindStandalone extends Mastermind{
 
 	@Override
 	protected Logic createLogic() {
@@ -11,7 +11,7 @@ public class ConsoleMastermindStandalone extends ConsoleMastermind{
 	}
 	
 	public static void main(String[] args) {
-		new ConsoleMastermindStandalone().play();
+		new MastermindStandalone().play();
 	}
 
 }
