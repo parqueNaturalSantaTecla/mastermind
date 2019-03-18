@@ -1,10 +1,10 @@
 package mastermind.utils;
 
-public abstract class WithConsoleView {
+public abstract class WithConsoleModel {
 
 	protected Console console;
 
-	protected WithConsoleView() {
+	protected WithConsoleModel() {
 		this.console = new Console();
 	}
 	

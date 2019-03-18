@@ -1,6 +1,8 @@
-package mastermind.models;
+package mastermind;
 
-class Result {
+import mastermind.utils.WithConsoleModel;
+
+class Result extends WithConsoleModel{
 
 	private int blacks = 0;
 
@@ -21,4 +23,9 @@ class Result {
 		return new int[] { this.blacks, this.whites };
 	}
 
+	void writeln() {
+		this.console.writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + this.blacks)
+				.replaceFirst("#whites", "" + this.whites));
+	}
+	
 }

@@ -1,6 +1,6 @@
 package mastermind.utils;
 
-public class YesNoDialog  extends WithConsoleView {
+public class YesNoDialog  extends WithConsoleModel {
 
 	private static final char AFIRMATIVE = 's';
 

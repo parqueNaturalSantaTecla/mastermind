@@ -1,8 +1,10 @@
-package mastermind.models;
+package mastermind;
 
-public class ProposedCombination extends Combination {
+class ProposedCombination extends Combination {
+	
+	private static final int ERROR_CODE = -1;
 
-	public static Error isValid(int[] codes) {
+	static Error isValid(int[] codes) {
 		if (codes.length != Combination.getWidth()) {
 			return Error.WRONG_LENGTH;
 		}
@@ -19,13 +21,33 @@ public class ProposedCombination extends Combination {
 		return null;
 	}
 
-	public static ProposedCombination getInstance(int[] codes) {
+	static ProposedCombination getInstance(int[] codes) {
 		assert ProposedCombination.isValid(codes) != null;
 		ProposedCombination proposedCombination = new ProposedCombination();
 		for (int code : codes) {
 			proposedCombination.colors.add(Color.getInstance(code));
 		}
 		return proposedCombination;
+	}
+	
+	void write(int[] codes) {
+		for (int code : codes) {
+			this.console.write(Color.getInstance(code).getInitial());
+		}
+	}
+
+	int[] read() {
+		String characters = this.console.readString(Message.PROPOSED_COMBINATION.getMessage());
+		int[] codes = new int[characters.length()];
+		for (int i = 0; i < characters.length(); i++) {
+			Color color = Color.getInstance(characters.charAt(i));
+			if (color == null) {
+				codes[i] = ProposedCombination.ERROR_CODE;
+			} else {
+				codes[i] = color.ordinal();
+			}
+		}
+		return codes;
 	}
 
 	int[] getCodes() {

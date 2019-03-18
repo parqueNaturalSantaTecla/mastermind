@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind;
 
 enum Message {
 	TURN("#turn intento(s): "),

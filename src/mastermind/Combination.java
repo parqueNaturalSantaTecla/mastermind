@@ -1,9 +1,11 @@
-package mastermind.models;
+package mastermind;
 
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Combination {
+import mastermind.utils.WithConsoleModel;
+
+abstract class Combination extends WithConsoleModel{
 	
 	private static final int WIDTH = 4;
 
@@ -13,7 +15,7 @@ abstract class Combination {
 		this.colors = new ArrayList<Color>();
 	}
 	
-	public static int getWidth() {
+	static int getWidth() {
 		return Combination.WIDTH;
 	}
 	

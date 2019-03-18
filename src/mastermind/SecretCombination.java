@@ -1,11 +1,11 @@
-package mastermind.models;
+package mastermind;
 
 import java.util.Collections;
 import java.util.Random;
 
-class SecretCombination extends Combination {
+public class SecretCombination extends Combination {
 
-	SecretCombination() {
+	public SecretCombination() {
 		for(Color color: Color.values()) {
 			this.colors.add(color);
 		}
@@ -16,7 +16,7 @@ class SecretCombination extends Combination {
 		Collections.shuffle(this.colors);
 	}
 
-	Result getResult(ProposedCombination proposedCombination) {
+	public Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
@@ -30,6 +30,13 @@ class SecretCombination extends Combination {
 			}
 		}
 		return new Result(blacks, whites - blacks);
+	}
+	
+	public void writeln () {
+		for (int i = 0; i < Combination.getWidth(); i++) {
+			this.console.write(Message.SECRET.getMessage());
+		}
+		this.console.writeln();
 	}
 
 }

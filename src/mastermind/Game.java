@@ -1,13 +1,11 @@
-package mastermind.models;
+package mastermind;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import mastermind.models.Combination;
+class Game {
 
-public class Game {
-
-	public static final int NO_ERROR = -1;
+	static final int NO_ERROR = -1;
 
 	private static final int MAX_LONG = 10;
 
@@ -19,28 +17,34 @@ public class Game {
 
 	private int turn;
 
-	public Game() {
+	Game() {
 		this.clear();
 	}
 
-	public void clear() {
+	void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		this.turn = 0;
 	}
 
-	public int getWidth() {
-		return Combination.getWidth();
+	int proposeCombination(int[] codes) {
+		Error error = ProposedCombination.isValid(codes);
+		if (error != null) {
+			return error.ordinal();
+		}
+		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
+		this.addCombination(proposedCombination);
+		return Game.NO_ERROR;
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
+	private void addCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(this.secretCombination.getResult(proposedCombination));
 		this.turn++;
 	}
 
-	public int[][][] getCodes() {
+	int[][][] getCodes() {
 		int[][][] codes = new int[this.turn][2][];
 		for (int i = 0; i < codes.length; i++) {
 			codes[i][0] = this.proposedCombinations.get(i).getCodes();
@@ -49,17 +53,20 @@ public class Game {
 		return codes;
 	}
 
-	public boolean isLooser() {
+	boolean isLooser() {
 		return this.turn == Game.MAX_LONG;
 	}
 	
-	public boolean isWinner() {
+	boolean isWinner() {
 		return this.results.get(this.turn-1).isWinner();
 	}
 
-
-	public int getTurn() {
+	int getTurn() {
 		return this.turn;
+	}
+
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
 	}
 
 }
