@@ -12,7 +12,7 @@ import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
 @SuppressWarnings("serial")
-public class GameView extends JFrame {
+class GameView extends JFrame {
 	
 	private static final String GAME_OVER = "Game Over";
 

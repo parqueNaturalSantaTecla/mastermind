@@ -41,9 +41,4 @@ public class ProposalController extends Controller {
 		return this.game.isLooser();
 	}
 
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
-	}
-
 }

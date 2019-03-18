@@ -11,10 +11,5 @@ public class StartController extends Controller {
 	public void start() {
 		this.state.next();
 	}
-	
-	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
-	}
 
 }
