@@ -55,7 +55,6 @@ public class Game {
 		return this.results.get(this.turn-1).isWinner();
 	}
 
-
 	public int getTurn() {
 		return this.turn;
 	}

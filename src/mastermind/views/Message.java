@@ -1,6 +1,7 @@
 package mastermind.views;
 
 public enum Message {
+	
 	TURN("#turn intento(s): "),
 	SECRET("*"),
 	RESUME("¿Desea continuar?"),
