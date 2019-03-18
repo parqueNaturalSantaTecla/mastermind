@@ -6,7 +6,7 @@ import mastermind.models.SessionImplementation;
 
 public class ResumeControllerImplementation extends ResumeController {
 
-	public ResumeControllerImplementation(Session session) {
+	ResumeControllerImplementation(Session session) {
 		super(session);
 	}
 

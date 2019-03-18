@@ -6,7 +6,7 @@ import mastermind.models.SessionImplementation;
 
 public class StartControllerImplementation extends StartController {
 
-	public StartControllerImplementation(Session session) {
+	StartControllerImplementation(Session session) {
 		super(session);
 	}
 

@@ -20,7 +20,7 @@ abstract class Combination {
 		return Combination.WIDTH;
 	}
 	
-	public void save(FileWriter fileWriter) {
+	void save(FileWriter fileWriter) {
 		try {
 			for (Color color : this.colors) {
 				fileWriter.write(color.ordinal() + "\n");
@@ -30,7 +30,7 @@ abstract class Combination {
 		}
 	}
 
-	public void load(BufferedReader bufferedReader) {
+	void load(BufferedReader bufferedReader) {
 		try {
 			for (int i = 0; i < Combination.getWidth(); i++) {
 				int ordinal = Integer.parseInt(bufferedReader.readLine());

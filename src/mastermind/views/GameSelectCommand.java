@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.StartController;
 
-public class GameSelectCommand extends Command {
+class GameSelectCommand extends Command {
 
 	protected GameSelectCommand(String title, StartController startController) {
 		super(title, startController);

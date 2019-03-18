@@ -2,9 +2,9 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 
-public class RedoCommand extends Command{
+class RedoCommand extends Command{
 	
-	public static final String TITLE = "Rehacer propuesta anterior";
+	private static final String TITLE = "Rehacer propuesta anterior";
 	
 	RedoCommand(PlayController playController) {
 		super(RedoCommand.TITLE, playController);

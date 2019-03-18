@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.AcceptorController;
 
-public abstract class Command extends mastermind.utils.Command {
+abstract class Command extends mastermind.utils.Command {
 
 	protected AcceptorController acceptorController;
 

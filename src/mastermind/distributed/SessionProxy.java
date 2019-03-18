@@ -8,7 +8,7 @@ public class SessionProxy implements Session {
 	
 	private TCPIP tcpip;
 
-	public SessionProxy(TCPIP tcpip) {
+	SessionProxy(TCPIP tcpip) {
 		this.tcpip = tcpip;
 	}
 

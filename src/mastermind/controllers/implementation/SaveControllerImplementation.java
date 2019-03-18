@@ -6,7 +6,7 @@ import mastermind.models.SessionImplementation;
 
 public class SaveControllerImplementation extends SaveController {
 
-	public SaveControllerImplementation(Session session) {
+	SaveControllerImplementation(Session session) {
 		super(session);
 	}
 

@@ -3,7 +3,12 @@ package mastermind.views;
 import mastermind.utils.ClosedInterval;
 
 public enum Color {
-	RED('r'), BLUE('b'), YELLOW('y'), GREEN('g'), ORANGE('o'), PURPLE('p');
+	RED('r'), 
+	BLUE('b'), 
+	YELLOW('y'), 
+	GREEN('g'), 
+	ORANGE('o'), 
+	PURPLE('p');
 
 	private char initial;
 
@@ -33,7 +38,7 @@ public enum Color {
 		return null;
 	}
 	
-	public char getInitial() {
+	char getInitial() {
 		return this.initial;
 	}
 

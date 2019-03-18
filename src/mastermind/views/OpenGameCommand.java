@@ -2,9 +2,9 @@ package mastermind.views;
 
 import mastermind.controllers.StartController;
 
-public class OpenGameCommand extends Command{
+class OpenGameCommand extends Command{
 	
-	public static final String TITLE = "Recuperar una partida guardada";
+	private static final String TITLE = "Recuperar una partida guardada";
 
 	protected OpenGameCommand(StartController startController) {
 		super(OpenGameCommand.TITLE, startController);

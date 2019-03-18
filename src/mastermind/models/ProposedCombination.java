@@ -55,7 +55,7 @@ public class ProposedCombination extends Combination {
 		}
 	}
 
-	public ProposedCombination copy() {
+	ProposedCombination copy() {
 		ProposedCombination proposedCombination = new ProposedCombination();
 		for(Color color: this.colors) {
 			proposedCombination.colors.add(color);

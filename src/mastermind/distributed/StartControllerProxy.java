@@ -8,7 +8,7 @@ public class StartControllerProxy extends StartController {
 	
 	private TCPIP tcpip;
 
-	public StartControllerProxy(Session session, TCPIP tcpip) {
+	StartControllerProxy(Session session, TCPIP tcpip) {
 		super(session);
 		this.tcpip = tcpip;
 	}

@@ -3,11 +3,11 @@ package mastermind.views;
 import mastermind.controllers.GameController;
 import mastermind.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView {
+class GameView extends WithConsoleView {
 
 	GameController gameController;
 
-	public GameView(GameController gameController) {
+	GameView(GameController gameController) {
 		this.gameController = gameController;
 	}
 

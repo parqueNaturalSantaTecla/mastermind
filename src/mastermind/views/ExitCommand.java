@@ -2,9 +2,9 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 
-public class ExitCommand extends Command {
+class ExitCommand extends Command {
 	
-	public static final String TITLE = "Salir de la partida";
+	private static final String TITLE = "Salir de la partida";
 
 	protected ExitCommand(PlayController playController) {
 		super(ExitCommand.TITLE, playController);

@@ -5,7 +5,7 @@ import mastermind.controllers.ProposalController;
 
 class ProposeCommand extends Command {
 
-	public static final String TITLE = "Proponer Combinación";
+	private static final String TITLE = "Proponer Combinación";
 
 	ProposeCommand(PlayController playController) {
 		super(ProposeCommand.TITLE, playController);

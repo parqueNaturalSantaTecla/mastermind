@@ -17,10 +17,10 @@ class Result {
 		this.whites = whites;
 	}
 
-	public Result() {
+	Result() {
 	}
 
-	public void save(FileWriter fileWriter) {
+	void save(FileWriter fileWriter) {
 		try {
 			fileWriter.write(this.blacks + "\n");
 			fileWriter.write(this.whites + "\n");
@@ -29,7 +29,7 @@ class Result {
 		}
 	}
 
-	public void load(BufferedReader bufferedReader) {
+	void load(BufferedReader bufferedReader) {
 		try {
 			this.blacks = Integer.parseInt(bufferedReader.readLine());
 			this.whites = Integer.parseInt(bufferedReader.readLine());
@@ -54,7 +54,7 @@ class Result {
 		return this.whites;
 	}
 
-	public Result copy() {
+	Result copy() {
 		return new Result(this.blacks, this.whites);
 	}
 

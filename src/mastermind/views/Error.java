@@ -1,6 +1,6 @@
 package mastermind.views;
 
-public enum Error {
+enum Error {
 	
 	DUPLICATED("Colores repetidos"),
 	WRONG_CHARACTERS("Colores erróneos, tienen que ser: " + Color.allInitials()),
@@ -12,7 +12,7 @@ public enum Error {
 		this.message = message;
 	}
 	
-	public String getMessage() {
+	String getMessage() {
 		return this.message;
 	}
 	

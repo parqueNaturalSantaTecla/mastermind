@@ -8,7 +8,7 @@ public class SaveControllerProxy extends SaveController {
 	
 	private TCPIP tcpip;
 
-	public SaveControllerProxy(Session session, TCPIP tcpip) {
+	SaveControllerProxy(Session session, TCPIP tcpip) {
 		super(session);
 		this.tcpip = tcpip;
 	}

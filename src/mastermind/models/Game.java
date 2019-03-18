@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import mastermind.models.Combination;
 
-public class Game {
+class Game {
 
 	private static final int MAX_LONG = 10;
 
@@ -19,24 +19,24 @@ public class Game {
 
 	private int turn;
 
-	public Game() {
+	Game() {
 		this.clear();
 	}
 
-	public void clear() {
+	void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		this.turn = 0;
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
+	void proposeCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(this.secretCombination.getResult(proposedCombination));
 		this.turn++;
 	}
 
-	public Memento createMemento() {
+	Memento createMemento() {
 		Memento memento = new Memento(this.turn);
 		for (int i = 0; i < this.proposedCombinations.size(); i++) {
 			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
@@ -44,7 +44,7 @@ public class Game {
 		return memento;
 	}
 
-	public void set(Memento memento) {
+	void set(Memento memento) {
 		this.turn = memento.getTurn();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
@@ -54,7 +54,7 @@ public class Game {
 		}
 	}
 
-	public void save(FileWriter fileWriter) {
+	void save(FileWriter fileWriter) {
 		try {
 			fileWriter.write(this.turn + "\n");
 			this.secretCombination.save(fileWriter);
@@ -67,7 +67,7 @@ public class Game {
 		}
 	}
 
-	public void load(BufferedReader bufferedReader) {
+	void load(BufferedReader bufferedReader) {
 		try {
 			this.turn = Integer.parseInt(bufferedReader.readLine());
 			this.secretCombination.load(bufferedReader);
@@ -86,18 +86,18 @@ public class Game {
 		}
 	}
 
-	public boolean isLooser() {
+	boolean isLooser() {
 		return this.turn == Game.MAX_LONG;
 	}
 
-	public boolean isWinner() {
+	boolean isWinner() {
 		if (this.turn == 0) {
 			return false;
 		}
 		return this.results.get(this.turn - 1).isWinner();
 	}
 
-	public int[][][] getCodes() {
+	int[][][] getCodes() {
 		int[][][] codes = new int[this.turn][2][];
 		for (int i = 0; i < codes.length; i++) {
 			codes[i][0] = this.proposedCombinations.get(i).getCodes();
@@ -106,11 +106,11 @@ public class Game {
 		return codes;
 	}
 
-	public int getWidth() {
+	int getWidth() {
 		return Combination.getWidth();
 	}
 
-	public int getTurn() {
+	int getTurn() {
 		return this.turn;
 	}
 

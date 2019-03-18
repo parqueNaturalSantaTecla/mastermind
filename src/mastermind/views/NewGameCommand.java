@@ -2,9 +2,9 @@ package mastermind.views;
 
 import mastermind.controllers.StartController;
 
-public class NewGameCommand extends Command {
+class NewGameCommand extends Command {
 
-	public static final String TITLE = "Comenzar una partida nueva";
+	private static final String TITLE = "Comenzar una partida nueva";
 
 	protected NewGameCommand(StartController startController) {
 		super(NewGameCommand.TITLE, startController);
