@@ -1,13 +1,17 @@
 package mastermind.views;
 
-import mastermind.controllers.Logic;
+import mastermind.controllers.ProposalController;
+import mastermind.controllers.ResumeController;
 
 public abstract class View {
 
-	protected Logic logic;
+	protected ProposalController proposalController;
 
-	public View(Logic logic) {
-		this.logic = logic;
+	protected ResumeController resumeController;
+
+	public View(ProposalController proposalController, ResumeController resumeController) {
+		this.proposalController = proposalController;
+		this.resumeController = resumeController;
 	}
 
 	public void interact() {

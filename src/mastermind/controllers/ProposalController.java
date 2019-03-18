@@ -4,40 +4,36 @@ import mastermind.models.Error;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 
-class ProposalController extends Controller {
+public class ProposalController extends Controller {
 
-	ProposalController(Game game) {
+	public ProposalController(Game game) {
 		super(game);
 	}
 
-	int proposeCombination(int[] codes) {
+	public int proposeCombination(int[] codes) {
 		Error error = ProposedCombination.isValid(codes);
 		if (error != null) {
 			return error.ordinal();
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
 		this.game.proposeCombination(proposedCombination);
-		return Logic.NO_ERROR;
+		return Controller.NO_ERROR;
 	}
 
-	int[][][] getAllCodes() {
+	public int[][][] getAllCodes() {
 		return this.game.getCodes();
 	}
 
-	boolean isWinner() {
+	public boolean isWinner() {
 		return this.game.isWinner();
 	}
 
-	boolean isLooser() {
+	public boolean isLooser() {
 		return this.game.isLooser();
 	}
 	
-	int getTurn() {
+	public int getTurn() {
 		return this.game.getTurn();
-	}
-
-	int getWidth() {
-		return this.game.getWidth();
 	}
 
 }
