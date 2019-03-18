@@ -1,8 +1,6 @@
-package mastermind.views.console;
+package mastermind.views;
 
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Color;
-import mastermind.views.Message;
 
 class ProposedCombinationView extends WithConsoleView {
 	

@@ -1,8 +1,7 @@
-package mastermind.views.console;
+package mastermind.views;
 
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ProposalController;
-import mastermind.views.Error;
 
 class ProposeCommand extends Command {
 
