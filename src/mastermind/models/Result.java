@@ -1,10 +1,6 @@
 package mastermind.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
-
-class Result {
+public class Result {
 
 	private int blacks = 0;
 
@@ -17,25 +13,19 @@ class Result {
 		this.whites = whites;
 	}
 
-	Result() {
+	public Result() {
 	}
 
-	void save(FileWriter fileWriter) {
-		try {
-			fileWriter.write(this.blacks + "\n");
-			fileWriter.write(this.whites + "\n");
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	Result copy() {
+		return new Result(this.blacks, this.whites);
 	}
 
-	void load(BufferedReader bufferedReader) {
-		try {
-			this.blacks = Integer.parseInt(bufferedReader.readLine());
-			this.whites = Integer.parseInt(bufferedReader.readLine());
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void setBlacks(int blacks) {
+		this.blacks = blacks;
+	}
+	
+	public void setWhites(int whites) {
+		this.whites = whites;
 	}
 
 	boolean isWinner() {
@@ -46,16 +36,12 @@ class Result {
 		return new int[] { this.blacks, this.whites };
 	}
 
-	int getBlacks() {
+	public int getBlacks() {
 		return this.blacks;
 	}
 
-	int getWhites() {
+	public int getWhites() {
 		return this.whites;
-	}
-
-	Result copy() {
-		return new Result(this.blacks, this.whites);
 	}
 
 	@Override

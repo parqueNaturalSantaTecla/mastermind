@@ -1,6 +1,6 @@
 package mastermind.models;
 
-enum Color {
+public enum Color {
 	RED, 
 	BLUE, 
 	YELLOW, 
@@ -8,7 +8,7 @@ enum Color {
 	ORANGE, 
 	PURPLE;
 
-	static Color getInstance(int code) {
+	public static Color getInstance(int code) {
 		assert 0 <= code && code < Color.length();
 		return Color.values()[code];
 	}

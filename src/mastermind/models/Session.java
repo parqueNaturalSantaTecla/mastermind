@@ -10,6 +10,6 @@ public interface Session {
 
 	String getName();
 
-	void setName(String title);
+	void setName(String name);
 
 }

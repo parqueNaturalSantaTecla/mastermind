@@ -1,10 +1,9 @@
 package mastermind.models;
 
-import java.io.BufferedReader;
 import java.util.Collections;
 import java.util.Random;
 
-class SecretCombination extends Combination {
+public class SecretCombination extends Combination {
 
 	SecretCombination() {
 		for (Color color : Color.values()) {
@@ -15,11 +14,6 @@ class SecretCombination extends Combination {
 			this.colors.remove(random.nextInt(this.colors.size()));
 		}
 		Collections.shuffle(this.colors);
-	}
-	
-	public void load(BufferedReader bufferedReader) {
-		this.colors.clear();
-		super.load(bufferedReader);
 	}
 
 	Result getResult(ProposedCombination proposedCombination) {

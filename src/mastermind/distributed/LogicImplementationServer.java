@@ -24,8 +24,13 @@ import mastermind.distributed.dispatchers.UndoDispatcher;
 import mastermind.distributed.dispatchers.UndoableDispatcher;
 import mastermind.distributed.dispatchers.WidthDispatcher;
 import mastermind.distributed.dispatchers.WinnerDispatcher;
+import mastermind.models.DAO.SessionImplementationDAO;
 
 public class LogicImplementationServer extends LogicImplementation {
+
+	public LogicImplementationServer(SessionImplementationDAO sessionImplementationDAO) {
+		super(sessionImplementationDAO);
+	}
 
 	public void createDispatchers(DispatcherPrototype dispatcherPrototype) {
 		dispatcherPrototype.add(FrameType.START, new StartDispatcher(this.startControllerImplementation));

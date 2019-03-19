@@ -1,13 +1,10 @@
 package mastermind.models;
 
-import java.io.BufferedReader;
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import mastermind.models.Combination;
 
-class Game {
+public class Game {
 
 	private static final int MAX_LONG = 10;
 
@@ -54,36 +51,16 @@ class Game {
 		}
 	}
 
-	void save(FileWriter fileWriter) {
-		try {
-			fileWriter.write(this.turn + "\n");
-			this.secretCombination.save(fileWriter);
-			for (int i = 0; i < this.turn; i++) {
-				this.proposedCombinations.get(i).save(fileWriter);
-				this.results.get(i).save(fileWriter);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void setTurn(int turn) {
+		this.turn = turn;
 	}
 
-	void load(BufferedReader bufferedReader) {
-		try {
-			this.turn = Integer.parseInt(bufferedReader.readLine());
-			this.secretCombination.load(bufferedReader);
-			for (int i = 0; i < this.turn; i++) {
-				ProposedCombination proposedCombination = new ProposedCombination();
-				proposedCombination.load(bufferedReader);
-				this.proposedCombinations.add(proposedCombination);
-				Result result = new Result();
-				result.load(bufferedReader);
-				this.results.add(result);
-			}
-		} catch (NumberFormatException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+	public void addProposedCombination(ProposedCombination proposedCombination) {
+		this.proposedCombinations.add(proposedCombination);
+	}
+
+	public void addResult(Result result) {
+		this.results.add(result);
 	}
 
 	boolean isLooser() {
@@ -110,8 +87,20 @@ class Game {
 		return Combination.getWidth();
 	}
 
-	int getTurn() {
+	public int getTurn() {
 		return this.turn;
+	}
+
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
+	}
+
+	public ProposedCombination getProposedCombination(int position) {
+		return this.proposedCombinations.get(position);
+	}
+
+	public Result getResult(int position) {
+		return this.results.get(position);
 	}
 
 	@Override

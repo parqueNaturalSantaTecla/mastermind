@@ -3,8 +3,11 @@ package mastermind.controllers.implementation;
 import mastermind.controllers.Logic;
 import mastermind.controllers.StateValue;
 import mastermind.models.SessionImplementation;
+import mastermind.models.DAO.SessionImplementationDAO;
 
 public class LogicImplementation extends Logic {
+
+	protected SessionImplementationDAO sessionImplementationDAO;
 
 	protected StartControllerImplementation startControllerImplementation;
 
@@ -14,11 +17,15 @@ public class LogicImplementation extends Logic {
 
 	protected ResumeControllerImplementation resumeControllerImplementation;
 
-	public LogicImplementation() {
+	public LogicImplementation(SessionImplementationDAO sessionImplementationDAO) {
 		this.session = new SessionImplementation();
-		this.startControllerImplementation = new StartControllerImplementation(this.session);
+		this.sessionImplementationDAO = sessionImplementationDAO;
+		this.sessionImplementationDAO.associate((SessionImplementation) this.session);
+		this.startControllerImplementation = new StartControllerImplementation(this.session,
+				this.sessionImplementationDAO);
 		this.playControllerImplementation = new PlayControllerImplementation(this.session);
-		this.saveControllerImplementation = new SaveControllerImplementation(this.session);
+		this.saveControllerImplementation = new SaveControllerImplementation(this.session,
+				this.sessionImplementationDAO);
 		this.resumeControllerImplementation = new ResumeControllerImplementation(this.session);
 		this.acceptorControllers.put(StateValue.INITIAL, this.startControllerImplementation);
 		this.acceptorControllers.put(StateValue.IN_GAME, this.playControllerImplementation);
