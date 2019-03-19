@@ -9,7 +9,7 @@ public abstract class MastermindServer {
 
 	private LogicImplementationServer logic;
 
-	private MastermindServer() {
+	protected MastermindServer() {
 		this.dispatcherPrototype = new DispatcherPrototype();
 		this.logic = new LogicImplementationServer(this.createDAO());
 		this.logic.createDispatchers(this.dispatcherPrototype);

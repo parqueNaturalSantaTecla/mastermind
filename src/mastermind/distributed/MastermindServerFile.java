@@ -1,11 +1,12 @@
 package mastermind.distributed;
 
 import mastermind.models.DAO.SessionImplementationDAO;
+import mastermind.models.Files.SessionImplementationFileDAO;
 
 public class MastermindServerFile extends MastermindServer{
 	
 	@Override
-	protected abstract SessionImplementationDAO createDAO() {
+	protected SessionImplementationDAO createDAO() {
 		return new SessionImplementationFileDAO();
 	}
 
