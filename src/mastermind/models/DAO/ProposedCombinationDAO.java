@@ -2,13 +2,13 @@ package mastermind.models.DAO;
 
 import mastermind.models.ProposedCombination;
 
-class ProposedCombinationDAO extends CombinationDAO {
+public class ProposedCombinationDAO extends CombinationDAO {
 
-	ProposedCombinationDAO(ProposedCombination proposedCombination) {
+	protected ProposedCombinationDAO(ProposedCombination proposedCombination) {
 		super(proposedCombination);
 	}
 
-	ProposedCombination getProposedCombination() {
+	public ProposedCombination getProposedCombination() {
 		return (ProposedCombination) this.combination;
 	}
 

@@ -1,9 +1,9 @@
-package mastermind.models.DAO;
+package mastermind.models.Files;
 
 import java.io.BufferedReader;
 import java.io.FileWriter;
 
-interface DAO {
+public interface SecondaryFileDAO {
 
 	void save (FileWriter fileWriter);
 	

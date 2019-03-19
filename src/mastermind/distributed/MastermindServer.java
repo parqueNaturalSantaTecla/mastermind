@@ -3,7 +3,7 @@ package mastermind.distributed;
 import mastermind.distributed.dispatchers.DispatcherPrototype;
 import mastermind.models.DAO.SessionImplementationDAO;
 
-public class MastermindServer {
+public abstract class MastermindServer {
 
 	private DispatcherPrototype dispatcherPrototype;
 
@@ -11,16 +11,14 @@ public class MastermindServer {
 
 	private MastermindServer() {
 		this.dispatcherPrototype = new DispatcherPrototype();
-		this.logic = new LogicImplementationServer(new SessionImplementationDAO());
+		this.logic = new LogicImplementationServer(this.createDAO());
 		this.logic.createDispatchers(this.dispatcherPrototype);
 	}
 
-	private void serve() {
+	protected void serve() {
 		this.dispatcherPrototype.serve();
 	}
 
-	public static void main(String[] args) {
-		new MastermindServer().serve();
-	}
+	protected abstract SessionImplementationDAO createDAO();
 
 }

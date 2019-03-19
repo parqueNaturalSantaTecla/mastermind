@@ -4,15 +4,13 @@ import mastermind.controllers.Logic;
 import mastermind.controllers.implementation.LogicImplementation;
 import mastermind.models.DAO.SessionImplementationDAO;
 
-public class MastermindStandalone extends Mastermind{
+public abstract class MastermindStandalone extends Mastermind{
 
 	@Override
 	protected Logic createLogic() {
-		return new LogicImplementation(new SessionImplementationDAO());
+		return new LogicImplementation(this.createDAO());
 	}
 	
-	public static void main(String[] args) {
-		new MastermindStandalone().play();
-	}
+	protected abstract SessionImplementationDAO createDAO();
 
 }

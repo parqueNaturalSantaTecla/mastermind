@@ -6,8 +6,9 @@ import java.io.IOException;
 
 import mastermind.models.Color;
 import mastermind.models.Combination;
+import mastermind.models.Files.SecondaryFileDAO;
 
-abstract class CombinationDAO implements DAO{
+abstract class CombinationDAO implements SecondaryFileDAO{
 	
 	protected Combination combination;
 	
