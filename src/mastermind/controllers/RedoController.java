@@ -1,7 +1,6 @@
 package mastermind.controllers;
 
 import mastermind.models.Session;
-import mastermind.models.SessionImplementation;
 
 public class RedoController extends Controller {
 
@@ -10,11 +9,11 @@ public class RedoController extends Controller {
 	}
 
 	public void redo() {
-		((SessionImplementation) this.session).redo();
+		this.session.redo();
 	}
 
 	public boolean redoable() {
-		return ((SessionImplementation) this.session).redoable();
+		return this.session.redoable();
 	}
 
 }

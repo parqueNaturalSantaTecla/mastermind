@@ -1,11 +1,11 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class WidthDispatcher extends Dispatcher {
 
-	public WidthDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public WidthDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override

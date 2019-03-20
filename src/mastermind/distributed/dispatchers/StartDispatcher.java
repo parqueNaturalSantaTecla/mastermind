@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.StartControllerImplementation;
+import mastermind.controllers.StartController;
 
 public class StartDispatcher extends Dispatcher {
 
-	public StartDispatcher(StartControllerImplementation startControllerImplementation) {
-		super(startControllerImplementation);
+	public StartDispatcher(StartController startController) {
+		super(startController);
 	}
 
 	@Override
 	public void dispatch() {
-		((StartControllerImplementation) this.acceptorController).start();
+		((StartController) this.acceptorController).start();
 	}
 
 }

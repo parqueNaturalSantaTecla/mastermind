@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class TurnDispatcher extends Dispatcher {
 
-	public TurnDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public TurnDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayControllerImplementation)this.acceptorController).getTurn());
+		this.tcpip.send(((PlayController)this.acceptorController).getTurn());
 	}
 
 }

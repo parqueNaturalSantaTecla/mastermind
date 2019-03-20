@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class WinnerDispatcher extends Dispatcher {
 
-	public WinnerDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public WinnerDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayControllerImplementation)this.acceptorController).isWinner());
+		this.tcpip.send(((PlayController)this.acceptorController).isWinner());
 	}
 
 }

@@ -1,17 +1,17 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.ResumeControllerImplementation;
+import mastermind.controllers.ResumeController;
 
 public class ResumeDispatcher extends Dispatcher {
 
-	public ResumeDispatcher(ResumeControllerImplementation resumeControllerImplementation) {
-		super(resumeControllerImplementation);
+	public ResumeDispatcher(ResumeController resumeController) {
+		super(resumeController);
 	}
 
 	@Override
 	public void dispatch() {
 		boolean resume = this.tcpip.receiveBoolean();
-		((ResumeControllerImplementation)this.acceptorController).resume(resume);
+		((ResumeController)this.acceptorController).resume(resume);
 	}
 
 }

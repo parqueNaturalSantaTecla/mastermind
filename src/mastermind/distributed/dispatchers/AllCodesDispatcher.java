@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class AllCodesDispatcher extends Dispatcher {
 
-	public AllCodesDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public AllCodesDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		int[][][] codes = ((PlayControllerImplementation) this.acceptorController).getAllCodes();
+		int[][][] codes = ((PlayController) this.acceptorController).getAllCodes();
 		this.tcpip.send(codes.length);
 		if (codes.length != 0) {
 			this.tcpip.send(codes[0].length);

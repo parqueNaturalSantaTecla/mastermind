@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class UndoableDispatcher extends Dispatcher {
 
-	public UndoableDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public UndoableDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayControllerImplementation)this.acceptorController).undoable());
+		this.tcpip.send(((PlayController)this.acceptorController).undoable());
 	}
 
 }

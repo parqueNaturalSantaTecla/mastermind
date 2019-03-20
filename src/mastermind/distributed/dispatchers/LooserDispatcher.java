@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class LooserDispatcher extends Dispatcher {
 
-	public LooserDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public LooserDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayControllerImplementation)this.acceptorController).isLooser());
+		this.tcpip.send(((PlayController)this.acceptorController).isLooser());
 	}
 
 }

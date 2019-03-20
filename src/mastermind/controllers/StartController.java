@@ -1,14 +1,22 @@
 package mastermind.controllers;
 
+import mastermind.distributed.FrameType;
 import mastermind.models.Session;
+import mastermind.utils.TCPIP;
 
-public abstract class StartController extends AcceptorController {
+public class StartController extends AcceptorController {
 
-	public StartController(Session session) {
-		super(session);
+	public StartController(Session session, TCPIP tcpip) {
+		super(session, tcpip);
 	}
 	
-	public abstract void start();
+	public void start() {
+		if (this.tcpip == null) {
+			this.session.next();	
+		} else {
+			this.tcpip.send(FrameType.START.name());
+		}
+	}
 	
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {

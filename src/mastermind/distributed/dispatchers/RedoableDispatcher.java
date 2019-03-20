@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class RedoableDispatcher extends Dispatcher {
 
-	public RedoableDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public RedoableDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		this.tcpip.send(((PlayControllerImplementation)this.acceptorController).redoable());
+		this.tcpip.send(((PlayController)this.acceptorController).redoable());
 	}
 
 }

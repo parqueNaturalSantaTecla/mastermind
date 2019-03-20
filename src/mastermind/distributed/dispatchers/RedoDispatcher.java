@@ -1,16 +1,16 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class RedoDispatcher extends Dispatcher {
 
-	public RedoDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public RedoDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
 	public void dispatch() {
-		((PlayControllerImplementation)this.acceptorController).redo();
+		((PlayController)this.acceptorController).redo();
 	}
 
 }

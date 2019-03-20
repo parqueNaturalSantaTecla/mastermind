@@ -11,11 +11,11 @@ public abstract class Mastermind {
 	private View view;
 	
 	protected Mastermind() {
-		this.logic = this.createLogic();
+		this.logic = new Logic(this.isStandalone());
 		this.view = new View();
 	}
-	
-	protected abstract Logic createLogic();
+
+	protected abstract Boolean isStandalone();
 
 	protected void play() {
 		AcceptorController acceptorController;
@@ -25,6 +25,9 @@ public abstract class Mastermind {
 				this.view.interact(acceptorController);
 			}
 		} while (acceptorController != null); 
+		if (!this.isStandalone()) {
+			this.logic.close();
+		}
 	}
 	
 }

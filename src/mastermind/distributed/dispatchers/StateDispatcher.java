@@ -1,11 +1,11 @@
 package mastermind.distributed.dispatchers;
 
-import mastermind.controllers.implementation.PlayControllerImplementation;
+import mastermind.controllers.PlayController;
 
 public class StateDispatcher extends Dispatcher {
 
-	public StateDispatcher(PlayControllerImplementation playControllerImplementation) {
-		super(playControllerImplementation);
+	public StateDispatcher(PlayController playController) {
+		super(playController);
 	}
 
 	@Override
