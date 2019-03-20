@@ -1,11 +1,9 @@
 package mastermind.models.Files;
 
 import java.io.BufferedReader;
-
 import mastermind.models.SecretCombination;
-import mastermind.models.DAO.SecretCombinationDAO;
 
-public class SecretCombinationFileDAO extends SecretCombinationDAO {
+public class SecretCombinationFileDAO extends CombinationFileDAO {
 
 	SecretCombinationFileDAO(SecretCombination secretCombination) {
 		super(secretCombination);

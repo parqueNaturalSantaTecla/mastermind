@@ -7,7 +7,7 @@ import java.io.IOException;
 import mastermind.models.Result;
 import mastermind.models.DAO.ResultDAO;
 
-public class ResultFileDAO extends ResultDAO implements SecondaryFileDAO {
+public class ResultFileDAO extends ResultDAO implements FileDAO {
 
 	ResultFileDAO(Result result) {
 		super(result);

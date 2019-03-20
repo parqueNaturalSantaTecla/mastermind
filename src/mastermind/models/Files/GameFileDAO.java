@@ -9,7 +9,7 @@ import mastermind.models.ProposedCombination;
 import mastermind.models.Result;
 import mastermind.models.DAO.GameDAO;
 
-class GameFileDAO extends GameDAO implements SecondaryFileDAO {
+class GameFileDAO extends GameDAO implements FileDAO {
 
 	private SecretCombinationFileDAO secretCombinationFileDAO;
 

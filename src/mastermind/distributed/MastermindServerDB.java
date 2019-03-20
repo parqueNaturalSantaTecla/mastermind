@@ -1,16 +1,17 @@
-package mastermind;
+package mastermind.distributed;
 
 import mastermind.models.DAO.SessionImplementationDAO;
 import mastermind.models.dataBase.SessionImplementationDBDAO;
 
-public class MastermindStandaloneDB extends MastermindStandalone{
+public class MastermindServerDB extends MastermindServer {
 	
+	@Override
 	protected SessionImplementationDAO createDAO() {
 		return new SessionImplementationDBDAO();
 	}
-	
+
 	public static void main(String[] args) {
-		new MastermindStandaloneDB().play();
+		new MastermindServerDB().serve();
 	}
 
 }
