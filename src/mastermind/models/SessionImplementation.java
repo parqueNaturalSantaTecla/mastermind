@@ -104,4 +104,8 @@ public class SessionImplementation implements Session {
 		return this.state.getValueState();
 	}
 
+	public int[] getSecretCombinationCodes() {
+		return this.game.getSecretCombinationCodes();
+	}
+
 }

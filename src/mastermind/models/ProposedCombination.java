@@ -40,14 +40,6 @@ public class ProposedCombination extends Combination {
 		}
 		return false;
 	}
-
-	int[] getCodes() {
-		int[] codes = new int[Combination.getWidth()];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i] = this.colors.get(i).ordinal();
-		}
-		return codes;
-	}
 	
 	void setCodes(int[] codes) {
 		for (int i = 0; i < codes.length; i++) {

@@ -90,6 +90,10 @@ public class Game {
 	public int getTurn() {
 		return this.turn;
 	}
+	
+	public int[] getSecretCombinationCodes() {
+		return this.secretCombination.getCodes();
+	}
 
 	public SecretCombination getSecretCombination() {
 		return this.secretCombination;
@@ -107,6 +111,10 @@ public class Game {
 	public String toString() {
 		return "Game [secretCombination=" + secretCombination + ", proposedCombinations=" + proposedCombinations
 				+ ", results=" + results + ", turn=" + turn + "]";
+	}
+
+	public int[] getProposedCombinationCodes(int turn) {
+		return this.proposedCombinations.get(turn).getCodes();
 	}
 
 }

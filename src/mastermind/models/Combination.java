@@ -28,5 +28,13 @@ public abstract class Combination {
 	public List<Color> getColors() {
 		return this.colors;
 	}
+
+	public int[] getCodes() {
+		int[] codes = new int[Combination.getWidth()];
+		for (int i = 0; i < codes.length; i++) {
+			codes[i] = this.colors.get(i).ordinal();
+		}
+		return codes;
+	}
 	
 }
