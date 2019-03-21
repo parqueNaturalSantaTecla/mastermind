@@ -22,11 +22,10 @@ public class Logic {
 	public Logic (Boolean isStandalone) {
 		if (isStandalone) {
 			this.tcpip = null;
-			this.session = new Session(this.tcpip);
 		} else {
 			this.tcpip = TCPIP.createClientSocket();
-			this.session = new Session(this.tcpip);
 		}
+		this.session = new Session(this.tcpip);
 		this.acceptorControllers = new HashMap<StateValue, AcceptorController>();
 		this.startController = new StartController(this.session,this.tcpip);
 		this.acceptorControllers.put(StateValue.INITIAL, this.startController);
