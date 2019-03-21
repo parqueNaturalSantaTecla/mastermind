@@ -6,7 +6,7 @@ public class Result {
 
 	private int whites = 0;
 
-	Result(int blacks, int whites) {
+	public Result(int blacks, int whites) {
 		assert blacks >= 0;
 		assert whites >= 0;
 		this.blacks = blacks;

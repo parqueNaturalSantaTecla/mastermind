@@ -32,6 +32,14 @@ public class SecretCombination extends Combination {
 		return new Result(blacks, whites - blacks);
 	}
 
+	public static SecretCombination getInstance(int[] codes) {
+		SecretCombination secretCombination = new SecretCombination();
+		for (int code : codes) {
+			secretCombination.colors.add(Color.getInstance(code));
+		}
+		return secretCombination;
+	}
+
 	@Override
 	public String toString() {
 		return "SecretCombination [colors=" + colors + "]";

@@ -54,6 +54,13 @@ public class Game {
 	public void setTurn(int turn) {
 		this.turn = turn;
 	}
+	
+	public void setSecretCombination(int[] codes) {
+		this.secretCombination.clearColors();
+		for (int i = 0; i < Combination.getWidth(); i++) {
+			this.secretCombination.addColor(Color.getInstance(codes[i]));
+		}
+	}
 
 	public void addProposedCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);

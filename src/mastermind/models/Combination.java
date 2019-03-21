@@ -37,4 +37,11 @@ public abstract class Combination {
 		return codes;
 	}
 	
+	public Combination getCombination(int[] codes) {
+		for (int i= 0; i<codes.length;i++) {
+			this.addColor(Color.getInstance(codes[i]));
+		}
+		return null;
+	}
+	
 }
