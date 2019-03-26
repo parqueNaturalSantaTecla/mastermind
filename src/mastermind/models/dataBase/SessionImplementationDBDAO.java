@@ -13,9 +13,15 @@ import mastermind.models.DAO.SessionImplementationDAO;
 
 public class SessionImplementationDBDAO extends SessionImplementationDAO {
 
+	private static final String URL = "jdbc:mysql://localhost:3306";
+
+	private static final String USER = "root";
+
+	private static final String PASSWORD = "rootroot";
+
 	private GameDBDAO gameDBDAO;
 
-	Connection connection;
+	protected Connection connection;
 
 	public void associate(SessionImplementation sessionImplementation) {
 		super.associate(sessionImplementation);
@@ -29,15 +35,16 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			e.printStackTrace();
 		}
 		try {
-			this.connection = DriverManager.getConnection("jdbc:mysql://localhost:3306", "root", "rootroot");
+			this.connection = DriverManager.getConnection(SessionImplementationDBDAO.URL,
+					SessionImplementationDBDAO.USER, SessionImplementationDBDAO.PASSWORD);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
 		try {
 			Statement statement = this.connection.createStatement();
-			String sql = "CREATE DATABASE IF NOT EXISTS Mastermind2;\n";
+			String sql = "CREATE DATABASE IF NOT EXISTS Mastermind;\n";
 			statement.executeUpdate(sql);
-			sql = "USE Mastermind2;";
+			sql = "USE Mastermind;";
 			statement.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS `Games`\n" + "	(`name` varchar(20) NOT NULL,\n" + "	`turn`int(2),\n"
 					+ "	`secretCombination`varchar(4),\n" + "	PRIMARY KEY (`name`));";
@@ -57,10 +64,8 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 	public void load(String name) {
 		this.sessionImplementation.setName(name);
 		this.gameDBDAO.load(name, this.connection);
-		System.out.println("turno: " + this.sessionImplementation.getTurn());
 		this.sessionImplementation.resetRegistry();
 		this.sessionImplementation.setStateValue(StateValue.IN_GAME);
-		System.out.println(this.sessionImplementation.toString());
 		if (this.sessionImplementation.isLooser() || this.sessionImplementation.isWinner()) {
 			this.sessionImplementation.setStateValue(StateValue.FINAL);
 		}
@@ -73,10 +78,8 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			secretCombinationCodes += this.sessionImplementation.getSecretCombinationCodes()[i];
 		}
 		if (this.exists(name)) {
-			System.out.println("Existe");
 			String sql = "UPDATE Games SET " + "turn = " + this.sessionImplementation.getTurn() + ", "
 					+ "secretCombination = '" + secretCombinationCodes + "' " + "WHERE name = '" + name + "';";
-			System.out.println(sql);
 			Statement statement;
 			try {
 				statement = this.connection.createStatement();
@@ -87,7 +90,6 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			}
 			this.gameDBDAO.save(name, this.connection, true);
 		} else {
-			System.out.println("NO Existe");
 			String sql = "INSERT INTO Games VALUES ('" + name + "'," + this.sessionImplementation.getTurn() + ",'"
 					+ secretCombinationCodes + "');";
 			try {
@@ -104,10 +106,9 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 	@Override
 	public String[] getGamesNames() {
 		String sql = "SELECT name FROM Games";
-		Statement statement;
 		ArrayList<String> gamesNames = new ArrayList<String>();
 		try {
-			statement = this.connection.createStatement();
+			Statement statement = this.connection.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
 				gamesNames.add(result.getString("name"));
@@ -127,9 +128,8 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 	@Override
 	public boolean exists(String name) {
 		String sql = "SELECT name FROM Games";
-		Statement statement;
 		try {
-			statement = this.connection.createStatement();
+			Statement statement = this.connection.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
 				if (result.getString("name").equals(name)) {

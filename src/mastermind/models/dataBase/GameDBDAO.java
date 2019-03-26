@@ -53,9 +53,8 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 	@Override
 	public void load(String name, Connection connection) {
 		String sql = "SELECT * FROM Rounds WHERE name = '" + name + "';";
-		Statement statement;
 		try {
-			statement = connection.createStatement();
+			Statement statement = connection.createStatement();
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
 				String proposedCombination = result.getString("proposedCombination");
@@ -67,9 +66,8 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 				int blacks = Integer.parseInt(result.getString("blacks"));
 				int whites = Integer.parseInt(result.getString("whites"));
 				this.game.addResult(new Result(blacks, whites));
-				int turn = Integer.parseInt(result.getString("turn"));
 				if (result.isLast()) {
-					this.game.setTurn(turn);
+					this.game.setTurn(Integer.parseInt(result.getString("turn")));
 				}
 			}
 			sql = "SELECT * FROM Games WHERE name = '" + name + "';";
