@@ -1,22 +1,17 @@
 package mastermind.distributed;
 
 import mastermind.Mastermind;
-import mastermind.controllers.Logic;
 
 public class MastermindClient extends Mastermind{
 	
-	private LogicProxy logicProxy;
-	
-	@Override
-	protected Logic createLogic() {
-		this.logicProxy = new LogicProxy();
-		return this.logicProxy;
+	public MastermindClient() {
+		Mastermind.logic = new LogicProxy();
 	}
 	
 	@Override
 	protected void play() {
 		super.play();
-		this.logicProxy.close();
+		((LogicProxy) Mastermind.logic).close();
 	}
 	
 	public static void main(String[] args) {
