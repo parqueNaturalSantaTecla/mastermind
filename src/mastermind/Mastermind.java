@@ -1,33 +1,41 @@
 package mastermind;
 
-import mastermind.controllers.AcceptorController;
-import mastermind.controllers.Logic;
-import mastermind.views.View;
+import java.util.HashMap;
+import java.util.Map;
+import mastermind.controllers.Controller;
+import mastermind.controllers.PlayController;
+import mastermind.controllers.ResumeController;
+import mastermind.controllers.StartController;
+import mastermind.controllers.StateValue;
+import mastermind.models.Session;
 
 public class Mastermind {
-	
-	private Logic logic;
-	
-	private View view;
-	
+
+	private Session session;
+
+	private Map<StateValue, Controller> controllers;
+
 	protected Mastermind() {
-		this.logic = new Logic();
-		this.view = new View();
+		this.session = new Session();
+		this.controllers = new HashMap<StateValue, Controller>();
+		this.controllers.put(StateValue.INITIAL, new StartController(this.session));
+		this.controllers.put(StateValue.IN_GAME, new PlayController(this.session));
+		this.controllers.put(StateValue.FINAL, new ResumeController(this.session));
+		this.controllers.put(StateValue.EXIT, null);
 	}
 
 	protected void play() {
-		AcceptorController acceptorController;
+		Controller controller;
 		do {
-			acceptorController = this.logic.getController();
-			if (acceptorController != null){
-				this.view.interact(acceptorController);
+			controller = this.controllers.get(this.session.getValueState());
+			if (controller != null) {
+				controller.control();
 			}
-		} while (acceptorController != null); 
+		} while (controller != null);
 	}
-	
+
 	public static void main(String[] args) {
 		new Mastermind().play();
 	}
-	
-}
 
+}

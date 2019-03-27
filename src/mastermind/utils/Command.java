@@ -3,12 +3,15 @@ package mastermind.utils;
 public abstract class Command extends WithConsoleView {
 
 	protected String title;
+
+	protected Boolean isActive;
 	
 	protected Command(String title) {
 		this.title = title;
+		this.isActive = false;
 	}
-
-	protected abstract void execute();
+	
+	public abstract void setActive(Boolean isActive);
 
 	protected abstract boolean isActive();
 

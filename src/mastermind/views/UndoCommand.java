@@ -1,24 +1,23 @@
 package mastermind.views;
 
-import mastermind.controllers.PlayController;
+import mastermind.utils.Command;
 
 public class UndoCommand extends Command {
 
 	public static final String TITLE = "Deshacer propuesta anterior";
 
-	UndoCommand(PlayController playController) {
-		super(UndoCommand.TITLE, playController);
+	public UndoCommand() {
+		super(UndoCommand.TITLE);
 	}
 
 	@Override
-	protected void execute() {
-		this.playController.undo();
-		new GameView(this.playController);
+	public void setActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	@Override
 	protected boolean isActive() {
-		return this.playController.undoable();
+		return this.isActive;
 	}
 	
 }

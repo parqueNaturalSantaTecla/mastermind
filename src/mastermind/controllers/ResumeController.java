@@ -1,13 +1,14 @@
 package mastermind.controllers;
 
 import mastermind.models.Session;
+import mastermind.views.ResumeView;
 
-public class ResumeController extends AcceptorController {
+public class ResumeController extends Controller {
 
 	public ResumeController(Session session) {
 		super(session);
 	}
-	
+
 	public void resume(boolean resume) {
 		if (resume) {
 			this.session.resume();
@@ -17,8 +18,8 @@ public class ResumeController extends AcceptorController {
 	}
 
 	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
+	public void control() {
+		this.resume(new ResumeView().write());
 	}
 
 }

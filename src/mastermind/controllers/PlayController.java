@@ -1,61 +1,53 @@
 package mastermind.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
 import mastermind.models.Session;
+import mastermind.utils.Command;
+import mastermind.utils.Menu;
+import mastermind.views.ProposeCommand;
+import mastermind.views.RedoCommand;
+import mastermind.views.UndoCommand;
 
-public class PlayController extends AcceptorController {
+public class PlayController extends Controller {
+
+	private Map<Command, Controller> controllers;
+
+	private ProposeCommand proposeCommand;
 
 	private ProposalController proposalController;
 
+	private UndoCommand undoCommand;
+
 	private UndoController undoController;
+
+	private RedoCommand redoCommand;
 
 	private RedoController redoController;
 
-	PlayController(Session session) {
+	private Menu menu;
+
+	public PlayController(Session session) {
 		super(session);
+		this.controllers = new HashMap<Command, Controller>();
+		this.proposeCommand = new ProposeCommand();
 		this.proposalController = new ProposalController(this.session);
+		this.controllers.put(this.proposeCommand, this.proposalController);
+		this.undoCommand = new UndoCommand();
 		this.undoController = new UndoController(this.session);
+		this.controllers.put(this.undoCommand, this.undoController);
+		this.redoCommand = new RedoCommand();
 		this.redoController = new RedoController(this.session);
-	}
-
-	public int proposeCombination(int[] codes) {
-		return this.proposalController.proposeCombination(codes);
-	}
-
-	public void undo() {
-		this.undoController.undo();
-	}
-
-	public void redo() {
-		this.redoController.redo();
-	}
-
-	public boolean undoable() {
-		return this.undoController.undoable();
-	}
-
-	public boolean redoable() {
-		return this.redoController.redoable();
-	}
-
-	public boolean isWinner() {
-		return this.proposalController.isWinner();
-	}
-
-	public boolean isLooser() {
-		return this.proposalController.isLooser();
-	}
-
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
-	}
-
-	public int getTurn() {
-		return this.proposalController.getTurn();
+		this.controllers.put(this.redoCommand, this.redoController);
+		this.menu = new Menu(this.controllers.keySet());
 	}
 
 	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
+	public void control() {
+		this.proposeCommand.setActive(true);
+		this.undoCommand.setActive(this.undoController.undoable());
+		this.redoCommand.setActive(this.redoController.redoable());
+		this.controllers.get(this.menu.execute()).control();
 	}
 
 }

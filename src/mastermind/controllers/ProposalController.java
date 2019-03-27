@@ -1,10 +1,11 @@
 package mastermind.controllers;
 
-import mastermind.models.Error;
+import mastermind.views.Error;
 import mastermind.models.ProposedCombination;
 import mastermind.models.Session;
+import mastermind.views.ProposedCombinationView;
 
-public class ProposalController extends Controller {
+public class ProposalController extends InGameController {
 
 	public static final int NO_ERROR = -1;
 
@@ -12,8 +13,20 @@ public class ProposalController extends Controller {
 		super(session);
 	}
 
+	@Override
+	public void inGameControl() {
+		int error;
+		do {
+			int[] codes = new ProposedCombinationView().read();
+			error = this.proposeCombination(codes);
+			if (error != ProposalController.NO_ERROR) {
+				Error.values()[error].write();
+			}
+		} while (error != ProposalController.NO_ERROR);
+	}
+
 	public int proposeCombination(int[] codes) {
-		Error error = ProposedCombination.isValid(codes);
+		mastermind.models.Error error = ProposedCombination.isValid(codes);
 		if (error != null) {
 			return error.ordinal();
 		}

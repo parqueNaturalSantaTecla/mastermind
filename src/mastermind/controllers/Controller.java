@@ -14,4 +14,6 @@ public abstract class Controller {
 		return this.session.getWidth();
 	}
 
+	public abstract void control();
+
 }

@@ -1,32 +1,23 @@
 package mastermind.views;
 
-import mastermind.controllers.PlayController;
-import mastermind.controllers.ProposalController;
+import mastermind.utils.Command;
 
-class ProposeCommand extends Command {
+public class ProposeCommand extends Command {
 
 	public static final String TITLE = "Proponer Combinación";
 
-	ProposeCommand(PlayController playController) {
-		super(ProposeCommand.TITLE, playController);
+	public ProposeCommand() {
+		super(ProposeCommand.TITLE);
 	}
 
 	@Override
-	protected void execute() {
-		int error;
-		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = playController.proposeCombination(codes);
-			if (error != ProposalController.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
-			}
-		} while (error != ProposalController.NO_ERROR);
-		new GameView(this.playController);
+	public void setActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	@Override
 	protected boolean isActive() {
-		return true;
+		return this.isActive;
 	}
 
 }

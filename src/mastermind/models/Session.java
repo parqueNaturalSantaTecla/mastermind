@@ -1,6 +1,7 @@
 package mastermind.models;
 
 import mastermind.controllers.State;
+import mastermind.controllers.StateValue;
 
 public class Session {
 
@@ -67,7 +68,7 @@ public class Session {
 		return this.game.getTurn();
 	}
 
-	public Object getValueState() {
+	public StateValue getValueState() {
 		return this.state.getValueState();
 	}
 	

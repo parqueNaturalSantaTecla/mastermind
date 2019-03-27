@@ -1,5 +1,7 @@
 package mastermind.views;
 
+import mastermind.utils.Console;
+
 public enum Error {
 	
 	DUPLICATED("Colores repetidos"),
@@ -11,9 +13,9 @@ public enum Error {
 	private Error(String message) {
 		this.message = message;
 	}
-	
-	public String getMessage() {
-		return this.message;
+
+	public void write() {
+		new Console().write(this.message);
 	}
 	
 }

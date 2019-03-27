@@ -1,24 +1,23 @@
 package mastermind.views;
 
-import mastermind.controllers.PlayController;
+import mastermind.utils.Command;
 
 public class RedoCommand extends Command{
 	
 	public static final String TITLE = "Rehacer propuesta anterior";
 	
-	RedoCommand(PlayController playController) {
-		super(RedoCommand.TITLE, playController);
+	public RedoCommand() {
+		super(RedoCommand.TITLE);
 	}
 
 	@Override
-	protected void execute() {
-		this.playController.redo();
-		new GameView(this.playController);
+	public void setActive(Boolean isActive) {
+		this.isActive = isActive;
 	}
 
 	@Override
 	protected boolean isActive() {
-		return this.playController.redoable();
+		return this.isActive;
 	}
 
 }

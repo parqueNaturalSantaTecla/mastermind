@@ -1,20 +1,18 @@
 package mastermind.controllers;
 
 import mastermind.models.Session;
+import mastermind.views.StartView;
 
-public class StartController extends AcceptorController {
+public class StartController extends Controller {
 
 	public StartController(Session session) {
 		super(session);
 	}
-	
-	public void start() {
-		this.session.next();
-	}
-	
+
 	@Override
-	public void accept(ControllersVisitor controllersVisitor) {
-		controllersVisitor.visit(this);
+	public void control() {
+		this.session.next();
+		new StartView().write(this.getWidth());
 	}
 
 }
