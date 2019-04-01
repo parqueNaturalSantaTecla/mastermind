@@ -15,9 +15,4 @@ public class ProposeCommand extends Command {
 		this.isActive = isActive;
 	}
 
-	@Override
-	protected boolean isActive() {
-		return this.isActive;
-	}
-
 }

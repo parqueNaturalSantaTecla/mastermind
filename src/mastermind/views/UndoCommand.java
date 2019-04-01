@@ -14,10 +14,5 @@ public class UndoCommand extends Command {
 	public void setActive(Boolean isActive) {
 		this.isActive = isActive;
 	}
-
-	@Override
-	protected boolean isActive() {
-		return this.isActive;
-	}
 	
 }
