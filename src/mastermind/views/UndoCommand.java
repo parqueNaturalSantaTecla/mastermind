@@ -1,23 +1,20 @@
 package mastermind.views;
 
+import mastermind.models.Session;
 import mastermind.utils.Command;
 
 public class UndoCommand extends Command {
 
 	public static final String TITLE = "Deshacer propuesta anterior";
 
-	public UndoCommand() {
-		super(UndoCommand.TITLE);
+	public UndoCommand(Session session) {
+		super(UndoCommand.TITLE, session);
+		this.updateIsActive();
 	}
 
 	@Override
-	public void setActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	@Override
-	protected boolean isActive() {
-		return this.isActive;
+	public void updateIsActive() {
+		this.isActive = this.session.undoable();
 	}
 	
 }

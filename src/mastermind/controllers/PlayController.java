@@ -30,13 +30,13 @@ public class PlayController extends Controller {
 	public PlayController(Session session) {
 		super(session);
 		this.controllers = new HashMap<Command, Controller>();
-		this.proposeCommand = new ProposeCommand();
+		this.proposeCommand = new ProposeCommand(this.session);
 		this.proposalController = new ProposalController(this.session);
 		this.controllers.put(this.proposeCommand, this.proposalController);
-		this.undoCommand = new UndoCommand();
+		this.undoCommand = new UndoCommand(this.session);
 		this.undoController = new UndoController(this.session);
 		this.controllers.put(this.undoCommand, this.undoController);
-		this.redoCommand = new RedoCommand();
+		this.redoCommand = new RedoCommand(this.session);
 		this.redoController = new RedoController(this.session);
 		this.controllers.put(this.redoCommand, this.redoController);
 		this.menu = new Menu(this.controllers.keySet());
@@ -44,9 +44,9 @@ public class PlayController extends Controller {
 
 	@Override
 	public void control() {
-		this.proposeCommand.setActive(true);
-		this.undoCommand.setActive(this.undoController.undoable());
-		this.redoCommand.setActive(this.redoController.redoable());
+		this.proposeCommand.updateIsActive();
+		this.undoCommand.updateIsActive();
+		this.redoCommand.updateIsActive();
 		this.controllers.get(this.menu.execute()).control();
 	}
 

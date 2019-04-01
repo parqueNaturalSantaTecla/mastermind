@@ -1,23 +1,20 @@
 package mastermind.views;
 
+import mastermind.models.Session;
 import mastermind.utils.Command;
 
 public class ProposeCommand extends Command {
 
 	public static final String TITLE = "Proponer Combinación";
 
-	public ProposeCommand() {
-		super(ProposeCommand.TITLE);
+	public ProposeCommand(Session session) {
+		super(ProposeCommand.TITLE, session);
+		this.updateIsActive();
 	}
 
 	@Override
-	public void setActive(Boolean isActive) {
-		this.isActive = isActive;
-	}
-
-	@Override
-	protected boolean isActive() {
-		return this.isActive;
+	public void updateIsActive() {
+		this.isActive = true;
 	}
 
 }

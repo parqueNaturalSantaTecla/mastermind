@@ -9,15 +9,12 @@ public abstract class InGameController extends Controller {
 
 	InGameController(Session session) {
 		super(session);
-		this.gameView = new GameView();
+		this.gameView = new GameView(session);
 	}
 
 	@Override
 	public void control() {
 		this.inGameControl();
-		this.gameView.setTurn(this.session.getTurn());
-		this.gameView.setWidth(this.getWidth());
-		this.gameView.setAllCodes(this.session.getCodes());
 		this.gameView.writeGame();
 		if (this.session.isWinner()) {
 			this.gameView.writeWinner();

@@ -1,19 +1,25 @@
 package mastermind.utils;
 
+import mastermind.models.Session;
+
 public abstract class Command extends WithConsoleView {
 
 	protected String title;
 
 	protected Boolean isActive;
 	
-	protected Command(String title) {
+	protected Session session;
+	
+	protected Command(String title, Session session) {
 		this.title = title;
-		this.isActive = false;
+		this.session = session;
 	}
 	
-	public abstract void setActive(Boolean isActive);
+	public abstract void updateIsActive();
 
-	protected abstract boolean isActive();
+	protected boolean isActive() {
+		return this.isActive;
+	}
 
 	String getTitle() {
 		return this.title;
