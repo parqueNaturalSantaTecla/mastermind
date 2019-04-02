@@ -2,16 +2,16 @@ package mastermind.models;
 
 public class ProposedCombination extends Combination {
 
-	public static Error isValid(int[] codes) {
-		if (codes.length != Combination.getWidth()) {
+	public static Error isValid(Color[] colors) {
+		if (colors.length != Combination.getWidth()) {
 			return Error.WRONG_LENGTH;
 		}
-		for (int i = 0; i < codes.length; i++) {
-			if (codes[i] == -1) {
+		for (int i = 0; i < colors.length; i++) {
+			if (colors[i] == null) {
 				return Error.WRONG_CHARACTERS;
 			}
-			for (int j = i + 1; j < codes.length; j++) {
-				if (codes[i] == codes[j]) {
+			for (int j = i + 1; j < colors.length; j++) {
+				if (colors[i] == colors[j]) {
 					return Error.DUPLICATED;
 				}
 			}
@@ -19,13 +19,10 @@ public class ProposedCombination extends Combination {
 		return null;
 	}
 
-	public static ProposedCombination getInstance(int[] codes) {
-		assert ProposedCombination.isValid(codes) != null;
-		ProposedCombination proposedCombination = new ProposedCombination();
-		for (int code : codes) {
-			proposedCombination.colors.add(Color.getInstance(code));
+	public void set(Color[] colors) {
+		for (Color color: colors) {
+			this.colors.add(color);			
 		}
-		return proposedCombination;
 	}
 
 	boolean contains(Color color, int position) {
@@ -41,23 +38,9 @@ public class ProposedCombination extends Combination {
 		return false;
 	}
 
-	int[] getCodes() {
-		int[] codes = new int[Combination.getWidth()];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i] = this.colors.get(i).ordinal();
-		}
-		return codes;
-	}
-	
-	void setCodes(int[] codes) {
-		for (int i = 0; i < codes.length; i++) {
-			this.colors.add(Color.getInstance(codes[i]));
-		}
-	}
-
 	public ProposedCombination copy() {
 		ProposedCombination proposedCombination = new ProposedCombination();
-		for(Color color: this.colors) {
+		for (Color color : this.colors) {
 			proposedCombination.colors.add(color);
 		}
 		return proposedCombination;

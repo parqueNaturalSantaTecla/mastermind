@@ -8,10 +8,6 @@ class RedoController extends InGameController {
 		super(session);
 	}
 
-	boolean redoable() {
-		return this.session.redoable();
-	}
-
 	@Override
 	public void inGameControl() {
 		this.session.redo();

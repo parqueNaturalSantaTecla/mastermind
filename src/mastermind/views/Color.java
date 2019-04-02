@@ -24,10 +24,10 @@ public enum Color {
 		return Color.values()[code];
 	}
 
-	public static Color getInstance(char character) {
+	public static mastermind.models.Color getInstance(char character) {
 		for (Color color : Color.values()) {
 			if (color.initial == character) {
-				return color;
+				return mastermind.models.Color.values()[color.ordinal()];
 			}
 		}
 		return null;

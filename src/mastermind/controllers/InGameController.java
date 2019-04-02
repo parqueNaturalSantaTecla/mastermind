@@ -9,7 +9,7 @@ public abstract class InGameController extends Controller {
 
 	InGameController(Session session) {
 		super(session);
-		this.gameView = new GameView(session);
+		this.gameView = new GameView(this.session.getGame());
 	}
 
 	@Override

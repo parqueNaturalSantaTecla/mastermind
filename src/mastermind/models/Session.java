@@ -56,20 +56,12 @@ public class Session {
 		return this.game.isLooser();
 	}
 
-	public int getWidth() {
-		return this.game.getWidth();
-	}
-
-	public int[][][] getCodes() {
-		return this.game.getCodes();
-	}
-
-	public int getTurn() {
-		return this.game.getTurn();
-	}
-
 	public StateValue getValueState() {
 		return this.state.getValueState();
+	}
+
+	public Game getGame() {
+		return this.game;
 	}
 	
 }

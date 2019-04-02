@@ -8,10 +8,6 @@ class UndoController extends InGameController {
 		super(session);
 	}
 
-	boolean undoable() {
-		return this.session.undoable();
-	}
-
 	@Override
 	public void inGameControl() {
 		this.session.undo();

@@ -2,7 +2,6 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import mastermind.models.Combination;
 
 public class Game {
 
@@ -61,18 +60,17 @@ public class Game {
 		}
 		return this.results.get(this.turn - 1).isWinner();
 	}
-
-	public int[][][] getCodes() {
-		int[][][] codes = new int[this.turn][2][];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i][0] = this.proposedCombinations.get(i).getCodes();
-			codes[i][1] = this.results.get(i).getCodes();
-		}
-		return codes;
+	
+	public SecretCombination getSecretCombination() {
+		return this.secretCombination;
 	}
-
-	public int getWidth() {
-		return Combination.getWidth();
+	
+	public ProposedCombination getProposedCombination(int position) {
+		return this.proposedCombinations.get(position);
+	}
+	
+	public Result getResultCombination(int position) {
+		return this.results.get(position);
 	}
 
 	public int getTurn() {

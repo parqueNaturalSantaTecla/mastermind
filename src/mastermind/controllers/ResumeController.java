@@ -9,17 +9,13 @@ public class ResumeController extends Controller {
 		super(session);
 	}
 
-	public void resume(boolean resume) {
-		if (resume) {
+	@Override
+	public void control() {
+		if (new ResumeView().write()) {
 			this.session.resume();
 		} else {
 			this.session.next();
 		}
-	}
-
-	@Override
-	public void control() {
-		this.resume(new ResumeView().write());
 	}
 
 }

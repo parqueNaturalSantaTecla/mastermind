@@ -9,7 +9,6 @@ public class UndoCommand extends Command {
 
 	public UndoCommand(Session session) {
 		super(UndoCommand.TITLE, session);
-		this.updateIsActive();
 	}
 
 	@Override

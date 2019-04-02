@@ -1,19 +1,19 @@
 package mastermind.views;
 
-import mastermind.models.Session;
+import mastermind.models.Game;
 import mastermind.utils.WithConsoleView;
 
 public class StartView extends WithConsoleView {
 
-	private Session session;
+	private Game game;
 	
-	public StartView(Session session) {
-		this.session = session;
+	public StartView(Game game) {
+		this.game = game;
 	}
 	
 	public void write() {
 		this.console.writeln(Message.TITLE.getMessage());
-		new SecretCombinationView().writeln(this.session.getWidth());
+		new SecretCombinationView(this.game.getSecretCombination()).writeln();
 	}
 
 }

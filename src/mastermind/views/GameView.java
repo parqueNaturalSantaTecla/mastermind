@@ -1,23 +1,23 @@
 package mastermind.views;
 
-import mastermind.models.Session;
+import mastermind.models.Game;
 import mastermind.utils.WithConsoleView;
 
 public class GameView extends WithConsoleView {
 	
-	private Session session;
+	private Game game;
 
-	public GameView(Session session) {
-		this.session = session;
+	public GameView(Game game) {
+		this.game = game;
 	}
 
 	public void writeGame() {
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.session.getTurn()));
-		new SecretCombinationView().writeln(this.session.getWidth());
-		for (int i = 0; i < this.session.getCodes().length; i++) {
-			new ProposedCombinationView().write(this.session.getCodes()[i][0]);
-			new ResultView().writeln(this.session.getCodes()[i][1]);
+		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
+		new SecretCombinationView(this.game.getSecretCombination()).writeln();
+		for (int i = 0; i < this.game.getTurn(); i++) {
+			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
+			new ResultView(this.game.getResultCombination(i)).writeln();
 		}
 	}
 

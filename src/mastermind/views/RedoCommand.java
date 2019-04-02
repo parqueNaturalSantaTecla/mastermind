@@ -9,7 +9,6 @@ public class RedoCommand extends Command{
 	
 	public RedoCommand(Session session) {
 		super(RedoCommand.TITLE, session);
-		this.updateIsActive();
 	}
 
 	@Override

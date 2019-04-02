@@ -1,15 +1,18 @@
 package mastermind.views;
 
+import mastermind.models.SecretCombination;
 import mastermind.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
 	
-	SecretCombinationView() {
-		super();
-	}
+	private SecretCombination secretCombination;
 	
-	void writeln(int length) {
-		for (int i = 0; i < length; i++) {
+	public SecretCombinationView(SecretCombination secretCombination) {
+		this.secretCombination = secretCombination;
+	}
+
+	void writeln() {
+		for (int i = 0; i < this.secretCombination.getColors().size(); i++) {
 			this.console.write(Message.SECRET.getMessage());
 		}
 		this.console.writeln();

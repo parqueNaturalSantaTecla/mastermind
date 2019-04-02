@@ -9,7 +9,6 @@ public class ProposeCommand extends Command {
 
 	public ProposeCommand(Session session) {
 		super(ProposeCommand.TITLE, session);
-		this.updateIsActive();
 	}
 
 	@Override

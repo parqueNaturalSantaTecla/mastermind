@@ -12,7 +12,7 @@ public class StartController extends Controller {
 	@Override
 	public void control() {
 		this.session.next();
-		new StartView(this.session).write();
+		new StartView(this.session.getGame()).write();
 	}
 
 }
