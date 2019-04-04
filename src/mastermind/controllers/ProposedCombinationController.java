@@ -22,4 +22,8 @@ public class ProposedCombinationController {
 		return this.proposedCombination;
 	}
 
+	public ProposedCombinationView getProposeCombinationView() {
+		return this.proposedCombinationView;
+	}
+
 }

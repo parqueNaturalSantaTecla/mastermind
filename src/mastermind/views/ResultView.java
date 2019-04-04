@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.models.Result;
 import mastermind.utils.WithConsoleView;
 
-class ResultView extends WithConsoleView {
+public class ResultView extends WithConsoleView {
 
 	private Result result;
 

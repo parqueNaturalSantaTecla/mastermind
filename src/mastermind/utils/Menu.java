@@ -27,7 +27,6 @@ public class Menu extends WithConsoleView{
 		ArrayList<Command> commands = new ArrayList<Command>();
 		for (Command command: this.commands) {
 			if (command.isActive()) {
-				System.out.println(command.title);
 				commands.add(command);
 			}
 		}

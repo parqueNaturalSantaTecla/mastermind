@@ -51,20 +51,20 @@ public class Console {
 		return charValue;
 	}
 
+	public void write(char character) {
+		System.out.print(character);
+	}
+
+	public void write(String string) {
+		System.out.println(string);
+	}
+
 	public void writeln() {
 		System.out.println();
 	}
 
-	public void write(String string) {
-		System.out.print(string);
-	}
-
 	public void writeln(String string) {
 		System.out.println(string);
-	}
-
-	public void write(char character) {
-		System.out.print(character);
 	}
 
 	public void writeln(int integer) {
@@ -73,5 +73,9 @@ public class Console {
 
 	private void writeError(String format) {
 		System.out.println("ERROR DE FORMATO! " + "Introduzca un valor con formato " + format + ".");
+	}
+
+	public void write(int integer) {
+		System.out.println(integer);
 	}
 }

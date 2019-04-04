@@ -2,6 +2,7 @@ package mastermind.controllers;
 
 import mastermind.models.Mastermind;
 import mastermind.mvcUtils.Event;
+import mastermind.mvcUtils.NewGameEvent;
 import mastermind.mvcUtils.Observed;
 import mastermind.mvcUtils.Observer;
 import mastermind.mvcUtils.ProposeEvent;
@@ -21,23 +22,12 @@ public class MastermindController implements Observer{
 		this.gameController = new GameController();
 		this.mastermind = new Mastermind(this.gameController.getGame());
 		this.mastermindView = new MastermindView(this.mastermind, this);
+		this.mastermindView.addObserver(this);
+		this.mastermind.addObserver(this.mastermindView);
 	}
 	
 	protected void play() {
 		this.mastermindView.write();
-		
-		
-//		Controller controller;
-//		do {
-//			controller = this.controllers.get(this.session.getValueState());
-//			if (controller != null) {
-//				controller.control();
-//			}
-//		} while (controller != null);
-	}
-
-	public static void main(String[] args) {
-		new MastermindController().play();
 	}
 
 	@Override
@@ -46,12 +36,17 @@ public class MastermindController implements Observer{
 			this.gameController.proposeCombination();
 			this.mastermind.proposeCombination();
 		} else if (event instanceof UndoEvent) {
-			System.out.println("Undo");
 			this.mastermind.undo();
 		} else if (event instanceof RedoEvent) {
-			System.out.println("redo");
 			this.mastermind.redo();
+		} else if (event instanceof NewGameEvent) {
+			this.mastermind.resume();
+			this.play();
 		}
+	}
+
+	public static void main(String[] args) {
+		new MastermindController().play();
 	}
 
 }

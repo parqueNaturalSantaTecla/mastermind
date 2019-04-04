@@ -18,4 +18,8 @@ public class SecretCombinationController {
 		return this.secretCombination;
 	}
 
+	public SecretCombinationView getSecretCombinationView() {
+		return this.secretCombinationView;
+	}
+
 }

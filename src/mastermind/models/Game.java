@@ -2,7 +2,7 @@ package mastermind.models;
 
 import java.util.ArrayList;
 
-import mastermind.mvcUtils.GameEvent;
+import mastermind.mvcUtils.UpdateGameEvent;
 import mastermind.mvcUtils.Observed;
 
 public class Game extends Observed{
@@ -48,7 +48,7 @@ public class Game extends Observed{
 			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
 			this.results.add(memento.getResult(i).copy());
 		}
-		this.notify(new GameEvent());
+		this.notify(new UpdateGameEvent());
 	}
 
 	public ProposedCombination getProposedCombination(int position) {
@@ -78,15 +78,14 @@ public class Game extends Observed{
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(this.secretCombination.getResult(proposedCombination));
 		this.turn++;
-		this.notify(new GameEvent());
 	}
 
-	// public void clear() {
-	// this.secretCombination = new SecretCombination();
-	// this.proposedCombinations = new ArrayList<ProposedCombination>();
-	// this.results = new ArrayList<Result>();
-	// this.turn = 0;
-	// }
+	public void clear() {
+		this.secretCombination = new SecretCombination();
+		this.proposedCombinations = new ArrayList<ProposedCombination>();
+		this.results = new ArrayList<Result>();
+		this.turn = 0;
+	}
 	//
 	// public void proposeCombination(ProposedCombination proposedCombination) {
 	// this.proposedCombinations.add(proposedCombination);
@@ -95,6 +94,13 @@ public class Game extends Observed{
 	// }
 	//
 
-	//
+	public Result getResult() {
+		return this.secretCombination.getResult(this.proposedCombinations.get(this.proposedCombinations.size()-1));
+	}
+
+	public void addResult(Result result) {
+		this.results.add(result);
+		this.notify(new UpdateGameEvent());
+	}
 
 }
