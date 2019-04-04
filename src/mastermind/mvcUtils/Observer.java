@@ -1,5 +1,7 @@
 package mastermind.mvcUtils;
 
-public class Observer {
+public interface Observer {
+
+	public void update(Observed observed, Event event);
 
 }

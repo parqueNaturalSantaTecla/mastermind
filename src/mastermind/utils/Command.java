@@ -1,21 +1,22 @@
 package mastermind.utils;
 
-import mastermind.models.Session;
+import mastermind.models.Mastermind;
+import mastermind.mvcUtils.Observed;
+import mastermind.mvcUtils.Observer;
 
-public abstract class Command extends WithConsoleView {
+public abstract class Command extends Observed {
 
 	protected String title;
 
 	protected Boolean isActive;
 	
-	protected Session session;
+	protected Mastermind mastermind;
 	
-	protected Command(String title, Session session) {
+	protected Command(String title, Mastermind mastermind, Observer observer) {
 		this.title = title;
-		this.session = session;
+		this.mastermind = mastermind;
+		this.addObserver(observer);
 	}
-	
-	public abstract void updateIsActive();
 
 	protected boolean isActive() {
 		return this.isActive;
@@ -24,5 +25,9 @@ public abstract class Command extends WithConsoleView {
 	String getTitle() {
 		return this.title;
 	}
+	
+	public abstract void updateIsActive();
+
+	public abstract void execute();
 
 }

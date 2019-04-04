@@ -18,6 +18,4 @@ public class SecretCombinationController {
 		return this.secretCombination;
 	}
 
-	
-
 }

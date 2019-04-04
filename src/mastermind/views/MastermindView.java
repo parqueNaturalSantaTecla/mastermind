@@ -1,18 +1,19 @@
 package mastermind.views;
 
 import mastermind.models.Mastermind;
+import mastermind.mvcUtils.Observer;
 import mastermind.utils.Menu;
 import mastermind.utils.WithConsoleView;
 
 public class MastermindView extends WithConsoleView {
 
 	private Mastermind mastermind;
-	
+
 	private Menu menu;
 
-	public MastermindView(Mastermind mastermind) {
+	public MastermindView(Mastermind mastermind, Observer observer) {
 		this.mastermind = mastermind;
-		this.menu = new Menu();
+		this.menu = new Menu(mastermind, observer);
 	}
 
 	public void write() {
@@ -22,7 +23,12 @@ public class MastermindView extends WithConsoleView {
 		}
 		do {
 			this.menu.execute();
-		}while (this.mastermind.isWinner() || this.mastermind.isLooser());
+		} while (!this.mastermind.isWinner() || !this.mastermind.isLooser());
+		if (this.mastermind.isWinner()) {
+			
+		}else is (this.mastermind.isLooser()){
+			
+		}
 	}
 
 }

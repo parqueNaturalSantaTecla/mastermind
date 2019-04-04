@@ -26,11 +26,13 @@ public class Registry {
 	}
 
 	void undo(Game game) {
+		System.out.println("Undo "+this.firstPrevious);
 		this.firstPrevious++;
 		game.set(this.mementoList.get(this.firstPrevious));
 	}
 
 	void redo(Game game) {
+		System.out.println(this.firstPrevious);
 		this.firstPrevious--;
 		game.set(this.mementoList.get(this.firstPrevious));
 	}

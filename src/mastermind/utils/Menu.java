@@ -1,23 +1,34 @@
 package mastermind.utils;
 
 import java.util.ArrayList;
-import mastermind.mvcUtils.Observed;
+import mastermind.models.Mastermind;
+import mastermind.mvcUtils.Observer;
+import mastermind.views.ProposeCommand;
+import mastermind.views.RedoCommand;
+import mastermind.views.UndoCommand;
 
-public class Menu extends Observed {
+public class Menu extends WithConsoleView{
 
 	private static final String OPTION = "----- Elige una opción -----";
 
 	private ArrayList<Command> commands;
 
-	public Menu() {
+	public Menu(Mastermind mastermind, Observer observer) {
 		this.commands = new ArrayList<Command>();
+		this.commands.add(new ProposeCommand(mastermind, observer));
+		this.commands.add(new UndoCommand(mastermind, observer));
+		this.commands.add(new RedoCommand(mastermind, observer));
 	}
 
 	public void execute() {
+		for (Command command: this.commands) {
+			command.updateIsActive();
+		}
 		ArrayList<Command> commands = new ArrayList<Command>();
-		for (int i = 0; i < this.commands.size(); i++) {
-			if (this.commands.get(i).isActive()) {
-				commands.add(this.commands.get(i));
+		for (Command command: this.commands) {
+			if (command.isActive()) {
+				System.out.println(command.title);
+				commands.add(command);
 			}
 		}
 		boolean error;
@@ -34,8 +45,7 @@ public class Menu extends Observed {
 				error = true;
 			} 				
 		} while (error);
-		this.no
-		commands.get(option);
+		commands.get(option).execute();
 	}
 
 }

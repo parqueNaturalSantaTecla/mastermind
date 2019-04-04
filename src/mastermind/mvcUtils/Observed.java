@@ -12,13 +12,13 @@ public class Observed extends WithConsoleView{
 		this.observers = new ArrayList<Observer>();
 	}
 	
-	public void registry(Observer observer) {
+	public void addObserver(Observer observer) {
 		this.observers.add(observer);
 	}
 	
-	public void notify() {
+	public void notify(Event event) {
 		for (Observer observer: this.observers) {
-			observer.update(Event event);
+			observer.update(this, event);
 		}
 	}
 

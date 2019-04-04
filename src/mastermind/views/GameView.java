@@ -1,9 +1,13 @@
 package mastermind.views;
 
 import mastermind.models.Game;
+import mastermind.mvcUtils.Event;
+import mastermind.mvcUtils.GameEvent;
+import mastermind.mvcUtils.Observed;
+import mastermind.mvcUtils.Observer;
 import mastermind.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView {
+public class GameView extends WithConsoleView implements Observer{
 	
 	private Game game;
 
@@ -27,6 +31,13 @@ public class GameView extends WithConsoleView {
 
 	public void writeWinner() {
 		this.console.writeln(Message.WINNER.getMessage());
+	}
+
+	@Override
+	public void update(Observed observed, Event event) {
+		if (event instanceof GameEvent) {
+			this.writeGame();
+		}
 	}
 
 }
