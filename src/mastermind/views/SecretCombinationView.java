@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.models.SecretCombination;
 import mastermind.utils.WithConsoleView;
 
-class SecretCombinationView extends WithConsoleView {
+public class SecretCombinationView extends WithConsoleView {
 	
 	private SecretCombination secretCombination;
 	

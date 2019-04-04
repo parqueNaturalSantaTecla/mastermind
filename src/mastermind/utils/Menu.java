@@ -1,23 +1,23 @@
 package mastermind.utils;
 
 import java.util.ArrayList;
-import java.util.Set;
+import mastermind.mvcUtils.Observed;
 
-public class Menu extends WithConsoleView {
+public class Menu extends Observed {
 
 	private static final String OPTION = "----- Elige una opción -----";
 
-	private ArrayList<Command> commandSet;
+	private ArrayList<Command> commands;
 
-	public Menu(Set<Command> commandSet) {
-		this.commandSet = new ArrayList<Command>(commandSet);
+	public Menu() {
+		this.commands = new ArrayList<Command>();
 	}
 
-	public Command execute() {
+	public void execute() {
 		ArrayList<Command> commands = new ArrayList<Command>();
-		for (int i = 0; i < this.commandSet.size(); i++) {
-			if (this.commandSet.get(i).isActive()) {
-				commands.add(this.commandSet.get(i));
+		for (int i = 0; i < this.commands.size(); i++) {
+			if (this.commands.get(i).isActive()) {
+				commands.add(this.commands.get(i));
 			}
 		}
 		boolean error;
@@ -34,7 +34,8 @@ public class Menu extends WithConsoleView {
 				error = true;
 			} 				
 		} while (error);
-		return commands.get(option);
+		this.no
+		commands.get(option);
 	}
 
 }

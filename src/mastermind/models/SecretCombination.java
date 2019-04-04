@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class SecretCombination extends Combination {
 
-	SecretCombination() {
+	public SecretCombination() {
 		for(Color color: Color.values()) {
 			this.colors.add(color);
 		}
