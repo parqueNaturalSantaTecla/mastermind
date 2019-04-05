@@ -3,26 +3,26 @@ package mastermind.controllers;
 import mastermind.models.ProposedCombination;
 import mastermind.views.ProposedCombinationView;
 
-public class ProposedCombinationController {
+class ProposedCombinationController {
 	
 	private ProposedCombinationView proposedCombinationView;
 	
 	private ProposedCombination proposedCombination;
 	
-	public ProposedCombinationController() {
+	ProposedCombinationController() {
 		this.proposedCombination = new ProposedCombination();
 		this.proposedCombinationView = new ProposedCombinationView(this.proposedCombination);
 	}
 
-	public void proposeCombination() {
+	void proposeCombination() {
 		this.proposedCombinationView.read();
 	}
 
-	public ProposedCombination getProposeCombination() {
+	ProposedCombination getProposeCombination() {
 		return this.proposedCombination;
 	}
 
-	public ProposedCombinationView getProposeCombinationView() {
+	ProposedCombinationView getProposeCombinationView() {
 		return this.proposedCombinationView;
 	}
 

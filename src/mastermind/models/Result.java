@@ -28,5 +28,10 @@ public class Result {
 	public Result copy() {
 		return new Result(this.blacks, this.whites);
 	}
+	
+	public String toString() {
+		String string = this.getBlacks()+", "+this.getWhites();
+		return string;
+	}
 
 }

@@ -1,7 +1,8 @@
 package mastermind.models;
 
 import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.EndGameEvent;
+import mastermind.mvcUtils.WonGameEvent;
+import mastermind.mvcUtils.LostGameEvent;
 
 public class Mastermind extends Observed{
 	
@@ -29,7 +30,7 @@ public class Mastermind extends Observed{
 	public boolean isWinner() {
 		boolean isWinner = this.game.isWinner();
 		if (isWinner) {
-			this.notify(new EndGameEvent());
+			this.notify(new WonGameEvent());
 		}
 		return isWinner;
 	}
@@ -37,7 +38,7 @@ public class Mastermind extends Observed{
 	public boolean isLooser() {
 		boolean isLooser = this.game.isLooser();
 		if (isLooser) {
-			this.notify(new EndGameEvent());
+			this.notify(new LostGameEvent());
 		}
 		return isLooser;
 	}
@@ -58,17 +59,5 @@ public class Mastermind extends Observed{
 		this.game.clear();
 		this.registry.reset();
 	}
-
-//	public void next() {
-//		this.state.next();		
-//	}
-//
-//	public StateValue getValueState() {
-//		return this.state.getValueState();
-//	}
-//
-//	public Game getGame() {
-//		return this.game;
-//	}
 	
 }

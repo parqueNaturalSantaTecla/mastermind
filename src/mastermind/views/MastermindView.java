@@ -2,10 +2,11 @@ package mastermind.views;
 
 import mastermind.models.Mastermind;
 import mastermind.mvcUtils.Event;
+import mastermind.mvcUtils.LostGameEvent;
 import mastermind.mvcUtils.NewGameEvent;
 import mastermind.mvcUtils.Observed;
 import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.EndGameEvent;
+import mastermind.mvcUtils.WonGameEvent;
 import mastermind.utils.Menu;
 import mastermind.utils.YesNoDialog;
 
@@ -29,16 +30,15 @@ public class MastermindView extends Observed implements Observer{
 		do {
 			this.menu.execute();
 		} while (!this.mastermind.isWinner() && !this.mastermind.isLooser());
-		if (this.mastermind.isWinner()) {
-			this.console.writeln(Message.WINNER.getMessage());
-		} else if (this.mastermind.isLooser()) {
-			this.console.writeln(Message.LOOSER.getMessage());
-		}
 	}
 
 	@Override
 	public void update(Observed observed, Event event) {
-		if (event instanceof EndGameEvent) {
+		if (event instanceof WonGameEvent) {
+			this.console.writeln(Message.WINNER.getMessage());
+			this.resume();
+		} else if (event instanceof LostGameEvent) {
+			this.console.writeln(Message.LOOSER.getMessage());
 			this.resume();
 		}
 	}

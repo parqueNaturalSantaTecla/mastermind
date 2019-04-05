@@ -3,22 +3,22 @@ package mastermind.controllers;
 import mastermind.models.SecretCombination;
 import mastermind.views.SecretCombinationView;
 
-public class SecretCombinationController {
+class SecretCombinationController {
 	
 	private SecretCombination secretCombination;
 	
 	private SecretCombinationView secretCombinationView;
 	
-	public SecretCombinationController() {
+	SecretCombinationController() {
 		this.secretCombination = new SecretCombination();
 		this.secretCombinationView = new SecretCombinationView(this.secretCombination);
 	}
 
-	public SecretCombination getSecretCombination() {
+	SecretCombination getSecretCombination() {
 		return this.secretCombination;
 	}
 
-	public SecretCombinationView getSecretCombinationView() {
+	SecretCombinationView getSecretCombinationView() {
 		return this.secretCombinationView;
 	}
 

@@ -10,14 +10,14 @@ import mastermind.mvcUtils.Observed;
 import mastermind.mvcUtils.Observer;
 import mastermind.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView implements Observer{
-	
+public class GameView extends WithConsoleView implements Observer {
+
 	private Game game;
-	
+
 	private SecretCombinationView secretCombinationView;
-	
+
 	private List<ProposedCombinationView> proposedCombinationViews;
-	
+
 	private List<ResultView> resultViews;
 
 	public GameView(Game game, SecretCombinationView secretCombinationView) {
@@ -31,12 +31,13 @@ public class GameView extends WithConsoleView implements Observer{
 		this.console.writeln();
 		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
 		this.secretCombinationView.writeln();
-		for (mastermind.models.Color color: this.game.getSecretCombination().getColors()) {
+		for (mastermind.models.Color color : this.game.getSecretCombination().getColors()) {
 			this.console.write(color.ordinal());
 		}
+		this.console.writeln();
 		for (int i = 0; i < this.game.getTurn(); i++) {
 			this.proposedCombinationViews.get(i).write();
-			new ResultView(this.game.getResultCombination(i)).writeln();
+			this.resultViews.get(i).writeln();
 		}
 	}
 

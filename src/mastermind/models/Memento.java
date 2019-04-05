@@ -37,5 +37,14 @@ public class Memento {
 	int getTurn(){
 		return this.turn;
 	}
+	
+	public String toString(){
+		String string = ""+this.getTurn()+", ";
+		for (int i=0; i<this.getSize();i++) {
+				string += this.proposedCombinations.get(i).getColors().toString()+", ";
+				string += this.results.get(i).toString();
+		}
+		return string;
+	}
 
 }

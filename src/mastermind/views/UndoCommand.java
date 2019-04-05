@@ -20,7 +20,6 @@ public class UndoCommand extends Command {
 
 	@Override
 	public void execute() {
-		System.out.println("UndoCommand");
 		this.notify(new UndoEvent());
 	}
 	

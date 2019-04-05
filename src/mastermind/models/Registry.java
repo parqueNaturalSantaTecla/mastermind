@@ -23,18 +23,19 @@ public class Registry {
 		}
 		this.firstPrevious = 0;
 		this.mementoList.add(this.firstPrevious, this.game.createMemento());
+		System.out.println(this.toString());
 	}
 
 	void undo(Game game) {
-		System.out.println("Undo "+this.firstPrevious);
 		this.firstPrevious++;
 		game.set(this.mementoList.get(this.firstPrevious));
+		System.out.println(this.toString());
 	}
 
 	void redo(Game game) {
-		System.out.println(this.firstPrevious);
 		this.firstPrevious--;
 		game.set(this.mementoList.get(this.firstPrevious));
+		System.out.println(this.toString());
 	}
 
 	boolean undoable() {
@@ -49,6 +50,14 @@ public class Registry {
 		this.mementoList = new ArrayList<Memento>();
 		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
+	}
+	
+	public String toString() {
+		String string = "firstPrevious: "+this.firstPrevious+", ";
+		for (Memento memento: this.mementoList) {
+			string += memento.toString()+"\n";
+		}
+		return string;
 	}
 
 }

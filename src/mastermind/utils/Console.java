@@ -56,7 +56,11 @@ public class Console {
 	}
 
 	public void write(String string) {
-		System.out.println(string);
+		System.out.print(string);
+	}
+
+	public void write(int integer) {
+		System.out.print(integer);
 	}
 
 	public void writeln() {
@@ -73,9 +77,5 @@ public class Console {
 
 	private void writeError(String format) {
 		System.out.println("ERROR DE FORMATO! " + "Introduzca un valor con formato " + format + ".");
-	}
-
-	public void write(int integer) {
-		System.out.println(integer);
 	}
 }

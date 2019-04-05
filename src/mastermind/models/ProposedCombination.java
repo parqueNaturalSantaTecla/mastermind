@@ -45,5 +45,13 @@ public class ProposedCombination extends Combination {
 		}
 		return proposedCombination;
 	}
+	
+	public String toString() {
+		String string = "";
+		for (Color color: this.colors) {
+			string += color.name()+" ";
+		}
+		return string;
+	}
 
 }

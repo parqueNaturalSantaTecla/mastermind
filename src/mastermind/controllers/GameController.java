@@ -3,20 +3,20 @@ package mastermind.controllers;
 import mastermind.models.Game;
 import mastermind.views.GameView;
 
-public class GameController {
+class GameController {
 
 	private GameView gameView;
 
 	private Game game;
 
-	public GameController() {
+	GameController() {
 		SecretCombinationController secretCombinationController = new SecretCombinationController();
 		this.game = new Game(secretCombinationController.getSecretCombination());
 		this.gameView = new GameView(this.game, secretCombinationController.getSecretCombinationView());
 		this.game.addObserver(this.gameView);
 	}
 
-	public void proposeCombination() {
+	void proposeCombination() {
 		ProposedCombinationController proposecombinationController = new ProposedCombinationController();
 		proposecombinationController.proposeCombination();
 		this.gameView.addProposedCombinationView(proposecombinationController.getProposeCombinationView());
@@ -26,7 +26,7 @@ public class GameController {
 		this.game.addResult(resultController.getResult());
 	}
 
-	public Game getGame() {
+	Game getGame() {
 		return this.game;
 	}
 

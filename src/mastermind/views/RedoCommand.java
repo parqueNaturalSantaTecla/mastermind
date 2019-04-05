@@ -20,7 +20,6 @@ public class RedoCommand extends Command{
 
 	@Override
 	public void execute() {
-		System.out.println("RedoCommand");
 		this.notify(new RedoEvent());		
 	}
 
