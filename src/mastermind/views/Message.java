@@ -1,16 +1,20 @@
 package mastermind.views;
 
-enum Message {
-	TURN("#turn intento(s): "),
+public enum Message {  
+	TURN("#turn attempt(s): "),
 	SECRET("*"),
-	RESUME("¿Deseas continuar?"),
-	SAVE("¿Quieres guardar la partida?"),
-	NAME("Nombre: "),
-	RESULT(" --> #blacks negros y #whites blancos"),
-	PROPOSED_COMBINATION("Propón una combinación: "),
+	RESUME("Do you want to continue"),
+	SAVE("Do you want to save the game?"),
+	RESULT(" --> #blacks blacks and #whites whites"),
+	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
-	WINNER("Victoria!!! ;-)"),
-	LOOSER("Has agotado nuestra paciencia!!! :-(");
+	WINNER("You've won!!! ;-)"),
+	LOOSER("You've lost!!! :-("),
+	OPTION("----- Choose one option -----"),
+	PROPOSE_COMMAND("Propose Combination"),
+	UNDO_COMMAND("Undo previous Proposal"),
+	REDO_COMMAND("Redo previous Proposal"),
+	NAME("Name: ");
 
 	private String message;
 	
@@ -18,7 +22,7 @@ enum Message {
 		this.message = message;
 	}
 	
-	String getMessage() {
+	public String getMessage() {
 		return this.message;
 	}
 
