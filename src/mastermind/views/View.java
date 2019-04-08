@@ -2,14 +2,18 @@ package mastermind.views;
 
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.ResumeController;
+import mastermind.controllers.StartController;
 
 public abstract class View {
+	
+	protected StartController startController;
 
 	protected ProposalController proposalController;
 
 	protected ResumeController resumeController;
 
-	public View(ProposalController proposalController, ResumeController resumeController) {
+	public View(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+		this.startController = startController;
 		this.proposalController = proposalController;
 		this.resumeController = resumeController;
 	}

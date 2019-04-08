@@ -2,20 +2,21 @@ package mastermind.views.graphics;
 
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.ResumeController;
+import mastermind.controllers.StartController;
 import mastermind.views.View;
 
 public class GraphicsView extends View {
 
 	private GameView gameView;
 
-	public GraphicsView(ProposalController proposalController, ResumeController resumeController) {
-		super(proposalController, resumeController);
+	public GraphicsView(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+		super(startController, proposalController, resumeController);
 		this.gameView = new GameView();
 	}
 
 	@Override
 	protected void start() {
-		this.gameView.start();
+		this.gameView.start(this.startController);
 	}
 
 	@Override

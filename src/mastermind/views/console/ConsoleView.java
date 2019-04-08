@@ -2,6 +2,7 @@ package mastermind.views.console;
 
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.ResumeController;
+import mastermind.controllers.StartController;
 import mastermind.views.View;
 
 public class ConsoleView extends View {
@@ -12,8 +13,8 @@ public class ConsoleView extends View {
 
 	private ResumeView resumeView;
 
-	public ConsoleView(ProposalController proposalController, ResumeController resumeController) {
-		super(proposalController, resumeController);
+	public ConsoleView(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+		super(startController, proposalController, resumeController);
 		this.startView = new StartView();
 		this.proposalView = new ProposalView();
 		this.resumeView = new ResumeView();
@@ -21,7 +22,7 @@ public class ConsoleView extends View {
 
 	@Override
 	protected void start() {
-		this.startView.interact();
+		this.startView.interact(this.startController);
 	}
 
 	@Override

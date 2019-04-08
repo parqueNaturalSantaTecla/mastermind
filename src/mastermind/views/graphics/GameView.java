@@ -6,6 +6,7 @@ import javax.swing.JOptionPane;
 
 import mastermind.controllers.Controller;
 import mastermind.controllers.ProposalController;
+import mastermind.controllers.StartController;
 import mastermind.views.Error;
 import mastermind.views.Message;
 import mastermind.views.graphics.ProposedCombinationView;
@@ -31,9 +32,9 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start() {
+	void start(StartController startController) {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(Controller.getWidth());
+		this.secretCombinationView = new SecretCombinationView(StartController.getWidth());
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
 		this.proposedCombinationsView = new ProposedCombinationsView();
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
