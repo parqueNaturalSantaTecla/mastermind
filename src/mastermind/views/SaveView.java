@@ -18,7 +18,7 @@ class SaveView extends WithConsoleView {
 					name = this.console.readString(Message.NAME.getMessage());
 					exists = saveController.exists(name);
 					if (exists) {
-						this.console.writeln("El nombre propuesto ya existe");
+						this.console.writeln("The proposed name already exists");
 					}
 				} while (exists);
 				saveController.save(name);
