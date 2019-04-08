@@ -1,14 +1,18 @@
 package mastermind.views;
 
 public enum Message {
-	TURN("#turn intento(s): "),
+	TURN("#turn attempt(s): "),
 	SECRET("*"),
-	RESUME("¿Desea continuar?"),
-	RESULT(" --> #blacks negros y #whites blancos"),
-	PROPOSED_COMBINATION("Propón una combinación: "),
+	RESUME("Do you want to continue"),
+	RESULT(" --> #blacks blacks and #whites whites"),
+	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
-	WINNER("Victoria!!! ;-)"),
-	LOOSER("Has agotado nuestra paciencia!!! :-(");
+	WINNER("You've won!!! ;-)"),
+	LOOSER("You've lost!!! :-("),
+	OPTION("----- Choose one option -----"),
+	PROPOSE_COMMAND("Propose Combination"),
+	UNDO_COMMAND("Undo previous Proposal"),
+	REDO_COMMAND("Redo previous Proposal");
 
 	private String message;
 	
