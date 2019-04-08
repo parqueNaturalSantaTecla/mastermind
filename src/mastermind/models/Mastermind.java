@@ -55,7 +55,7 @@ public class Mastermind extends Observed{
 		this.registry.registry();
 	}
 
-	public void resume() {
+	public void clear() {
 		this.game.clear();
 		this.registry.reset();
 	}

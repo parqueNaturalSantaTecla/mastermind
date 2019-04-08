@@ -1,7 +1,14 @@
 package mastermind.controllers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mastermind.models.Game;
+import mastermind.models.ProposedCombination;
+import mastermind.models.Result;
 import mastermind.views.GameView;
+import mastermind.views.ProposedCombinationView;
+import mastermind.views.ResultView;
 
 class GameController {
 
@@ -28,6 +35,21 @@ class GameController {
 
 	Game getGame() {
 		return this.game;
+	}
+
+	public void reset() {
+		List<ProposedCombinationView> proposedCombinationViews = new ArrayList<ProposedCombinationView>();
+		for (ProposedCombination proposedCombination : this.game.getProposedCombinations()) {
+			ProposedCombinationController proposedCombinationController = new ProposedCombinationController(
+					proposedCombination);
+			proposedCombinationViews.add(proposedCombinationController.getProposeCombinationView());
+		}
+		List<ResultView> resultViews = new ArrayList<ResultView>();
+		for (Result result : this.game.getResults()) {
+			ResultController resultController = new ResultController(result);
+			resultViews.add(resultController.getResultView());
+		}
+		this.gameView.reset(proposedCombinationViews, resultViews);
 	}
 
 }

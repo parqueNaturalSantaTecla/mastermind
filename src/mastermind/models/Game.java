@@ -1,7 +1,7 @@
 package mastermind.models;
 
 import java.util.ArrayList;
-
+import java.util.List;
 import mastermind.mvcUtils.UpdateGameEvent;
 import mastermind.mvcUtils.Observed;
 
@@ -11,9 +11,9 @@ public class Game extends Observed {
 
 	private SecretCombination secretCombination;
 
-	private ArrayList<ProposedCombination> proposedCombinations;
+	private List<ProposedCombination> proposedCombinations;
 
-	private ArrayList<Result> results;
+	private List<Result> results;
 
 	private int turn;
 
@@ -33,17 +33,11 @@ public class Game extends Observed {
 
 	public void addProposedCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
-		for (ProposedCombination proCom: this.proposedCombinations) {
-			System.out.println("ProposedComb Game.addPC "+ proCom.toString());				
-		}	
 		this.turn++;
 	}
 
 	public void addResult(Result result) {
 		this.results.add(result);
-		for (Result resultAux: this.results) {
-			System.out.println("Result Game.addRes "+ resultAux.toString());			
-		}
 		this.notify(new UpdateGameEvent());
 	}
 
@@ -56,18 +50,13 @@ public class Game extends Observed {
 	}
 
 	public void set(Memento memento) {
-		System.out.println("set memento");
 		this.turn = memento.getTurn();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
-		System.out.println("memento size "+memento.getSize());
 		for (int i = 0; i < memento.getSize(); i++) {
 			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
-			System.out.println("PC G.set "+memento.getProposedCombination(i).toString());
 			this.results.add(memento.getResult(i).copy());
-			System.out.println("Res G.set "+memento.getResult(i).toString());
 		}
-		this.notify(new UpdateGameEvent());
 	}
 
 	public boolean isLooser() {
@@ -75,7 +64,6 @@ public class Game extends Observed {
 	}
 
 	public boolean isWinner() {
-		System.out.println("resultados: "+this.results.size());
 		if (this.turn == 0) {
 			return false;
 		}
@@ -92,6 +80,14 @@ public class Game extends Observed {
 
 	public Result getResult() {
 		return this.secretCombination.getResult(this.proposedCombinations.get(this.proposedCombinations.size() - 1));
+	}
+	
+	public List<ProposedCombination> getProposedCombinations(){
+		return this.proposedCombinations;
+	}
+	
+	public List<Result> getResults(){
+		return this.results;
 	}
 
 }

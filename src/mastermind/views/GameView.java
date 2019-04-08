@@ -2,7 +2,6 @@ package mastermind.views;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import mastermind.models.Game;
 import mastermind.mvcUtils.Event;
 import mastermind.mvcUtils.UpdateGameEvent;
@@ -31,9 +30,6 @@ public class GameView extends WithConsoleView implements Observer {
 		this.console.writeln();
 		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
 		this.secretCombinationView.writeln();
-		for (mastermind.models.Color color : this.game.getSecretCombination().getColors()) {
-			this.console.write(color.name());
-		}
 		this.console.writeln();
 		for (int i = 0; i < this.proposedCombinationViews.size(); i++) {
 			this.proposedCombinationViews.get(i).write();
@@ -45,7 +41,13 @@ public class GameView extends WithConsoleView implements Observer {
 	public void update(Observed observed, Event event) {
 		if (event instanceof UpdateGameEvent) {
 			this.writeGame();
-		}
+		} 
+	}
+
+	public void reset(List<ProposedCombinationView> proposedCombinationViews, List<ResultView> resultViews) {
+		this.proposedCombinationViews = proposedCombinationViews;
+		this.resultViews = resultViews;
+		this.writeGame();
 	}
 
 	public void addProposedCombinationView(ProposedCombinationView proposeCombinationView) {

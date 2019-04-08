@@ -19,11 +19,7 @@ class MastermindController implements Observer{
 	private MastermindView mastermindView;
 	
 	MastermindController() {
-		this.gameController = new GameController();
-		this.mastermind = new Mastermind(this.gameController.getGame());
-		this.mastermindView = new MastermindView(this.mastermind, this);
-		this.mastermindView.addObserver(this);
-		this.mastermind.addObserver(this.mastermindView);
+		this.clear();
 	}
 	
 	void clear() {
@@ -45,13 +41,14 @@ class MastermindController implements Observer{
 			this.mastermind.proposeCombination();
 		} else if (event instanceof UndoEvent) {
 			this.mastermind.undo();
+			this.gameController.reset();			
 		} else if (event instanceof RedoEvent) {
 			this.mastermind.redo();
+			this.gameController.reset();
 		} else if (event instanceof NewGameEvent) {
 			this.clear();
-			this.mastermind.resume();
+			this.mastermind.clear();
 			this.play();
-//			new MastermindController().play();
 		}
 	}
 

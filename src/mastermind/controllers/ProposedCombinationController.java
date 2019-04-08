@@ -4,13 +4,17 @@ import mastermind.models.ProposedCombination;
 import mastermind.views.ProposedCombinationView;
 
 class ProposedCombinationController {
-	
+
 	private ProposedCombinationView proposedCombinationView;
-	
+
 	private ProposedCombination proposedCombination;
-	
+
 	ProposedCombinationController() {
-		this.proposedCombination = new ProposedCombination();
+		this(new ProposedCombination());
+	}
+
+	public ProposedCombinationController(ProposedCombination proposedCombination) {
+		this.proposedCombination = proposedCombination;
 		this.proposedCombinationView = new ProposedCombinationView(this.proposedCombination);
 	}
 

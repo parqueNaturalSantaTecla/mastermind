@@ -23,21 +23,16 @@ public class Registry {
 		}
 		this.firstPrevious = 0;
 		this.mementoList.add(this.firstPrevious, this.game.createMemento());
-		System.out.println(this.toString());
 	}
 
 	void undo(Game game) {
 		this.firstPrevious++;
 		game.set(this.mementoList.get(this.firstPrevious));
-		System.out.println("REGISTRY: "+this.toString());
-		System.out.println("MEMENTO SELECCIONADO: "+this.mementoList.get(this.firstPrevious));
 	}
 
 	void redo(Game game) {
 		this.firstPrevious--;
 		game.set(this.mementoList.get(this.firstPrevious));
-		System.out.println("REGISTRY: "+this.toString());
-		System.out.println("MEMENTO SELECCIONADO: "+this.mementoList.get(this.firstPrevious));
 	}
 
 	boolean undoable() {
