@@ -2,8 +2,9 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import mastermind.mvcUtils.UpdateGameEvent;
-import mastermind.mvcUtils.Observed;
+
+import mastermind.events.UpdateGameEvent;
+import mastermind.utils.Observed;
 
 public class Game extends Observed {
 

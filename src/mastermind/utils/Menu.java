@@ -2,7 +2,6 @@ package mastermind.utils;
 
 import java.util.ArrayList;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Observer;
 import mastermind.views.Message;
 import mastermind.views.ProposeCommand;
 import mastermind.views.RedoCommand;

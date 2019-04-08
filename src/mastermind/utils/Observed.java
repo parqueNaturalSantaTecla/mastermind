@@ -1,8 +1,8 @@
-package mastermind.mvcUtils;
+package mastermind.utils;
 
 import java.util.ArrayList;
 
-import mastermind.utils.WithConsoleView;
+import mastermind.events.Event;
 
 public class Observed extends WithConsoleView{
 	

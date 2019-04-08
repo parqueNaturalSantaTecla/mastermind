@@ -1,9 +1,9 @@
 package mastermind.views;
 
+import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.UndoEvent;
 import mastermind.utils.Command;
+import mastermind.utils.Observer;
 
 public class UndoCommand extends Command {
 

@@ -1,9 +1,9 @@
 package mastermind.views;
 
+import mastermind.events.ProposeEvent;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.ProposeEvent;
 import mastermind.utils.Command;
+import mastermind.utils.Observer;
 
 public class ProposeCommand extends Command {
 

@@ -1,8 +1,8 @@
 package mastermind.models;
 
-import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.WonGameEvent;
-import mastermind.mvcUtils.LostGameEvent;
+import mastermind.events.LostGameEvent;
+import mastermind.events.WonGameEvent;
+import mastermind.utils.Observed;
 
 public class Mastermind extends Observed{
 	

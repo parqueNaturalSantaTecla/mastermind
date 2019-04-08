@@ -1,13 +1,13 @@
 package mastermind.controllers;
 
+import mastermind.events.Event;
+import mastermind.events.NewGameEvent;
+import mastermind.events.ProposeEvent;
+import mastermind.events.RedoEvent;
+import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Event;
-import mastermind.mvcUtils.NewGameEvent;
-import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.ProposeEvent;
-import mastermind.mvcUtils.RedoEvent;
-import mastermind.mvcUtils.UndoEvent;
+import mastermind.utils.Observed;
+import mastermind.utils.Observer;
 import mastermind.views.MastermindView;
 
 class MastermindController implements Observer{

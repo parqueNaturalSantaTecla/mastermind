@@ -1,13 +1,13 @@
 package mastermind.views;
 
+import mastermind.events.Event;
+import mastermind.events.LostGameEvent;
+import mastermind.events.NewGameEvent;
+import mastermind.events.WonGameEvent;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Event;
-import mastermind.mvcUtils.LostGameEvent;
-import mastermind.mvcUtils.NewGameEvent;
-import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.WonGameEvent;
 import mastermind.utils.Menu;
+import mastermind.utils.Observed;
+import mastermind.utils.Observer;
 import mastermind.utils.YesNoDialog;
 
 public class MastermindView extends Observed implements Observer{

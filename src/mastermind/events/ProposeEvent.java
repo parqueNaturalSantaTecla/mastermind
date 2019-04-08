@@ -1,4 +1,4 @@
-package mastermind.mvcUtils;
+package mastermind.events;
 
 public class ProposeEvent extends Event {
 

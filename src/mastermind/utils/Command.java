@@ -1,8 +1,6 @@
 package mastermind.utils;
 
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.Observer;
 
 public abstract class Command extends Observed {
 

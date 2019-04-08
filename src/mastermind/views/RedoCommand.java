@@ -1,9 +1,9 @@
 package mastermind.views;
 
+import mastermind.events.RedoEvent;
 import mastermind.models.Mastermind;
-import mastermind.mvcUtils.Observer;
-import mastermind.mvcUtils.RedoEvent;
 import mastermind.utils.Command;
+import mastermind.utils.Observer;
 
 public class RedoCommand extends Command{
 	

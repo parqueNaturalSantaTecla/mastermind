@@ -2,11 +2,12 @@ package mastermind.views;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import mastermind.events.Event;
+import mastermind.events.UpdateGameEvent;
 import mastermind.models.Game;
-import mastermind.mvcUtils.Event;
-import mastermind.mvcUtils.UpdateGameEvent;
-import mastermind.mvcUtils.Observed;
-import mastermind.mvcUtils.Observer;
+import mastermind.utils.Observed;
+import mastermind.utils.Observer;
 import mastermind.utils.WithConsoleView;
 
 public class GameView extends WithConsoleView implements Observer {

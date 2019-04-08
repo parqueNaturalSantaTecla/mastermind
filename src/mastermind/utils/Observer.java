@@ -1,4 +1,6 @@
-package mastermind.mvcUtils;
+package mastermind.utils;
+
+import mastermind.events.Event;
 
 public interface Observer {
 
