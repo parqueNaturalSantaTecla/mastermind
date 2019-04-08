@@ -7,6 +7,8 @@ public class Logic {
 	public static final int NO_ERROR = -1;
 
 	private Game game;
+	
+	private StartController startController;
 
 	private ProposalController proposalController;
 
@@ -14,6 +16,7 @@ public class Logic {
 
 	public Logic() {
 		this.game = new Game();
+		this.startController = new StartController(this.game);
 		this.proposalController = new ProposalController(this.game);
 		this.resumeController = new ResumeController(this.game);
 	}
@@ -43,7 +46,7 @@ public class Logic {
 	}
 
 	public int getWidth() {
-		return this.proposalController.getWidth();
+		return this.startController.getWidth();
 	}
 
 }

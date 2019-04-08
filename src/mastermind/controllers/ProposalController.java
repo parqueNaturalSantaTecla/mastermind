@@ -36,8 +36,4 @@ class ProposalController extends Controller {
 		return this.game.getTurn();
 	}
 
-	int getWidth() {
-		return this.game.getWidth();
-	}
-
 }
