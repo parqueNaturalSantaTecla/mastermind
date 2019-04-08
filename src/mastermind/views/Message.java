@@ -8,7 +8,11 @@ public enum Message {
 	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
 	WINNER("You've won!!! ;-)"),
-	LOOSER("You've lost!!! :-(");
+	LOOSER("You've lost!!! :-("),
+	OPTION("----- Choose one option -----"),
+	PROPOSE_COMMAND("Propose Combination"),
+	UNDO_COMMAND("Undo previous Proposal"),
+	REDO_COMMAND("Redo previous Proposal");
 
 	private String message;
 	
