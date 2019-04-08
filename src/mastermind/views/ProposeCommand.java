@@ -7,10 +7,8 @@ import mastermind.utils.Command;
 
 public class ProposeCommand extends Command {
 
-	public static final String TITLE = "Proponer Combinación";
-
 	public ProposeCommand(Mastermind mastermind, Observer observer) {
-		super(ProposeCommand.TITLE, mastermind, observer);
+		super(Message.PROPOSE_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

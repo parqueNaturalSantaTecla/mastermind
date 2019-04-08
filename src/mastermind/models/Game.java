@@ -33,11 +33,17 @@ public class Game extends Observed {
 
 	public void addProposedCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
+		for (ProposedCombination proCom: this.proposedCombinations) {
+			System.out.println("ProposedComb Game.addPC "+ proCom.toString());				
+		}	
 		this.turn++;
 	}
 
 	public void addResult(Result result) {
 		this.results.add(result);
+		for (Result resultAux: this.results) {
+			System.out.println("Result Game.addRes "+ resultAux.toString());			
+		}
 		this.notify(new UpdateGameEvent());
 	}
 
@@ -50,12 +56,16 @@ public class Game extends Observed {
 	}
 
 	public void set(Memento memento) {
+		System.out.println("set memento");
 		this.turn = memento.getTurn();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
+		System.out.println("memento size "+memento.getSize());
 		for (int i = 0; i < memento.getSize(); i++) {
 			this.proposedCombinations.add(memento.getProposedCombination(i).copy());
+			System.out.println("PC G.set "+memento.getProposedCombination(i).toString());
 			this.results.add(memento.getResult(i).copy());
+			System.out.println("Res G.set "+memento.getResult(i).toString());
 		}
 		this.notify(new UpdateGameEvent());
 	}

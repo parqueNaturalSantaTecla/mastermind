@@ -3,13 +3,12 @@ package mastermind.utils;
 import java.util.ArrayList;
 import mastermind.models.Mastermind;
 import mastermind.mvcUtils.Observer;
+import mastermind.views.Message;
 import mastermind.views.ProposeCommand;
 import mastermind.views.RedoCommand;
 import mastermind.views.UndoCommand;
 
 public class Menu extends WithConsoleView{
-
-	private static final String OPTION = "----- Elige una opción -----";
 
 	private ArrayList<Command> commands;
 
@@ -35,7 +34,7 @@ public class Menu extends WithConsoleView{
 		do {
 			error = false;
 			this.console.writeln();
-			this.console.writeln(Menu.OPTION);
+			this.console.writeln(Message.OPTION.getMessage());
 			for (int i = 0; i < commands.size(); i++) {
 				this.console.writeln((i + 1) + ") " + commands.get(i).getTitle());
 			}

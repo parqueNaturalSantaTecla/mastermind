@@ -23,10 +23,7 @@ public class MastermindView extends Observed implements Observer{
 
 	public void write() {
 		this.console.writeln(Message.TITLE.getMessage());
-		for (int i = 0; i < this.mastermind.getSecretCombination().getColors().size(); i++) {
-			this.console.write('*');
-		}
-		this.console.writeln();
+		new SecretCombinationView(this.mastermind.getSecretCombination()).writeln();
 		do {
 			this.menu.execute();
 		} while (!this.mastermind.isWinner() && !this.mastermind.isLooser());

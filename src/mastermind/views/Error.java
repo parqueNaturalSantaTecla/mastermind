@@ -4,9 +4,9 @@ import mastermind.utils.Console;
 
 public enum Error {
 	
-	DUPLICATED("Colores repetidos"),
-	WRONG_CHARACTERS("Colores erróneos, tienen que ser: " + Color.allInitials()),
-	WRONG_LENGTH("Error en la longitud de la combinación");
+	DUPLICATED("Repeated colors"),
+	WRONG_CHARACTERS("Wrong colors, they must be: " + Color.allInitials()),
+	WRONG_LENGTH("Wrong combination length");
 	
 	private String message;
 	

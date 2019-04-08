@@ -7,10 +7,8 @@ import mastermind.utils.Command;
 
 public class UndoCommand extends Command {
 
-	public static final String TITLE = "Deshacer propuesta anterior";
-
 	public UndoCommand(Mastermind mastermind, Observer observer) {
-		super(UndoCommand.TITLE, mastermind, observer);
+		super(Message.UNDO_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

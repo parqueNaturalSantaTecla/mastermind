@@ -29,13 +29,15 @@ public class Registry {
 	void undo(Game game) {
 		this.firstPrevious++;
 		game.set(this.mementoList.get(this.firstPrevious));
-		System.out.println(this.toString());
+		System.out.println("REGISTRY: "+this.toString());
+		System.out.println("MEMENTO SELECCIONADO: "+this.mementoList.get(this.firstPrevious));
 	}
 
 	void redo(Game game) {
 		this.firstPrevious--;
 		game.set(this.mementoList.get(this.firstPrevious));
-		System.out.println(this.toString());
+		System.out.println("REGISTRY: "+this.toString());
+		System.out.println("MEMENTO SELECCIONADO: "+this.mementoList.get(this.firstPrevious));
 	}
 
 	boolean undoable() {

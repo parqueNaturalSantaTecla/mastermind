@@ -7,10 +7,8 @@ import mastermind.utils.Command;
 
 public class RedoCommand extends Command{
 	
-	public static final String TITLE = "Rehacer propuesta anterior";
-	
 	public RedoCommand(Mastermind mastermind, Observer observer) {
-		super(RedoCommand.TITLE, mastermind, observer);
+		super(Message.REDO_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

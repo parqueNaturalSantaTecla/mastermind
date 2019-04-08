@@ -32,10 +32,10 @@ public class GameView extends WithConsoleView implements Observer {
 		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
 		this.secretCombinationView.writeln();
 		for (mastermind.models.Color color : this.game.getSecretCombination().getColors()) {
-			this.console.write(color.ordinal());
+			this.console.write(color.name());
 		}
 		this.console.writeln();
-		for (int i = 0; i < this.game.getTurn(); i++) {
+		for (int i = 0; i < this.proposedCombinationViews.size(); i++) {
 			this.proposedCombinationViews.get(i).write();
 			this.resultViews.get(i).writeln();
 		}
