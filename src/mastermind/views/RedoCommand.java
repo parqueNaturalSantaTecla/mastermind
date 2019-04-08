@@ -4,10 +4,8 @@ import mastermind.controllers.PlayController;
 
 public class RedoCommand extends Command{
 	
-	public static final String TITLE = "Rehacer propuesta anterior";
-	
 	RedoCommand(PlayController playController) {
-		super(RedoCommand.TITLE, playController);
+		super(Message.REDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override

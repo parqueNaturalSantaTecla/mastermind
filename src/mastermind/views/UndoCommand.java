@@ -4,10 +4,8 @@ import mastermind.controllers.PlayController;
 
 public class UndoCommand extends Command {
 
-	public static final String TITLE = "Deshacer propuesta anterior";
-
 	UndoCommand(PlayController playController) {
-		super(UndoCommand.TITLE, playController);
+		super(Message.UNDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override
