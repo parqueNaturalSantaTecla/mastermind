@@ -17,7 +17,7 @@ import mastermind.views.Message;
 @SuppressWarnings("serial")
 class ProposalCombinationView extends JPanel implements ActionListener, KeyListener{
 	
-	private static final String ACCEPT = "Aceptar";
+	private static final String ACCEPT = "Ok";
 	
 	private JLabel label;
 	
