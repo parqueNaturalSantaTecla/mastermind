@@ -1,7 +1,7 @@
 package mastermind.distributed;
 
-import mastermind.controllers.StateValue;
 import mastermind.models.Session;
+import mastermind.models.StateValue;
 import mastermind.utils.TCPIP;
 
 public class SessionProxy implements Session {

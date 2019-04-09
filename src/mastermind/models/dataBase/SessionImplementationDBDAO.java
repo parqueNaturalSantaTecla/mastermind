@@ -7,8 +7,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import mastermind.controllers.StateValue;
 import mastermind.models.SessionImplementation;
+import mastermind.models.StateValue;
 import mastermind.models.DAO.SessionImplementationDAO;
 
 public class SessionImplementationDBDAO extends SessionImplementationDAO {

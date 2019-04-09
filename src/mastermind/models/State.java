@@ -1,4 +1,4 @@
-package mastermind.controllers;
+package mastermind.models;
 
 public class State {
 
