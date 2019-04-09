@@ -3,9 +3,9 @@ package mastermind.utils;
 import java.util.ArrayList;
 import java.util.Set;
 
-public class Menu extends WithConsoleView {
+import mastermind.views.Message;
 
-	private static final String OPTION = "----- Elige una opción -----";
+public class Menu extends WithConsoleView {
 
 	private ArrayList<Command> commandSet;
 
@@ -25,7 +25,7 @@ public class Menu extends WithConsoleView {
 		do {
 			error = false;
 			this.console.writeln();
-			this.console.writeln(Menu.OPTION);
+			this.console.writeln(Message.OPTION.getMessage());
 			for (int i = 0; i < commands.size(); i++) {
 				this.console.writeln((i + 1) + ") " + commands.get(i).getTitle());
 			}

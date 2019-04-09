@@ -5,10 +5,8 @@ import mastermind.utils.Command;
 
 public class ProposeCommand extends Command {
 
-	public static final String TITLE = "Proponer Combinación";
-
 	public ProposeCommand(Session session) {
-		super(ProposeCommand.TITLE, session);
+		super(Message.PROPOSE_COMMAND.getMessage(), session);
 	}
 
 	@Override

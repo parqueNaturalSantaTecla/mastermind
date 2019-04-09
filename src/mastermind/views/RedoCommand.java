@@ -5,10 +5,8 @@ import mastermind.utils.Command;
 
 public class RedoCommand extends Command{
 	
-	public static final String TITLE = "Rehacer propuesta anterior";
-	
 	public RedoCommand(Session session) {
-		super(RedoCommand.TITLE, session);
+		super(Message.REDO_COMMAND.getMessage(), session);
 	}
 
 	@Override
