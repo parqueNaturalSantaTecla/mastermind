@@ -4,10 +4,8 @@ import mastermind.controllers.StartController;
 
 class NewGameCommand extends Command {
 
-	private static final String TITLE = "Comenzar una partida nueva";
-
 	protected NewGameCommand(StartController startController) {
-		super(NewGameCommand.TITLE, startController);
+		super(Message.NEWGAME_COMMAND.getMessage(), startController);
 	}
 
 	@Override
