@@ -1,7 +1,5 @@
 package mastermind.models;
 
-import mastermind.controllers.State;
-
 public class Session {
 
 	private State state;
