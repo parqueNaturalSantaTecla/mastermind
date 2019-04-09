@@ -3,6 +3,7 @@ package mastermind.controllers;
 import java.util.HashMap;
 import java.util.Map;
 import mastermind.models.Session;
+import mastermind.models.StateValue;
 import mastermind.utils.TCPIP;
 
 public class Logic {

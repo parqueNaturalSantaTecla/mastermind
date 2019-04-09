@@ -1,7 +1,5 @@
 package mastermind.models;
 
-import mastermind.controllers.State;
-import mastermind.controllers.StateValue;
 import mastermind.distributed.FrameType;
 import mastermind.utils.TCPIP;
 
