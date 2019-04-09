@@ -6,9 +6,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import mastermind.controllers.State;
-import mastermind.controllers.StateValue;
-
 public class SessionImplementation implements Session {
 
 	public static final String EXTENSION = ".mm";
