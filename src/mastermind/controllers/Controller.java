@@ -1,6 +1,7 @@
 package mastermind.controllers;
 
 import mastermind.models.Session;
+import mastermind.models.StateValue;
 
 public abstract class Controller {
 	
