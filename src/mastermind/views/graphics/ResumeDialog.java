@@ -1,7 +1,6 @@
 package mastermind.views.graphics;
 
 import javax.swing.JOptionPane;
-
 import mastermind.views.Message;
 
 class ResumeDialog {
