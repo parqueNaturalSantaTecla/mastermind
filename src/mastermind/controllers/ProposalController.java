@@ -3,6 +3,7 @@ package mastermind.controllers;
 import mastermind.models.Error;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
+import mastermind.models.State;
 
 public class ProposalController extends Controller {
 	

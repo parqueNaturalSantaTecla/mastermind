@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mastermind.models.Game;
+import mastermind.models.State;
+import mastermind.models.StateValue;
 
 public class Logic {
 	
