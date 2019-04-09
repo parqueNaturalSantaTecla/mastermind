@@ -10,7 +10,7 @@ import mastermind.views.Message;
 @SuppressWarnings("serial")
 class SecretCombinationView extends JPanel {
 
-	private static final String TITLE = "COMBINACIÓN SECRETA:";
+	private static final String TITLE = "SECRET COMBINATION:";
 
 	private JLabel title;
 
