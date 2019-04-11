@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.events.ProposeEvent;
 import mastermind.models.Mastermind;
-import mastermind.utils.Command;
+import mastermind.views.Command;
 import mastermind.utils.Observer;
 
 public class ProposeCommand extends Command {

@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
-import mastermind.utils.Command;
+import mastermind.views.Command;
 import mastermind.utils.Observer;
 
 public class UndoCommand extends Command {
