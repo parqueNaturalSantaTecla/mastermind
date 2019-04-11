@@ -1,6 +1,7 @@
-package mastermind.views;
+package mastermind.menus;
 
 import mastermind.controllers.PlayController;
+import mastermind.views.Message;
 
 class ExitCommand extends Command {
 
