@@ -6,8 +6,8 @@ import mastermind.controllers.Controller;
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ResumeController;
 import mastermind.controllers.StartController;
-import mastermind.controllers.StateValue;
 import mastermind.models.Session;
+import mastermind.models.StateValue;
 
 public class Mastermind {
 
