@@ -4,7 +4,7 @@ public abstract class Command extends Observed {
 
 	protected String title;
 
-	protected Boolean isActive;
+	protected boolean isActive;
 
 	protected boolean isActive() {
 		return this.isActive;
