@@ -1,11 +1,11 @@
-package mastermind.views;
+package mastermind.menus;
 
 import mastermind.controllers.PlayController;
 import mastermind.utils.Menu;
 
-class PlayMenu extends Menu {
+public class PlayMenu extends Menu {
 
-	PlayMenu(PlayController playController) {
+	public PlayMenu(PlayController playController) {
 		this.addCommand(new ProposeCommand(playController));
 		this.addCommand(new UndoCommand(playController));
 		this.addCommand(new RedoCommand(playController));
