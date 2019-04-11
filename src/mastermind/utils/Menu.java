@@ -1,22 +1,11 @@
 package mastermind.utils;
 
 import java.util.ArrayList;
-import mastermind.models.Mastermind;
 import mastermind.views.Message;
-import mastermind.views.ProposeCommand;
-import mastermind.views.RedoCommand;
-import mastermind.views.UndoCommand;
 
-public class Menu extends WithConsoleView{
+public abstract class Menu extends WithConsoleView{
 
-	private ArrayList<Command> commands;
-
-	public Menu(Mastermind mastermind, Observer observer) {
-		this.commands = new ArrayList<Command>();
-		this.commands.add(new ProposeCommand(mastermind, observer));
-		this.commands.add(new UndoCommand(mastermind, observer));
-		this.commands.add(new RedoCommand(mastermind, observer));
-	}
+	protected ArrayList<Command> commands;
 
 	public void execute() {
 		for (Command command: this.commands) {

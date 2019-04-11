@@ -5,7 +5,7 @@ import mastermind.events.LostGameEvent;
 import mastermind.events.NewGameEvent;
 import mastermind.events.WonGameEvent;
 import mastermind.models.Mastermind;
-import mastermind.utils.Menu;
+import mastermind.views.Menu;
 import mastermind.utils.Observed;
 import mastermind.utils.Observer;
 import mastermind.utils.YesNoDialog;
