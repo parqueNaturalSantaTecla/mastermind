@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.menus;
 
 import mastermind.utils.ClosedInterval;
 
@@ -38,7 +38,7 @@ public enum Color {
 		return null;
 	}
 	
-	char getInitial() {
+	public char getInitial() {
 		return this.initial;
 	}
 

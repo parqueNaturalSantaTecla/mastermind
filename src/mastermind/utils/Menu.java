@@ -2,7 +2,7 @@ package mastermind.utils;
 
 import java.util.ArrayList;
 
-import mastermind.views.Message;
+import mastermind.views.menus.Message;
 
 public abstract class Menu extends WithConsoleView {
 

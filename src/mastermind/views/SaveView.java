@@ -3,6 +3,7 @@ package mastermind.views;
 import mastermind.controllers.SaveController;
 import mastermind.utils.WithConsoleView;
 import mastermind.utils.YesNoDialog;
+import mastermind.views.menus.Message;
 
 class SaveView extends WithConsoleView {
 

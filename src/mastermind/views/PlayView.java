@@ -1,8 +1,8 @@
 package mastermind.views;
 
 import mastermind.controllers.PlayController;
-import mastermind.menus.PlayMenu;
 import mastermind.utils.WithConsoleView;
+import mastermind.views.menus.PlayMenu;
 
 class PlayView extends WithConsoleView {
 

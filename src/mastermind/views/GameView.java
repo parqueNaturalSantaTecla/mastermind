@@ -2,6 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.GameController;
 import mastermind.utils.WithConsoleView;
+import mastermind.views.menus.Message;
 
 class GameView extends WithConsoleView {
 

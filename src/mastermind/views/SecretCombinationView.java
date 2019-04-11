@@ -1,6 +1,7 @@
 package mastermind.views;
 
 import mastermind.utils.WithConsoleView;
+import mastermind.views.menus.Message;
 
 class SecretCombinationView extends WithConsoleView {
 	

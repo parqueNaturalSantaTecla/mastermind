@@ -1,9 +1,7 @@
-package mastermind.menus;
+package mastermind.views.menus;
 
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ProposalController;
-import mastermind.views.Error;
-import mastermind.views.Message;
 import mastermind.views.ProposedCombinationView;
 
 class ProposeCommand extends Command {

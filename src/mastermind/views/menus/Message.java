@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.menus;
 
 public enum Message {
 	TURN("#turn attempt(s): "),

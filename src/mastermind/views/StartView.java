@@ -1,8 +1,9 @@
 package mastermind.views;
 
 import mastermind.controllers.StartController;
-import mastermind.menus.StartMenu;
 import mastermind.utils.WithConsoleView;
+import mastermind.views.menus.Message;
+import mastermind.views.menus.StartMenu;
 
 class StartView extends WithConsoleView {
 

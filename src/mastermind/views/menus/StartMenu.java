@@ -1,4 +1,4 @@
-package mastermind.menus;
+package mastermind.views.menus;
 
 import mastermind.controllers.StartController;
 import mastermind.utils.Menu;
