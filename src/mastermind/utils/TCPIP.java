@@ -7,7 +7,7 @@ import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import mastermind.distributed.FrameType;
+import mastermind.distributed.dispatchers.FrameType;
 
 public class TCPIP {
 	

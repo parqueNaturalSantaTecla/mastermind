@@ -1,5 +1,6 @@
 package mastermind.distributed;
 
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
 import mastermind.models.StateValue;
 import mastermind.utils.TCPIP;

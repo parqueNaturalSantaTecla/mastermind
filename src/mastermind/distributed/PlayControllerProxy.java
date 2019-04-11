@@ -1,6 +1,7 @@
 package mastermind.distributed;
 
 import mastermind.controllers.PlayController;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
 import mastermind.utils.TCPIP;
 
