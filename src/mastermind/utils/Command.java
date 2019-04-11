@@ -6,7 +6,7 @@ public abstract class Command extends WithConsoleView {
 
 	protected String title;
 
-	protected Boolean isActive;
+	protected boolean isActive;
 	
 	protected Session session;
 	
