@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.menus;
 
 import mastermind.controllers.StartController;
 
