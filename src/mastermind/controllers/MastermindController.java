@@ -1,11 +1,11 @@
 package mastermind.controllers;
 
-import mastermind.events.Event;
 import mastermind.events.NewGameEvent;
 import mastermind.events.ProposeEvent;
 import mastermind.events.RedoEvent;
 import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
+import mastermind.utils.Event;
 import mastermind.utils.Observed;
 import mastermind.utils.Observer;
 import mastermind.views.MastermindView;

@@ -2,8 +2,6 @@ package mastermind.utils;
 
 import java.util.ArrayList;
 
-import mastermind.events.Event;
-
 public class Observed extends WithConsoleView{
 	
 	private ArrayList<Observer> observers;

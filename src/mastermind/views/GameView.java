@@ -3,9 +3,9 @@ package mastermind.views;
 import java.util.ArrayList;
 import java.util.List;
 
-import mastermind.events.Event;
 import mastermind.events.UpdateGameEvent;
 import mastermind.models.Game;
+import mastermind.utils.Event;
 import mastermind.utils.Observed;
 import mastermind.utils.Observer;
 import mastermind.utils.WithConsoleView;
