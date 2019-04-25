@@ -13,8 +13,8 @@ enum Error {
 		this.message = message;
 	}
 
-	void write() {
-		new Console().write(this.message);
+	void writeln() {
+		new Console().writeln(this.message);		
 	}
 	
 }

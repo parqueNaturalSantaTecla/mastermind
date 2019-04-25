@@ -14,6 +14,7 @@ class ProposedCombination extends Combination {
 			error = null;
 			Message.PROPOSED_COMBINATION.write();
 			String characters = this.console.readString();
+			this.console.writeln(characters);
 			if (characters.length() > Combination.getWidth()) {
 				error = Error.WRONG_LENGTH;
 			} else {
@@ -31,7 +32,8 @@ class ProposedCombination extends Combination {
 				}
 			}
 			if (error != null) {
-				error.write();
+				error.writeln();
+				this.colors.clear();
 			}
 		} while (error != null);
 	}

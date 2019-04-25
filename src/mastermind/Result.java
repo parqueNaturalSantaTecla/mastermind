@@ -20,7 +20,7 @@ class Result extends WithConsoleModel{
 	}
 
 	void writeln() {
-		Message.RESULT.write(this.blacks, this.whites);
+		Message.RESULT.writeln(this.blacks, this.whites);
 	}
 	
 }

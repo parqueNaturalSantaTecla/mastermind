@@ -25,7 +25,7 @@ public class Mastermind extends WithConsoleModel {
 	}
 
 	private void play() {
-		Message.TITLE.write();
+		Message.TITLE.writeln();
 		this.secretCombination.writeln();
 		boolean finished = false;
 		do {
@@ -35,17 +35,17 @@ public class Mastermind extends WithConsoleModel {
 			this.results.add(this.secretCombination.getResult(proposedCombination));
 			this.attempts++;
 			this.console.writeln();
-			Message.TURN.write(this.attempts);
+			Message.TURN.writeln(this.attempts);
 			this.secretCombination.writeln();
 			for (int i = 0; i < this.attempts; i++) {
 				this.proposedCombinations.get(i).write();
 				this.results.get(i).writeln();
 			}
 			if (this.results.get(this.attempts - 1).isWinner()) {
-				Message.WINNER.write();
+				Message.WINNER.writeln();
 				finished = true;
 			} else if (this.attempts == Mastermind.MAX_LONG) {
-				Message.LOOSER.write();
+				Message.LOOSER.writeln();
 				finished = true;
 			}
 		} while (!finished);
