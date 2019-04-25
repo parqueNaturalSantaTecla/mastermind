@@ -34,7 +34,7 @@ class SecretCombination extends Combination {
 	
 	void writeln () {
 		for (int i = 0; i < Combination.getWidth(); i++) {
-			this.console.write(Message.SECRET.getMessage());
+			Message.SECRET.write();
 		}
 		this.console.writeln();
 	}

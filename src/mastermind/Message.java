@@ -1,7 +1,9 @@
 package mastermind;
 
+import mastermind.utils.Console;
+
 enum Message {
-	TURN("#turn attempt(s): "),
+	TURN("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
 	RESULT(" --> #blacks blacks and #whites whites"),
@@ -15,9 +17,18 @@ enum Message {
 	private Message(String message) {
 		this.message = message;
 	}
-	
-	String getMessage() {
-		return this.message;
+
+	void write() {
+		new Console().write(this.message);
+	}
+
+	void write(int attempts) {
+		new Console().write(this.message.replaceAll("#attempts", ""+attempts));
+	}
+
+	void write(int blacks, int whites) {
+		new Console().writeln(this.message.replaceFirst("#blacks", "" + blacks)
+				.replaceFirst("#whites", "" + whites));
 	}
 
 }

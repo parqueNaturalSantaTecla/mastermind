@@ -11,12 +11,11 @@ public class YesNoDialog  extends WithConsoleModel {
 	private static final String MESSAGE = "The value must be '" + YesNoDialog.AFIRMATIVE + "' or '"
 			+ YesNoDialog.NEGATIVE + "'";
 
-	public boolean read(String title) {
-		assert title != null;
+	public boolean read() {
 		char answer;
 		boolean ok;
 		do {
-			answer = this.console.readChar(title + YesNoDialog.QUESTION);
+			answer = this.console.readChar(YesNoDialog.QUESTION);
 			ok = YesNoDialog.isAfirmative(answer) || YesNoDialog.isNegative(answer);
 			if (!ok) {
 				this.console.writeln(YesNoDialog.MESSAGE);

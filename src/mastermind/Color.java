@@ -1,5 +1,7 @@
 package mastermind;
 
+import mastermind.utils.Console;
+
 enum Color {
 	RED('r'), 
 	BLUE('b'), 
@@ -30,18 +32,13 @@ enum Color {
 		}
 		return null;
 	}
-	
-	char getInitial() {
-		return this.initial;
-	}
-
-	static Color getInstance(int code) {
-		assert 0 <= code && code < Color.length();
-		return Color.values()[code];
-	}
 
 	static int length() {
 		return Color.values().length;
+	}
+
+	void write() {
+		new Console().write(this.initial);
 	}
 	
 }

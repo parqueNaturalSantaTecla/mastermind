@@ -19,13 +19,8 @@ class Result extends WithConsoleModel{
 		return this.blacks == Combination.getWidth();
 	}
 
-	int[] getCodes() {
-		return new int[] { this.blacks, this.whites };
-	}
-
 	void writeln() {
-		this.console.writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + this.blacks)
-				.replaceFirst("#whites", "" + this.whites));
+		Message.RESULT.write(this.blacks, this.whites);
 	}
 	
 }
