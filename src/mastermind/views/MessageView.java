@@ -1,6 +1,6 @@
 package mastermind.views;
 
-enum Message {
+enum MessageView {
 	TURN("#turn attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
@@ -12,7 +12,7 @@ enum Message {
 
 	private String message;
 	
-	private Message(String message) {
+	private MessageView(String message) {
 		this.message = message;
 	}
 	

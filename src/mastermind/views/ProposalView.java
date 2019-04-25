@@ -12,11 +12,11 @@ class ProposalView extends WithConsoleView {
 			int[] codes = new ProposedCombinationView().read();
 			error = this.proposeCombination(codes, game);
 			if (error != Game.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
+				new ErrorView(error).write();
 			}
 		} while (error != Game.NO_ERROR);
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + game.getTurn()));
+		this.console.writeln(MessageView.TURN.getMessage().replaceFirst("#turn", "" + game.getTurn()));
 		new SecretCombinationView().writeln(game.getWidth());
 		int[][][] allCodes = game.getCodes();
 		for (int i = 0; i < allCodes.length; i++) {
@@ -24,10 +24,10 @@ class ProposalView extends WithConsoleView {
 			new ResultView().writeln(allCodes[i][1]);
 		}
 		if (game.isWinner()) {
-			this.console.writeln(Message.WINNER.getMessage());
+			this.console.writeln(MessageView.WINNER.getMessage());
 			return true;
 		} else if (game.isLooser()) {
-			this.console.writeln(Message.LOOSER.getMessage());
+			this.console.writeln(MessageView.LOOSER.getMessage());
 			return true;
 		}
 		return false;

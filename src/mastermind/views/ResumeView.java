@@ -6,7 +6,7 @@ import mastermind.utils.YesNoDialog;
 class ResumeView {
 
 	boolean interact(Game game) {
-		boolean resume = new YesNoDialog().read(Message.RESUME.getMessage());
+		boolean resume = new YesNoDialog().read(MessageView.RESUME.getMessage());
 		if (resume) {
 			game.clear();
 		}
