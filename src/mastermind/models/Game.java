@@ -5,8 +5,6 @@ import java.util.List;
 
 public class Game {
 
-	public static final int NO_ERROR = -1;
-
 	private static final int MAX_LONG = 10;
 
 	private SecretCombination secretCombination;
