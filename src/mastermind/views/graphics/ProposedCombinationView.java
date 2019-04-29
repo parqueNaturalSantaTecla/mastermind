@@ -1,18 +1,24 @@
 package mastermind.views.graphics;
 
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 
+import mastermind.models.Color;
+import mastermind.models.Error;
+import mastermind.models.ProposedCombination;
 import mastermind.views.ColorView;
+import mastermind.views.ErrorView;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
 
-	static final int ERROR_CODE = -1;
+	private ProposedCombination proposedCombination;
 
-	ProposedCombinationView(int[] codes) {
+	ProposedCombinationView(ProposedCombination proposedCombination) {
+		this.proposedCombination = proposedCombination;
 		String initials = "";
-		for (int code : codes) {
-			initials += ColorView.getInstance(code).getInitial();
+		for (Color color: proposedCombination.getColors()) {
+			initials += ColorView.INITIALS[color.ordinal()];
 		}
 		this.setText(initials);
 	}
@@ -20,17 +26,29 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView() {
 	}
 
-	int[] read(String characters) {
-		int[] codes = new int[characters.length()];
-		for (int i = 0; i < characters.length(); i++) {
-			ColorView colorView = ColorView.getInstance(characters.charAt(i));
-			if (colorView == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
-			} else {
-				codes[i] = colorView.ordinal();
+	ProposedCombination read(String characters) {
+		Error error;
+		do {
+			error = null;
+			for (int i = 0; i < characters.length(); i++) {
+				Color color = ColorView.getInstance(characters.charAt(i));
+				if (color == null) {
+					error = Error.WRONG_CHARACTERS;
+				} else {
+					if (this.proposedCombination.getColors().contains(color)) {
+						error = Error.DUPLICATED;
+					} else {
+						this.proposedCombination.getColors().add(color);
+					}
+				}
 			}
-		}
-		return codes;
+			if (error != null) {
+				JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[error.ordinal()], "ERROR",
+						JOptionPane.WARNING_MESSAGE);
+				this.proposedCombination.getColors().clear();
+			}
+		} while (error != null || characters == "");
+		return this.proposedCombination;
 	}
 
 }

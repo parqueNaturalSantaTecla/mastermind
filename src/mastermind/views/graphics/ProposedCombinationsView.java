@@ -12,11 +12,9 @@ class ProposedCombinationsView extends JPanel {
 	}
 
 	void add(Game game) {
-		int turn = game.getAttempts();
-		int[][][] allCodes = game.getCodes();
-		int[][] codes = allCodes[allCodes.length - 1];
-		this.add(new TurnView(turn), new Constraints(0, turn, 1, 1));
-		this.add(new ProposedCombinationView(codes[0]), new Constraints(1, turn, 1, 1));
-		this.add(new ResultView(codes[1]), new Constraints(2, turn, 1, 1));
+		int attempts = game.getAttempts();
+		this.add(new AttemptsView(attempts), new Constraints(0, attempts, 1, 1));
+		this.add(new ProposedCombinationView(game.getProposedCombination(attempts)), new Constraints(1, attempts, 1, 1));
+		this.add(new ResultView(game.getResult(attempts)), new Constraints(2, attempts, 1, 1));
 	}
 }

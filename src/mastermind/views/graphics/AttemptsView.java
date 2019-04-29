@@ -5,9 +5,9 @@ import javax.swing.JLabel;
 import mastermind.views.MessageView;
 
 @SuppressWarnings("serial")
-class TurnView extends JLabel {
+class AttemptsView extends JLabel {
 
-	TurnView(int turn) {
+	AttemptsView(int turn) {
 		this.setText(MessageView.TURN.getMessage().replaceFirst("#turn", "" + (turn)));
 	}
 
