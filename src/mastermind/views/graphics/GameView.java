@@ -5,8 +5,8 @@ import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.views.ErrorView;
+import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
@@ -22,7 +22,7 @@ class GameView extends JFrame {
 	private ProposalCombinationView proposalCombinationView;
 
 	GameView() {
-		super(Message.TITLE.getMessage());
+		super(MessageView.TITLE.getMessage());
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -47,7 +47,7 @@ class GameView extends JFrame {
 			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
 			error = this.proposeCombination(codes, game);
 			if (error != Game.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR",
+				JOptionPane.showMessageDialog(null, ErrorView.values()[error].getMessage(), "ERROR",
 						JOptionPane.WARNING_MESSAGE);
 				error = Game.NO_ERROR;
 				this.proposalCombinationView.resetCharacters();
@@ -63,9 +63,9 @@ class GameView extends JFrame {
 		if (game.isWinner() || game.isLooser()) {
 			String message = "";
 			if (game.isWinner()) {
-				message = Message.WINNER.getMessage();
+				message = MessageView.WINNER.getMessage();
 			} else {
-				message = Message.LOOSER.getMessage();
+				message = MessageView.LOOSER.getMessage();
 			}
 			JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
 			return true;
@@ -88,7 +88,7 @@ class GameView extends JFrame {
 			return error.ordinal();
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		game.proposeCombination(proposedCombination);
+		game.addProposedCombination(proposedCombination);
 		return Game.NO_ERROR;
 	}
 

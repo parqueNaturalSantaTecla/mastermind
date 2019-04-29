@@ -1,6 +1,6 @@
 package mastermind.models;
 
-class Result {
+public class Result {
 
 	private int blacks = 0;
 
@@ -17,8 +17,12 @@ class Result {
 		return this.blacks == Combination.getWidth();
 	}
 
-	int[] getCodes() {
-		return new int[] { this.blacks, this.whites };
+	public int getBlacks() {
+		return this.blacks;
+	}
+
+	public int getWhites() {
+		return this.whites;
 	}
 
 }

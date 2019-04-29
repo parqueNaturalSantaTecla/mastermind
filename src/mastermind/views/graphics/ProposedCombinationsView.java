@@ -12,7 +12,7 @@ class ProposedCombinationsView extends JPanel {
 	}
 
 	void add(Game game) {
-		int turn = game.getTurn();
+		int turn = game.getAttempts();
 		int[][][] allCodes = game.getCodes();
 		int[][] codes = allCodes[allCodes.length - 1];
 		this.add(new TurnView(turn), new Constraints(0, turn, 1, 1));
