@@ -15,19 +15,19 @@ public class View {
 	public View(Game game) {
 		this.game = game;
 		this.startView = new StartView();
-		this.proposalView = new ProposalView();
-		this.resumeView = new ResumeView();
+		this.proposalView = new ProposalView(this.game);
+		this.resumeView = new ResumeView(this.game);
 	}
 
 	public void interact() {
 		boolean resume;
 		do {
-			this.startView.interact(this.game);
+			this.startView.interact();
 			boolean finished;
 			do {
-				finished = this.proposalView.interact(this.game);
+				finished = this.proposalView.interact();
 			} while (!finished);
-			resume = this.resumeView.interact(this.game);
+			resume = this.resumeView.interact();
 		} while (resume);
 	}
 

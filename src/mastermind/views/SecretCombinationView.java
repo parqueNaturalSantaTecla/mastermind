@@ -1,6 +1,6 @@
 package mastermind.views;
 
-import mastermind.models.Combination;
+import mastermind.models.SecretCombination;
 import mastermind.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
@@ -10,7 +10,7 @@ class SecretCombinationView extends WithConsoleView {
 	}
 
 	void writeln() {
-		for (int i = 0; i < Combination.getWidth(); i++) {
+		for (int i = 0; i < SecretCombination.getWidth(); i++) {
 			MessageView.SECRET.write();
 		}
 		this.console.writeln();

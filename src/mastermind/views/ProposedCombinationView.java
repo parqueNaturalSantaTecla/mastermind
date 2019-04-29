@@ -20,11 +20,11 @@ class ProposedCombinationView extends WithConsoleView {
 		}
 	}
 
-	ProposedCombination read() {
+	void read() {
 		Error error;
 		do {
 			error = null;
-			this.proposedCombination = new ProposedCombination();
+			// proposedCombination.clear();
 			MessageView.PROPOSED_COMBINATION.write();
 			String characters = this.console.readString();
 			if (characters.length() > Combination.getWidth()) {
@@ -48,7 +48,6 @@ class ProposedCombinationView extends WithConsoleView {
 				this.proposedCombination.getColors().clear();
 			}
 		} while (error != null);
-		return this.proposedCombination;
 	}
 
 }
