@@ -6,7 +6,7 @@ import java.io.InputStreamReader;
 public class Console {
 
 	private BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
+	
 	public String readString(String title) {
 		String input = null;
 		boolean ok = false;
@@ -20,6 +20,10 @@ public class Console {
 			}
 		} while (!ok);
 		return input;
+	}
+
+	public String readString() {
+		return this.readString("");
 	}
 
 	public int readInt(String title) {

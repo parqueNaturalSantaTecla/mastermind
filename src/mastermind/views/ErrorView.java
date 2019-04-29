@@ -10,16 +10,12 @@ class ErrorView extends WithConsoleView {
 
 	private Error error;
 
-	private ErrorView(Error error) {
+	ErrorView(Error error) {
 		this.error = error;
 	}
-
-//	String getMessage() {
-//		return this.message;
-//	}
 	
-	void write() {
-		this.console.write(ErrorView.MESSAGES[this.error.ordinal()]);
+	void writeln() {
+		this.console.writeln(ErrorView.MESSAGES[this.error.ordinal()]);
 	}
 
 }

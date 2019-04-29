@@ -7,40 +7,23 @@ import mastermind.utils.WithConsoleView;
 class ProposalView extends WithConsoleView {
 
 	boolean interact(Game game) {
-		int error;
-		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = this.proposeCombination(codes, game);
-			if (error != Game.NO_ERROR) {
-				new ErrorView(error).write();
-			}
-		} while (error != Game.NO_ERROR);
+		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(new ProposedCombination());
+		game.addProposedCombination(proposedCombinationView.read());
 		this.console.writeln();
-		this.console.writeln(MessageView.TURN.getMessage().replaceFirst("#turn", "" + game.getAttempts()));
-		new SecretCombinationView().writeln(game.getWidth());
-		int[][][] allCodes = game.getCodes();
-		for (int i = 0; i < allCodes.length; i++) {
-			new ProposedCombinationView().write(allCodes[i][0]);
-			new ResultView().writeln(allCodes[i][1]);
+		MessageView.TURN.writeln(game.getAttempts());
+		new SecretCombinationView().writeln();
+		for (int i = 0; i < game.getAttempts(); i++) {
+			new ProposedCombinationView(game.getProposedCombination(i)).write();
+			new ResultView(game.getResult(i)).writeln();
 		}
 		if (game.isWinner()) {
-			this.console.writeln(MessageView.WINNER.getMessage());
+			MessageView.WINNER.writeln();
 			return true;
 		} else if (game.isLooser()) {
-			this.console.writeln(MessageView.LOOSER.getMessage());
+			MessageView.LOOSER.writeln();
 			return true;
 		}
 		return false;
-	}
-
-	private int proposeCombination(int[] codes, Game game) {
-		mastermind.models.Error error = ProposedCombination.isValid(codes);
-		if (error != null) {
-			return error.ordinal();
-		}
-		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		game.addProposedCombination(proposedCombination);
-		return Game.NO_ERROR;
 	}
 
 }

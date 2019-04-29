@@ -25,6 +25,10 @@ public class YesNoDialog  extends WithConsoleView {
 		return YesNoDialog.isAfirmative(answer);
 	}
 
+	public boolean read() {
+		return this.read("");
+	}
+
 	private static boolean isAfirmative(char answer) {
 		return Character.toLowerCase(answer) == YesNoDialog.AFIRMATIVE;
 	}

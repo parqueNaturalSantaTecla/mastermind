@@ -1,29 +1,54 @@
 package mastermind.views;
 
+import mastermind.models.Color;
+import mastermind.models.Error;
+import mastermind.models.Combination;
+import mastermind.models.ProposedCombination;
 import mastermind.utils.WithConsoleView;
 
 class ProposedCombinationView extends WithConsoleView {
+	
+	private ProposedCombination proposedCombination;
 
-	private static final int ERROR_CODE = -1;
+	ProposedCombinationView(ProposedCombination proposedCombination) {
+		this.proposedCombination = proposedCombination;
+	}
 
-	void write(int[] codes) {
-		for (int code : codes) {
-			this.console.write(ColorView.getInstance(code).getInitial());
+	void write() {
+		for (Color color: this.proposedCombination.getColors()) {
+			new ColorView(color).write();
 		}
 	}
 
-	int[] read() {
-		String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
-		int[] codes = new int[characters.length()];
-		for (int i = 0; i < characters.length(); i++) {
-			ColorView colorView = ColorView.getInstance(characters.charAt(i));
-			if (colorView == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
+	ProposedCombination read() {
+		Error error;
+		do {
+			error = null;
+			this.proposedCombination = new ProposedCombination();
+			MessageView.PROPOSED_COMBINATION.write();
+			String characters = this.console.readString();
+			if (characters.length() > Combination.getWidth()) {
+				error = Error.WRONG_LENGTH;
 			} else {
-				codes[i] = colorView.ordinal();
+				for (int i = 0; i < characters.length(); i++) {
+					Color color = ColorView.getInstance(characters.charAt(i));
+					if (color == null) {
+						error = Error.WRONG_CHARACTERS;
+					} else {
+						if (this.proposedCombination.getColors().contains(color)) {
+							error = Error.DUPLICATED;
+						} else {
+							this.proposedCombination.getColors().add(color);
+						}
+					}
+				}
 			}
-		}
-		return codes;
+			if (error != null) {
+				new ErrorView(error).writeln();
+				this.proposedCombination.getColors().clear();
+			}
+		} while (error != null);
+		return this.proposedCombination;
 	}
 
 }

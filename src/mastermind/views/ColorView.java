@@ -1,7 +1,6 @@
 package mastermind.views;
 
 import mastermind.models.Color;
-import mastermind.utils.ClosedInterval;
 import mastermind.utils.WithConsoleView;
 
 class ColorView extends WithConsoleView{
@@ -10,7 +9,7 @@ class ColorView extends WithConsoleView{
 
 	private Color color;
 
-	private ColorView(Color color) {
+	ColorView(Color color) {
 		this.color = color;
 	}
 
@@ -22,22 +21,13 @@ class ColorView extends WithConsoleView{
 		return result;
 	}
 
-//	static ColorView getInstance(int code) {
-//		assert new ClosedInterval(0, ColorView.values().length).includes(code);
-//		return ColorView.values()[code];
-//	}
-
-	static ColorView getInstance(char character) {
-		for (ColorView colorView : ColorView.values()) {
-			if (colorView.initial == character) {
-				return colorView;
+	static Color getInstance(char character) {
+		for (int i = 0; i < ColorView.INITIALS.length; i++) {
+			if (ColorView.INITIALS[i] == character) {
+				return Color.values()[i];
 			}
 		}
 		return null;
-	}
-	
-	char getInitial() {
-		return this.initial;
 	}
 	
 	void write() {
