@@ -7,10 +7,12 @@ import mastermind.views.MessageView;
 
 @SuppressWarnings("serial")
 class ResultView extends JLabel {
+	
+	private Result result;
 
 	ResultView(Result result) {
-		this.setText(MessageView.RESULT.getMessage().replaceFirst("#blacks", "" + result.getBlacks())
-				.replaceFirst("#whites", "" + result.getWhites()));
+		this.setText(MessageView.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
+				.replaceFirst("#whites", "" + this.result.getWhites()));
 	}
 
 }

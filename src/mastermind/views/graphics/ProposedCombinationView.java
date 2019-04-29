@@ -4,6 +4,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 import mastermind.models.Color;
+import mastermind.models.Combination;
 import mastermind.models.Error;
 import mastermind.models.ProposedCombination;
 import mastermind.views.ColorView;
@@ -17,7 +18,7 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView(ProposedCombination proposedCombination) {
 		this.proposedCombination = proposedCombination;
 		String initials = "";
-		for (Color color: proposedCombination.getColors()) {
+		for (Color color : proposedCombination.getColors()) {
 			initials += ColorView.INITIALS[color.ordinal()];
 		}
 		this.setText(initials);
@@ -30,15 +31,19 @@ class ProposedCombinationView extends JLabel {
 		Error error;
 		do {
 			error = null;
-			for (int i = 0; i < characters.length(); i++) {
-				Color color = ColorView.getInstance(characters.charAt(i));
-				if (color == null) {
-					error = Error.WRONG_CHARACTERS;
-				} else {
-					if (this.proposedCombination.getColors().contains(color)) {
-						error = Error.DUPLICATED;
+			if (characters.length() != Combination.getWidth()) {
+				error = Error.WRONG_LENGTH;
+			} else {
+				for (int i = 0; i < characters.length(); i++) {
+					Color color = ColorView.getInstance(characters.charAt(i));
+					if (color == null) {
+						error = Error.WRONG_CHARACTERS;
 					} else {
-						this.proposedCombination.getColors().add(color);
+						if (this.proposedCombination.getColors().contains(color)) {
+							error = Error.DUPLICATED;
+						} else {
+							this.proposedCombination.getColors().add(color);
+						}
 					}
 				}
 			}
