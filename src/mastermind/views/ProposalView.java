@@ -16,7 +16,7 @@ class ProposalView extends WithConsoleView {
 			}
 		} while (error != Game.NO_ERROR);
 		this.console.writeln();
-		this.console.writeln(MessageView.TURN.getMessage().replaceFirst("#turn", "" + game.getTurn()));
+		this.console.writeln(MessageView.TURN.getMessage().replaceFirst("#turn", "" + game.getAttempts()));
 		new SecretCombinationView().writeln(game.getWidth());
 		int[][][] allCodes = game.getCodes();
 		for (int i = 0; i < allCodes.length; i++) {
@@ -39,7 +39,7 @@ class ProposalView extends WithConsoleView {
 			return error.ordinal();
 		}
 		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		game.proposeCombination(proposedCombination);
+		game.addProposedCombination(proposedCombination);
 		return Game.NO_ERROR;
 	}
 

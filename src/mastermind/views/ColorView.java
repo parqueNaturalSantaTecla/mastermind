@@ -22,10 +22,10 @@ class ColorView extends WithConsoleView{
 		return result;
 	}
 
-	static ColorView getInstance(int code) {
-		assert new ClosedInterval(0, ColorView.values().length).includes(code);
-		return ColorView.values()[code];
-	}
+//	static ColorView getInstance(int code) {
+//		assert new ClosedInterval(0, ColorView.values().length).includes(code);
+//		return ColorView.values()[code];
+//	}
 
 	static ColorView getInstance(char character) {
 		for (ColorView colorView : ColorView.values()) {
