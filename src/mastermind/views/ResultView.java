@@ -7,7 +7,7 @@ class ResultView extends WithConsoleView {
 	
 	private Result result;
 
-	public ResultView(Result result) {
+	ResultView(Result result) {
 		this.result = result;
 	}
 

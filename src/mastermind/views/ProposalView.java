@@ -8,7 +8,7 @@ class ProposalView extends WithConsoleView {
 
 	private Game game;
 
-	public ProposalView(Game game) {
+	ProposalView(Game game) {
 		this.game = game;
 	}
 

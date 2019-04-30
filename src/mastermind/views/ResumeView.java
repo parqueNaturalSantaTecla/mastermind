@@ -15,7 +15,7 @@ class ResumeView {
 		MessageView.RESUME.write();
 		boolean resume = new YesNoDialog().read();
 		if (resume) {
-			game.clear();
+			this.game.clear();
 		}
 		return resume;
 	}
