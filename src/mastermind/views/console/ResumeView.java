@@ -5,11 +5,17 @@ import mastermind.utils.YesNoDialog;
 import mastermind.views.MessageView;
 
 class ResumeView {
+	
+	private Game game;
+	
+	ResumeView (Game game){
+		this.game = game;
+	}
 
-	boolean interact(Game game) {
+	boolean interact() {
 		boolean resume = new YesNoDialog().read(MessageView.RESUME.getMessage());
 		if (resume) {
-			game.clear();
+			this.game.clear();
 		}
 		return resume;
 	}

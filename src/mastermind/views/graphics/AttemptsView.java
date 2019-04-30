@@ -7,8 +7,8 @@ import mastermind.views.MessageView;
 @SuppressWarnings("serial")
 class AttemptsView extends JLabel {
 
-	AttemptsView(int turn) {
-		this.setText(MessageView.TURN.getMessage().replaceFirst("#turn", "" + (turn)));
+	AttemptsView(int attempts) {
+		this.setText(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + (attempts)));
 	}
 
 }

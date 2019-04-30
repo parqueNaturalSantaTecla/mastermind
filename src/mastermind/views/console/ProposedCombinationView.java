@@ -8,7 +8,7 @@ import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
 class ProposedCombinationView extends WithConsoleView {
-	
+
 	private ProposedCombination proposedCombination;
 
 	ProposedCombinationView(ProposedCombination proposedCombination) {
@@ -16,16 +16,15 @@ class ProposedCombinationView extends WithConsoleView {
 	}
 
 	void write() {
-		for (Color color: this.proposedCombination.getColors()) {
+		for (Color color : this.proposedCombination.getColors()) {
 			new ColorView(color).write();
 		}
 	}
 
-	ProposedCombination read() {
+	void read() {
 		Error error;
 		do {
 			error = null;
-			this.proposedCombination = new ProposedCombination();
 			this.console.write(MessageView.PROPOSED_COMBINATION.getMessage());
 			String characters = this.console.readString();
 			if (characters.length() != Combination.getWidth()) {
@@ -49,7 +48,6 @@ class ProposedCombinationView extends WithConsoleView {
 				this.proposedCombination.getColors().clear();
 			}
 		} while (error != null);
-		return this.proposedCombination;
 	}
 
 }

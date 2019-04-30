@@ -6,21 +6,29 @@ import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
 class ProposalView extends WithConsoleView {
+	
+	private Game game;
+	
+	ProposalView (Game game){
+		this.game = game;
+	}
 
-	boolean interact(Game game) {
-		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(new ProposedCombination());
-		game.addProposedCombination(proposedCombinationView.read());
+	boolean interact() {
+		ProposedCombination proposedCombination = new ProposedCombination();
+		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
+		proposedCombinationView.read();
+		this.game.addProposedCombination(proposedCombination);
 		this.console.writeln();
-		this.console.writeln(MessageView.TURN.getMessage().replace("#attempts", ""+game.getAttempts()));
+		this.console.writeln(MessageView.ATTEMPTS.getMessage().replace("#attempts", ""+this.game.getAttempts()));
 		new SecretCombinationView().writeln();
-		for (int i = 0; i < game.getAttempts(); i++) {
-			new ProposedCombinationView(game.getProposedCombination(i)).write();
-			new ResultView(game.getResult(i)).writeln();
+		for (int i = 0; i < this.game.getAttempts(); i++) {
+			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
+			new ResultView(this.game.getResult(i)).writeln();
 		}
-		if (game.isWinner()) {
+		if (this.game.isWinner()) {
 			this.console.writeln(MessageView.WINNER.getMessage());
 			return true;
-		} else if (game.isLooser()) {
+		} else if (this.game.isLooser()) {
 			this.console.writeln(MessageView.LOOSER.getMessage());
 			return true;
 		}
