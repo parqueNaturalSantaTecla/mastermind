@@ -21,8 +21,9 @@ class ProposedCombinationView extends WithConsoleView {
 	}
 
 	void read() {
-		Error error = null;
+		Error error;
 		do {
+			error = null;
 			MessageView.PROPOSED_COMBINATION.write();
 			String characters = this.console.readString();
 			if (characters.length() > Combination.getWidth()) {
@@ -44,7 +45,6 @@ class ProposedCombinationView extends WithConsoleView {
 			if (error != null) {
 				new ErrorView(error).writeln();
 				this.proposedCombination.getColors().clear();
-				error = null;
 			}
 		} while (error != null);
 	}
