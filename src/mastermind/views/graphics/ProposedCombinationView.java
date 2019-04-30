@@ -27,14 +27,15 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView() {
 	}
 
-	ProposedCombination read(String characters) {
+	void read(String characters) {
 		Error error;
 		do {
 			error = null;
-			if (characters.length() != Combination.getWidth()) {
+			if (characters.length() > Combination.getWidth()) {
 				error = Error.WRONG_LENGTH;
 			} else {
 				for (int i = 0; i < characters.length(); i++) {
+					System.out.println("Entra al for");
 					Color color = ColorView.getInstance(characters.charAt(i));
 					if (color == null) {
 						error = Error.WRONG_CHARACTERS;
@@ -42,6 +43,7 @@ class ProposedCombinationView extends JLabel {
 						if (this.proposedCombination.getColors().contains(color)) {
 							error = Error.DUPLICATED;
 						} else {
+							System.out.println("Añade color");
 							this.proposedCombination.getColors().add(color);
 						}
 					}
@@ -53,7 +55,6 @@ class ProposedCombinationView extends JLabel {
 				this.proposedCombination.getColors().clear();
 			}
 		} while (error != null || characters == "");
-		return this.proposedCombination;
 	}
 
 }

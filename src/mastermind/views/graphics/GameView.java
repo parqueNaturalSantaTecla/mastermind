@@ -4,8 +4,8 @@ import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import mastermind.models.Combination;
 import mastermind.models.Game;
+import mastermind.models.ProposedCombination;
 import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
@@ -14,6 +14,8 @@ import mastermind.views.graphics.SecretCombinationView;
 class GameView extends JFrame {
 
 	private static final String GAME_OVER = "Game Over";
+	
+	private Game game;
 
 	private SecretCombinationView secretCombinationView;
 
@@ -21,8 +23,9 @@ class GameView extends JFrame {
 
 	private ProposalCombinationView proposalCombinationView;
 
-	GameView() {
+	GameView(Game game) {
 		super(MessageView.TITLE.getMessage());
+		this.game = game;
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -30,9 +33,9 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start(Game game) {
+	void start() {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(Combination.getWidth());
+		this.secretCombinationView = new SecretCombinationView();
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
 		this.proposedCombinationsView = new ProposedCombinationsView();
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
@@ -41,18 +44,20 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	boolean propose(Game game) {
-		game.addProposedCombination(new ProposedCombinationView().read(this.proposalCombinationView.getCharacters()));
+	boolean propose() {
+		ProposedCombination proposedCombination = new ProposedCombination();
+		new ProposedCombinationView(proposedCombination).read(this.proposalCombinationView.getCharacters());
+		this.game.addProposedCombination(proposedCombination);
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(game);
+		this.proposedCombinationsView.add(this.game);
 		this.setVisible(true);
-		return this.drawGameOver(game);
+		return this.drawGameOver();
 	}
 
-	private boolean drawGameOver(Game game) {
-		if (game.isWinner() || game.isLooser()) {
+	private boolean drawGameOver() {
+		if (this.game.isWinner() || this.game.isLooser()) {
 			String message = "";
-			if (game.isWinner()) {
+			if (this.game.isWinner()) {
 				message = MessageView.WINNER.getMessage();
 			} else {
 				message = MessageView.LOOSER.getMessage();
