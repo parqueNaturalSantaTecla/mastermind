@@ -11,11 +11,11 @@ public class Mastermind {
 
 	private Mastermind() {
 		this.game = new Game();
-		this.view = new View(this.game);
+		this.view = new View();
 	}
 
 	private void play() {
-		this.view.interact();
+		this.view.interact(this.game);
 	}
 	
 	public static void main(String[] args) {

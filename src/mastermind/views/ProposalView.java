@@ -6,28 +6,22 @@ import mastermind.utils.WithConsoleView;
 
 class ProposalView extends WithConsoleView {
 
-	private Game game;
-
-	ProposalView(Game game) {
-		this.game = game;
-	}
-
-	boolean interact() {
+	boolean interact(Game game) {
 		ProposedCombination proposedCombination = new ProposedCombination();
-		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
-		proposedCombinationView.read();
-		this.game.addProposedCombination(proposedCombination);
+		ProposedCombinationView proposedCombinationView = new ProposedCombinationView();
+		proposedCombinationView.read(proposedCombination);
+		game.addProposedCombination(proposedCombination);
 		this.console.writeln();
-		MessageView.TURN.writeln(this.game.getAttempts());
+		MessageView.TURN.writeln(game.getAttempts());
 		new SecretCombinationView().writeln();
-		for (int i = 0; i < this.game.getAttempts(); i++) {
-			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
-			new ResultView(this.game.getResult(i)).writeln();
+		for (int i = 0; i < game.getAttempts(); i++) {
+			new ProposedCombinationView().write(game.getProposedCombination(i));
+			new ResultView().writeln(game.getResult(i));
 		}
-		if (this.game.isWinner()) {
+		if (game.isWinner()) {
 			MessageView.WINNER.writeln();
 			return true;
-		} else if (this.game.isLooser()) {
+		} else if (game.isLooser()) {
 			MessageView.LOOSER.writeln();
 			return true;
 		}

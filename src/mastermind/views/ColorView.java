@@ -7,12 +7,6 @@ class ColorView extends WithConsoleView{
 	
 	private static final char[] INITIALS = {'r', 'b', 'y', 'g', 'o', 'p'};
 
-	private Color color;
-
-	ColorView(Color color) {
-		this.color = color;
-	}
-
 	static String allInitials() {
 		String result = "";
 		for(char character: ColorView.INITIALS) {
@@ -30,8 +24,8 @@ class ColorView extends WithConsoleView{
 		return null;
 	}
 	
-	void write() {
-		this.console.write(ColorView.INITIALS[this.color.ordinal()]);
+	void write(Color color) {
+		this.console.write(ColorView.INITIALS[color.ordinal()]);
 	}
 
 }

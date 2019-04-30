@@ -4,30 +4,27 @@ import mastermind.models.Game;
 
 public class View {
 
-	protected Game game;
-
 	private StartView startView;
 
 	private ProposalView proposalView;
 
 	private ResumeView resumeView;
 
-	public View(Game game) {
-		this.game = game;
+	public View() {
 		this.startView = new StartView();
-		this.proposalView = new ProposalView(this.game);
-		this.resumeView = new ResumeView(this.game);
+		this.proposalView = new ProposalView();
+		this.resumeView = new ResumeView();
 	}
 
-	public void interact() {
+	public void interact(Game game) {
 		boolean resume;
 		do {
 			this.startView.interact();
 			boolean finished;
 			do {
-				finished = this.proposalView.interact();
+				finished = this.proposalView.interact(game);
 			} while (!finished);
-			resume = this.resumeView.interact();
+			resume = this.resumeView.interact(game);
 		} while (resume);
 	}
 
