@@ -1,17 +1,27 @@
 package mastermind.views.graphics;
 
 import javax.swing.JLabel;
-import mastermind.views.Color;
+import javax.swing.JOptionPane;
+
+import mastermind.models.Color;
+import mastermind.models.Combination;
+import mastermind.models.Error;
+import mastermind.models.ProposedCombination;
+import mastermind.views.ColorView;
+import mastermind.views.ErrorView;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
 
-	static final int ERROR_CODE = -1;
+	private ProposedCombination proposedCombination;
 
-	ProposedCombinationView(int[] codes) {
+	private Error error;
+
+	ProposedCombinationView(ProposedCombination proposedCombination) {
+		this.proposedCombination = proposedCombination;
 		String initials = "";
-		for (int code : codes) {
-			initials += Color.getInstance(code).getInitial();
+		for (Color color : proposedCombination.getColors()) {
+			initials += ColorView.INITIALS[color.ordinal()];
 		}
 		this.setText(initials);
 	}
@@ -19,17 +29,33 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView() {
 	}
 
-	int[] read(String characters) {
-		int[] codes = new int[characters.length()];
-		for (int i = 0; i < characters.length(); i++) {
-			Color colorView = Color.getInstance(characters.charAt(i));
-			if (colorView == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
-			} else {
-				codes[i] = colorView.ordinal();
+	void read(String characters) {
+		this.error = null;
+		if (characters.length() != Combination.getWidth()) {
+			this.error = Error.WRONG_LENGTH;
+		} else {
+			for (int i = 0; i < characters.length(); i++) {
+				Color color = ColorView.getInstance(characters.charAt(i));
+				if (color == null) {
+					this.error = Error.WRONG_CHARACTERS;
+				} else {
+					if (this.proposedCombination.getColors().contains(color)) {
+						this.error = Error.DUPLICATED;
+					} else {
+						this.proposedCombination.getColors().add(color);
+					}
+				}
 			}
 		}
-		return codes;
+		if (this.error != null) {
+			JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[this.error.ordinal()], "ERROR",
+					JOptionPane.WARNING_MESSAGE);
+			this.proposedCombination.getColors().clear();
+		}
+	}
+
+	public boolean isValid() {
+		return this.error == null;
 	}
 
 }

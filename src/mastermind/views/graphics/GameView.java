@@ -3,10 +3,10 @@ package mastermind.views.graphics;
 import java.awt.GridBagLayout;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
@@ -14,6 +14,8 @@ import mastermind.views.graphics.SecretCombinationView;
 class GameView extends JFrame {
 
 	private static final String GAME_OVER = "Game Over";
+	
+	private Game game;
 
 	private SecretCombinationView secretCombinationView;
 
@@ -21,8 +23,9 @@ class GameView extends JFrame {
 
 	private ProposalCombinationView proposalCombinationView;
 
-	GameView() {
-		super(Message.TITLE.getMessage());
+	GameView(Game game) {
+		super(MessageView.TITLE.getMessage());
+		this.game = game;
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -30,42 +33,43 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start(Game game) {
+	void start() {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(game.getWidth());
+		this.secretCombinationView = new SecretCombinationView();
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
-		this.proposedCombinationsView = new ProposedCombinationsView();
+		this.proposedCombinationsView = new ProposedCombinationsView(this.game);
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
 		this.proposalCombinationView = new ProposalCombinationView(this.getRootPane());
 		this.getContentPane().add(this.proposalCombinationView, new Constraints(0, 11, 3, 1));
 		this.setVisible(true);
 	}
 
-	boolean propose(Game game) {
-		int error;
+	boolean propose() {
+		ProposedCombination proposedCombination = new ProposedCombination();
+		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
 		do {
-			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = this.proposeCombination(codes, game);
-			if (error != Game.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR",
-						JOptionPane.WARNING_MESSAGE);
-				error = Game.NO_ERROR;
-				this.proposalCombinationView.resetCharacters();
+			System.out.println("");
+			if (this.proposalCombinationView.getCharacters() != null) {
+				proposedCombinationView.read(this.proposalCombinationView.getCharacters());		
+				if (!proposedCombinationView.isValid()) {
+					this.proposalCombinationView.resetCharacters();
+				}		
 			}
-		} while (error != Game.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
+		} while (this.proposalCombinationView.getCharacters() == null);
+		this.game.addProposedCombination(proposedCombination);
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(game);
+		this.proposedCombinationsView.add();
 		this.setVisible(true);
-		return this.drawGameOver(game);
+		return this.drawGameOver();
 	}
 
-	private boolean drawGameOver(Game game) {
-		if (game.isWinner() || game.isLooser()) {
+	private boolean drawGameOver() {
+		if (this.game.isWinner() || this.game.isLooser()) {
 			String message = "";
-			if (game.isWinner()) {
-				message = Message.WINNER.getMessage();
+			if (this.game.isWinner()) {
+				message = MessageView.WINNER.getMessage();
 			} else {
-				message = Message.LOOSER.getMessage();
+				message = MessageView.LOOSER.getMessage();
 			}
 			JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
 			return true;
@@ -80,16 +84,6 @@ class GameView extends JFrame {
 		if (this.proposedCombinationsView != null) {
 			this.proposedCombinationsView.removeAll();
 		}
-	}
-
-	private int proposeCombination(int[] codes, Game game) {
-		mastermind.models.Error error = ProposedCombination.isValid(codes);
-		if (error != null) {
-			return error.ordinal();
-		}
-		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		game.proposeCombination(proposedCombination);
-		return Game.NO_ERROR;
 	}
 
 }
