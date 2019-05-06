@@ -30,19 +30,19 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
 	ProposalCombinationView(JRootPane rootPane) {
 		this.setLayout(new GridBagLayout());
 		this.label = new JLabel(MessageView.PROPOSED_COMBINATION.getMessage());
-		this.add(label, new Constraints(0, 0, 1, 1));
-		this.textField = new JTextField(10);
-		this.add(textField, new Constraints(0, 1, 1, 1));
 		this.button = new JButton(ProposalCombinationView.ACCEPT);
+		this.textField = new JTextField(10);
+		this.resetCharacters();
+		this.add(label, new Constraints(0, 0, 1, 1));
+		this.add(textField, new Constraints(0, 1, 1, 1));
+		this.add(button, new Constraints(0, 2, 1, 1));
 		rootPane.setDefaultButton(this.button);
 		this.button.addActionListener(this);
 		this.button.addKeyListener(this);
-		this.add(button, new Constraints(0, 2, 1, 1));	
-		this.resetCharacters();
 	}
 
 	void resetCharacters() {
-		this.characters = "";
+		this.characters = null;
 	}
 
 	String getCharacters() {

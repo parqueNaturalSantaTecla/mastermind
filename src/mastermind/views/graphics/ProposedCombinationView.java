@@ -15,6 +15,8 @@ class ProposedCombinationView extends JLabel {
 
 	private ProposedCombination proposedCombination;
 
+	private Error error;
+
 	ProposedCombinationView(ProposedCombination proposedCombination) {
 		this.proposedCombination = proposedCombination;
 		String initials = "";
@@ -28,33 +30,32 @@ class ProposedCombinationView extends JLabel {
 	}
 
 	void read(String characters) {
-		Error error;
-		do {
-			error = null;
-			if (characters.length() > Combination.getWidth()) {
-				error = Error.WRONG_LENGTH;
-			} else {
-				for (int i = 0; i < characters.length(); i++) {
-					System.out.println("Entra al for");
-					Color color = ColorView.getInstance(characters.charAt(i));
-					if (color == null) {
-						error = Error.WRONG_CHARACTERS;
+		this.error = null;
+		if (characters.length() != Combination.getWidth()) {
+			this.error = Error.WRONG_LENGTH;
+		} else {
+			for (int i = 0; i < characters.length(); i++) {
+				Color color = ColorView.getInstance(characters.charAt(i));
+				if (color == null) {
+					this.error = Error.WRONG_CHARACTERS;
+				} else {
+					if (this.proposedCombination.getColors().contains(color)) {
+						this.error = Error.DUPLICATED;
 					} else {
-						if (this.proposedCombination.getColors().contains(color)) {
-							error = Error.DUPLICATED;
-						} else {
-							System.out.println("Añade color");
-							this.proposedCombination.getColors().add(color);
-						}
+						this.proposedCombination.getColors().add(color);
 					}
 				}
 			}
-			if (error != null) {
-				JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[error.ordinal()], "ERROR",
-						JOptionPane.WARNING_MESSAGE);
-				this.proposedCombination.getColors().clear();
-			}
-		} while (error != null || characters == "");
+		}
+		if (this.error != null) {
+			JOptionPane.showMessageDialog(null, ErrorView.MESSAGES[this.error.ordinal()], "ERROR",
+					JOptionPane.WARNING_MESSAGE);
+			this.proposedCombination.getColors().clear();
+		}
+	}
+
+	public boolean isValid() {
+		return this.error == null;
 	}
 
 }

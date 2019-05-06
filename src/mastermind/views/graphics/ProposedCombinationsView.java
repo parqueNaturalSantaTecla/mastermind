@@ -6,15 +6,18 @@ import mastermind.models.Game;
 
 @SuppressWarnings("serial")
 class ProposedCombinationsView extends JPanel {
+	
+	private Game game;
 
-	ProposedCombinationsView() {
+	ProposedCombinationsView(Game game) {
+		this.game = game;
 		this.setLayout(new GridBagLayout());
 	}
 
-	void add(Game game) {
-		int attempts = game.getAttempts();
+	void add() {
+		int attempts = this.game.getAttempts();
 		this.add(new AttemptsView(attempts), new Constraints(0, attempts, 1, 1));
-		this.add(new ProposedCombinationView(game.getProposedCombination(attempts)), new Constraints(1, attempts, 1, 1));
-		this.add(new ResultView(game.getResult(attempts)), new Constraints(2, attempts, 1, 1));
+		this.add(new ProposedCombinationView(this.game.getProposedCombination(attempts-1)), new Constraints(1, attempts, 1, 1));
+		this.add(new ResultView(this.game.getResult(attempts-1)), new Constraints(2, attempts, 1, 1));
 	}
 }

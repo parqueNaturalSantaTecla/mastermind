@@ -37,7 +37,7 @@ class GameView extends JFrame {
 		this.clear();
 		this.secretCombinationView = new SecretCombinationView();
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
-		this.proposedCombinationsView = new ProposedCombinationsView();
+		this.proposedCombinationsView = new ProposedCombinationsView(this.game);
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
 		this.proposalCombinationView = new ProposalCombinationView(this.getRootPane());
 		this.getContentPane().add(this.proposalCombinationView, new Constraints(0, 11, 3, 1));
@@ -46,10 +46,19 @@ class GameView extends JFrame {
 
 	boolean propose() {
 		ProposedCombination proposedCombination = new ProposedCombination();
-		new ProposedCombinationView(proposedCombination).read(this.proposalCombinationView.getCharacters());
+		ProposedCombinationView proposedCombinationView = new ProposedCombinationView(proposedCombination);
+		do {
+			System.out.println("");
+			if (this.proposalCombinationView.getCharacters() != null) {
+				proposedCombinationView.read(this.proposalCombinationView.getCharacters());		
+				if (!proposedCombinationView.isValid()) {
+					this.proposalCombinationView.resetCharacters();
+				}		
+			}
+		} while (this.proposalCombinationView.getCharacters() == null);
 		this.game.addProposedCombination(proposedCombination);
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(this.game);
+		this.proposedCombinationsView.add();
 		this.setVisible(true);
 		return this.drawGameOver();
 	}
