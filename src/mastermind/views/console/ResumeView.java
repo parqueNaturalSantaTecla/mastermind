@@ -13,11 +13,11 @@ class ResumeView {
 	}
 
 	boolean interact() {
-		boolean resume = new YesNoDialog().read(MessageView.RESUME.getMessage());
-		if (resume) {
+		boolean answer = new YesNoDialog().read(MessageView.RESUME.getMessage());
+		if (answer) {
 			this.game.clear();
 		}
-		return resume;
+		return answer;
 	}
 
 }
