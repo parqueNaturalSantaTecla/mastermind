@@ -35,7 +35,7 @@ public class Mastermind extends WithConsoleModel {
 			this.results.add(this.secretCombination.getResult(proposedCombination));
 			this.attempts++;
 			this.console.writeln();
-			Message.TURN.writeln(this.attempts);
+			Message.ATTEMPTS.writeln(this.attempts);
 			this.secretCombination.writeln();
 			for (int i = 0; i < this.attempts; i++) {
 				this.proposedCombinations.get(i).write();
@@ -50,8 +50,8 @@ public class Mastermind extends WithConsoleModel {
 			}
 		} while (!finished);
 		Message.RESUME.write();
-		boolean resume = new YesNoDialog().read();
-		if (resume) {
+		boolean answer = new YesNoDialog().read();
+		if (answer) {
 			new Mastermind().play();
 		}
 	}

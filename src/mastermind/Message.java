@@ -3,7 +3,7 @@ package mastermind;
 import mastermind.utils.Console;
 
 enum Message {
-	TURN("#attempts attempt(s): "), 
+	ATTEMPTS("#attempts attempt(s): "), 
 	SECRET("*"), 
 	RESUME("Do you want to continue"), 
 	RESULT(" --> #blacks blacks and #whites whites"), 
