@@ -20,15 +20,15 @@ public class View {
 	}
 
 	public void interact() {
-		boolean answer;
+		boolean newGame;
 		do {
 			this.startView.interact();
 			boolean finished;
 			do {
 				finished = this.proposalView.interact();
 			} while (!finished);
-			answer = this.resumeView.interact();
-		} while (answer);
+			newGame = this.resumeView.interact();
+		} while (newGame);
 	}
 
 }
