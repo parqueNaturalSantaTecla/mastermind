@@ -18,7 +18,7 @@ class ProposalView extends WithConsoleView {
 		proposedCombinationView.read();
 		this.game.addProposedCombination(proposedCombination);
 		this.console.writeln();
-		MessageView.TURN.writeln(this.game.getAttempts());
+		MessageView.ATTEMPTS.writeln(this.game.getAttempts());
 		new SecretCombinationView().writeln();
 		for (int i = 0; i < this.game.getAttempts(); i++) {
 			new ProposedCombinationView(this.game.getProposedCombination(i)).write();

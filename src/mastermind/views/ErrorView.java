@@ -5,8 +5,10 @@ import mastermind.models.Error;
 
 class ErrorView extends WithConsoleView {
 
-	private static final String[] MESSAGES = { "Repeated colors",
-			"Wrong colors, they must be: " + ColorView.allInitials(), "Wrong proposed combination length" };
+	private static final String[] MESSAGES = { 
+			"Repeated colors",
+			"Wrong colors, they must be: " + ColorView.allInitials(), 
+			"Wrong proposed combination length" };
 
 	private Error error;
 
