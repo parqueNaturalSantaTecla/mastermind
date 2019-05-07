@@ -1,7 +1,7 @@
 package mastermind.views.graphics;
 
 import javax.swing.JLabel;
-import mastermind.views.Color;
+import mastermind.views.ColorView;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
@@ -11,7 +11,7 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView(int[] codes) {
 		String initials = "";
 		for (int code : codes) {
-			initials += Color.getInstance(code).getInitial();
+			initials += ColorView.getInstance(code).getInitial();
 		}
 		this.setText(initials);
 	}
@@ -22,7 +22,7 @@ class ProposedCombinationView extends JLabel {
 	int[] read(String characters) {
 		int[] codes = new int[characters.length()];
 		for (int i=0; i<characters.length(); i++) {
-			Color colorView = Color.getInstance(characters.charAt(i));
+			ColorView colorView = ColorView.getInstance(characters.charAt(i));
 			if (colorView == null) {
 				codes[i] = ProposedCombinationView.ERROR_CODE;
 			} else {

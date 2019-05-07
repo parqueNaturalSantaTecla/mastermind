@@ -9,7 +9,8 @@ import mastermind.views.console.ConsoleView;
 public class ConsoleMastermind extends Mastermind {
 
 	@Override
-	protected View createView(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+	protected View createView(StartController startController, ProposalController proposalController,
+			ResumeController resumeController) {
 		return new ConsoleView(startController, proposalController, resumeController);
 	}
 

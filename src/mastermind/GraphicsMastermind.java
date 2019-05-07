@@ -9,7 +9,8 @@ import mastermind.views.graphics.GraphicsView;
 public class GraphicsMastermind extends Mastermind {
 
 	@Override
-	protected View createView(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+	protected View createView(StartController startController, ProposalController proposalController,
+			ResumeController resumeController) {
 		return new GraphicsView(startController, proposalController, resumeController);
 	}
 

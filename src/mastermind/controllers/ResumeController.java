@@ -8,8 +8,8 @@ public class ResumeController extends Controller {
 		super(game);
 	}
 
-	public void resume(boolean resume) {
-		if (resume) {
+	public void resume(boolean answer) {
+		if (answer) {
 			this.game.clear();
 		}
 	}
