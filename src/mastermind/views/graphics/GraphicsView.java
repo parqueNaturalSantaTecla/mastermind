@@ -25,7 +25,7 @@ public class GraphicsView extends View {
 	@Override
 	protected boolean resume() {
 		ResumeDialog resumeDialog = new ResumeDialog();
-		boolean resume = resumeDialog.isResumed();
+		boolean resume = resumeDialog.isNewGame();
 		if (resume) {
 			this.game.clear();
 			this.gameView = new GameView(this.game);
