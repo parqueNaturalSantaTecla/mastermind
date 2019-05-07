@@ -17,15 +17,15 @@ public class View {
 	}
 
 	public void interact(Game game) {
-		boolean resume;
+		boolean answer;
 		do {
 			this.startView.interact();
 			boolean finished;
 			do {
 				finished = this.proposalView.interact(game);
 			} while (!finished);
-			resume = this.resumeView.interact(game);
-		} while (resume);
+			answer = this.resumeView.interact(game);
+		} while (answer);
 	}
 
 }

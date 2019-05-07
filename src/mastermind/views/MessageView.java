@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.utils.Console;
 
 enum MessageView {
-	TURN("#attempts attempt(s): "),
+	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
 	RESULT(" --> #blacks blacks and #whites whites"),

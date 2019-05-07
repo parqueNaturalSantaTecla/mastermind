@@ -7,11 +7,11 @@ class ResumeView {
 
 	boolean interact(Game game) {
 		MessageView.RESUME.write();
-		boolean resume = new YesNoDialog().read();
-		if (resume) {
+		boolean answer = new YesNoDialog().read();
+		if (answer) {
 			game.clear();
 		}
-		return resume;
+		return answer;
 	}
 
 }
