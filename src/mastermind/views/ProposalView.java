@@ -7,9 +7,12 @@ import mastermind.utils.WithConsoleView;
 class ProposalView extends WithConsoleView {
 
 	private Game game;
+	
+	private SecretCombinationView secretCombinationView;
 
 	ProposalView(Game game) {
 		this.game = game;
+		this.secretCombinationView = new SecretCombinationView();
 	}
 
 	boolean interact() {
@@ -19,7 +22,7 @@ class ProposalView extends WithConsoleView {
 		this.game.addProposedCombination(proposedCombination);
 		this.console.writeln();
 		MessageView.ATTEMPTS.writeln(this.game.getAttempts());
-		new SecretCombinationView().writeln();
+		this.secretCombinationView.writeln();
 		for (int i = 0; i < this.game.getAttempts(); i++) {
 			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
 			new ResultView(this.game.getResult(i)).writeln();
