@@ -13,8 +13,8 @@ class ResultView extends JLabel {
 	ResultView(ProposalController proposalController) {
 		this.proposalController = proposalController;
 		this.setText(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + this.proposalController.getBlacks(this.proposalController.getAttempts()))
-				.replaceFirst("#whites", "" + this.proposalController.getWhites(this.proposalController.getAttempts())));
+				.replaceFirst("#blacks", "" + this.proposalController.getBlacks(this.proposalController.getAttempts()-1))
+				.replaceFirst("#whites", "" + this.proposalController.getWhites(this.proposalController.getAttempts()-1)));
 	}
 	
 }

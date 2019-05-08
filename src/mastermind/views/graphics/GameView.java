@@ -1,12 +1,15 @@
 package mastermind.views.graphics;
 
 import java.awt.GridBagLayout;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
-import mastermind.controllers.Controller;
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.StartController;
+import mastermind.types.Color;
+import mastermind.types.Error;
 import mastermind.views.ErrorView;
 import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
@@ -49,21 +52,21 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	boolean propose() {
-		int error;
+	boolean propose() {		
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = this.proposalController.addProposedCombination(codes);
-			if (error != Controller.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, ErrorView.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
-				error = Controller.NO_ERROR;
+			List<Color> colors = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
+			error = this.proposalController.addProposedCombination(colors);
+			if (error != null && this.proposalCombinationView.getCharacters() != "") {
+				JOptionPane.showMessageDialog(null, new ErrorView(error).getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
+				error = null;
 				this.proposalCombinationView.resetCharacters();
 			}
-		} while (error != Controller.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
+		} while (error != null || this.proposalCombinationView.getCharacters() == "");
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(this.proposalController);
+		this.proposedCombinationsView.add();
 		this.setVisible(true);
-		return this.drawGameOver(this.proposalController);
+		return this.drawGameOver();
 	}
 
 	private boolean drawGameOver() {

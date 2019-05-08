@@ -15,4 +15,8 @@ public class ErrorView {
 		this.error = error;
 	}
 	
+	public String getMessage() {
+		return ErrorView.MESSAGES[this.error.ordinal()];
+	}
+	
 }

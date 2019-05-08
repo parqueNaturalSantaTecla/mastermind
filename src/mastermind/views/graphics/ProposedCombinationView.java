@@ -1,5 +1,6 @@
 package mastermind.views.graphics;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ class ProposedCombinationView extends JLabel {
 	ProposedCombinationView(ProposalController proposalController) {
 		this.proposalController = proposalController;
 		String initials = "";
-		for (Color color : this.proposalController.getColors(this.proposalController.getAttempts())) {
+		for (Color color : this.proposalController.getColors(this.proposalController.getAttempts()-1)) {
 			initials += new ColorView(color).getInitial();
 		}
 		this.setText(initials);
@@ -28,16 +29,11 @@ class ProposedCombinationView extends JLabel {
 	}
 
 	List<Color> read(String characters) {
-		int[] codes = new int[characters.length()];
+		List<Color> colors = new ArrayList<Color>();
 		for (int i=0; i<characters.length(); i++) {
-			ColorView colorView = ColorView.getInstance(characters.charAt(i));
-			if (colorView == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
-			} else {
-				codes[i] = colorView.ordinal();
-			}
+			colors.add(ColorView.getInstance(characters.charAt(i)));
 		}
-		return codes;
+		return colors;
 	}
 
 }

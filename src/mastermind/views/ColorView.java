@@ -22,7 +22,6 @@ public class ColorView {
 	
 	public char getInitial() {
 		return ColorView.INITIALS[this.color.ordinal()];
-		
 	}
 
 	public static Color getInstance(char character) {
