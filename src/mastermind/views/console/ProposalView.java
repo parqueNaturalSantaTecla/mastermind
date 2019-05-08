@@ -9,8 +9,14 @@ class ProposalView extends WithConsoleView {
 	
 	private Game game;
 	
+	private SecretCombinationView secretCombinationView;
+	
+	private AttemptsView attemptsView;
+	
 	ProposalView (Game game){
 		this.game = game;
+		this.secretCombinationView = new SecretCombinationView();
+		this.attemptsView = new AttemptsView(this.game);
 	}
 
 	boolean interact() {
@@ -19,8 +25,8 @@ class ProposalView extends WithConsoleView {
 		proposedCombinationView.read();
 		this.game.addProposedCombination(proposedCombination);
 		this.console.writeln();
-		this.console.writeln(MessageView.ATTEMPTS.getMessage().replace("#attempts", ""+this.game.getAttempts()));
-		new SecretCombinationView().writeln();
+		this.attemptsView.writeln();
+		this.secretCombinationView.writeln();
 		for (int i = 0; i < this.game.getAttempts(); i++) {
 			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
 			new ResultView(this.game.getResult(i)).writeln();
