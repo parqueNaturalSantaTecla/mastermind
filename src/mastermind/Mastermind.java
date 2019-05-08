@@ -50,8 +50,8 @@ public class Mastermind extends WithConsoleModel {
 			}
 		} while (!finished);
 		Message.RESUME.write();
-		boolean answer = new YesNoDialog().read();
-		if (answer) {
+		boolean newGame = new YesNoDialog().read();
+		if (newGame) {
 			new Mastermind().play();
 		}
 	}
