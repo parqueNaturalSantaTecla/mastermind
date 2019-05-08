@@ -6,17 +6,18 @@ import mastermind.controllers.ProposalController;
 
 @SuppressWarnings("serial")
 class ProposedCombinationsView extends JPanel {
+	
+	private ProposalController proposalController;
 
-	ProposedCombinationsView() {
+	ProposedCombinationsView(ProposalController proposalController) {
+		this.proposalController = proposalController;
 		this.setLayout(new GridBagLayout());
 	}
 
-	void add(ProposalController proposalController) {
-		int turn = proposalController.getTurn();
-		int[][][] allCodes = proposalController.getAllCodes();
-		int[][] codes = allCodes[allCodes.length - 1];
-		this.add(new TurnView(turn), new Constraints(0, turn, 1, 1));
-		this.add(new ProposedCombinationView(codes[0]), new Constraints(1, turn, 1, 1));
-		this.add(new ResultView(codes[1]), new Constraints(2, turn, 1, 1));
+	void add() {
+		int attempts = this.proposalController.getAttempts();
+		this.add(new AttemptsView(attempts), new Constraints(0, attempts, 1, 1));
+		this.add(new ProposedCombinationView(this.proposalController), new Constraints(1, attempts, 1, 1));
+		this.add(new ResultView(this.proposalController), new Constraints(2, attempts, 1, 1));
 	}
 }

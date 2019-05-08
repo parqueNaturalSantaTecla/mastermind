@@ -22,9 +22,15 @@ class GameView extends JFrame {
 	private ProposedCombinationsView proposedCombinationsView;
 
 	private ProposalCombinationView proposalCombinationView;
+	
+	private StartController startController;
+	
+	private ProposalController proposalController;
 
-	GameView() {
+	GameView(StartController startController, ProposalController proposalController) {
 		super(MessageView.TITLE.getMessage());
+		this.startController = startController;
+		this.proposalController = proposalController;
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -32,22 +38,22 @@ class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start(StartController startController) {
+	void start() {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(StartController.getWidth());
+		this.secretCombinationView = new SecretCombinationView(this.startController);
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
-		this.proposedCombinationsView = new ProposedCombinationsView();
+		this.proposedCombinationsView = new ProposedCombinationsView(this.proposalController);
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
 		this.proposalCombinationView = new ProposalCombinationView(this.getRootPane());
 		this.getContentPane().add(this.proposalCombinationView, new Constraints(0, 11, 3, 1));
 		this.setVisible(true);
 	}
 
-	boolean propose(ProposalController proposalController) {
+	boolean propose() {
 		int error;
 		do {
 			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = proposalController.addProposedCombination(codes);
+			error = this.proposalController.addProposedCombination(codes);
 			if (error != Controller.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
 				JOptionPane.showMessageDialog(null, ErrorView.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
 				error = Controller.NO_ERROR;
@@ -55,15 +61,15 @@ class GameView extends JFrame {
 			}
 		} while (error != Controller.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(proposalController);
+		this.proposedCombinationsView.add(this.proposalController);
 		this.setVisible(true);
-		return this.drawGameOver(proposalController);
+		return this.drawGameOver(this.proposalController);
 	}
 
-	private boolean drawGameOver(ProposalController proposalController) {
-		if (proposalController.isWinner() || proposalController.isLooser()) {
+	private boolean drawGameOver() {
+		if (this.proposalController.isWinner() || this.proposalController.isLooser()) {
 			String message = "";
-			if (proposalController.isWinner()) {
+			if (this.proposalController.isWinner()) {
 				message = MessageView.WINNER.getMessage();
 			} else {
 				message = MessageView.LOOSER.getMessage();

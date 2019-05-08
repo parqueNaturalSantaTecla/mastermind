@@ -8,7 +8,7 @@ public class ColorView {
 
 	protected Color color;
 
-	protected ColorView(Color color) {
+	public ColorView(Color color) {
 		this.color = color;
 	}
 
@@ -18,6 +18,11 @@ public class ColorView {
 			result += character;
 		}
 		return result;
+	}
+	
+	public char getInitial() {
+		return ColorView.INITIALS[this.color.ordinal()];
+		
 	}
 
 	public static Color getInstance(char character) {
