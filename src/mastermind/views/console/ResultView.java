@@ -1,13 +1,21 @@
 package mastermind.views.console;
 
+import mastermind.controllers.Logic;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class ResultView extends WithConsoleView {
 
-	void writeln(int[] results) {
-		this.console.writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + results[0])
-										.replaceFirst("#whites", "" + results[1]));
+	private Logic logic;
+
+	ResultView(Logic logic) {
+		this.logic = logic;
+	}
+
+	void writeln(int i) {
+		this.console.writeln(MessageView.RESULT.getMessage()
+				.replaceFirst("#blacks", "" + this.logic.getBlacks(i))
+						.replaceFirst("#whites", "" + this.logic.getWhites(i)));
 	}
 
 }

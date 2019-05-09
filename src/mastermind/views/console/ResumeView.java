@@ -2,14 +2,20 @@ package mastermind.views.console;
 
 import mastermind.controllers.Logic;
 import mastermind.utils.YesNoDialog;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class ResumeView {
+	
+	private Logic logic;
 
-	boolean interact(Logic logic) {
-		boolean resume = new YesNoDialog().read(Message.RESUME.getMessage());
-		logic.resume(resume);
-		return resume;
+	ResumeView(Logic logic) {
+		this.logic = logic;
+	}
+
+	boolean interact() {
+		boolean newGame = new YesNoDialog().read(MessageView.RESUME.getMessage());
+		this.logic.resume(newGame);
+		return newGame;
 	}
 
 }

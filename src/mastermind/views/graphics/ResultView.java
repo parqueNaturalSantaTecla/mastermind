@@ -2,14 +2,19 @@ package mastermind.views.graphics;
 
 import javax.swing.JLabel;
 
-import mastermind.views.Message;
+import mastermind.controllers.Logic;
+import mastermind.views.MessageView;
 
 @SuppressWarnings("serial")
 class ResultView extends JLabel {
+	
+	private Logic logic;
 
-	ResultView(int[] results) {
-		this.setText(Message.RESULT.getMessage().replaceFirst("#blacks", "" + results[0]).replaceFirst("#whites",
-				"" + results[1]));
+	ResultView(Logic logic) {
+		this.logic = logic;
+		this.setText(MessageView.RESULT.getMessage()
+				.replaceFirst("#blacks", "" + this.logic.getBlacks(this.logic.getAttempts()-1))
+				.replaceFirst("#whites", "" + this.logic.getWhites(this.logic.getAttempts()-1)));
 	}
 	
 }

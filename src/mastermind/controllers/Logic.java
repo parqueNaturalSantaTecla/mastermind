@@ -1,10 +1,12 @@
 package mastermind.controllers;
 
+import java.util.List;
+
 import mastermind.models.Game;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class Logic {
-
-	public static final int NO_ERROR = -1;
 
 	private Game game;
 	
@@ -21,12 +23,12 @@ public class Logic {
 		this.resumeController = new ResumeController(this.game);
 	}
 
-	public void resume(boolean resume) {
-		this.resumeController.resume(resume);
+	public void resume(boolean newGame) {
+		this.resumeController.resume(newGame);
 	}
 
-	public int proposeCombination(int[] codes) {
-		return this.proposalController.proposeCombination(codes);
+	public Error addProposedCombination(List<Color> colors) {
+		return this.proposalController.addProposedCombination(colors);
 	}
 
 	public boolean isWinner() {
@@ -37,12 +39,20 @@ public class Logic {
 		return this.proposalController.isLooser();
 	}
 
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
+	public int getAttempts() {
+		return this.proposalController.getAttempts();
 	}
 
-	public int getTurn() {
-		return this.proposalController.getTurn();
+	public List<Color> getColors(int i) {
+		return this.proposalController.getColors(i);
+	}
+
+	public int getBlacks(int i) {
+		return this.proposalController.getBlacks(i);
+	}
+
+	public int getWhites(int i) {
+		return this.proposalController.getWhites(i);
 	}
 
 	public int getWidth() {

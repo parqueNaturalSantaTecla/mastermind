@@ -1,34 +1,53 @@
 package mastermind.views.console;
 
+import java.util.List;
+
 import mastermind.controllers.Logic;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.views.console.ErrorView;
+import mastermind.views.MessageView;
+import mastermind.types.Error;
+import mastermind.types.Color;
 
 class ProposalView extends WithConsoleView {
 
-	boolean interact(Logic logic) {
-		int error;
+	private Logic logic;
+
+	private SecretCombinationView secretCombinationView;
+
+	private ProposedCombinationView proposedCombinationView;
+
+	private ResultView resultView;
+
+	ProposalView(Logic logic) {
+		this.logic = logic;
+		this.secretCombinationView = new SecretCombinationView(this.logic);
+		this.proposedCombinationView = new ProposedCombinationView(this.logic);
+		this.resultView = new ResultView(this.logic);
+	}
+
+	boolean interact() {
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = logic.proposeCombination(codes);
-			if (error != Logic.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
+			List<Color> colors = this.proposedCombinationView.read();
+			error = this.logic.addProposedCombination(colors);
+			if (error != null) {
+				new ErrorView(error).writeln();
 			}
-		} while (error != Logic.NO_ERROR);
+		} while (error != null);
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + logic.getTurn()));
-		new SecretCombinationView().writeln(logic.getWidth());
-		int[][][] allCodes = logic.getAllCodes();
-		for (int i = 0; i < allCodes.length; i++) {
-			new ProposedCombinationView().write(allCodes[i][0]);
-			new ResultView().writeln(allCodes[i][1]);
+		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts",
+				"" + this.logic.getAttempts()));
+		this.secretCombinationView.writeln();
+		for (int i = 0; i < this.logic.getAttempts(); i++) {
+			this.proposedCombinationView.write(i);
+			this.resultView.writeln(i);
 		}
-		if (logic.isWinner()) {
-			this.console.writeln(Message.WINNER.getMessage());
+		if (this.logic.isWinner()) {
+			this.console.writeln(MessageView.WINNER.getMessage());
 			return true;
-		} else if (logic.isLooser()) {
-			this.console.writeln(Message.LOOSER.getMessage());
+		} else if (this.logic.isLooser()) {
+			this.console.writeln(MessageView.LOOSER.getMessage());
 			return true;
 		}
 		return false;

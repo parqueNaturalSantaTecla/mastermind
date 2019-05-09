@@ -1,16 +1,21 @@
 package mastermind.views.graphics;
 
 import java.awt.GridBagLayout;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 import mastermind.controllers.Logic;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.types.Color;
+import mastermind.types.Error;
+import mastermind.views.ErrorView;
+import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
 @SuppressWarnings("serial")
-public class GameView extends JFrame {
+class GameView extends JFrame {
 	
 	private static final String GAME_OVER = "Game Over";
 
@@ -19,9 +24,12 @@ public class GameView extends JFrame {
 	private ProposedCombinationsView proposedCombinationsView;
 
 	private ProposalCombinationView proposalCombinationView;
+	
+	private Logic logic;
 
-	GameView() {
-		super(Message.TITLE.getMessage());
+	GameView(Logic logic) {
+		super(MessageView.TITLE.getMessage());
+		this.logic = logic;
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -29,41 +37,41 @@ public class GameView extends JFrame {
 		this.setVisible(true);
 	}
 
-	void start(Logic logic) {
+	void start() {
 		this.clear();
-		this.secretCombinationView = new SecretCombinationView(logic.getWidth());
+		this.secretCombinationView = new SecretCombinationView(this.logic);
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
-		this.proposedCombinationsView = new ProposedCombinationsView();
+		this.proposedCombinationsView = new ProposedCombinationsView(this.logic);
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
 		this.proposalCombinationView = new ProposalCombinationView(this.getRootPane());
 		this.getContentPane().add(this.proposalCombinationView, new Constraints(0, 11, 3, 1));
 		this.setVisible(true);
 	}
 
-	boolean propose(Logic logic) {
-		int error;
+	boolean propose() {		
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = logic.proposeCombination(codes);
-			if (error != Logic.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
-				error = Logic.NO_ERROR;
+			List<Color> colors = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
+			error = this.logic.addProposedCombination(colors);
+			if (error != null && this.proposalCombinationView.getCharacters() != "") {
+				JOptionPane.showMessageDialog(null, new ErrorView(error).getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
+				error = null;
 				this.proposalCombinationView.resetCharacters();
 			}
-		} while (error != Logic.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
+		} while (error != null || this.proposalCombinationView.getCharacters() == "");
 		this.proposalCombinationView.resetCharacters();
-		this.proposedCombinationsView.add(logic);
+		this.proposedCombinationsView.add();
 		this.setVisible(true);
-		return this.drawGameOver(logic);
+		return this.drawGameOver();
 	}
 
-	private boolean drawGameOver(Logic logic) {
-		if (logic.isWinner() || logic.isLooser()) {
+	private boolean drawGameOver() {
+		if (this.logic.isWinner() || this.logic.isLooser()) {
 			String message = "";
-			if (logic.isWinner()) {
-				message = Message.WINNER.getMessage();
+			if (this.logic.isWinner()) {
+				message = MessageView.WINNER.getMessage();
 			} else {
-				message = Message.LOOSER.getMessage();
+				message = MessageView.LOOSER.getMessage();
 			}
 			JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
 			return true;

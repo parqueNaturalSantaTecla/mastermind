@@ -8,8 +8,4 @@ public class StartController extends Controller {
 		super(game);
 	}
 
-	int getWidth() {
-		return this.game.getWidth();
-	}
-
 }

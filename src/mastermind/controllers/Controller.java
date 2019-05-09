@@ -10,4 +10,8 @@ public abstract class Controller {
 		this.game = game;
 	}
 
+	int getWidth() {
+		return this.game.getWidth();
+	}
+
 }

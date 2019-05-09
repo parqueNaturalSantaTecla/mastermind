@@ -1,17 +1,20 @@
 package mastermind.views.console;
 
+import mastermind.controllers.Logic;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class SecretCombinationView extends WithConsoleView {
 	
-	SecretCombinationView() {
-		super();
+	private Logic logic;
+	
+	SecretCombinationView (Logic logic){
+		this.logic = logic;
 	}
 	
-	void writeln(int length) {
-		for (int i = 0; i < length; i++) {
-			this.console.write(Message.SECRET.getMessage());
+	void writeln() {
+		for (int i = 0; i < this.logic.getWidth(); i++) {
+			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}
