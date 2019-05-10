@@ -9,8 +9,8 @@ public class ResumeController extends Controller {
 		super(game, state);
 	}
 	
-	public void resume(boolean resume) {
-		if (resume) {
+	public void resume(boolean newGame) {
+		if (newGame) {
 			this.game.clear();
 			this.state.reset();
 		} else {

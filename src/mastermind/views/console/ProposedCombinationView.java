@@ -1,31 +1,35 @@
 package mastermind.views.console;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mastermind.controllers.ProposalController;
+import mastermind.types.Color;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Color;
-import mastermind.views.Message;
+import mastermind.views.console.ColorView;
+import mastermind.views.MessageView;
 
 class ProposedCombinationView extends WithConsoleView {
 	
-	private static final int ERROR_CODE = -1;
+	private ProposalController proposalController;
 	
-	void write(int[] codes) {
-		for (int code : codes) {
-			this.console.write(Color.getInstance(code).getInitial());
+	ProposedCombinationView(ProposalController proposalController) {
+		this.proposalController = proposalController;
+	}
+	
+	void write(int i) {
+		for (Color color : this.proposalController.getColors(i)) {
+			new ColorView(color).write();
 		}
 	}
 
-	int[] read() {
-		String characters = this.console.readString(Message.PROPOSED_COMBINATION.getMessage());
-		int[] codes = new int[characters.length()];
+	List<Color> read() {
+		String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
+		List<Color> colors = new ArrayList<Color>();
 		for (int i=0; i<characters.length(); i++) {
-			Color colorView = Color.getInstance(characters.charAt(i));
-			if (colorView == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
-			} else {
-				codes[i] = colorView.ordinal();
-			}
+			colors.add(ColorView.getInstance(characters.charAt(i)));
 		}
-		return codes;
+		return colors;
 	}
 	
 }

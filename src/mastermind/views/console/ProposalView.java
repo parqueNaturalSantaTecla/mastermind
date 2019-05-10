@@ -1,33 +1,36 @@
 package mastermind.views.console;
 
+import java.util.List;
+
 import mastermind.controllers.ProposalController;
+import mastermind.types.Color;
+import mastermind.types.Error;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.views.console.ErrorView;
+import mastermind.views.MessageView;
 
 class ProposalView extends WithConsoleView {
 
 	void interact(ProposalController proposalController) {
-		int error;
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = proposalController.proposeCombination(codes);
-			if (error != ProposalController.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
+			List<Color> colors = new ProposedCombinationView(proposalController).read();
+			error = proposalController.addProposedCombination(colors);
+			if (error != null) {
+				new ErrorView(error).writeln();
 			}
-		} while (error != ProposalController.NO_ERROR);
+		} while (error != null);
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + proposalController.getTurn()));
-		new SecretCombinationView().writeln(proposalController.getWidth());
-		int[][][] allCodes = proposalController.getAllCodes();
-		for (int i = 0; i < allCodes.length; i++) {
-			new ProposedCombinationView().write(allCodes[i][0]);
-			new ResultView().writeln(allCodes[i][1]);
+		new AttemptsView(proposalController).writeln();
+		new SecretCombinationView(proposalController).writeln();
+		for (int i = 0; i < proposalController.getAttempts(); i++) {
+			new ProposedCombinationView(proposalController).write(i);
+			new ResultView(proposalController).writeln(i);
 		}
 		if (proposalController.isWinner()) {
-			this.console.writeln(Message.WINNER.getMessage());
+			this.console.writeln(MessageView.WINNER.getMessage());
 		} else if (proposalController.isLooser()) {
-			this.console.writeln(Message.LOOSER.getMessage());
+			this.console.writeln(MessageView.LOOSER.getMessage());
 		}
 	}
 

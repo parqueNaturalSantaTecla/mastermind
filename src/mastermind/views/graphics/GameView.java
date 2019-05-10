@@ -6,8 +6,8 @@ import javax.swing.JOptionPane;
 
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.StartController;
-import mastermind.views.Error;
-import mastermind.views.Message;
+import mastermind.views.ErrorView;
+import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
 import mastermind.views.graphics.SecretCombinationView;
 
@@ -23,7 +23,7 @@ class GameView extends JFrame {
 	private ProposalCombinationView proposalCombinationView;
 
 	GameView() {
-		super(Message.TITLE.getMessage());
+		super(MessageView.TITLE.getMessage());
 		this.getContentPane().setLayout(new GridBagLayout());
 		this.setSize(400, 500);
 		this.setLocationRelativeTo(null);
@@ -49,7 +49,7 @@ class GameView extends JFrame {
 			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
 			error = proposalController.proposeCombination(codes);
 			if (error != ProposalController.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, Error.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
+				JOptionPane.showMessageDialog(null, ErrorView.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
 				error = ProposalController.NO_ERROR;
 				this.proposalCombinationView.resetCharacters();
 			}
@@ -64,9 +64,9 @@ class GameView extends JFrame {
 		if (proposalController.isWinner() || proposalController.isLooser()) {
 			String message = "";
 			if (proposalController.isWinner()) {
-				message = Message.WINNER.getMessage();
+				message = MessageView.WINNER.getMessage();
 			} else {
-				message = Message.LOOSER.getMessage();
+				message = MessageView.LOOSER.getMessage();
 			}
 			JOptionPane.showMessageDialog(null, message, GameView.GAME_OVER, JOptionPane.WARNING_MESSAGE);
 		}

@@ -1,37 +1,43 @@
 package mastermind.controllers;
 
-import mastermind.models.Error;
+import java.util.List;
+
+import mastermind.models.Combination;
 import mastermind.models.Game;
-import mastermind.models.ProposedCombination;
 import mastermind.models.State;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class ProposalController extends Controller {
-	
-	public static final int NO_ERROR = -1;
 
 	public ProposalController(Game game, State state) {
 		super(game, state);
 	}
 
-	public int proposeCombination(int[] codes) {
-		Error error = ProposedCombination.isValid(codes);
-		if (error != null) {
-			return error.ordinal();
+	public Error addProposedCombination(List<Color> colors) {
+		Error error = null;
+		if (colors.size() != Combination.getWidth()) {
+			error = Error.WRONG_LENGTH;
+		} else {
+			for (int i = 0; i < colors.size(); i++) {
+				if (colors.get(i) == null) {
+					error = Error.WRONG_CHARACTERS;
+				} else {
+					for (int j = i+1; j < colors.size(); j++) {
+						if (colors.get(i) == colors.get(j)) {
+							error = Error.DUPLICATED;
+						}
+					}
+				}				
+			}
 		}
-		ProposedCombination proposedCombination = ProposedCombination.getInstance(codes);
-		this.game.proposeCombination(proposedCombination);
-		if (this.game.isWinner() || this.game.isLooser()) {
-			this.state.next();
+		if (error == null){
+			this.game.addProposedCombination(colors);
+			if (this.game.isWinner() || this.game.isLooser()) {
+				this.state.next();
+			}
 		}
-		return ProposalController.NO_ERROR;
-	}
-
-	public int[][][] getAllCodes() {
-		return this.game.getCodes();
-	}
-	
-	public int getTurn() {
-		return this.game.getTurn();
+		return error;	
 	}
 
 	public boolean isWinner() {
@@ -40,6 +46,22 @@ public class ProposalController extends Controller {
 
 	public boolean isLooser() {
 		return this.game.isLooser();
+	}
+	
+	public int getAttempts() {
+		return this.game.getAttempts();
+	}
+
+	public List<Color> getColors(int i) {
+		return this.game.getColors(i);
+	}
+
+	public int getBlacks(int i) {
+		return this.game.getBlacks(i);
+	}
+
+	public int getWhites(int i) {
+		return this.game.getWhites(i);
 	}
 
 }
