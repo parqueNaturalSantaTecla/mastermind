@@ -1,11 +1,15 @@
 package mastermind.views.graphics;
 
 import java.awt.GridBagLayout;
+import java.util.List;
+
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.StartController;
+import mastermind.types.Color;
+import mastermind.types.Error;
 import mastermind.views.ErrorView;
 import mastermind.views.MessageView;
 import mastermind.views.graphics.ProposedCombinationView;
@@ -34,7 +38,7 @@ class GameView extends JFrame {
 	void interact(StartController startController) {
 		this.clear();
 		startController.start();
-		this.secretCombinationView = new SecretCombinationView(startController.getWidth());
+		this.secretCombinationView = new SecretCombinationView(startController);
 		this.getContentPane().add(this.secretCombinationView, new Constraints(0, 0, 3, 1));
 		this.proposedCombinationsView = new ProposedCombinationsView();
 		this.getContentPane().add(this.proposedCombinationsView, new Constraints(0, 1, 3, 10));
@@ -44,16 +48,16 @@ class GameView extends JFrame {
 	}
 
 	void interact(ProposalController proposalController) {
-		int error;
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
-			error = proposalController.proposeCombination(codes);
-			if (error != ProposalController.NO_ERROR && this.proposalCombinationView.getCharacters() != "") {
-				JOptionPane.showMessageDialog(null, ErrorView.values()[error].getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
-				error = ProposalController.NO_ERROR;
+			List<Color> colors = new ProposedCombinationView().read(this.proposalCombinationView.getCharacters());
+			error = proposalController.addProposedCombination(colors);
+			if (error != null && this.proposalCombinationView.getCharacters() != "") {
+				JOptionPane.showMessageDialog(null, new ErrorView(error).getMessage(), "ERROR", JOptionPane.WARNING_MESSAGE);
+				error = null;
 				this.proposalCombinationView.resetCharacters();
 			}
-		} while (error != ProposalController.NO_ERROR || this.proposalCombinationView.getCharacters() == "");
+		} while (error != null || this.proposalCombinationView.getCharacters() == "");
 		this.proposalCombinationView.resetCharacters();
 		this.proposedCombinationsView.add(proposalController);
 		this.drawGameOver(proposalController);
