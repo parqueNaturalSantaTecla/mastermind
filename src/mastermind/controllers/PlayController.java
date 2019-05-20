@@ -1,6 +1,10 @@
 package mastermind.controllers;
 
+import java.util.List;
+
 import mastermind.models.Session;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class PlayController extends AcceptorController {
 
@@ -17,8 +21,8 @@ public class PlayController extends AcceptorController {
 		this.redoController = new RedoController(this.session);
 	}
 
-	public int proposeCombination(int[] codes) {
-		return this.proposalController.proposeCombination(codes);
+	public Error addProposedCombination(List<Color> colors) {
+		return this.proposalController.addProposedCombination(colors);
 	}
 
 	public void undo() {
@@ -45,12 +49,20 @@ public class PlayController extends AcceptorController {
 		return this.proposalController.isLooser();
 	}
 
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
+	public int getAttempts() {
+		return this.proposalController.getAttempts();
 	}
 
-	public int getTurn() {
-		return this.proposalController.getTurn();
+	public List<Color> getColors(int i) {
+		return this.proposalController.getColors(i);
+	}
+
+	public int getBlacks(int i) {
+		return this.proposalController.getBlacks(i);
+	}
+
+	public int getWhites(int i) {
+		return this.proposalController.getWhites(i);
 	}
 
 	@Override

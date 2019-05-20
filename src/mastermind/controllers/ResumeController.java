@@ -8,8 +8,8 @@ public class ResumeController extends AcceptorController {
 		super(session);
 	}
 	
-	public void resume(boolean resume) {
-		if (resume) {
+	public void resume(boolean newGame) {
+		if (newGame) {
 			this.session.resume();
 		} else {
 			this.session.next();
