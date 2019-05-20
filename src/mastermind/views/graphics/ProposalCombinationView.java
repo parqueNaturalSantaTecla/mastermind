@@ -12,7 +12,7 @@ import javax.swing.JPanel;
 import javax.swing.JRootPane;
 import javax.swing.JTextField;
 
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 @SuppressWarnings("serial")
 class ProposalCombinationView extends JPanel implements ActionListener, KeyListener{
@@ -29,7 +29,7 @@ class ProposalCombinationView extends JPanel implements ActionListener, KeyListe
 
 	ProposalCombinationView(JRootPane rootPane) {
 		this.setLayout(new GridBagLayout());
-		this.label = new JLabel(Message.PROPOSED_COMBINATION.getMessage());
+		this.label = new JLabel(MessageView.PROPOSED_COMBINATION.getMessage());
 		this.add(label, new Constraints(0, 0, 1, 1));
 		this.textField = new JTextField(10);
 		this.add(textField, new Constraints(0, 1, 1, 1));
