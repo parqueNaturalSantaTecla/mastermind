@@ -2,9 +2,10 @@ package mastermind.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import mastermind.models.Combination;
 
-public class Game {
+import mastermind.types.Color;
+
+class Game {
 
 	private static final int MAX_LONG = 10;
 
@@ -14,35 +15,36 @@ public class Game {
 
 	private List<Result> results;
 
-	private int turn;
+	private int attempts;
 
-	public Game() {
+	Game() {
 		this.clear();
 	}
 
-	public void clear() {
+	void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
-		this.turn = 0;
+		this.attempts = 0;
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
+	void addProposedCombination(List<Color> colors) {
+		ProposedCombination proposedCombination = new ProposedCombination(colors);
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(this.secretCombination.getResult(proposedCombination));
-		this.turn++;
+		this.attempts++;
 	}
-
-	public Memento createMemento() {
-		Memento memento = new Memento(this.turn);
+	
+	Memento createMemento() {
+		Memento memento = new Memento(this.attempts);
 		for (int i = 0; i < this.proposedCombinations.size(); i++) {
 			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
 		}
 		return memento;
 	}
 
-	public void set(Memento memento) {
-		this.turn = memento.getTurn();
+	void set(Memento memento) {
+		this.attempts = memento.getTurn();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		for (int i = 0; i < memento.getSize(); i++) {
@@ -51,32 +53,35 @@ public class Game {
 		}
 	}
 
-	public boolean isLooser() {
-		return this.turn == Game.MAX_LONG;
+	boolean isLooser() {
+		return this.attempts == Game.MAX_LONG;
 	}
-
-	public boolean isWinner() {
-		if (this.turn == 0) {
-			return false;			
+	
+	boolean isWinner() {
+		if (this.attempts == 0) {
+			return false;
 		}
-		return this.results.get(this.turn - 1).isWinner();
+		return this.results.get(this.attempts-1).isWinner();
 	}
 
-	public int[][][] getCodes() {
-		int[][][] codes = new int[this.turn][2][];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i][0] = this.proposedCombinations.get(i).getCodes();
-			codes[i][1] = this.results.get(i).getCodes();
-		}
-		return codes;
+	int getAttempts() {
+		return this.attempts;
 	}
 
-	public int getWidth() {
+	List<Color> getColors(int i) {
+		return this.proposedCombinations.get(i).colors;
+	}
+
+	int getBlacks(int i) {
+		return this.results.get(i).getBlacks();
+	}
+
+	int getWhites(int i) {
+		return this.results.get(i).getWhites();
+	}
+
+	int getWidth() {
 		return Combination.getWidth();
-	}
-
-	public int getTurn() {
-		return this.turn;
 	}
 
 }

@@ -2,10 +2,10 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 
-public class RedoCommand extends Command{
+class RedoCommand extends Command{
 	
 	RedoCommand(PlayController playController) {
-		super(Message.REDO_COMMAND.getMessage(), playController);
+		super(MessageView.REDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override

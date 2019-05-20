@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 
-public abstract class Command extends mastermind.utils.Command {
+abstract class Command extends mastermind.utils.Command {
 
 	protected PlayController playController;
 

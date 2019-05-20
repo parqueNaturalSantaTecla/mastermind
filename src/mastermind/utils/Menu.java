@@ -2,7 +2,7 @@ package mastermind.utils;
 
 import java.util.ArrayList;
 
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 public abstract class Menu extends WithConsoleView {
 
@@ -24,7 +24,7 @@ public abstract class Menu extends WithConsoleView {
 		do {
 			error = false;
 			this.console.writeln();
-			this.console.writeln(Message.OPTION.getMessage());
+			this.console.writeln(MessageView.OPTION.getMessage());
 			for (int i = 0; i < commands.size(); i++) {
 				this.console.writeln((i + 1) + ") " + commands.get(i).getTitle());
 			}
