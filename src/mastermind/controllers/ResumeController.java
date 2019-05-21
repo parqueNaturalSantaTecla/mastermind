@@ -10,16 +10,16 @@ public class ResumeController extends AcceptorController {
 		super(session, tcpip);
 	}
 
-	public void resume(boolean resume) {
+	public void resume(boolean newGame) {
 		if (this.tcpip == null) {
-			if (resume) {
+			if (newGame) {
 				this.session.resume();
 			} else {
 				this.session.next();
 			}
 		} else {
 			this.tcpip.send(FrameType.RESUME.name());
-			this.tcpip.send(resume);
+			this.tcpip.send(newGame);
 		}
 	}
 

@@ -3,21 +3,20 @@ package mastermind.views;
 import mastermind.controllers.PlayController;
 import mastermind.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView {
+class GameView extends WithConsoleView {
 
-	public GameView(PlayController playController) {
+	GameView(PlayController playController) {
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + playController.getTurn()));
-		new SecretCombinationView().writeln(playController.getWidth());
-		int[][][] allCodes = playController.getAllCodes();
-		for (int i = 0; i < allCodes.length; i++) {
-			new ProposedCombinationView().write(allCodes[i][0]);
-			new ResultView().writeln(allCodes[i][1]);
-		}		
+		new AttemptsView(playController).writeln();
+		new SecretCombinationView(playController).writeln();
+		for (int i = 0; i < playController.getAttempts(); i++) {
+			new ProposedCombinationView(playController).write(i);
+			new ResultView(playController).writeln(i);
+		}
 		if (playController.isWinner()) {
-			this.console.writeln(Message.WINNER.getMessage());
+			this.console.writeln(MessageView.WINNER.getMessage());
 		} else if (playController.isLooser()) {
-			this.console.writeln(Message.LOOSER.getMessage());
+			this.console.writeln(MessageView.LOOSER.getMessage());
 		}
 	}
 	

@@ -1,6 +1,10 @@
 package mastermind.distributed.dispatchers;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mastermind.controllers.PlayController;
+import mastermind.types.Color;
 
 public class ProposeCombinationDispatcher extends Dispatcher {
 
@@ -11,11 +15,11 @@ public class ProposeCombinationDispatcher extends Dispatcher {
 	@Override
 	public void dispatch() {
 		int length = this.tcpip.receiveInt();
-		int[] codes = new int[length];
+		List<Color> colors = new ArrayList<Color>();
 		for (int i=0; i<length; i++) {
-			codes[i] = this.tcpip.receiveInt();
+			colors.add(this.tcpip.receiveColor());
 		}
-		this.tcpip.send(((PlayController) this.acceptorController).proposeCombination(codes));
+		this.tcpip.send(((PlayController) this.acceptorController).addProposedCombination(colors));
 	}
 
 }

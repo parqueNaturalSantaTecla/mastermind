@@ -6,8 +6,12 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.ArrayList;
+import java.util.List;
 
 import mastermind.distributed.FrameType;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class TCPIP {
 	
@@ -75,6 +79,14 @@ public class TCPIP {
 	public void send(boolean value) {
 		this.send("" + value);
 	}
+
+	public void send(Color value) {
+		this.send(value.name());
+	}
+
+	public void send(Error value) {
+		this.send(value.name());
+	}
 	
 	public String receiveLine() {
 		String result = null;
@@ -104,6 +116,31 @@ public class TCPIP {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public Error receiveError() {
+		if (this.receiveLine() == null) {
+			return null;
+		}
+		return Error.valueOf(this.receiveLine());
+	}
+
+	public Color receiveColor() {
+		return Color.valueOf(this.receiveLine());
+	}
+
+	public List<Color> receiveColors() {
+		String result = null;
+		try {
+			result = this.in.readLine();
+		} catch (IOException e) {
+			System.out.println("Error en servidor!!! Lectura de string");
+		}
+		List<Color> colors = new ArrayList<Color>();
+		for (int i=0; i<result.length();i++) {
+			colors.add(Color.valueOf(""+result.charAt(i)));
+		}
+		return colors;
 	}
 
 	public void close() {

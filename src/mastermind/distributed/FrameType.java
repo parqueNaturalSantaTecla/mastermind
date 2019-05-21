@@ -9,11 +9,13 @@ public enum FrameType {
 	REDOABLE, 
 	WINNER, 
 	LOOSER, 
-	TURN, 
-	ALLCODES, 
+	ATTEMPTS, 
+	COLORS, 
 	PROPOSECOMBINATION, 
 	WIDTH,
 	RESUME,
+	BLACKS,
+	WHITES,
 	CLOSE;
 
 	public static FrameType parser(String string) {

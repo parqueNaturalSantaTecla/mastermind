@@ -1,22 +1,22 @@
 package mastermind.models;
 
-public class State {
+class State {
 		
 	private StateValue stateValue;
 	
-	public State() {
+	State() {
 		this.stateValue = StateValue.INITIAL;
 	}
 	
-	public void next() {
+	void next() {
 		this.stateValue = StateValue.values()[this.stateValue.ordinal()+1];
 	}
 	
-	public void reset() {
+	void reset() {
 		this.stateValue = StateValue.INITIAL;
 	}
 
-	public StateValue getValueState() {
+	StateValue getValueState() {
 		return this.stateValue;
 	}
 	

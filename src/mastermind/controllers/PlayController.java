@@ -1,7 +1,11 @@
 package mastermind.controllers;
 
+import java.util.List;
+
 import mastermind.distributed.FrameType;
 import mastermind.models.Session;
+import mastermind.types.Color;
+import mastermind.types.Error;
 import mastermind.utils.TCPIP;
 
 public class PlayController extends AcceptorController {
@@ -21,16 +25,16 @@ public class PlayController extends AcceptorController {
 		}
 	}
 
-	public int proposeCombination(int[] codes) {
+	public Error addProposedCombination(List<Color> colors) {
 		if (this.tcpip == null) {
-			return this.proposalController.proposeCombination(codes);
+			return this.proposalController.addProposedCombination(colors);
 		}
 		this.tcpip.send(FrameType.PROPOSECOMBINATION.name());
-		this.tcpip.send(codes.length);
-		for (int code : codes) {
-			this.tcpip.send(code);
+		this.tcpip.send(colors.size());
+		for (Color color : colors) {
+			this.tcpip.send(color);
 		}
-		return this.tcpip.receiveInt();
+		return this.tcpip.receiveError();
 	}
 
 	public void undo() {
@@ -81,37 +85,38 @@ public class PlayController extends AcceptorController {
 		return this.tcpip.receiveBoolean();
 	}
 
-	public int[][][] getAllCodes() {
+	public List<Color> getColors(int i) {
 		if (this.tcpip == null) {
-			return this.proposalController.getAllCodes();
+			return this.proposalController.getColors(i);
 		} 
-		this.tcpip.send(FrameType.ALLCODES.name());
-		int row = this.tcpip.receiveInt();
-		if (row == 0) {
-			return new int[0][][];
-		}
-		int column = this.tcpip.receiveInt();
-		int array = this.tcpip.receiveInt();
-		int[][][] codes = new int[row][column][];
-		for(int i=0; i<codes.length; i++) {
-			codes[i][0] = new int[array];
-			codes[i][1] = new int[2];
-		}
-		for (int i=0; i<codes.length; i++) {
-			for (int j=0; j<codes[i].length; j++) {
-				for (int k=0; k<codes[i][j].length; k++) {
-					codes[i][j][k] = this.tcpip.receiveInt();
-				}
-			}
-		}
-		return codes;
+		this.tcpip.send(FrameType.COLORS.name());
+		this.tcpip.send(i);
+		return this.tcpip.receiveColors();
 	}
 
-	public int getTurn() {
+	public int getAttempts() {
 		if (this.tcpip == null) {
-			return this.proposalController.getTurn();
+			return this.proposalController.getAttempts();
 		}
-		this.tcpip.send(FrameType.TURN.name());
+		this.tcpip.send(FrameType.ATTEMPTS.name());
+		return this.tcpip.receiveInt();
+	}
+
+	public int getBlacks(int i) {
+		if (this.tcpip == null) {
+			return this.proposalController.getBlacks(i);
+		}
+		this.tcpip.send(FrameType.BLACKS.name());
+		this.tcpip.send(i);
+		return this.tcpip.receiveInt();
+	}
+
+	public int getWhites(int i) {
+		if (this.tcpip == null) {
+			return this.proposalController.getWhites(i);
+		}
+		this.tcpip.send(FrameType.WHITES.name());
+		this.tcpip.send(i);
 		return this.tcpip.receiveInt();
 	}
 

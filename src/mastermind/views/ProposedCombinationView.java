@@ -1,29 +1,33 @@
 package mastermind.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mastermind.controllers.PlayController;
+import mastermind.types.Color;
 import mastermind.utils.WithConsoleView;
 
 class ProposedCombinationView extends WithConsoleView {
 	
-	private static final int ERROR_CODE = -1;
+	private PlayController playController;
 	
-	void write(int[] codes) {
-		for (int code : codes) {
-			this.console.write(Color.getInstance(code).getInitial());
+	ProposedCombinationView(PlayController playController) {
+		this.playController = playController;
+	}
+	
+	void write(int i) {
+		for (Color color : this.playController.getColors(i)) {
+			new ColorView(color).write();
 		}
 	}
 
-	int[] read() {
-		String characters = this.console.readString(Message.PROPOSED_COMBINATION.getMessage());
-		int[] codes = new int[characters.length()];
+	List<Color> read() {
+		String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
+		List<Color> colors = new ArrayList<Color>();
 		for (int i=0; i<characters.length(); i++) {
-			Color color = Color.getInstance(characters.charAt(i));
-			if (color == null) {
-				codes[i] = ProposedCombinationView.ERROR_CODE;
-			} else {
-				codes[i] = color.ordinal();
-			}
+			colors.add(ColorView.getInstance(characters.charAt(i)));
 		}
-		return codes;
+		return colors;
 	}
 	
 }
