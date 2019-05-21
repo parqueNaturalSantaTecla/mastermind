@@ -6,8 +6,6 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
-import java.util.ArrayList;
-import java.util.List;
 
 import mastermind.distributed.FrameType;
 import mastermind.types.Color;
@@ -81,11 +79,19 @@ public class TCPIP {
 	}
 
 	public void send(Color value) {
-		this.send(value.name());
+		if (value == null) {
+			this.send("null");
+		}else {
+			this.send(value.name());			
+		}
 	}
 
 	public void send(Error value) {
-		this.send(value.name());
+		if (value == null) {
+			this.send("null");
+		}else {
+			this.send(value.name());
+		}
 	}
 	
 	public String receiveLine() {
@@ -119,28 +125,20 @@ public class TCPIP {
 	}
 
 	public Error receiveError() {
-		if (this.receiveLine() == null) {
+		String error = this.receiveLine();
+		if (error.equals("null")) {
 			return null;
 		}
-		return Error.valueOf(this.receiveLine());
+		return Error.valueOf(error);
 	}
 
 	public Color receiveColor() {
-		return Color.valueOf(this.receiveLine());
-	}
-
-	public List<Color> receiveColors() {
-		String result = null;
-		try {
-			result = this.in.readLine();
-		} catch (IOException e) {
-			System.out.println("Error en servidor!!! Lectura de string");
+		String color = this.receiveLine();
+		if (color.equals("null")) {
+			return null;
+		}else {
+			return Color.valueOf(color);			
 		}
-		List<Color> colors = new ArrayList<Color>();
-		for (int i=0; i<result.length();i++) {
-			colors.add(Color.valueOf(""+result.charAt(i)));
-		}
-		return colors;
 	}
 
 	public void close() {

@@ -1,5 +1,6 @@
 package mastermind.controllers;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.distributed.FrameType;
@@ -85,13 +86,18 @@ public class PlayController extends AcceptorController {
 		return this.tcpip.receiveBoolean();
 	}
 
-	public List<Color> getColors(int i) {
+	public List<Color> getColors(int position) {
 		if (this.tcpip == null) {
-			return this.proposalController.getColors(i);
+			return this.proposalController.getColors(position);
 		} 
 		this.tcpip.send(FrameType.COLORS.name());
-		this.tcpip.send(i);
-		return this.tcpip.receiveColors();
+		this.tcpip.send(position);
+		int size = this.tcpip.receiveInt();
+		List<Color> colors = new ArrayList<Color>(); 
+		for (int i = 0; i < size; i++) {
+			colors.add(this.tcpip.receiveColor());
+		}
+		return colors;
 	}
 
 	public int getAttempts() {

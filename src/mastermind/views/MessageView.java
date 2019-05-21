@@ -3,7 +3,7 @@ package mastermind.views;
 public enum MessageView {
 	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
-	RESUME("Do you want to continue"),
+	NEW_GAME("Do you want to continue"),
 	RESULT(" --> #blacks blacks and #whites whites"),
 	PROPOSED_COMBINATION("Propose a combination: "),
 	TITLE("----- MASTERMIND -----"),
