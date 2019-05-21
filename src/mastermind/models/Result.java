@@ -17,10 +17,6 @@ class Result {
 		return this.blacks == Combination.getWidth();
 	}
 
-	int[] getCodes() {
-		return new int[] { this.blacks, this.whites };
-	}
-	
 	int getBlacks() {
 		return this.blacks;
 	}
@@ -29,8 +25,8 @@ class Result {
 		return this.whites;
 	}
 
-	public Result copy() {
+	Result copy() {
 		return new Result(this.blacks, this.whites);
 	}
-	
+
 }
