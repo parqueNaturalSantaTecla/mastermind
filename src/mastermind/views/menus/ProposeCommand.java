@@ -1,25 +1,30 @@
 package mastermind.views.menus;
 
+import java.util.List;
+
 import mastermind.controllers.PlayController;
-import mastermind.controllers.ProposalController;
 import mastermind.views.ProposedCombinationView;
+import mastermind.views.GameView;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 class ProposeCommand extends Command {
 
 	ProposeCommand(PlayController playController) {
-		super(Message.PROPOSE_COMMAND.getMessage(), playController);
+		super(MessageView.PROPOSE_COMMAND.getMessage(), playController);
 	}
 
 	@Override
 	protected void execute() {
-		int error;
+		Error error;
 		do {
-			int[] codes = new ProposedCombinationView().read();
-			error = ((PlayController) acceptorController).proposeCombination(codes);
-			if (error != ProposalController.NO_ERROR) {
-				this.console.writeln(Error.values()[error].getMessage());
+			List<Color> colors = new ProposedCombinationView((PlayController)this.acceptorController).read();
+			error = ((PlayController)this.acceptorController).addProposedCombination(colors);
+			if (error != null) {
+				new ErrorView(error).writeln();
 			}
-		} while (error != ProposalController.NO_ERROR);
+		} while (error != null);
+		new GameView((PlayController)this.acceptorController);
 	}
 
 	@Override

@@ -1,17 +1,21 @@
 package mastermind.views;
 
+import mastermind.controllers.Controller;
 import mastermind.utils.WithConsoleView;
-import mastermind.views.menus.Message;
+import mastermind.views.menus.MessageView;
 
 class SecretCombinationView extends WithConsoleView {
 	
-	SecretCombinationView() {
+	private Controller controller;
+	
+	SecretCombinationView(Controller controller) {
 		super();
+		this.controller = controller;
 	}
 	
-	void writeln(int length) {
-		for (int i = 0; i < length; i++) {
-			this.console.write(Message.SECRET.getMessage());
+	void writeln() {
+		for (int i = 0; i < this.controller.getWidth(); i++) {
+			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}

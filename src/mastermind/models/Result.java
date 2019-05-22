@@ -17,7 +17,7 @@ class Result {
 		this.whites = whites;
 	}
 
-	Result() {
+	public Result() {
 	}
 
 	void save(FileWriter fileWriter) {
@@ -42,10 +42,6 @@ class Result {
 		return this.blacks == Combination.getWidth();
 	}
 
-	int[] getCodes() {
-		return new int[] { this.blacks, this.whites };
-	}
-
 	int getBlacks() {
 		return this.blacks;
 	}
@@ -56,11 +52,6 @@ class Result {
 
 	Result copy() {
 		return new Result(this.blacks, this.whites);
-	}
-
-	@Override
-	public String toString() {
-		return "Result [blacks=" + blacks + ", whites=" + whites + "]";
 	}
 
 }

@@ -6,7 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-abstract class Combination {
+import mastermind.types.Color;
+
+public abstract class Combination {
 	
 	private static final int WIDTH = 4;
 
@@ -23,7 +25,7 @@ abstract class Combination {
 	void save(FileWriter fileWriter) {
 		try {
 			for (Color color : this.colors) {
-				fileWriter.write(color.ordinal() + "\n");
+				fileWriter.write(color.name() + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -33,8 +35,8 @@ abstract class Combination {
 	void load(BufferedReader bufferedReader) {
 		try {
 			for (int i = 0; i < Combination.getWidth(); i++) {
-				int ordinal = Integer.parseInt(bufferedReader.readLine());
-				this.colors.add(Color.getInstance(ordinal));
+				String color = bufferedReader.readLine();
+				this.colors.add(Color.valueOf(color));
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

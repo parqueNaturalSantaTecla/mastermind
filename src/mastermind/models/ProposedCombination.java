@@ -1,31 +1,17 @@
 package mastermind.models;
 
-public class ProposedCombination extends Combination {
+import java.util.ArrayList;
+import java.util.List;
 
-	public static Error isValid(int[] codes) {
-		if (codes.length != Combination.getWidth()) {
-			return Error.WRONG_LENGTH;
-		}
-		for (int i = 0; i < codes.length; i++) {
-			if (codes[i] == -1) {
-				return Error.WRONG_CHARACTERS;
-			}
-			for (int j = i + 1; j < codes.length; j++) {
-				if (codes[i] == codes[j]) {
-					return Error.DUPLICATED;
-				}
-			}
-		}
-		return null;
+import mastermind.types.Color;
+
+class ProposedCombination extends Combination {
+
+	ProposedCombination(List<Color> colors) {
+		this.colors = colors;
 	}
 
-	public static ProposedCombination getInstance(int[] codes) {
-		assert ProposedCombination.isValid(codes) != null;
-		ProposedCombination proposedCombination = new ProposedCombination();
-		for (int code : codes) {
-			proposedCombination.colors.add(Color.getInstance(code));
-		}
-		return proposedCombination;
+	public ProposedCombination() {
 	}
 
 	boolean contains(Color color, int position) {
@@ -41,31 +27,22 @@ public class ProposedCombination extends Combination {
 		return false;
 	}
 
-	int[] getCodes() {
-		int[] codes = new int[Combination.getWidth()];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i] = this.colors.get(i).ordinal();
-		}
-		return codes;
+	List<Color> getColors() {
+		return this.colors;
 	}
 	
-	void setCodes(int[] codes) {
-		for (int i = 0; i < codes.length; i++) {
-			this.colors.add(Color.getInstance(codes[i]));
+	void setColors(List<Color> colors) {
+		for (Color color: colors) {
+			this.colors.add(color);
 		}
 	}
-
+	
 	ProposedCombination copy() {
-		ProposedCombination proposedCombination = new ProposedCombination();
+		List<Color> colors = new ArrayList<Color>();
 		for(Color color: this.colors) {
-			proposedCombination.colors.add(color);
+			colors.add(color);
 		}
-		return proposedCombination;
-	}
-
-	@Override
-	public String toString() {
-		return "ProposedCombination [colors=" + colors + "]";
+		return new ProposedCombination(colors);
 	}
 
 }

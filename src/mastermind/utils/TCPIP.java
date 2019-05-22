@@ -8,6 +8,8 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 import mastermind.distributed.dispatchers.FrameType;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class TCPIP {
 	
@@ -75,6 +77,22 @@ public class TCPIP {
 	public void send(boolean value) {
 		this.send("" + value);
 	}
+
+	public void send(Color value) {
+		if (value == null) {
+			this.send("null");
+		}else {
+			this.send(value.name());			
+		}
+	}
+
+	public void send(Error value) {
+		if (value == null) {
+			this.send("null");
+		}else {
+			this.send(value.name());
+		}
+	}
 	
 	public String receiveLine() {
 		String result = null;
@@ -104,6 +122,23 @@ public class TCPIP {
 			e.printStackTrace();
 		}
 		return result;
+	}
+
+	public Error receiveError() {
+		String error = this.receiveLine();
+		if (error.equals("null")) {
+			return null;
+		}
+		return Error.valueOf(error);
+	}
+
+	public Color receiveColor() {
+		String color = this.receiveLine();
+		if (color.equals("null")) {
+			return null;
+		}else {
+			return Color.valueOf(color);			
+		}
 	}
 
 	public void close() {

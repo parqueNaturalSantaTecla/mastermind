@@ -30,7 +30,8 @@ public class View implements ControllersVisitor {
 
 	@Override
 	public void visit(StartController startController) {
-		this.startView.interact(startController);		
+		this.startView.interact(startController);	
+		System.out.println();
 	}
 
 	@Override

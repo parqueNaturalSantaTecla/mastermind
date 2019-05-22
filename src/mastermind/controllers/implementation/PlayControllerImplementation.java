@@ -1,11 +1,15 @@
 package mastermind.controllers.implementation;
 
+import java.util.List;
+
 import mastermind.controllers.ExitController;
 import mastermind.controllers.PlayController;
 import mastermind.controllers.ProposalController;
 import mastermind.controllers.RedoController;
 import mastermind.controllers.UndoController;
 import mastermind.models.Session;
+import mastermind.types.Color;
+import mastermind.types.Error;
 
 public class PlayControllerImplementation extends PlayController {
 
@@ -26,8 +30,8 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	@Override
-	public int proposeCombination(int[] codes) {
-		return this.proposalController.proposeCombination(codes);
+	public Error addProposedCombination(List<Color> colors) {
+		return this.proposalController.addProposedCombination(colors);
 	}
 
 	@Override
@@ -66,13 +70,23 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	@Override
-	public int[][][] getAllCodes() {
-		return this.proposalController.getAllCodes();
+	public List<Color> getColors(int i) {
+		return this.proposalController.getColors(i);
 	}
 
 	@Override
-	public int getTurn() {
-		return this.proposalController.getTurn();
+	public int getAttempts() {
+		return this.proposalController.getAttempts();
+	}
+
+	@Override
+	public int getBlacks(int i) {
+		return this.proposalController.getBlacks(i);
+	}
+
+	@Override
+	public int getWhites(int i) {
+		return this.proposalController.getWhites(i);
 	}
 
 }

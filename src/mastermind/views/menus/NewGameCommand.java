@@ -5,7 +5,7 @@ import mastermind.controllers.StartController;
 class NewGameCommand extends Command {
 
 	protected NewGameCommand(StartController startController) {
-		super(Message.NEWGAME_COMMAND.getMessage(), startController);
+		super(MessageView.NEWGAME_COMMAND.getMessage(), startController);
 	}
 
 	@Override

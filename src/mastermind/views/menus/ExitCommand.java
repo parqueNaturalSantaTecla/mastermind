@@ -5,7 +5,7 @@ import mastermind.controllers.PlayController;
 class ExitCommand extends Command {
 
 	protected ExitCommand(PlayController playController) {
-		super(Message.EXIT_COMMAND.getMessage(), playController);
+		super(MessageView.EXIT_COMMAND.getMessage(), playController);
 	}
 
 	@Override

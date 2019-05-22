@@ -9,16 +9,16 @@ public enum FrameType {
 	REDOABLE, 
 	WINNER, 
 	LOOSER, 
-	TURN, 
-	ALLCODES, 
+	ATTEMPTS, 
+	COLORS, 
 	PROPOSECOMBINATION, 
 	WIDTH,
-	RESUME,
+	NEW_GAME,
 	EXISTS, 
 	HAS_NAME, 
 	SAVE,
 	NEXT,
-	CLOSE, START_NAME, TITLES, GET_TITLE, SET_TITLE, SAVE_NAMED;
+	CLOSE, START_NAME, TITLES, GET_TITLE, SET_TITLE, SAVE_NAMED, BLACKS, WHITES;
 
 	public static FrameType parser(String string) {
 		for(FrameType frameType : FrameType.values()) {
