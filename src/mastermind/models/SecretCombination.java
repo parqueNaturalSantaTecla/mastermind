@@ -3,10 +3,12 @@ package mastermind.models;
 import java.util.Collections;
 import java.util.Random;
 
+import mastermind.types.Color;
+
 public class SecretCombination extends Combination {
 
 	SecretCombination() {
-		for (Color color : Color.values()) {
+		for(Color color: Color.values()) {
 			this.colors.add(color);
 		}
 		Random random = new Random(System.currentTimeMillis());
@@ -18,6 +20,7 @@ public class SecretCombination extends Combination {
 
 	Result getResult(ProposedCombination proposedCombination) {
 		int blacks = 0;
+		System.out.println(this.colors.size());
 		for (int i = 0; i < this.colors.size(); i++) {
 			if (proposedCombination.contains(this.colors.get(i), i)) {
 				blacks++;

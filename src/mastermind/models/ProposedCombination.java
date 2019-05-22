@@ -1,31 +1,17 @@
 package mastermind.models;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mastermind.types.Color;
+
 public class ProposedCombination extends Combination {
 
-	public static Error isValid(int[] codes) {
-		if (codes.length != Combination.getWidth()) {
-			return Error.WRONG_LENGTH;
-		}
-		for (int i = 0; i < codes.length; i++) {
-			if (codes[i] == -1) {
-				return Error.WRONG_CHARACTERS;
-			}
-			for (int j = i + 1; j < codes.length; j++) {
-				if (codes[i] == codes[j]) {
-					return Error.DUPLICATED;
-				}
-			}
-		}
-		return null;
+	ProposedCombination(List<Color> colors) {
+		this.colors = colors;
 	}
 
-	public static ProposedCombination getInstance(int[] codes) {
-		assert ProposedCombination.isValid(codes) != null;
-		ProposedCombination proposedCombination = new ProposedCombination();
-		for (int code : codes) {
-			proposedCombination.colors.add(Color.getInstance(code));
-		}
-		return proposedCombination;
+	public ProposedCombination() {
 	}
 
 	boolean contains(Color color, int position) {
@@ -40,27 +26,13 @@ public class ProposedCombination extends Combination {
 		}
 		return false;
 	}
-
-	int[] getCodes() {
-		int[] codes = new int[Combination.getWidth()];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i] = this.colors.get(i).ordinal();
-		}
-		return codes;
-	}
 	
-	void setCodes(int[] codes) {
-		for (int i = 0; i < codes.length; i++) {
-			this.colors.add(Color.getInstance(codes[i]));
-		}
-	}
-
 	ProposedCombination copy() {
-		ProposedCombination proposedCombination = new ProposedCombination();
+		List<Color> colors = new ArrayList<Color>();
 		for(Color color: this.colors) {
-			proposedCombination.colors.add(color);
+			colors.add(color);
 		}
-		return proposedCombination;
+		return new ProposedCombination(colors);
 	}
 
 	@Override

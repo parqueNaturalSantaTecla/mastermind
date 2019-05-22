@@ -7,7 +7,7 @@ import mastermind.utils.WithConsoleView;
 class StartView extends WithConsoleView {
 
 	void interact(StartController startController) {
-		this.console.writeln(Message.TITLE.getMessage());
+		this.console.writeln(MessageView.TITLE.getMessage());
 		new StartMenu(startController).execute();
 		new GameView(startController).writeln();
 	}

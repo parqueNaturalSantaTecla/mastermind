@@ -1,12 +1,12 @@
 package mastermind.menus;
 
 import mastermind.controllers.StartController;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class OpenGameCommand extends Command{
 
 	protected OpenGameCommand(StartController startController) {
-		super(Message.OPENGAME_COMMAND.getMessage(), startController);
+		super(MessageView.OPENGAME_COMMAND.getMessage(), startController);
 	}
 
 	@Override

@@ -1,12 +1,12 @@
 package mastermind.menus;
 
 import mastermind.controllers.StartController;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class NewGameCommand extends Command {
 
 	protected NewGameCommand(StartController startController) {
-		super(Message.NEWGAME_COMMAND.getMessage(), startController);
+		super(MessageView.NEWGAME_COMMAND.getMessage(), startController);
 	}
 
 	@Override

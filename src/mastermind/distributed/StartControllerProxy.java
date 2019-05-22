@@ -1,11 +1,16 @@
 package mastermind.distributed;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mastermind.controllers.StartController;
+import mastermind.distributed.FrameType;
 import mastermind.models.Session;
+import mastermind.types.Color;
 import mastermind.utils.TCPIP;
 
 public class StartControllerProxy extends StartController {
-	
+
 	private TCPIP tcpip;
 
 	StartControllerProxy(Session session, TCPIP tcpip) {
@@ -29,40 +34,16 @@ public class StartControllerProxy extends StartController {
 		this.tcpip.send(FrameType.TITLES.name());
 		int length = this.tcpip.receiveInt();
 		String[] names = new String[length];
-		for (int i=0; i<length; i++) {
+		for (int i = 0; i < length; i++) {
 			names[i] = this.tcpip.receiveLine();
 		}
-		return names;		
+		return names;
 	}
 
 	@Override
-	public int getTurn() {
-		this.tcpip.send(FrameType.TURN.name());
+	public int getAttempts() {
+		this.tcpip.send(FrameType.ATTEMPTS.name());
 		return this.tcpip.receiveInt();
-	}
-
-	@Override
-	public int[][][] getAllCodes() {
-		this.tcpip.send(FrameType.ALLCODES.name());
-		int row = this.tcpip.receiveInt();
-		if (row == 0) {
-			return new int[0][][];
-		}
-		int column = this.tcpip.receiveInt();
-		int array = this.tcpip.receiveInt();
-		int[][][] codes = new int[row][column][];
-		for(int i=0; i<codes.length; i++) {
-			codes[i][0] = new int[array];
-			codes[i][1] = new int[2];
-		}
-		for (int i=0; i<codes.length; i++) {
-			for (int j=0; j<codes[i].length; j++) {
-				for (int k=0; k<codes[i][j].length; k++) {
-					codes[i][j][k] = this.tcpip.receiveInt();
-				}
-			}
-		}
-		return codes;
 	}
 
 	@Override
@@ -75,6 +56,32 @@ public class StartControllerProxy extends StartController {
 	public boolean isLooser() {
 		this.tcpip.send(FrameType.LOOSER.name());
 		return this.tcpip.receiveBoolean();
+	}
+
+	@Override
+	public List<Color> getColors(int position) {
+		this.tcpip.send(FrameType.COLORS.name());
+		this.tcpip.send(position);
+		int size = this.tcpip.receiveInt();
+		List<Color> colors = new ArrayList<Color>();
+		for (int i = 0; i < size; i++) {
+			colors.add(this.tcpip.receiveColor());
+		}
+		return colors;
+	}
+	
+	@Override
+	public int getBlacks(int position) {
+		this.tcpip.send(FrameType.BLACKS.name());
+		this.tcpip.send(position);
+		return this.tcpip.receiveInt();
+	}
+
+	@Override
+	public int getWhites(int position) {
+		this.tcpip.send(FrameType.WHITES.name());
+		this.tcpip.send(position);
+		return this.tcpip.receiveInt();
 	}
 
 }

@@ -21,9 +21,9 @@ class GameDAO implements DAO {
 
 	public void save(FileWriter fileWriter) {
 		try {
-			fileWriter.write(this.game.getTurn() + "\n");
+			fileWriter.write(this.game.getAttempts() + "\n");
 			this.secretCombinationDAO.save(fileWriter);
-			for (int i = 0; i < this.game.getTurn(); i++) {
+			for (int i = 0; i < this.game.getAttempts(); i++) {
 				new ProposedCombinationDAO(this.game.getProposedCombination(i)).save(fileWriter);
 				new ResultDAO(this.game.getResult(i)).save(fileWriter);
 			}
@@ -34,9 +34,9 @@ class GameDAO implements DAO {
 
 	public void load(BufferedReader bufferedReader) {
 		try {
-			this.game.setTurn(Integer.parseInt(bufferedReader.readLine()));
+			this.game.setAttempts(Integer.parseInt(bufferedReader.readLine()));
 			this.secretCombinationDAO.load(bufferedReader);
-			for (int i = 0; i < this.game.getTurn(); i++) {
+			for (int i = 0; i < this.game.getAttempts(); i++) {
 				ProposedCombinationDAO proposedCombinationDAO = new ProposedCombinationDAO(new ProposedCombination());
 				proposedCombinationDAO.load(bufferedReader);
 				this.game.addProposedCombination(proposedCombinationDAO.getProposedCombination());
