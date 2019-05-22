@@ -7,8 +7,6 @@ import mastermind.views.menus.StartMenu;
 
 class StartView extends WithConsoleView {
 	
-	private SecretCombinationView secretCombinationView;
-	
 	void interact(StartController startController) {
 		this.console.writeln(MessageView.TITLE.getMessage());
 		new StartMenu(startController).execute();

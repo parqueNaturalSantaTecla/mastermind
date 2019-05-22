@@ -26,16 +26,6 @@ class ProposedCombination extends Combination {
 		}
 		return false;
 	}
-
-	List<Color> getColors() {
-		return this.colors;
-	}
-	
-	void setColors(List<Color> colors) {
-		for (Color color: colors) {
-			this.colors.add(color);
-		}
-	}
 	
 	ProposedCombination copy() {
 		List<Color> colors = new ArrayList<Color>();
