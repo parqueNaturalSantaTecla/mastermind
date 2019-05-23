@@ -1,12 +1,12 @@
 package mastermind.menus;
 
 import mastermind.controllers.PlayController;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class ExitCommand extends Command {
 	
 	protected ExitCommand(PlayController playController) {
-		super(Message.EXIT_COMMAND.getMessage(), playController);
+		super(MessageView.EXIT_COMMAND.getMessage(), playController);
 	}
 
 	@Override

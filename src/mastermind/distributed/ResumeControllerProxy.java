@@ -14,9 +14,9 @@ public class ResumeControllerProxy extends ResumeController {
 	}
 
 	@Override
-	public void resume(boolean resume) {
-		this.tcpip.send(FrameType.RESUME.name());
-		this.tcpip.send(resume);	
+	public void isNewGame(boolean newGame) {
+		this.tcpip.send(FrameType.NEW_GAME.name());
+		this.tcpip.send(newGame);	
 	}
 
 }

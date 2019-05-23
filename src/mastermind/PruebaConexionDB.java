@@ -28,32 +28,6 @@ public class PruebaConexionDB {
 					"	`secretCombination`int(4),\n"+
 					"	PRIMARY KEY (`name`));";
 			stmt.executeUpdate(DB);
-			//			String DB3 = "CREATE TABLE `destinos` (\r\n" + "						`id_destino` int(4) NOT NULL,\r\n"
-//					+ "						`nombre_destino` varchar(20) NOT NULL,\r\n"
-//					+ "						`vuelo` datetime NOT NULL,\r\n"
-////					+ "						`precio_vuelo` int(12) NOT NULL,\r\n"
-////					+ "						PRIMARY KEY (`id_destino`)\r\n" + "					);";
-//
-//			String DB4 = "CREATE TABLE `hoteles` (\r\n" + "					`id_hotel` int(12) NOT NULL,\r\n"
-//					+ "					`nombre_hotel` varchar(30) NOT NULL,\r\n"
-//					+ "					`ciudad` varchar(30) NOT NULL,\r\n"
-//					+ "					`cercania_centro` float(10) NOT NULL, \r\n"
-//					+ "					`cercania_aeropuerto` float(10) NOT NULL, \r\n"
-//					+ "					`servicios` varchar(30) NOT NULL, \r\n"
-//					+ "					`precio_hotel` int(10) NOT NULL, \r\n"
-//					+ "					PRIMARY KEY (`id_hotel`),\r\n"
-//					+ "					CONSTRAINT `fk_city` FOREIGN KEY (`ciudad`) REFERENCES `agencia_de_viajes`.`destinos` (`nombre_destino`)\r\n"
-//					+ "				);";
-//
-//			String DB5 = "CREATE TABLE `clientes` (\r\n" + "`id_cliente` int(12) NOT NULL, \r\n"
-//					+ "`nombre` varchar(30) NOT NULL, \r\n" + "`apellidos` varchar(30) NOT NULL,\r\n"
-//					+ "`dinero_cuenta` int(10) NOT NULL,\r\n" + "PRIMARY KEY (`id_cliente`));";
-
-//			stmt.executeUpdate(DB);
-//			stmt.executeUpdate(DB2);
-//			stmt.executeUpdate(DB3);
-//			stmt.executeUpdate(DB4);
-//			stmt.executeUpdate(DB5);
 			stmt.close();
 			System.out.println("tabla creada");
 		} catch (SQLException e) {

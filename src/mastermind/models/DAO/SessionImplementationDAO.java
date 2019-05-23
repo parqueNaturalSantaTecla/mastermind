@@ -14,11 +14,11 @@ public abstract class SessionImplementationDAO {
 		this.save(this.sessionImplementation.getName());
 	}
 
+	public abstract void save(String name);
+
 	public abstract void load(String name);
 
 	public abstract String[] getGamesNames();
-
-	public abstract void save(String name);
 
 	public abstract boolean exists(String name);
 	

@@ -1,5 +1,9 @@
 package mastermind.models;
 
+import java.util.List;
+
+import mastermind.types.Color;
+
 public class SessionImplementation implements Session {
 	
 	private State state;
@@ -21,8 +25,8 @@ public class SessionImplementation implements Session {
 		this.state.next();
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
-		this.game.proposeCombination(proposedCombination);
+	public void addProposedCombination(List<Color> colors) {
+		this.game.addProposedCombination(colors);
 		this.registry.registry();
 	}
 
@@ -42,11 +46,19 @@ public class SessionImplementation implements Session {
 		this.registry.redo(this.game);
 	}
 
-	public void resume() {
+	public void isNewGame() {
 		this.game.clear();
 		this.state.reset();
 		this.registry.reset();
 		this.name = null;
+	}
+
+	public void clearGame() {
+		this.game = new Game();		
+	}
+
+	public void registry() {
+		this.registry = new Registry(this.game);
 	}
 
 	public void resetRegistry() {
@@ -65,12 +77,20 @@ public class SessionImplementation implements Session {
 		return this.game.isLooser();
 	}
 
-	public int[][][] getCodes() {
-		return this.game.getCodes();
+	public List<Color> getColors(int i) {
+		return this.game.getColors(i);
 	}
 
-	public int getTurn() {
-		return this.game.getTurn();
+	public int getAttempts() {
+		return this.game.getAttempts();
+	}
+
+	public int getBlacks(int i) {
+		return this.game.getBlacks(i);
+	}
+
+	public int getWhites(int i) {
+		return this.game.getWhites(i);
 	}
 
 	public boolean hasName() {
@@ -79,6 +99,10 @@ public class SessionImplementation implements Session {
 
 	public Game getGame() {
 		return this.game;
+	}
+
+	public SecretCombination getSecretCombination() {
+		return this.game.getSecretCombination();
 	}
 
 	@Override
@@ -99,10 +123,6 @@ public class SessionImplementation implements Session {
 	@Override
 	public StateValue getValueState() {
 		return this.state.getValueState();
-	}
-
-	public int[] getSecretCombinationCodes() {
-		return this.game.getSecretCombinationCodes();
 	}
 
 }

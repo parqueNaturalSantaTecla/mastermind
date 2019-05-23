@@ -4,9 +4,9 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
-import mastermind.models.Color;
 import mastermind.models.Combination;
 import mastermind.models.DAO.CombinationDAO;
+import mastermind.types.Color;
 
 abstract class CombinationFileDAO extends CombinationDAO implements FileDAO{
 	
@@ -17,7 +17,7 @@ abstract class CombinationFileDAO extends CombinationDAO implements FileDAO{
 	public void save(FileWriter fileWriter) {
 		try {
 			for (Color color : this.combination.getColors()) {
-				fileWriter.write(color.ordinal() + "\n");
+				fileWriter.write(color.name() + "\n");
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -27,8 +27,8 @@ abstract class CombinationFileDAO extends CombinationDAO implements FileDAO{
 	public void load(BufferedReader bufferedReader) {
 		try {
 			for (int i = 0; i < Combination.getWidth(); i++) {
-				int ordinal = Integer.parseInt(bufferedReader.readLine());
-				this.combination.addColor(Color.getInstance(ordinal));
+				String color = bufferedReader.readLine();
+				this.combination.addColor(Color.valueOf(color));
 			}
 		} catch (NumberFormatException e) {
 			e.printStackTrace();

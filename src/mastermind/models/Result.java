@@ -32,10 +32,6 @@ public class Result {
 		return this.blacks == Combination.getWidth();
 	}
 
-	int[] getCodes() {
-		return new int[] { this.blacks, this.whites };
-	}
-
 	public int getBlacks() {
 		return this.blacks;
 	}

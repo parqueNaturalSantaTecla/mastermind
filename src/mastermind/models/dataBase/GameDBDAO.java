@@ -29,18 +29,20 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 				e.printStackTrace();
 			}
 		}
-		for (int i = 0; i < this.game.getTurn(); i++) {
+		for (int i = 0; i < this.game.getAttempts(); i++) {
 			this.insert(name, connection, i);
 		}
 	}
 
-	private void insert(String name, Connection connection, int turn) {
-		String proposedCombinationCodes = "";
-		for (int i = 0; i < this.game.getProposedCombinationCodes(turn).length; i++) {
-			proposedCombinationCodes += this.game.getProposedCombinationCodes(turn)[i];
+	private void insert(String name, Connection connection, int attempts) {
+		String proposedCombinationInitials = "";
+		for (int i = 0; i < Combination.getWidth(); i++) {
+			proposedCombinationInitials += this.game.getProposedCombination(attempts).getColors().get(i).name()
+					.substring(0, 1);
 		}
-		String sql = "INSERT INTO Rounds VALUES ('" + name + "'," + (turn + 1) + ",'" + proposedCombinationCodes + "',"
-				+ this.game.getResult(turn).getBlacks() + "," + this.game.getResult(turn).getWhites() + ");";
+		String sql = "INSERT INTO Rounds VALUES ('" + name + "'," + (attempts + 1) + ",'" + proposedCombinationInitials
+				+ "'," + this.game.getResult(attempts).getBlacks() + "," + this.game.getResult(attempts).getWhites()
+				+ ");";
 		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql);
@@ -67,7 +69,7 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 				int whites = Integer.parseInt(result.getString("whites"));
 				this.game.addResult(new Result(blacks, whites));
 				if (result.isLast()) {
-					this.game.setTurn(Integer.parseInt(result.getString("turn")));
+					this.game.setAttempts(Integer.parseInt(result.getString("attempts")));
 				}
 			}
 			sql = "SELECT * FROM Games WHERE name = '" + name + "';";

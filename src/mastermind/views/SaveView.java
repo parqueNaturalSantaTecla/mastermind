@@ -7,7 +7,7 @@ import mastermind.utils.YesNoDialog;
 class SaveView extends WithConsoleView {
 
 	void interact(SaveController saveController) {
-		boolean save = new YesNoDialog().read(Message.SAVE.getMessage());
+		boolean save = new YesNoDialog().read(MessageView.SAVE.getMessage());
 		String name = null;
 		if (save) {
 			if (saveController.hasName()) {
@@ -15,7 +15,7 @@ class SaveView extends WithConsoleView {
 			} else {
 				boolean exists = false;
 				do {
-					name = this.console.readString(Message.NAME.getMessage());
+					name = this.console.readString(MessageView.NAME.getMessage());
 					exists = saveController.exists(name);
 					if (exists) {
 						this.console.writeln("The proposed name already exists");

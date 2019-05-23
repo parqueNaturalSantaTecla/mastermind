@@ -1,12 +1,12 @@
 package mastermind.menus;
 
 import mastermind.controllers.PlayController;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 class RedoCommand extends Command{
 	
 	RedoCommand(PlayController playController) {
-		super(Message.REDO_COMMAND.getMessage(), playController);
+		super(MessageView.REDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override
