@@ -47,16 +47,16 @@ public class Game {
 		return this.attempts;
 	}
 
-	public List<Color> getColors(int i) {
-		return this.proposedCombinations.get(i).colors;
+	public List<Color> getColors(int position) {
+		return this.proposedCombinations.get(position).colors;
 	}
 
-	public int getBlacks(int i) {
-		return this.results.get(i).getBlacks();
+	public int getBlacks(int position) {
+		return this.results.get(position).getBlacks();
 	}
 
-	public int getWhites(int i) {
-		return this.results.get(i).getWhites();
+	public int getWhites(int position) {
+		return this.results.get(position).getWhites();
 	}
 
 	public int getWidth() {

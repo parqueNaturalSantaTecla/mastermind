@@ -14,7 +14,7 @@ class ResumeView {
 
 	boolean interact() {
 		boolean newGame = new YesNoDialog().read(MessageView.RESUME.getMessage());
-		this.logic.resume(newGame);
+		this.logic.isNewGame(newGame);
 		return newGame;
 	}
 
