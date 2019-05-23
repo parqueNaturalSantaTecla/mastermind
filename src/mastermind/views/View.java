@@ -18,7 +18,7 @@ public abstract class View {
 			do {
 				finished = this.propose();
 			} while (!finished);
-			newGame = this.resume();
+			newGame = this.isNewGame();
 		} while (newGame);
 	}
 
@@ -26,6 +26,6 @@ public abstract class View {
 
 	protected abstract boolean propose();
 
-	protected abstract boolean resume();
+	protected abstract boolean isNewGame();
 
 }
