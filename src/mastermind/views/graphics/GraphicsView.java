@@ -25,9 +25,9 @@ public class GraphicsView extends View {
 	}
 
 	@Override
-	protected boolean resume() {
+	protected boolean isNewGame() {
 		ResumeDialog resumeDialog = new ResumeDialog();
-		this.resumeController.resume(resumeDialog.isNewGame());
+		this.resumeController.isNewGame(resumeDialog.isNewGame());
 		if (resumeDialog.isNewGame()) {
 			this.gameView = new GameView(this.startController, this.proposalController);
 			return true;
