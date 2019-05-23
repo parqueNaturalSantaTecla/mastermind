@@ -3,6 +3,8 @@ package mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
+import mastermind.types.Color;
+
 public abstract class Combination {
 	
 	private static final int WIDTH = 4;
@@ -27,21 +29,6 @@ public abstract class Combination {
 
 	public List<Color> getColors() {
 		return this.colors;
-	}
-
-	public int[] getCodes() {
-		int[] codes = new int[Combination.getWidth()];
-		for (int i = 0; i < codes.length; i++) {
-			codes[i] = this.colors.get(i).ordinal();
-		}
-		return codes;
-	}
-	
-	public Combination getCombination(int[] codes) {
-		for (int i= 0; i<codes.length;i++) {
-			this.addColor(Color.getInstance(codes[i]));
-		}
-		return null;
 	}
 	
 }

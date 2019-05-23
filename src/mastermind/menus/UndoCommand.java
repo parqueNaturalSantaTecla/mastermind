@@ -1,12 +1,12 @@
 package mastermind.menus;
 
 import mastermind.controllers.PlayController;
-import mastermind.views.Message;
+import mastermind.views.MessageView;
 
 public class UndoCommand extends Command {
 
 	UndoCommand(PlayController playController) {
-		super(Message.UNDO_COMMAND.getMessage(), playController);
+		super(MessageView.UNDO_COMMAND.getMessage(), playController);
 	}
 
 	@Override

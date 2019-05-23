@@ -20,9 +20,9 @@ class GameFileDAO extends GameDAO implements FileDAO {
 
 	public void save(FileWriter fileWriter) {
 		try {
-			fileWriter.write(this.game.getTurn() + "\n");
+			fileWriter.write(this.game.getAttempts() + "\n");
 			this.secretCombinationFileDAO.save(fileWriter);
-			for (int i = 0; i < this.game.getTurn(); i++) {
+			for (int i = 0; i < this.game.getAttempts(); i++) {
 				new ProposedCombinationFileDAO(this.game.getProposedCombination(i)).save(fileWriter);
 				new ResultFileDAO(this.game.getResult(i)).save(fileWriter);
 			}
@@ -33,9 +33,9 @@ class GameFileDAO extends GameDAO implements FileDAO {
 
 	public void load(BufferedReader bufferedReader) {
 		try {
-			this.game.setTurn(Integer.parseInt(bufferedReader.readLine()));
+			this.game.setAttempts(Integer.parseInt(bufferedReader.readLine()));
 			this.secretCombinationFileDAO.load(bufferedReader);
-			for (int i = 0; i < this.game.getTurn(); i++) {
+			for (int i = 0; i < this.game.getAttempts(); i++) {
 				ProposedCombinationFileDAO proposedCombinationFileDAO = new ProposedCombinationFileDAO(
 						new ProposedCombination());
 				proposedCombinationFileDAO.load(bufferedReader);

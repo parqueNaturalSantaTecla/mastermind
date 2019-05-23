@@ -10,8 +10,8 @@ public class ResumeDispatcher extends Dispatcher {
 
 	@Override
 	public void dispatch() {
-		boolean resume = this.tcpip.receiveBoolean();
-		((ResumeControllerImplementation)this.acceptorController).resume(resume);
+		boolean newGame = this.tcpip.receiveBoolean();
+		((ResumeControllerImplementation)this.acceptorController).isNewGame(newGame);
 	}
 
 }

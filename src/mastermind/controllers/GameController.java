@@ -1,6 +1,9 @@
 package mastermind.controllers;
 
+import java.util.List;
+
 import mastermind.models.Session;
+import mastermind.types.Color;
 
 public abstract class GameController extends AcceptorController {
 
@@ -8,9 +11,13 @@ public abstract class GameController extends AcceptorController {
 		super(session);
 	}
 
-	public abstract int getTurn();
-
-	public abstract int[][][] getAllCodes();
+	public abstract int getAttempts();
+	
+	public abstract List<Color> getColors(int position);
+	
+	public abstract int getBlacks(int position);
+	
+	public abstract int getWhites(int position);
 
 	public abstract boolean isWinner();
 

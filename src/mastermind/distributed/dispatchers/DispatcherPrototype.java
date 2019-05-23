@@ -30,7 +30,6 @@ public class DispatcherPrototype {
 		FrameType frameType = null;
 		do {
 			String string = this.tcpip.receiveLine();
-			System.out.println("llego por socket: " + string);
 			frameType = FrameType.parser(string);
 			if (frameType != FrameType.CLOSE) {
 				this.dispatch(frameType);
