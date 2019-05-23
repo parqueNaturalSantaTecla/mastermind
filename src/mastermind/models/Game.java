@@ -44,12 +44,12 @@ public class Game {
 		return this.attempts;
 	}
 
-	public ProposedCombination getProposedCombination(int i) {
-		return this.proposedCombinations.get(i);
+	public ProposedCombination getProposedCombination(int position) {
+		return this.proposedCombinations.get(position);
 	}
 
-	public Result getResult(int i) {
-		return this.results.get(i);
+	public Result getResult(int position) {
+		return this.results.get(position);
 	}
 
 }
