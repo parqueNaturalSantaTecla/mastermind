@@ -17,12 +17,12 @@ public class Game {
 
 	private int attempts;
 
-	Game() {
+	public Game() {
+		this.secretCombination = new SecretCombination();
 		this.clear();
 	}
 
 	void clear() {
-		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		this.attempts = 0;

@@ -34,6 +34,7 @@ public abstract class Menu extends WithConsoleView {
 			} 				
 		} while (error);
 		commands.get(option).execute();
+		System.out.println("Opción: " + option);
 	}
 
 	protected void addCommand(Command command) {

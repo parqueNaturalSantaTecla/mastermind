@@ -113,4 +113,8 @@ public class SessionImplementation implements Session {
 		return this.state.getValueState();
 	}
 
+	public void clearGame() {
+		this.game = new Game();		
+	}
+
 }
