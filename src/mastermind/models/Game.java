@@ -68,16 +68,16 @@ class Game {
 		return this.attempts;
 	}
 
-	List<Color> getColors(int i) {
-		return this.proposedCombinations.get(i).colors;
+	List<Color> getColors(int position) {
+		return this.proposedCombinations.get(position).colors;
 	}
 
-	int getBlacks(int i) {
-		return this.results.get(i).getBlacks();
+	int getBlacks(int position) {
+		return this.results.get(position).getBlacks();
 	}
 
-	int getWhites(int i) {
-		return this.results.get(i).getWhites();
+	int getWhites(int position) {
+		return this.results.get(position).getWhites();
 	}
 
 	int getWidth() {
