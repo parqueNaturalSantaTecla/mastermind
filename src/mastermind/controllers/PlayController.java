@@ -108,21 +108,21 @@ public class PlayController extends AcceptorController {
 		return this.tcpip.receiveInt();
 	}
 
-	public int getBlacks(int i) {
+	public int getBlacks(int position) {
 		if (this.tcpip == null) {
-			return this.proposalController.getBlacks(i);
+			return this.proposalController.getBlacks(position);
 		}
 		this.tcpip.send(FrameType.BLACKS.name());
-		this.tcpip.send(i);
+		this.tcpip.send(position);
 		return this.tcpip.receiveInt();
 	}
 
-	public int getWhites(int i) {
+	public int getWhites(int position) {
 		if (this.tcpip == null) {
-			return this.proposalController.getWhites(i);
+			return this.proposalController.getWhites(position);
 		}
 		this.tcpip.send(FrameType.WHITES.name());
-		this.tcpip.send(i);
+		this.tcpip.send(position);
 		return this.tcpip.receiveInt();
 	}
 

@@ -51,16 +51,16 @@ class ProposalController extends Controller {
 		return this.session.getAttempts();
 	}
 
-	List<Color> getColors(int i) {
-		return this.session.getColors(i);
+	List<Color> getColors(int position) {
+		return this.session.getColors(position);
 	}
 
-	int getBlacks(int i) {
-		return this.session.getBlacks(i);
+	int getBlacks(int position) {
+		return this.session.getBlacks(position);
 	}
 
-	int getWhites(int i) {
-		return this.session.getWhites(i);
+	int getWhites(int position) {
+		return this.session.getWhites(position);
 	}
 
 }
