@@ -40,7 +40,7 @@ public class LogicServer extends Logic {
 		dispatcherPrototype.add(FrameType.WIDTH, new WidthDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.BLACKS, new BlacksDispatcher(this.playController));
 		dispatcherPrototype.add(FrameType.WHITES, new WhitesDispatcher(this.playController));
-		dispatcherPrototype.add(FrameType.RESUME, new ResumeDispatcher(this.resumeController));
+		dispatcherPrototype.add(FrameType.NEW_GAME, new ResumeDispatcher(this.resumeController));
 	}
 
 }

@@ -13,7 +13,7 @@ public enum FrameType {
 	COLORS, 
 	PROPOSECOMBINATION, 
 	WIDTH,
-	RESUME,
+	NEW_GAME,
 	BLACKS,
 	WHITES,
 	CLOSE;

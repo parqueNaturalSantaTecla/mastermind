@@ -18,7 +18,7 @@ public class ResumeController extends AcceptorController {
 				this.session.next();
 			}
 		} else {
-			this.tcpip.send(FrameType.RESUME.name());
+			this.tcpip.send(FrameType.NEW_GAME.name());
 			this.tcpip.send(newGame);
 		}
 	}
