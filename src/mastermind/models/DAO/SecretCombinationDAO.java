@@ -13,8 +13,6 @@ class SecretCombinationDAO extends CombinationDAO{
 	public void load(BufferedReader bufferedReader) {
 		this.combination.clearColors();
 		super.load(bufferedReader);
-		System.out.println("SC.load(): " + this.combination.toString());
-		System.out.println(this.combination.hashCode());
 	}
 
 }

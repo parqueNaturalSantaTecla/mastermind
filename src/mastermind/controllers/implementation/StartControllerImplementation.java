@@ -20,6 +20,7 @@ public class StartControllerImplementation extends StartController {
 	@Override
 	public void start() {
 		((SessionImplementation)this.session).clearGame();
+		((SessionImplementation)this.session).registry();
 		this.sessionImplementationDAO.associate((SessionImplementation)this.session);
 		((SessionImplementation) this.session).next();
 	}

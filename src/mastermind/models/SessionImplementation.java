@@ -53,6 +53,14 @@ public class SessionImplementation implements Session {
 		this.name = null;
 	}
 
+	public void clearGame() {
+		this.game = new Game();		
+	}
+
+	public void registry() {
+		this.registry = new Registry(this.game);
+	}
+
 	public void resetRegistry() {
 		this.registry.reset();
 	}
@@ -111,10 +119,6 @@ public class SessionImplementation implements Session {
 	@Override
 	public StateValue getValueState() {
 		return this.state.getValueState();
-	}
-
-	public void clearGame() {
-		this.game = new Game();		
 	}
 
 }

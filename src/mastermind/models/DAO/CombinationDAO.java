@@ -29,10 +29,8 @@ abstract class CombinationDAO implements DAO{
 		try {
 			for (int i = 0; i < Combination.getWidth(); i++) {
 				String color = bufferedReader.readLine();
-				System.out.println(color);
 				this.combination.addColor(Color.valueOf(color));
 			}
-			System.out.println("-");
 		} catch (NumberFormatException e) {
 			e.printStackTrace();
 		} catch (IOException e) {
