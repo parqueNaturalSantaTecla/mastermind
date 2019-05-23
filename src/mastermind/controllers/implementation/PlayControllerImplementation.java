@@ -75,11 +75,6 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	@Override
-	public int getAttempts() {
-		return this.proposalController.getAttempts();
-	}
-
-	@Override
 	public int getBlacks(int position) {
 		return this.proposalController.getBlacks(position);
 	}
@@ -87,6 +82,11 @@ public class PlayControllerImplementation extends PlayController {
 	@Override
 	public int getWhites(int position) {
 		return this.proposalController.getWhites(position);
+	}
+
+	@Override
+	public int getAttempts() {
+		return this.proposalController.getAttempts();
 	}
 
 }

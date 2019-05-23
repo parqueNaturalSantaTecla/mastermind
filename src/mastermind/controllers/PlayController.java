@@ -28,13 +28,13 @@ public abstract class PlayController extends GameController {
 
 	public abstract boolean isLooser();
 
-	public abstract List<Color> getColors(int i);
+	public abstract List<Color> getColors(int position);
+	
+	public abstract int getBlacks(int position);
+	
+	public abstract int getWhites(int position);
 
 	public abstract int getAttempts();
-	
-	public abstract int getBlacks(int i);
-	
-	public abstract int getWhites(int i);
 
 	@Override
 	public void accept(ControllersVisitor controllersVisitor) {
