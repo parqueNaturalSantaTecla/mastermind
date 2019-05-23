@@ -61,7 +61,7 @@ public class SessionImplementation implements Session {
 		this.registry.redo(this.game);
 	}
 
-	public void resume() {
+	public void isNewGame() {
 		this.game.clear();
 		this.state.reset();
 		this.registry.reset();
@@ -115,16 +115,16 @@ public class SessionImplementation implements Session {
 		return this.game.getAttempts();
 	}
 
-	public List<Color> getColors(int i) {
-		return this.game.getColors(i);
+	public List<Color> getColors(int position) {
+		return this.game.getColors(position);
 	}
 
-	public int getBlacks(int i) {
-		return this.game.getBlacks(i);
+	public int getBlacks(int position) {
+		return this.game.getBlacks(position);
 	}
 
-	public int getWhites(int i) {
-		return this.game.getWhites(i);
+	public int getWhites(int position) {
+		return this.game.getWhites(position);
 	}
 
 	public String[] getGamesNames() {

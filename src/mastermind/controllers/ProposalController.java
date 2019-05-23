@@ -53,16 +53,16 @@ public class ProposalController extends Controller {
 		return ((SessionImplementation) this.session).getAttempts();
 	}
 
-	public List<Color> getColors(int i) {
-		return ((SessionImplementation) this.session).getColors(i);
+	public List<Color> getColors(int position) {
+		return ((SessionImplementation) this.session).getColors(position);
 	}
 
-	public int getBlacks(int i) {
-		return ((SessionImplementation) this.session).getBlacks(i);
+	public int getBlacks(int position) {
+		return ((SessionImplementation) this.session).getBlacks(position);
 	}
 
-	public int getWhites(int i) {
-		return ((SessionImplementation) this.session).getWhites(i);
+	public int getWhites(int position) {
+		return ((SessionImplementation) this.session).getWhites(position);
 	}
 
 }
