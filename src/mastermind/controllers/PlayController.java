@@ -53,16 +53,16 @@ public class PlayController extends AcceptorController {
 		return this.proposalController.getAttempts();
 	}
 
-	public List<Color> getColors(int i) {
-		return this.proposalController.getColors(i);
+	public List<Color> getColors(int position) {
+		return this.proposalController.getColors(position);
 	}
 
-	public int getBlacks(int i) {
-		return this.proposalController.getBlacks(i);
+	public int getBlacks(int position) {
+		return this.proposalController.getBlacks(position);
 	}
 
-	public int getWhites(int i) {
-		return this.proposalController.getWhites(i);
+	public int getWhites(int position) {
+		return this.proposalController.getWhites(position);
 	}
 
 	@Override
