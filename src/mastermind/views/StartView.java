@@ -12,7 +12,7 @@ public class StartView extends WithConsoleView {
 	}
 	
 	public void write() {
-		this.console.writeln(Message.TITLE.getMessage());
+		this.console.writeln(MessageView.TITLE.getMessage());
 		new SecretCombinationView(this.game.getSecretCombination()).writeln();
 	}
 

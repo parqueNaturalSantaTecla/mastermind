@@ -5,7 +5,7 @@ import mastermind.utils.YesNoDialog;
 public class ResumeView {
 
 	public Boolean write() {
-		return new YesNoDialog().read(Message.RESUME.getMessage());
+		return new YesNoDialog().read(MessageView.RESUME.getMessage());
 	}
 
 }

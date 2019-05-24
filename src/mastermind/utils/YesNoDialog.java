@@ -2,7 +2,7 @@ package mastermind.utils;
 
 public class YesNoDialog  extends WithConsoleView {
 
-	private static final char AFIRMATIVE = 's';
+	private static final char AFIRMATIVE = 'y';
 
 	private static final char NEGATIVE = 'n';
 	

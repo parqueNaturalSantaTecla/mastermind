@@ -22,7 +22,7 @@ public class Session {
 	}
 
 	public void proposeCombination(ProposedCombination proposedCombination) {
-		this.game.proposeCombination(proposedCombination);
+		this.game.addProposedCombination(proposedCombination);
 		this.registry.registry();
 	}
 
@@ -42,7 +42,7 @@ public class Session {
 		this.registry.redo(this.game);
 	}
 
-	public void resume() {
+	public void isNewGame() {
 		this.game.clear();
 		this.state.reset();	
 		this.registry.reset();

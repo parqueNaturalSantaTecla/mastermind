@@ -13,20 +13,20 @@ public class GameView extends WithConsoleView {
 
 	public void writeGame() {
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
+		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#turn", "" + this.game.getAttempts()));
 		new SecretCombinationView(this.game.getSecretCombination()).writeln();
-		for (int i = 0; i < this.game.getTurn(); i++) {
+		for (int i = 0; i < this.game.getAttempts(); i++) {
 			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
 			new ResultView(this.game.getResultCombination(i)).writeln();
 		}
 	}
 
 	public void writeLooser() {
-		this.console.writeln(Message.LOOSER.getMessage());
+		this.console.writeln(MessageView.LOOSER.getMessage());
 	}
 
 	public void writeWinner() {
-		this.console.writeln(Message.WINNER.getMessage());
+		this.console.writeln(MessageView.WINNER.getMessage());
 	}
 
 }

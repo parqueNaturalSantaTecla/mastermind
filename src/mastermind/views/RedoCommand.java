@@ -6,7 +6,7 @@ import mastermind.utils.Command;
 public class RedoCommand extends Command{
 	
 	public RedoCommand(Session session) {
-		super(Message.REDO_COMMAND.getMessage(), session);
+		super(MessageView.REDO_COMMAND.getMessage(), session);
 	}
 
 	@Override
