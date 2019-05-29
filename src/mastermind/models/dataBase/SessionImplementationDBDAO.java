@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import mastermind.models.Combination;
 import mastermind.models.SessionImplementation;
 import mastermind.models.StateValue;
 import mastermind.models.DAO.SessionImplementationDAO;
@@ -46,13 +47,13 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			statement.executeUpdate(sql);
 			sql = "USE Mastermind;";
 			statement.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS `Games`\n" + "	(`name` varchar(20) NOT NULL,\n" + "	`turn`int(2),\n"
-					+ "	`secretCombination`varchar(4),\n" + "	PRIMARY KEY (`name`));";
+			sql = "CREATE TABLE IF NOT EXISTS `Games`\n" + "	(`name` varchar(20) NOT NULL,\n"
+					+ "	`attempts`int(2),\n" + "	`secretCombination`varchar(30),\n" + "	PRIMARY KEY (`name`));";
 			statement.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS `Rounds`\n" + "	(`name` varchar(20) NOT NULL,\n"
-					+ "	`turn`int(2) NOT NULL,\n" + "	`proposedCombination`varchar(4),\n" + "	`blacks`int(1),\n"
+					+ "	`attempts`int(2) NOT NULL,\n" + "	`proposedCombination`varchar(30),\n" + "	`blacks`int(1),\n"
 					+ "	`whites`int(1),\n" + "	FOREIGN KEY (`name`) REFERENCES `Games` (`name`),\n"
-					+ "	PRIMARY KEY (`name`,`turn`));";
+					+ "	PRIMARY KEY (`name`,`attempts`));";
 			statement.executeUpdate(sql);
 			statement.close();
 		} catch (SQLException e) {
@@ -73,13 +74,16 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 
 	@Override
 	public void save(String name) {
-		String secretCombinationCodes = "";
-		for (int i = 0; i < this.sessionImplementation.getSecretCombinationCodes().length; i++) {
-			secretCombinationCodes += this.sessionImplementation.getSecretCombinationCodes()[i];
+		String secretCombination = "";
+		for (int i = 0; i < Combination.getWidth(); i++) {
+			secretCombination += this.sessionImplementation.getSecretCombination().getColors().get(i).name();
+			if (i != Combination.getWidth()) {
+				secretCombination += " ";
+			}
 		}
 		if (this.exists(name)) {
-			String sql = "UPDATE Games SET " + "turn = " + this.sessionImplementation.getTurn() + ", "
-					+ "secretCombination = '" + secretCombinationCodes + "' " + "WHERE name = '" + name + "';";
+			String sql = "UPDATE Games SET " + "attempts = " + this.sessionImplementation.getAttempts() + ", "
+					+ "secretCombination = '" + secretCombination + "' " + "WHERE name = '" + name + "';";
 			Statement statement;
 			try {
 				statement = this.connection.createStatement();
@@ -90,8 +94,8 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			}
 			this.gameDBDAO.save(name, this.connection, true);
 		} else {
-			String sql = "INSERT INTO Games VALUES ('" + name + "'," + this.sessionImplementation.getTurn() + ",'"
-					+ secretCombinationCodes + "');";
+			String sql = "INSERT INTO Games VALUES ('" + name + "'," + this.sessionImplementation.getAttempts() + ",'"
+					+ secretCombination + "');";
 			try {
 				Statement statement = this.connection.createStatement();
 				statement.executeUpdate(sql);
