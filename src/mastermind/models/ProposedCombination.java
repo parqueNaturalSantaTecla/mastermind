@@ -7,7 +7,7 @@ import mastermind.types.Color;
 
 public class ProposedCombination extends Combination {
 
-	ProposedCombination(List<Color> colors) {
+	public ProposedCombination(List<Color> colors) {
 		this.colors = colors;
 	}
 

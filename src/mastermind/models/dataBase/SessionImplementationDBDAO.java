@@ -47,11 +47,11 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			statement.executeUpdate(sql);
 			sql = "USE Mastermind;";
 			statement.executeUpdate(sql);
-			sql = "CREATE TABLE IF NOT EXISTS `Games`\n" + "	(`name` varchar(20) NOT NULL,\n" + "	`attempts`int(2),\n"
-					+ "	`secretCombination`varchar(4),\n" + "	PRIMARY KEY (`name`));";
+			sql = "CREATE TABLE IF NOT EXISTS `Games`\n" + "	(`name` varchar(20) NOT NULL,\n"
+					+ "	`attempts`int(2),\n" + "	`secretCombination`varchar(30),\n" + "	PRIMARY KEY (`name`));";
 			statement.executeUpdate(sql);
 			sql = "CREATE TABLE IF NOT EXISTS `Rounds`\n" + "	(`name` varchar(20) NOT NULL,\n"
-					+ "	`attempts`int(2) NOT NULL,\n" + "	`proposedCombination`varchar(4),\n" + "	`blacks`int(1),\n"
+					+ "	`attempts`int(2) NOT NULL,\n" + "	`proposedCombination`varchar(30),\n" + "	`blacks`int(1),\n"
 					+ "	`whites`int(1),\n" + "	FOREIGN KEY (`name`) REFERENCES `Games` (`name`),\n"
 					+ "	PRIMARY KEY (`name`,`attempts`));";
 			statement.executeUpdate(sql);
@@ -74,14 +74,16 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 
 	@Override
 	public void save(String name) {
-		String secretCombinationInitials = "";
+		String secretCombination = "";
 		for (int i = 0; i < Combination.getWidth(); i++) {
-			secretCombinationInitials += this.sessionImplementation.getSecretCombination().getColors().get(i).name()
-					.substring(0, 1);
+			secretCombination += this.sessionImplementation.getSecretCombination().getColors().get(i).name();
+			if (i != Combination.getWidth()) {
+				secretCombination += " ";
+			}
 		}
 		if (this.exists(name)) {
 			String sql = "UPDATE Games SET " + "attempts = " + this.sessionImplementation.getAttempts() + ", "
-					+ "secretCombination = '" + secretCombinationInitials + "' " + "WHERE name = '" + name + "';";
+					+ "secretCombination = '" + secretCombination + "' " + "WHERE name = '" + name + "';";
 			Statement statement;
 			try {
 				statement = this.connection.createStatement();
@@ -93,7 +95,7 @@ public class SessionImplementationDBDAO extends SessionImplementationDAO {
 			this.gameDBDAO.save(name, this.connection, true);
 		} else {
 			String sql = "INSERT INTO Games VALUES ('" + name + "'," + this.sessionImplementation.getAttempts() + ",'"
-					+ secretCombinationInitials + "');";
+					+ secretCombination + "');";
 			try {
 				Statement statement = this.connection.createStatement();
 				statement.executeUpdate(sql);

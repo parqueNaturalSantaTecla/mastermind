@@ -4,12 +4,15 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 import mastermind.models.Combination;
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
 import mastermind.models.Result;
 import mastermind.models.DAO.GameDAO;
+import mastermind.types.Color;
 
 public class GameDBDAO extends GameDAO implements DBDAO {
 
@@ -35,14 +38,15 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 	}
 
 	private void insert(String name, Connection connection, int attempts) {
-		String proposedCombinationInitials = "";
+		String proposedCombination = "";
 		for (int i = 0; i < Combination.getWidth(); i++) {
-			proposedCombinationInitials += this.game.getProposedCombination(attempts).getColors().get(i).name()
-					.substring(0, 1);
+			proposedCombination += this.game.getProposedCombination(attempts).getColors().get(i).name();
+			if (i!=Combination.getWidth()) {
+				proposedCombination += " ";
+			}
 		}
-		String sql = "INSERT INTO Rounds VALUES ('" + name + "'," + (attempts + 1) + ",'" + proposedCombinationInitials
-				+ "'," + this.game.getResult(attempts).getBlacks() + "," + this.game.getResult(attempts).getWhites()
-				+ ");";
+		String sql = "INSERT INTO Rounds VALUES ('" + name + "'," + (attempts + 1) + ",'" + proposedCombination + "',"
+				+ this.game.getResult(attempts).getBlacks() + "," + this.game.getResult(attempts).getWhites() + ");";
 		try {
 			Statement statement = connection.createStatement();
 			statement.executeUpdate(sql);
@@ -60,11 +64,12 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 			ResultSet result = statement.executeQuery(sql);
 			while (result.next()) {
 				String proposedCombination = result.getString("proposedCombination");
-				int[] codes = new int[Combination.getWidth()];
-				for (int i = 0; i < proposedCombination.length(); i++) {
-					codes[i] = proposedCombination.charAt(i) - '0';
+				String[] colorsVector = proposedCombination.split(" ");
+				List<Color> colors = new ArrayList<Color>();
+				for (int i = 0; i < Combination.getWidth(); i++) {
+					colors.add(Color.valueOf(colorsVector[i]));
 				}
-				this.game.addProposedCombination(ProposedCombination.getInstance(codes));
+				this.game.addProposedCombination(new ProposedCombination(colors));
 				int blacks = Integer.parseInt(result.getString("blacks"));
 				int whites = Integer.parseInt(result.getString("whites"));
 				this.game.addResult(new Result(blacks, whites));
@@ -76,11 +81,12 @@ public class GameDBDAO extends GameDAO implements DBDAO {
 			result = statement.executeQuery(sql);
 			while (result.next()) {
 				String secretCombination = result.getString("secretCombination");
-				int[] codes = new int[Combination.getWidth()];
-				for (int i = 0; i < secretCombination.length(); i++) {
-					codes[i] = secretCombination.charAt(i) - '0';
+				String[] colorsVector = secretCombination.split(" ");
+				List<Color> colors = new ArrayList<Color>();
+				for (int i = 0; i < Combination.getWidth(); i++) {
+					colors.add(Color.valueOf(colorsVector[i]));
 				}
-				this.game.setSecretCombination(codes);
+				this.game.setSecretCombination(colors);
 			}
 			result.close();
 			statement.close();
