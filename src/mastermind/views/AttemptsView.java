@@ -3,16 +3,17 @@ package mastermind.views;
 import mastermind.controllers.PlayController;
 import mastermind.utils.WithConsoleView;
 
-class AttemptsView extends WithConsoleView{
-	
+class AttemptsView extends WithConsoleView {
+
 	private PlayController playController;
-	
-	AttemptsView(PlayController proposalController){
+
+	AttemptsView(PlayController proposalController) {
 		this.playController = proposalController;
 	}
-	
+
 	void writeln() {
-		MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.playController.getAttempts());
+		this.console.writeln(
+				MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.playController.getAttempts()));
 	}
 
 }
