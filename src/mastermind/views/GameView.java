@@ -23,7 +23,7 @@ public class GameView extends WithConsoleView {
 
 	public void writeGame() {
 		this.console.writeln();
-		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.attempts));
+		new AttemptsView().writeln(this.attempts);
 		new SecretCombinationView().writeln(this.width);
 		for (int i = 0; i < this.allColors.size(); i++) {
 			new ProposedCombinationView().write(this.allColors.get(i));
@@ -45,6 +45,14 @@ public class GameView extends WithConsoleView {
 
 	public void setWidth(int width) {
 		this.width = width;
+	}
+
+	public void clearAllColors() {
+		this.allColors.clear();
+	}
+
+	public void clearAllResults() {
+		this.allResults.clear();
 	}
 
 	public void setAllColors(List<Color> colors) {

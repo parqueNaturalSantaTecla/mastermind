@@ -6,7 +6,7 @@ import mastermind.views.MessageView;
 class AttemptsView extends WithConsoleView{
 	
 	void writeln(int attempts) {
-		MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + attempts);
+		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + attempts));
 	}
 
 }

@@ -9,9 +9,9 @@ public class ResumeController extends Controller {
 		super(session);
 	}
 
-	public void resume(boolean resume) {
-		if (resume) {
-			this.session.resume();
+	void isNewGame(boolean newGame) {
+		if (newGame) {
+			this.session.isNewGame();
 		} else {
 			this.session.next();
 		}
@@ -19,7 +19,7 @@ public class ResumeController extends Controller {
 
 	@Override
 	public void control() {
-		this.resume(new ResumeView().write());
+		this.isNewGame(new ResumeView().write());
 	}
 
 }

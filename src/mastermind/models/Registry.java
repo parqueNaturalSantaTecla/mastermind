@@ -13,8 +13,8 @@ public class Registry {
 	Registry(Game game) {
 		this.game = game;
 		this.mementoList = new ArrayList<Memento>();
-		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
+		this.mementoList.add(this.firstPrevious, this.game.createMemento());
 	}
 
 	void registry() {

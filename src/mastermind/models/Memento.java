@@ -3,7 +3,7 @@ package mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Memento {
+class Memento {
 
 	private List<ProposedCombination> proposedCombinations;
 
@@ -33,7 +33,7 @@ public class Memento {
 	int getSize() {
 		return proposedCombinations.size();
 	}
-	
+
 	int getAttempts(){
 		return this.attempts;
 	}

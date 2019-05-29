@@ -10,7 +10,7 @@ public abstract class Controller {
 		this.session = session;
 	}
 	
-	public int getWidth() {
+	int getWidth() {
 		return this.session.getWidth();
 	}
 

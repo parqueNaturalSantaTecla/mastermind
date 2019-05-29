@@ -10,14 +10,10 @@ public class ErrorView {
 		"Wrong colors, they must be: " + ColorView.allInitials(), 
 		"Wrong proposed combination length" };
 
-	Error error;
+	private Error error;
 
 	public ErrorView(Error error) {
 		this.error = error;
-	}
-	
-	String getMessage() {
-		return ErrorView.MESSAGES[this.error.ordinal()];
 	}
 	
 	public void writeln() {

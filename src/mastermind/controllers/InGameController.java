@@ -17,6 +17,8 @@ public abstract class InGameController extends Controller {
 		this.inGameControl();
 		this.gameView.setAttempts(this.session.getAttempts());
 		this.gameView.setWidth(this.getWidth());
+		this.gameView.clearAllColors();
+		this.gameView.clearAllResults();
 		for(int i=0; i<this.session.getAttempts(); i++) {
 			this.gameView.setAllColors(this.session.getColors(i));
 			this.gameView.setAllResults(this.session.getBlacks(i),this.session.getWhites(i));

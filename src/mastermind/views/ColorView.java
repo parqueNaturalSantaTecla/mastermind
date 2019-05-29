@@ -3,13 +3,13 @@ package mastermind.views;
 import mastermind.types.Color;
 import mastermind.utils.Console;
 
-public class ColorView {
+class ColorView {
 
 	static final char[] INITIALS = { 'r', 'b', 'y', 'g', 'o', 'p' };
 
 	protected Color color;
 
-	public ColorView(Color color) {
+	ColorView(Color color) {
 		this.color = color;
 	}
 
@@ -25,7 +25,7 @@ public class ColorView {
 		return ColorView.INITIALS[this.color.ordinal()];
 	}
 
-	public static Color getInstance(char character) {
+	static Color getInstance(char character) {
 		for (int i = 0; i < ColorView.INITIALS.length; i++) {
 			if (ColorView.INITIALS[i] == character) {
 				return Color.values()[i];
@@ -34,7 +34,7 @@ public class ColorView {
 		return null;
 	}
 
-	public void write() {
+	void write() {
 		new Console().write(ColorView.INITIALS[this.color.ordinal()]);
 	}
 
