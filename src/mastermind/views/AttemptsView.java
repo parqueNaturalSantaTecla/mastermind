@@ -4,16 +4,17 @@ import mastermind.controllers.GameController;
 import mastermind.utils.WithConsoleView;
 import mastermind.views.menus.MessageView;
 
-class AttemptsView extends WithConsoleView{
-	
+class AttemptsView extends WithConsoleView {
+
 	private GameController gameController;
-	
-	AttemptsView(GameController gameController){
+
+	AttemptsView(GameController gameController) {
 		this.gameController = gameController;
 	}
-	
+
 	void writeln() {
-		MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.gameController.getAttempts());
+		this.console.writeln(
+				MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.gameController.getAttempts()));
 	}
 
 }

@@ -1,7 +1,7 @@
 package mastermind.views.menus;
 
 public enum MessageView {
-	ATTEMPTS("#turn attempt(s): "),
+	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
 	SAVE("Do you want to save the game?"),
