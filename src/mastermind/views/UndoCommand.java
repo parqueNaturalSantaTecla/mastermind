@@ -5,7 +5,7 @@ import mastermind.utils.Command;
 public class UndoCommand extends Command {
 
 	public UndoCommand() {
-		super(Message.UNDO_COMMAND.getMessage());
+		super(MessageView.UNDO_COMMAND.getMessage());
 	}
 
 	@Override

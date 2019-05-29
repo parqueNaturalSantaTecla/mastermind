@@ -5,7 +5,7 @@ import mastermind.utils.Command;
 public class ProposeCommand extends Command {
 
 	public ProposeCommand() {
-		super(Message.PROPOSE_COMMAND.getMessage());
+		super(MessageView.PROPOSE_COMMAND.getMessage());
 	}
 
 	@Override

@@ -1,5 +1,9 @@
 package mastermind.models;
 
+import java.util.List;
+
+import mastermind.types.Color;
+
 public class Session {
 
 	private State state;
@@ -18,8 +22,8 @@ public class Session {
 		this.state.next();		
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
-		this.game.proposeCombination(proposedCombination);
+	public void addProposedCombination(List<Color> colors) {
+		this.game.addProposedCombination(colors);
 		this.registry.registry();
 	}
 
@@ -57,12 +61,20 @@ public class Session {
 		return this.game.getWidth();
 	}
 
-	public int[][][] getCodes() {
-		return this.game.getCodes();
+	public List<Color> getColors(int position) {
+		return this.game.getColors(position);
 	}
 
-	public int getTurn() {
-		return this.game.getTurn();
+	public int getBlacks(int i) {
+		return this.game.getBlacks(i);
+	}
+
+	public int getWhites(int i) {
+		return this.game.getWhites(i);
+	}
+
+	public int getAttempts() {
+		return this.game.getAttempts();
 	}
 
 	public StateValue getValueState() {

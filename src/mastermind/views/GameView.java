@@ -1,46 +1,61 @@
 package mastermind.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import mastermind.types.Color;
 import mastermind.utils.WithConsoleView;
 
 public class GameView extends WithConsoleView {
 
-	private int turn;
+	private int attempts;
 
 	private int width;
 
-	private int[][][] allCodes;
+	private List<List<Color>> allColors;
+	
+	private List<List<Integer>> allResults;
 
 	public GameView() {
+		this.allColors = new ArrayList<List<Color>>();
+		this.allResults = new ArrayList<List<Integer>>();
 	}
 
 	public void writeGame() {
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.turn));
+		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.attempts));
 		new SecretCombinationView().writeln(this.width);
-		for (int i = 0; i < this.allCodes.length; i++) {
-			new ProposedCombinationView().write(this.allCodes[i][0]);
-			new ResultView().writeln(this.allCodes[i][1]);
+		for (int i = 0; i < this.allColors.size(); i++) {
+			new ProposedCombinationView().write(this.allColors.get(i));
+			new ResultView().writeln(this.allResults.get(i));
 		}
 	}
 
 	public void writeLooser() {
-		this.console.writeln(Message.LOOSER.getMessage());
+		this.console.writeln(MessageView.LOOSER.getMessage());
 	}
 
 	public void writeWinner() {
-		this.console.writeln(Message.WINNER.getMessage());
+		this.console.writeln(MessageView.WINNER.getMessage());
 	}
 	
-	public void setTurn(int turn) {
-		this.turn = turn;
+	public void setAttempts(int attempts) {
+		this.attempts = attempts;
 	}
 
 	public void setWidth(int width) {
 		this.width = width;
 	}
 
-	public void setAllCodes(int[][][] allCodes) {
-		this.allCodes = allCodes;
+	public void setAllColors(List<Color> colors) {
+		this.allColors.add(colors);
+	}
+
+	public void setAllResults(int blacks, int whites) {
+		List<Integer> results = new ArrayList<Integer>();
+		results.add(blacks);
+		results.add(whites);
+		this.allResults.add(results);
 	}
 
 }

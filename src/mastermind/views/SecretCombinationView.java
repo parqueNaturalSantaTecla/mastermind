@@ -10,7 +10,7 @@ class SecretCombinationView extends WithConsoleView {
 	
 	void writeln(int length) {
 		for (int i = 0; i < length; i++) {
-			this.console.write(Message.SECRET.getMessage());
+			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}

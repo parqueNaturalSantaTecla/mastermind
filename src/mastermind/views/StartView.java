@@ -5,7 +5,7 @@ import mastermind.utils.WithConsoleView;
 public class StartView extends WithConsoleView {
 
 	public void write(int width) {
-		this.console.writeln(Message.TITLE.getMessage());
+		this.console.writeln(MessageView.TITLE.getMessage());
 		new SecretCombinationView().writeln(width);
 	}
 
