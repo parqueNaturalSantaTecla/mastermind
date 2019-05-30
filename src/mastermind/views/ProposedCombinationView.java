@@ -1,6 +1,11 @@
 package mastermind.views;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import mastermind.models.ProposedCombination;
+import mastermind.types.Color;
+import mastermind.types.Error;
 import mastermind.utils.WithConsoleView;
 
 public class ProposedCombinationView extends WithConsoleView {
@@ -12,23 +17,23 @@ public class ProposedCombinationView extends WithConsoleView {
 	}
 
 	void write() {
-		for (mastermind.models.Color color : this.proposedCombination.getColors()) {
-			this.console.write(Color.getInstance(color.ordinal()).getInitial());
+		for (Color color : this.proposedCombination.getColors()) {
+			new ColorView(color).write();
 		}
 	}
 
 	public void read() {
-		mastermind.models.Error error;
-		mastermind.models.Color[] colors;
+		Error error;
+		List<Color> colors;
 		do {
-			String characters = this.console.readString(Message.PROPOSED_COMBINATION.getMessage());
-			colors = new mastermind.models.Color[characters.length()];
+			String characters = this.console.readString(MessageView.PROPOSED_COMBINATION.getMessage());
+			colors = new ArrayList<Color>();
 			for (int i = 0; i < characters.length(); i++) {
-				colors[i] = Color.getInstance(characters.charAt(i));
+				colors.add(ColorView.getInstance(characters.charAt(i)));
 			}
 			error = ProposedCombination.isValid(colors);
 			if (error != null) {
-				Error.values()[error.ordinal()].write();
+				new ErrorView(error).writeln();
 			}
 		} while (error != null);
 		this.proposedCombination.set(colors);

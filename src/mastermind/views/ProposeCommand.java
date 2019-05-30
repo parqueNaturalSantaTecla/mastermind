@@ -8,7 +8,7 @@ import mastermind.utils.Observer;
 public class ProposeCommand extends Command {
 
 	public ProposeCommand(Mastermind mastermind, Observer observer) {
-		super(Message.PROPOSE_COMMAND.getMessage(), mastermind, observer);
+		super(MessageView.PROPOSE_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

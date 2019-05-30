@@ -2,7 +2,7 @@ package mastermind.models;
 
 import java.util.ArrayList;
 
-public class Registry {
+class Registry {
 	
 	private ArrayList<Memento> mementoList;
 	
@@ -43,18 +43,10 @@ public class Registry {
 		return this.firstPrevious >= 1;
 	}
 
-	public void reset() {
+	void reset() {
 		this.mementoList = new ArrayList<Memento>();
 		this.mementoList.add(firstPrevious, this.game.createMemento());
 		this.firstPrevious = 0;
-	}
-	
-	public String toString() {
-		String string = "firstPrevious: "+this.firstPrevious+", ";
-		for (Memento memento: this.mementoList) {
-			string += memento.toString()+"\n";
-		}
-		return string;
 	}
 
 }

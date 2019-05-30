@@ -16,25 +16,25 @@ public class Game extends Observed {
 
 	private List<Result> results;
 
-	private int turn;
+	private int attempts;
 
 	public Game(SecretCombination secretCombination) {
 		this.secretCombination = secretCombination;
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
-		this.turn = 0;
+		this.attempts = 0;
 	}
 
-	public void clear() {
+	void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
-		this.turn = 0;
+		this.attempts = 0;
 	}
 
 	public void addProposedCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
-		this.turn++;
+		this.attempts++;
 	}
 
 	public void addResult(Result result) {
@@ -42,16 +42,16 @@ public class Game extends Observed {
 		this.notify(new UpdateGameEvent());
 	}
 
-	public Memento createMemento() {
-		Memento memento = new Memento(this.turn);
+	Memento createMemento() {
+		Memento memento = new Memento(this.attempts);
 		for (int i = 0; i < this.proposedCombinations.size(); i++) {
 			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
 		}
 		return memento;
 	}
 
-	public void set(Memento memento) {
-		this.turn = memento.getTurn();
+	void set(Memento memento) {
+		this.attempts = memento.getAttempts();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		for (int i = 0; i < memento.getSize(); i++) {
@@ -60,22 +60,22 @@ public class Game extends Observed {
 		}
 	}
 
-	public boolean isLooser() {
-		return this.turn == Game.MAX_LONG;
+	boolean isLooser() {
+		return this.attempts == Game.MAX_LONG;
 	}
 
-	public boolean isWinner() {
-		if (this.turn == 0) {
+	boolean isWinner() {
+		if (this.attempts == 0) {
 			return false;
 		}
-		return this.results.get(this.turn - 1).isWinner();
+		return this.results.get(this.attempts - 1).isWinner();
 	}
 
-	public int getTurn() {
-		return this.turn;
+	public int getAttempts() {
+		return this.attempts;
 	}
 
-	public SecretCombination getSecretCombination() {
+	SecretCombination getSecretCombination() {
 		return this.secretCombination;
 	}
 

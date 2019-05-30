@@ -37,7 +37,7 @@ class GameController {
 		return this.game;
 	}
 
-	public void reset() {
+	void reset() {
 		List<ProposedCombinationView> proposedCombinationViews = new ArrayList<ProposedCombinationView>();
 		for (ProposedCombination proposedCombination : this.game.getProposedCombinations()) {
 			ProposedCombinationController proposedCombinationController = new ProposedCombinationController(

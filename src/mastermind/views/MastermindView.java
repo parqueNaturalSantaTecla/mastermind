@@ -22,7 +22,7 @@ public class MastermindView extends Observed implements Observer{
 	}
 
 	public void write() {
-		this.console.writeln(Message.TITLE.getMessage());
+		this.console.writeln(MessageView.TITLE.getMessage());
 		new SecretCombinationView(this.mastermind.getSecretCombination()).writeln();
 		do {
 			this.menu.execute();
@@ -32,16 +32,16 @@ public class MastermindView extends Observed implements Observer{
 	@Override
 	public void update(Observed observed, Event event) {
 		if (event instanceof WonGameEvent) {
-			this.console.writeln(Message.WINNER.getMessage());
-			this.resume();
+			this.console.writeln(MessageView.WINNER.getMessage());
+			this.isNewGame();
 		} else if (event instanceof LostGameEvent) {
-			this.console.writeln(Message.LOOSER.getMessage());
-			this.resume();
+			this.console.writeln(MessageView.LOOSER.getMessage());
+			this.isNewGame();
 		}
 	}
 
-	private void resume() {
-		if (new YesNoDialog().read(Message.RESUME.getMessage())) {
+	private void isNewGame() {
+		if (new YesNoDialog().read(MessageView.RESUME.getMessage())) {
 			this.notify(new NewGameEvent());
 		}
 	}

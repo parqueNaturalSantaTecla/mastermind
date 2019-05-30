@@ -27,9 +27,9 @@ public class GameView extends WithConsoleView implements Observer {
 		this.resultViews = new ArrayList<ResultView>();
 	}
 
-	public void writeGame() {
+	void writeGame() {
 		this.console.writeln();
-		this.console.writeln(Message.TURN.getMessage().replaceFirst("#turn", "" + this.game.getTurn()));
+		new AttemptsView(this.game).writeln();
 		this.secretCombinationView.writeln();
 		this.console.writeln();
 		for (int i = 0; i < this.proposedCombinationViews.size(); i++) {

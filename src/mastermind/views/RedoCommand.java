@@ -8,7 +8,7 @@ import mastermind.utils.Observer;
 public class RedoCommand extends Command{
 	
 	public RedoCommand(Mastermind mastermind, Observer observer) {
-		super(Message.REDO_COMMAND.getMessage(), mastermind, observer);
+		super(MessageView.REDO_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

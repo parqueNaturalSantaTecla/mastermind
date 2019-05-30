@@ -13,7 +13,7 @@ class ProposedCombinationController {
 		this(new ProposedCombination());
 	}
 
-	public ProposedCombinationController(ProposedCombination proposedCombination) {
+	ProposedCombinationController(ProposedCombination proposedCombination) {
 		this.proposedCombination = proposedCombination;
 		this.proposedCombinationView = new ProposedCombinationView(this.proposedCombination);
 	}

@@ -1,17 +1,22 @@
 package mastermind.models;
 
+import java.util.List;
+
+import mastermind.types.Color;
+import mastermind.types.Error;
+
 public class ProposedCombination extends Combination {
 
-	public static Error isValid(Color[] colors) {
-		if (colors.length != Combination.getWidth()) {
+	public static Error isValid(List<Color> colors) {
+		if (colors.size() != Combination.getWidth()) {
 			return Error.WRONG_LENGTH;
 		}
-		for (int i = 0; i < colors.length; i++) {
-			if (colors[i] == null) {
+		for (int i = 0; i < colors.size(); i++) {
+			if (colors.get(i) == null) {
 				return Error.WRONG_CHARACTERS;
 			}
-			for (int j = i + 1; j < colors.length; j++) {
-				if (colors[i] == colors[j]) {
+			for (int j = i + 1; j < colors.size(); j++) {
+				if (colors.get(i) == colors.get(j)) {
 					return Error.DUPLICATED;
 				}
 			}
@@ -19,7 +24,7 @@ public class ProposedCombination extends Combination {
 		return null;
 	}
 
-	public void set(Color[] colors) {
+	public void set(List<Color> colors) {
 		for (Color color: colors) {
 			this.colors.add(color);			
 		}
@@ -38,20 +43,12 @@ public class ProposedCombination extends Combination {
 		return false;
 	}
 
-	public ProposedCombination copy() {
+	ProposedCombination copy() {
 		ProposedCombination proposedCombination = new ProposedCombination();
 		for (Color color : this.colors) {
 			proposedCombination.colors.add(color);
 		}
 		return proposedCombination;
-	}
-	
-	public String toString() {
-		String string = "";
-		for (Color color: this.colors) {
-			string += color.name()+" ";
-		}
-		return string;
 	}
 
 }

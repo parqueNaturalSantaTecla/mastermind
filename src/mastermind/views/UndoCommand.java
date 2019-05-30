@@ -8,7 +8,7 @@ import mastermind.utils.Observer;
 public class UndoCommand extends Command {
 
 	public UndoCommand(Mastermind mastermind, Observer observer) {
-		super(Message.UNDO_COMMAND.getMessage(), mastermind, observer);
+		super(MessageView.UNDO_COMMAND.getMessage(), mastermind, observer);
 	}
 
 	@Override

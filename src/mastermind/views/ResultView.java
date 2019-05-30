@@ -12,7 +12,7 @@ public class ResultView extends WithConsoleView {
 	}
 
 	void writeln() {
-		this.console.writeln(Message.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
+		this.console.writeln(MessageView.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
 				.replaceFirst("#whites", "" + this.result.getWhites()));
 	}
 

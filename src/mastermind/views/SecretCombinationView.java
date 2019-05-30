@@ -13,7 +13,7 @@ public class SecretCombinationView extends WithConsoleView {
 
 	void writeln() {
 		for (int i = 0; i < this.secretCombination.getColors().size(); i++) {
-			this.console.write(Message.SECRET.getMessage());
+			this.console.write(MessageView.SECRET.getMessage());
 		}
 		this.console.writeln();
 	}

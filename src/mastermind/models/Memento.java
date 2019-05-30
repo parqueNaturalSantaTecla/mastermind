@@ -3,16 +3,16 @@ package mastermind.models;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Memento {
+class Memento {
 
 	private List<ProposedCombination> proposedCombinations;
 
 	private List<Result> results;
 
-	private int turn;
+	private int attempts;
 
-	Memento(int turn) {
-		this.turn = turn;
+	Memento(int attempts) {
+		this.attempts = attempts;
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 	}
@@ -34,17 +34,8 @@ public class Memento {
 		return proposedCombinations.size();
 	}
 	
-	int getTurn(){
-		return this.turn;
-	}
-	
-	public String toString(){
-		String string = ""+this.getTurn()+", ";
-		for (int i=0; i<this.getSize();i++) {
-				string += this.proposedCombinations.get(i).getColors().toString()+", ";
-				string += this.results.get(i).toString();
-		}
-		return string;
+	int getAttempts(){
+		return this.attempts;
 	}
 
 }
