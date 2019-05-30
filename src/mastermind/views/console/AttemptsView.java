@@ -4,7 +4,7 @@ import mastermind.models.Game;
 import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
-public class AttemptsView extends WithConsoleView{
+class AttemptsView extends WithConsoleView{
 	
 	private Game game;
 

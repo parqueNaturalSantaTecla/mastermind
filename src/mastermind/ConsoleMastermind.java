@@ -9,12 +9,12 @@ public class ConsoleMastermind {
 
 	private ConsoleView consoleView;
 
-	protected ConsoleMastermind() {
+	private ConsoleMastermind() {
 		this.game = new Game();
 		this.consoleView = new ConsoleView(this.game);
 	}
 
-	protected void play() {
+	private void play() {
 		this.consoleView.interact();
 	}
 	

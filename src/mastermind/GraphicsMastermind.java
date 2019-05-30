@@ -9,12 +9,12 @@ public class GraphicsMastermind {
 
 	private GraphicsView graphicsView;
 
-	protected GraphicsMastermind() {
+	private GraphicsMastermind() {
 		this.game = new Game();
 		this.graphicsView = new GraphicsView(this.game);
 	}
 
-	protected void play() {
+	private void play() {
 		this.graphicsView.interact();
 	}
 	
