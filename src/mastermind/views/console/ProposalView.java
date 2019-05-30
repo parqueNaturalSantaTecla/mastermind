@@ -11,12 +11,9 @@ class ProposalView extends WithConsoleView {
 	
 	private SecretCombinationView secretCombinationView;
 	
-	private AttemptsView attemptsView;
-	
 	ProposalView (Game game){
 		this.game = game;
 		this.secretCombinationView = new SecretCombinationView();
-		this.attemptsView = new AttemptsView(this.game);
 	}
 
 	boolean interact() {
@@ -25,7 +22,7 @@ class ProposalView extends WithConsoleView {
 		proposedCombinationView.read();
 		this.game.addProposedCombination(proposedCombination);
 		this.console.writeln();
-		this.attemptsView.writeln();
+		new AttemptsView(this.game).writeln();
 		this.secretCombinationView.writeln();
 		for (int i = 0; i < this.game.getAttempts(); i++) {
 			new ProposedCombinationView(this.game.getProposedCombination(i)).write();
