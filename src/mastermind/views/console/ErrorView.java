@@ -3,7 +3,7 @@ package mastermind.views.console;
 import mastermind.models.Error;
 import mastermind.utils.Console;
 
-public class ErrorView extends mastermind.views.ErrorView {
+class ErrorView extends mastermind.views.ErrorView {
 
 	ErrorView(Error error) {
 		super(error);

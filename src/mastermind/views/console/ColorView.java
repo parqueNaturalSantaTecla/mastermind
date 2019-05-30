@@ -3,7 +3,7 @@ package mastermind.views.console;
 import mastermind.models.Color;
 import mastermind.utils.Console;
 
-public class ColorView extends mastermind.views.ColorView {
+class ColorView extends mastermind.views.ColorView {
 
 	ColorView(Color color) {
 		super(color);
