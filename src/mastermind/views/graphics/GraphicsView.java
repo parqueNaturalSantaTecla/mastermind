@@ -9,7 +9,8 @@ public class GraphicsView extends View {
 
 	private GameView gameView;
 
-	public GraphicsView(StartController startController, ProposalController proposalController, ResumeController resumeController) {
+	public GraphicsView(StartController startController, ProposalController proposalController,
+			ResumeController resumeController) {
 		super(startController, proposalController, resumeController);
 		this.gameView = new GameView(startController, proposalController);
 	}
@@ -27,8 +28,8 @@ public class GraphicsView extends View {
 	@Override
 	protected boolean isNewGame() {
 		ResumeDialog resumeDialog = new ResumeDialog();
-		this.resumeController.isNewGame(resumeDialog.isNewGame());
 		if (resumeDialog.isNewGame()) {
+			this.resumeController.clearGame();
 			this.gameView = new GameView(this.startController, this.proposalController);
 			return true;
 		} else {

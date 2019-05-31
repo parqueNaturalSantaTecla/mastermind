@@ -8,8 +8,6 @@ import mastermind.views.View;
 
 public abstract class Mastermind {
 
-	public static final int NO_ERROR = -1;
-
 	private Game game;
 	
 	private StartController startController;

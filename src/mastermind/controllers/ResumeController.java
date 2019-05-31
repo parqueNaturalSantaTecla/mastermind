@@ -8,10 +8,8 @@ public class ResumeController extends Controller {
 		super(game);
 	}
 
-	public void isNewGame(boolean newGame) {
-		if (newGame) {
-			this.game.clear();
-		}
+	public void clearGame() {
+		this.game.clear();
 	}
 
 }
