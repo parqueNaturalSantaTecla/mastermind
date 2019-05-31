@@ -12,10 +12,10 @@ class ResultView extends WithConsoleView {
 		this.proposalController = proposalController;
 	}
 
-	void writeln(int i) {
+	void writeln(int position) {
 		this.console.writeln(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + this.proposalController.getBlacks(i))
-						.replaceFirst("#whites", "" + this.proposalController.getWhites(i)));
+				.replaceFirst("#blacks", "" + this.proposalController.getBlacks(position))
+						.replaceFirst("#whites", "" + this.proposalController.getWhites(position)));
 	}
 
 }
