@@ -23,8 +23,8 @@ public class Logic {
 		this.resumeController = new ResumeController(this.game);
 	}
 
-	public void isNewGame(boolean newGame) {
-		this.resumeController.isNewGame(newGame);
+	public void clearGame() {
+		this.resumeController.clearGame();
 	}
 
 	public Error addProposedCombination(List<Color> colors) {

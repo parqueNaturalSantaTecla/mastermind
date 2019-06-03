@@ -11,8 +11,6 @@ import mastermind.views.ColorView;
 
 @SuppressWarnings("serial")
 class ProposedCombinationView extends JLabel {
-
-	public static final int ERROR_CODE = -1;
 	
 	private Logic logic;
 
