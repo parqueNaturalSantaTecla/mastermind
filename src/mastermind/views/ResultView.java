@@ -11,10 +11,10 @@ class ResultView extends WithConsoleView {
 		this.playController = playController;
 	}
 
-	void writeln(int i) {
+	void writeln(int position) {
 		this.console.writeln(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + this.playController.getBlacks(i))
-				.replaceFirst("#whites", "" + this.playController.getWhites(i)));
+				.replaceFirst("#blacks", "" + this.playController.getBlacks(position))
+				.replaceFirst("#whites", "" + this.playController.getWhites(position)));
 	}
 
 }

@@ -8,9 +8,9 @@ public class ResumeController extends AcceptorController {
 		super(session);
 	}
 	
-	public void isNewGame(boolean newGame) {
+	public void clearGame(boolean newGame) {
 		if (newGame) {
-			this.session.isNewGame();
+			this.session.clearGame();
 		} else {
 			this.session.next();
 		}
