@@ -10,10 +10,10 @@ public class ResumeController extends AcceptorController {
 		super(session, tcpip);
 	}
 
-	public void isNewGame(boolean newGame) {
+	public void clearGame(boolean newGame) {
 		if (this.tcpip == null) {
 			if (newGame) {
-				this.session.isNewGame();
+				this.session.clearGame();
 			} else {
 				this.session.next();
 			}

@@ -6,7 +6,7 @@ import mastermind.utils.YesNoDialog;
 class ResumeView {
 
 	void interact(ResumeController resumeController) {
-		resumeController.isNewGame(new YesNoDialog().read(MessageView.NEW_GAME.getMessage()));
+		resumeController.clearGame(new YesNoDialog().read(MessageView.NEW_GAME.getMessage()));
 	}
 	
 }
