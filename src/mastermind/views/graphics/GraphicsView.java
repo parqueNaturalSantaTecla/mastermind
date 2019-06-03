@@ -23,7 +23,7 @@ public class GraphicsView extends View {
 				this.gameView.interact((ProposalController) controller);
 			} else {
 				ResumeDialog resumeDialog = new ResumeDialog();
-				((ResumeController) controller).isNewGame(resumeDialog.isNewGame());
+				((ResumeController) controller).clearGame(resumeDialog.isNewGame());
 				if (resumeDialog.isNewGame()) {
 					this.gameView = new GameView();
 				} else {
