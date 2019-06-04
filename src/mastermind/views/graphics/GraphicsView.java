@@ -26,7 +26,7 @@ public class GraphicsView extends View {
 	@Override
 	public void visit(ResumeController resumeController) {
 		ResumeDialog resumeDialog = new ResumeDialog();
-		resumeController.clearGame(resumeDialog.isNewGame());
+		resumeController.resume(resumeDialog.isNewGame());
 		if (resumeDialog.isNewGame()) {
 			this.gameView = new GameView();
 		} else {
