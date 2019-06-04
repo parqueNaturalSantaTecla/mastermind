@@ -82,16 +82,16 @@ public class PlayControllerProxy extends PlayController {
 	}
 	
 	@Override
-	public int getBlacks(int i) {
+	public int getBlacks(int position) {
 		this.tcpip.send(FrameType.BLACKS.name());
-		this.tcpip.send(i);
+		this.tcpip.send(position);
 		return this.tcpip.receiveInt();
 	}
 
 	@Override
-	public int getWhites(int i) {
+	public int getWhites(int position) {
 		this.tcpip.send(FrameType.WHITES.name());
-		this.tcpip.send(i);
+		this.tcpip.send(position);
 		return this.tcpip.receiveInt();
 	}
 

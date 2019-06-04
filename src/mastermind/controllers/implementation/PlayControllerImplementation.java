@@ -61,8 +61,8 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	@Override
-	public List<Color> getColors(int i) {
-		return this.proposalController.getColors(i);
+	public List<Color> getColors(int position) {
+		return this.proposalController.getColors(position);
 	}
 
 	@Override
@@ -71,13 +71,13 @@ public class PlayControllerImplementation extends PlayController {
 	}
 
 	@Override
-	public int getBlacks(int i) {
-		return this.proposalController.getBlacks(i);
+	public int getBlacks(int position) {
+		return this.proposalController.getBlacks(position);
 	}
 
 	@Override
-	public int getWhites(int i) {
-		return this.proposalController.getWhites(i);
+	public int getWhites(int position) {
+		return this.proposalController.getWhites(position);
 	}
 
 }
