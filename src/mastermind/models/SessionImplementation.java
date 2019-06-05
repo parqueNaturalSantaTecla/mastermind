@@ -61,7 +61,7 @@ public class SessionImplementation implements Session {
 		this.registry.redo(this.game);
 	}
 
-	public void isNewGame() {
+	public void clearGame() {
 		this.game.clear();
 		this.state.reset();
 		this.registry.reset();

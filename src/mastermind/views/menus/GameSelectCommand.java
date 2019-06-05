@@ -10,7 +10,7 @@ class GameSelectCommand extends Command {
 
 	@Override
 	protected void execute() {
-		System.out.println(this.title);
+		this.console.writeln(this.title);
 		((StartController) this.acceptorController).start(this.title);
 	}
 

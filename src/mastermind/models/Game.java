@@ -119,10 +119,4 @@ class Game {
 		}
 	}
 
-	@Override
-	public String toString() {
-		return "Game [secretCombination=" + secretCombination + ", proposedCombinations=" + proposedCombinations
-				+ ", results=" + results + ", attempts=" + attempts + "]";
-	}
-
 }
