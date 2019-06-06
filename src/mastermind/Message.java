@@ -13,25 +13,27 @@ enum Message {
 	LOOSER("You've lost!!! :-(");
 
 	private String message;
+	
+	private Console console;
 
 	private Message(String message) {
 		this.message = message;
 	}
 
 	void write() {
-		new Console().write(this.message);
+		this.console.write(this.message);
 	}
 
 	void writeln() {
-		new Console().writeln(this.message);
+		this.console.writeln(this.message);
 	}
 
 	void writeln(int attempts) {
-		new Console().writeln(this.message.replaceAll("#attempts", "" + attempts));
+		this.console.writeln(this.message.replaceAll("#attempts", "" + attempts));
 	}
 
 	void writeln(int blacks, int whites) {
-		new Console().writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
+		this.console.writeln(this.message.replaceFirst("#blacks", "" + blacks).replaceFirst("#whites", "" + whites));
 	}
 
 }
