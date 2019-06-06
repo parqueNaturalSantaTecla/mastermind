@@ -1,8 +1,8 @@
 package mastermind.views.console;
 
 import mastermind.models.SecretCombination;
-import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
+import santaTecla.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
 
