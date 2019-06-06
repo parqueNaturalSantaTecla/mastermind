@@ -5,8 +5,8 @@ import java.util.List;
 import mastermind.controllers.ProposalController;
 import mastermind.types.Color;
 import mastermind.types.Error;
-import mastermind.utils.WithConsoleView;
 import mastermind.views.console.ErrorView;
+import santaTecla.utils.WithConsoleView;
 import mastermind.views.MessageView;
 
 class ProposalView extends WithConsoleView {
