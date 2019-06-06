@@ -1,12 +1,11 @@
 package mastermind.views;
 
 import mastermind.controllers.PlayController;
-import santaTecla.utils.WithConsoleView;
 
-class GameView extends WithConsoleView {
+class GameView {
 
 	GameView(PlayController playController) {
-		this.console.writeln();
+		MessageView.NEW_LINE.writeln();
 		new AttemptsView(playController).writeln();
 		new SecretCombinationView(playController).writeln();
 		for (int i = 0; i < playController.getAttempts(); i++) {
@@ -14,9 +13,9 @@ class GameView extends WithConsoleView {
 			new ResultView(playController).writeln(i);
 		}
 		if (playController.isWinner()) {
-			this.console.writeln(MessageView.WINNER.getMessage());
+			MessageView.WINNER.writeln();
 		} else if (playController.isLooser()) {
-			this.console.writeln(MessageView.LOOSER.getMessage());
+			MessageView.LOOSER.writeln();
 		}
 	}
 	
