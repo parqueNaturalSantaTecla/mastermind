@@ -1,8 +1,8 @@
 package mastermind.views.console;
 
 import mastermind.controllers.ProposalController;
-import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
+import santaTecla.utils.WithConsoleView;
 
 public class AttemptsView extends WithConsoleView {
 
