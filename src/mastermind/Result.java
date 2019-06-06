@@ -1,6 +1,6 @@
 package mastermind;
 
-import mastermind.utils.WithConsoleModel;
+import santaTecla.utils.WithConsoleModel;
 
 class Result extends WithConsoleModel{
 

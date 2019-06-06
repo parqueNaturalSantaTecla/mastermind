@@ -1,6 +1,6 @@
 package mastermind;
 
-import mastermind.utils.Console;
+import santaTecla.utils.Console;
 
 enum Message {
 	ATTEMPTS("#attempts attempt(s): "), 

@@ -3,7 +3,7 @@ package mastermind;
 import java.util.ArrayList;
 import java.util.List;
 
-import mastermind.utils.WithConsoleModel;
+import santaTecla.utils.WithConsoleModel;
 
 abstract class Combination extends WithConsoleModel{
 	
