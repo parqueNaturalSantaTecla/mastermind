@@ -1,7 +1,7 @@
 package mastermind;
 
-import mastermind.utils.WithConsoleModel;
-import mastermind.utils.YesNoDialog;
+import santaTecla.utils.WithConsoleModel;
+import santaTecla.utils.YesNoDialog;
 
 public class Mastermind extends WithConsoleModel {
 
