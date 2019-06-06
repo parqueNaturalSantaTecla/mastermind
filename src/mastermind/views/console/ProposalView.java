@@ -3,8 +3,8 @@ package mastermind.views.console;
 import java.util.List;
 
 import mastermind.controllers.ProposalController;
-import mastermind.utils.WithConsoleView;
 import mastermind.views.console.ErrorView;
+import santaTecla.utils.WithConsoleView;
 import mastermind.views.MessageView;
 import mastermind.types.Error;
 import mastermind.types.Color;
