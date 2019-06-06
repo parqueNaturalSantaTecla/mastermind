@@ -1,6 +1,6 @@
 package mastermind.views;
 
-import mastermind.utils.Console;
+import santaTecla.utils.Console;
 
 enum MessageView {
 	ATTEMPTS("#attempts attempt(s): "),

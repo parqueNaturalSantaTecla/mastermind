@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.models.Game;
-import mastermind.utils.YesNoDialog;
+import santaTecla.utils.YesNoDialog;
 
 class ResumeView {
 

@@ -4,7 +4,7 @@ import mastermind.models.Color;
 import mastermind.models.Error;
 import mastermind.models.Combination;
 import mastermind.models.ProposedCombination;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class ProposedCombinationView extends WithConsoleView {
 
