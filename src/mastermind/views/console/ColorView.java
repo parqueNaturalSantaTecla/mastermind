@@ -1,7 +1,7 @@
 package mastermind.views.console;
 
 import mastermind.models.Color;
-import mastermind.utils.Console;
+import santaTecla.utils.Console;
 
 class ColorView extends mastermind.views.ColorView {
 
