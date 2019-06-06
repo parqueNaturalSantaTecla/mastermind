@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.models.Game;
 import mastermind.models.ProposedCombination;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class ProposalView extends WithConsoleView {
 
