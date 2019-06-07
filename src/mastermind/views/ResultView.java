@@ -2,9 +2,8 @@ package mastermind.views;
 
 import mastermind.controllers.GameController;
 import mastermind.views.menus.MessageView;
-import santaTecla.utils.WithConsoleView;
 
-class ResultView extends WithConsoleView {
+class ResultView {
 	
 	private GameController gameController;
 	
@@ -13,9 +12,7 @@ class ResultView extends WithConsoleView {
 	}
 
 	void writeln(int position) {
-		this.console.writeln(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + this.gameController.getBlacks(position))
-				.replaceFirst("#whites", "" + this.gameController.getWhites(position)));
+		MessageView.RESULT.writeln(this.gameController.getBlacks(position), this.gameController.getWhites(position));
 	}
 
 }

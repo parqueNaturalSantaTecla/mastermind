@@ -2,9 +2,8 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 import mastermind.views.menus.PlayMenu;
-import santaTecla.utils.WithConsoleView;
 
-class PlayView extends WithConsoleView {
+class PlayView {
 
 	void interact(PlayController playController) {
 		new PlayMenu(playController).execute();	
