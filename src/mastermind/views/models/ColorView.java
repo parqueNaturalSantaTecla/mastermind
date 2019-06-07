@@ -1,4 +1,4 @@
-package mastermind.views.menus;
+package mastermind.views.models;
 
 import mastermind.types.Color;
 import santaTecla.utils.WithConsoleView;

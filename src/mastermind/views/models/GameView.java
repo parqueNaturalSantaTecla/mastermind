@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.models;
 
 import mastermind.controllers.GameController;
 import mastermind.views.menus.MessageView;
@@ -11,7 +11,7 @@ public class GameView {
 		this.gameController = gameController;
 	}
 
-	void writeln() {
+	public void writeln() {
 		MessageView.NEW_LINE.writeln();
 		new AttemptsView(this.gameController).writeln();
 		new SecretCombinationView(this.gameController).writeln();

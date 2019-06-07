@@ -1,4 +1,4 @@
-package mastermind.views;
+package mastermind.views.models;
 
 import mastermind.controllers.GameController;
 import mastermind.views.menus.MessageView;

@@ -3,10 +3,11 @@ package mastermind.views.menus;
 import java.util.List;
 
 import mastermind.controllers.PlayController;
-import mastermind.views.ProposedCombinationView;
-import mastermind.views.GameView;
 import mastermind.types.Color;
 import mastermind.types.Error;
+import mastermind.views.models.ErrorView;
+import mastermind.views.models.GameView;
+import mastermind.views.models.ProposedCombinationView;
 
 class ProposeCommand extends Command {
 

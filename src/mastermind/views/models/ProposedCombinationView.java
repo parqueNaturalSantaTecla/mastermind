@@ -1,11 +1,10 @@
-package mastermind.views;
+package mastermind.views.models;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.controllers.GameController;
 import mastermind.types.Color;
-import mastermind.views.menus.ColorView;
 import mastermind.views.menus.MessageView;
 import santaTecla.utils.WithConsoleView;
 
