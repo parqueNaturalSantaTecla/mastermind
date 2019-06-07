@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mastermind.distributed.FrameType;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class DispatcherPrototype {
 	
@@ -13,7 +13,7 @@ public class DispatcherPrototype {
 	private Map<FrameType, Dispatcher> dispatcherMap;
 	
 	public DispatcherPrototype() {
-		this.tcpip = TCPIP.createServerSocket();
+		this.tcpip = (TCPIP) TCPIP.createServerSocket();
 		this.dispatcherMap = new HashMap<FrameType, Dispatcher>();
 	}
 	

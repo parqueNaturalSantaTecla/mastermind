@@ -24,15 +24,15 @@ public class Logic {
 		if (isStandalone) {
 			this.tcpip = null;
 		} else {
-			this.tcpip = TCPIP.createClientSocket();
+			this.tcpip = (TCPIP) TCPIP.createClientSocket();
 		}
 		this.session = new Session(this.tcpip);
 		this.acceptorControllers = new HashMap<StateValue, AcceptorController>();
-		this.startController = new StartController(this.session,this.tcpip);
+		this.startController = new StartController(this.session, this.tcpip);
 		this.acceptorControllers.put(StateValue.INITIAL, this.startController);
-		this.playController = new PlayController(this.session,this.tcpip);
+		this.playController = new PlayController(this.session, this.tcpip);
 		this.acceptorControllers.put(StateValue.IN_GAME, this.playController);
-		this.resumeController = new ResumeController(this.session,this.tcpip);
+		this.resumeController = new ResumeController(this.session, this.tcpip);
 		this.acceptorControllers.put(StateValue.FINAL, this.resumeController);
 		this.acceptorControllers.put(StateValue.EXIT, null);
 	}
