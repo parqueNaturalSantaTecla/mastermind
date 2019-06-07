@@ -1,7 +1,7 @@
 package mastermind.views.menus;
 
 import mastermind.types.Error;
-import mastermind.utils.Console;
+import santaTecla.utils.Console;
 
 class ErrorView {
 

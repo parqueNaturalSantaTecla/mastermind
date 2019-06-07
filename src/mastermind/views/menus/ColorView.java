@@ -1,7 +1,7 @@
 package mastermind.views.menus;
 
 import mastermind.types.Color;
-import mastermind.utils.Console;
+import santaTecla.utils.Console;
 
 public class ColorView {
 

@@ -1,8 +1,8 @@
 package mastermind.views;
 
 import mastermind.controllers.ResumeController;
-import mastermind.utils.YesNoDialog;
 import mastermind.views.menus.MessageView;
+import santaTecla.utils.YesNoDialog;
 
 class ResumeView {
 

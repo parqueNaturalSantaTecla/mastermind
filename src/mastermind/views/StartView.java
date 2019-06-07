@@ -1,9 +1,9 @@
 package mastermind.views;
 
 import mastermind.controllers.StartController;
-import mastermind.utils.WithConsoleView;
 import mastermind.views.menus.MessageView;
 import mastermind.views.menus.StartMenu;
+import santaTecla.utils.WithConsoleView;
 
 class StartView extends WithConsoleView {
 	

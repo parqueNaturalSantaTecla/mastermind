@@ -1,7 +1,7 @@
 package mastermind.views.menus;
 
 import mastermind.controllers.StartController;
-import mastermind.utils.Menu;
+import santaTecla.utils.Menu;
 
 class GameSelectMenu extends Menu {
 

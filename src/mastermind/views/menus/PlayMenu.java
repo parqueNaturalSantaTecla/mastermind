@@ -1,7 +1,7 @@
 package mastermind.views.menus;
 
 import mastermind.controllers.PlayController;
-import mastermind.utils.Menu;
+import santaTecla.utils.Menu;
 
 public class PlayMenu extends Menu {
 

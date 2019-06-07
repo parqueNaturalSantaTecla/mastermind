@@ -3,7 +3,7 @@ package mastermind.distributed.dispatchers;
 import java.util.HashMap;
 import java.util.Map;
 
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public class DispatcherPrototype {
 	
