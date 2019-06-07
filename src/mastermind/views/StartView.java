@@ -1,15 +1,14 @@
 package mastermind.views;
 
 import mastermind.controllers.StartController;
-import santaTecla.utils.WithConsoleView;
 
-class StartView extends WithConsoleView {
+class StartView {
 	
 	private SecretCombinationView secretCombinationView;
 	
 	void interact(StartController startController) {
 		startController.start();
-		this.console.writeln(MessageView.TITLE.getMessage());
+		MessageView.TITLE.writeln();
 		this.secretCombinationView = new SecretCombinationView(startController);
 		this.secretCombinationView.writeln();
 	}
