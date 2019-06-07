@@ -1,9 +1,8 @@
 package mastermind.views;
 
 import mastermind.controllers.PlayController;
-import santaTecla.utils.WithConsoleView;
 
-class AttemptsView extends WithConsoleView {
+class AttemptsView {
 
 	private PlayController playController;
 
@@ -12,8 +11,7 @@ class AttemptsView extends WithConsoleView {
 	}
 
 	void writeln() {
-		this.console.writeln(
-				MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.playController.getAttempts()));
+		MessageView.ATTEMPTS.writeln(this.playController.getAttempts());
 	}
 
 }
