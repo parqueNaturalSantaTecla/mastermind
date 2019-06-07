@@ -1,7 +1,7 @@
 package mastermind.controllers;
 
 import mastermind.models.Session;
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public abstract class AcceptorController extends Controller {
 	

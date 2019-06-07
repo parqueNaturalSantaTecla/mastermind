@@ -2,7 +2,7 @@ package mastermind.controllers;
 
 import mastermind.distributed.FrameType;
 import mastermind.models.Session;
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public class ResumeController extends AcceptorController {
 

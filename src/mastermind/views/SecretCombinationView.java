@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.controllers.Controller;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class SecretCombinationView extends WithConsoleView {
 	
