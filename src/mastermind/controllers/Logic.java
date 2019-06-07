@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 import mastermind.models.Session;
 import mastermind.models.StateValue;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class Logic {
 	
@@ -24,7 +24,7 @@ public class Logic {
 		if (isStandalone) {
 			this.tcpip = null;
 		} else {
-			this.tcpip = (TCPIP) TCPIP.createClientSocket();
+			this.tcpip = TCPIP.createClientSocket();
 		}
 		this.session = new Session(this.tcpip);
 		this.acceptorControllers = new HashMap<StateValue, AcceptorController>();

@@ -8,7 +8,7 @@ import java.net.ServerSocket;
 import java.net.Socket;
 
 public class TCPIP {
-	
+
 	private ServerSocket serverSocket;
 
 	private Socket socket;
@@ -17,17 +17,20 @@ public class TCPIP {
 
 	private BufferedReader in;
 
-	public TCPIP(Socket socket, PrintWriter out, BufferedReader in) {
-		this.socket = socket;
-		this.out = out;
-		this.in = in;
+	public TCPIP(Socket socket) {
 		this.serverSocket = null;
+		this.socket = socket;
+		try {
+			this.out = new PrintWriter(socket.getOutputStream());
+			this.in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+		} catch (Exception ex) {
+			ex.printStackTrace();
+			System.exit(0);
+		}
 	}
 
-	public TCPIP(ServerSocket serverSocket, Socket socket, PrintWriter out, BufferedReader in) {
-		this.socket = socket;
-		this.out = out;
-		this.in = in;
+	public TCPIP(ServerSocket serverSocket, Socket socket) {
+		this(socket);
 		this.serverSocket = serverSocket;
 	}
 
@@ -35,12 +38,9 @@ public class TCPIP {
 		try {
 			Socket socket = new Socket("localhost", 2020);
 			System.out.println("Cliente> Establecida conexion");
-			PrintWriter out = new PrintWriter(socket.getOutputStream());
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			return new TCPIP(socket, out, in);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			System.exit(0);
+			return new TCPIP(socket);
+		} catch (Exception e) {
+			e.printStackTrace();
 			return null;
 		}
 	}
@@ -52,9 +52,7 @@ public class TCPIP {
 			Socket socket = serverSocket.accept();
 			System.out.println("Servidor> Recibida conexion de " + socket.getInetAddress().getHostAddress() + ":"
 					+ socket.getPort());
-			PrintWriter out = new PrintWriter(socket.getOutputStream());
-			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-			return new TCPIP(serverSocket, socket, out, in);
+			return new TCPIP(serverSocket, socket);
 		} catch (IOException ex) {
 			ex.printStackTrace();
 			return null;
@@ -73,7 +71,7 @@ public class TCPIP {
 	public void send(boolean value) {
 		this.send("" + value);
 	}
-	
+
 	public String receiveLine() {
 		String result = null;
 		try {
@@ -110,7 +108,7 @@ public class TCPIP {
 			this.out.close();
 			this.socket.close();
 			if (this.serverSocket != null) {
-				this.serverSocket.close();				
+				this.serverSocket.close();
 			}
 		} catch (Exception ex) {
 			ex.printStackTrace();

@@ -22,6 +22,7 @@ public enum MessageView {
 	
 	private MessageView(String message) {
 		this.message = message;
+		this.console = new Console();
 	}
 	
 	public String getMessage() {
