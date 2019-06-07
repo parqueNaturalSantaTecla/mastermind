@@ -1,7 +1,7 @@
 package mastermind.distributed.dispatchers;
 
 import mastermind.controllers.AcceptorController;
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public abstract class Dispatcher {
 	

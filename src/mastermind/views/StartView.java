@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.controllers.StartController;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class StartView extends WithConsoleView {
 	
