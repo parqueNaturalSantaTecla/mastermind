@@ -7,7 +7,7 @@ import mastermind.controllers.StartController;
 import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
 import mastermind.types.Color;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class StartControllerProxy extends StartController {
 
