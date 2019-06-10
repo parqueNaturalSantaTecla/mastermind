@@ -6,8 +6,8 @@ class AttemptsView {
 
 	private PlayController playController;
 
-	AttemptsView(PlayController proposalController) {
-		this.playController = proposalController;
+	AttemptsView(PlayController playController) {
+		this.playController = playController;
 	}
 
 	void writeln() {
