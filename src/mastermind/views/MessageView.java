@@ -10,7 +10,6 @@ public enum MessageView {
 	TITLE("----- MASTERMIND -----"),
 	WINNER("You've won!!! ;-)"),
 	LOOSER("You've lost!!! :-("),
-	OPTION("----- Choose one option -----"),
 	PROPOSE_COMMAND("Propose Combination"),
 	UNDO_COMMAND("Undo previous Proposal"),
 	REDO_COMMAND("Redo previous Proposal"),
