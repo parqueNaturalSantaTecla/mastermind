@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import mastermind.distributed.FrameType;
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public class DispatcherPrototype {
 	

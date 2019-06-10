@@ -2,7 +2,7 @@ package mastermind.menus;
 
 import mastermind.controllers.AcceptorController;
 
-abstract class Command extends mastermind.utils.Command {
+abstract class Command extends santaTecla.utils.Command {
 
 	protected AcceptorController acceptorController;
 
