@@ -8,7 +8,7 @@ import mastermind.distributed.FrameType;
 import mastermind.models.Session;
 import mastermind.types.Color;
 import mastermind.types.Error;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class PlayControllerProxy extends PlayController {
 
