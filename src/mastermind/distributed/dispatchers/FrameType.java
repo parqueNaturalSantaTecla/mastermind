@@ -18,7 +18,14 @@ public enum FrameType {
 	HAS_NAME, 
 	SAVE,
 	NEXT,
-	CLOSE, START_NAME, TITLES, GET_TITLE, SET_TITLE, SAVE_NAMED, BLACKS, WHITES;
+	CLOSE, 
+	START_NAME, 
+	TITLES, 
+	GET_TITLE, 
+	SET_TITLE, 
+	SAVE_NAMED, 
+	BLACKS, 
+	WHITES;
 
 	public static FrameType parser(String string) {
 		for(FrameType frameType : FrameType.values()) {
