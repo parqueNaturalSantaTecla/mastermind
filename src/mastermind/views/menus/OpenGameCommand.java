@@ -1,7 +1,6 @@
-package mastermind.menus;
+package mastermind.views.menus;
 
 import mastermind.controllers.StartController;
-import mastermind.views.MessageView;
 
 class OpenGameCommand extends Command{
 	
