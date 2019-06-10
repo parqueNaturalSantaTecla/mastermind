@@ -1,6 +1,7 @@
 package mastermind.views;
 
 import mastermind.controllers.SaveController;
+import mastermind.views.menus.MessageView;
 import santaTecla.utils.WithConsoleView;
 import santaTecla.utils.YesNoDialog;
 

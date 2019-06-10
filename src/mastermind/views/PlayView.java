@@ -1,7 +1,8 @@
 package mastermind.views;
 
 import mastermind.controllers.PlayController;
-import mastermind.menus.PlayMenu;
+import mastermind.views.menus.PlayMenu;
+import mastermind.views.models.GameView;
 
 class PlayView {
 

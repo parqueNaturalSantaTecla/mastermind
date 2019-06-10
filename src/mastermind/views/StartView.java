@@ -1,7 +1,9 @@
 package mastermind.views;
 
 import mastermind.controllers.StartController;
-import mastermind.menus.StartMenu;
+import mastermind.views.menus.MessageView;
+import mastermind.views.menus.StartMenu;
+import mastermind.views.models.GameView;
 
 class StartView {
 

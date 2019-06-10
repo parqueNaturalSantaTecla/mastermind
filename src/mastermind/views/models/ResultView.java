@@ -1,7 +1,7 @@
-package mastermind.views;
+package mastermind.views.models;
 
 import mastermind.controllers.GameController;
-import mastermind.views.MessageView;
+import mastermind.views.menus.MessageView;
 
 class ResultView {
 	
