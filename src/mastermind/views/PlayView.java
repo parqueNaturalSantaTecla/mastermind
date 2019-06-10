@@ -2,7 +2,7 @@ package mastermind.views;
 
 import mastermind.controllers.PlayController;
 import mastermind.menus.PlayMenu;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class PlayView extends WithConsoleView {
 

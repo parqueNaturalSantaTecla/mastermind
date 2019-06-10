@@ -1,7 +1,7 @@
 package mastermind.menus;
 
 import mastermind.controllers.StartController;
-import mastermind.utils.Menu;
+import santaTecla.utils.Menu;
 
 public class StartMenu extends Menu {
 

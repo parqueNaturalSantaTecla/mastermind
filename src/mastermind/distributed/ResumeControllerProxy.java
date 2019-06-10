@@ -2,7 +2,7 @@ package mastermind.distributed;
 
 import mastermind.controllers.ResumeController;
 import mastermind.models.Session;
-import mastermind.utils.TCPIP;
+import santaTecla.utils.TCPIP;
 
 public class ResumeControllerProxy extends ResumeController {
 	

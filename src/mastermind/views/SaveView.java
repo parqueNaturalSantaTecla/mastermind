@@ -1,8 +1,8 @@
 package mastermind.views;
 
 import mastermind.controllers.SaveController;
-import mastermind.utils.WithConsoleView;
-import mastermind.utils.YesNoDialog;
+import santaTecla.utils.WithConsoleView;
+import santaTecla.utils.YesNoDialog;
 
 class SaveView extends WithConsoleView {
 
