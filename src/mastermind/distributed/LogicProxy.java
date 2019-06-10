@@ -2,7 +2,7 @@ package mastermind.distributed;
 
 import mastermind.controllers.Logic;
 import mastermind.models.StateValue;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class LogicProxy extends Logic {
 	
