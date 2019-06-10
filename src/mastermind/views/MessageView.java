@@ -39,15 +39,15 @@ public enum MessageView {
 	}
 	
 	public void writeln() {
-		this.console.write(this.message);
+		this.console.writeln(this.message);
 	}
 	
 	public void writeln(int attempts) {
-		this.console.write(this.message.replaceAll("#attempts", ""+attempts));
+		this.console.writeln(this.message.replaceAll("#attempts", ""+attempts));
 	}
 	
 	public void writeln(int blacks, int whites) {
-		this.console.write(this.message.replaceAll("#blacks", ""+blacks).replaceAll("#whites", ""+whites));
+		this.console.writeln(this.message.replaceAll("#blacks", ""+blacks).replaceAll("#whites", ""+whites));
 	}
 
 }
