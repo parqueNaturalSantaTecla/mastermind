@@ -4,6 +4,7 @@ import mastermind.controllers.Logic;
 import mastermind.distributed.dispatchers.ColorsDispatcher;
 import mastermind.distributed.dispatchers.BlacksDispatcher;
 import mastermind.distributed.dispatchers.DispatcherPrototype;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.LooserDispatcher;
 import mastermind.distributed.dispatchers.ProposeCombinationDispatcher;
 import mastermind.distributed.dispatchers.RedoDispatcher;

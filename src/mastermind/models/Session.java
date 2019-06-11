@@ -2,7 +2,7 @@ package mastermind.models;
 
 import java.util.List;
 
-import mastermind.distributed.FrameType;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.types.Color;
 import santaTecla.utils.TCPIP;
 

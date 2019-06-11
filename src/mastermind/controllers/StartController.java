@@ -1,7 +1,7 @@
 package mastermind.controllers;
 
-import mastermind.distributed.FrameType;
 import mastermind.models.Session;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.TCPIP;
 
 public class StartController extends AcceptorController {
