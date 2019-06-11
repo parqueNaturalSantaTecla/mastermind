@@ -1,6 +1,7 @@
 package mastermind.views.menus;
 
 import mastermind.controllers.PlayController;
+import mastermind.views.models.MessageView;
 
 class ExitCommand extends Command {
 	
