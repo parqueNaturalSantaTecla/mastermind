@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Menu extends WithConsoleView {
 
 	private static final String OPTION = "----- Choose one option -----";
+
 	private ArrayList<Command> commandList;
 
 	public Menu() {
@@ -28,9 +29,9 @@ public abstract class Menu extends WithConsoleView {
 				this.console.writeln((i + 1) + ") " + commands.get(i).getTitle());
 			}
 			option = this.console.readInt("") - 1;
-			if (!new ClosedInterval(0, commands.size()-1).includes(option)) {
+			if (!new ClosedInterval(0, commands.size() - 1).includes(option)) {
 				error = true;
-			} 				
+			}
 		} while (error);
 		commands.get(option).execute();
 	}
