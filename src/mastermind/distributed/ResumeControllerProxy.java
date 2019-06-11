@@ -3,7 +3,7 @@ package mastermind.distributed;
 import mastermind.controllers.ResumeController;
 import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class ResumeControllerProxy extends ResumeController {
 	

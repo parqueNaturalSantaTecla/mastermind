@@ -3,7 +3,7 @@ package mastermind.distributed;
 import mastermind.controllers.SaveController;
 import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class SaveControllerProxy extends SaveController {
 	
