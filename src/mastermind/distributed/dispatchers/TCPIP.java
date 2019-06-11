@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 
-import mastermind.distributed.FrameType;
 import mastermind.types.Color;
 import mastermind.types.Error;
 

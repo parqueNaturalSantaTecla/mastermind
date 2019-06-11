@@ -4,9 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.controllers.StartController;
-import mastermind.distributed.FrameType;
 import mastermind.models.Session;
 import mastermind.types.Color;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.TCPIP;
 
 public class StartControllerProxy extends StartController {

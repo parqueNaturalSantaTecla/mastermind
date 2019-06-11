@@ -4,6 +4,7 @@ import mastermind.controllers.implementation.LogicImplementation;
 import mastermind.distributed.dispatchers.ColorsDispatcher;
 import mastermind.distributed.dispatchers.DispatcherPrototype;
 import mastermind.distributed.dispatchers.ExistsDispatcher;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.GetTitleDispatcher;
 import mastermind.distributed.dispatchers.HasNameDispatcher;
 import mastermind.distributed.dispatchers.LooserDispatcher;
