@@ -2,7 +2,7 @@ package santaTecla.utils;
 
 import java.util.ArrayList;
 
-import mastermind.views.menus.MessageView;
+import mastermind.views.models.MessageView;
 
 public abstract class Menu extends WithConsoleView {
 

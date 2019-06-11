@@ -5,7 +5,6 @@ import java.util.List;
 
 import mastermind.controllers.GameController;
 import mastermind.types.Color;
-import mastermind.views.menus.MessageView;
 import santaTecla.utils.WithConsoleView;
 
 public class ProposedCombinationView extends WithConsoleView {

@@ -1,4 +1,4 @@
-package mastermind.views.menus;
+package mastermind.views.models;
 
 import santaTecla.utils.Console;
 
