@@ -12,7 +12,7 @@ public class DispatcherPrototype {
 	private Map<FrameType, Dispatcher> dispatcherMap;
 	
 	public DispatcherPrototype() {
-		this.tcpip = (TCPIP) TCPIP.createServerSocket();
+		this.tcpip = TCPIP.createServerSocket();
 		this.dispatcherMap = new HashMap<FrameType, Dispatcher>();
 	}
 	
