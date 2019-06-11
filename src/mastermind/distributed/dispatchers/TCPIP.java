@@ -9,7 +9,6 @@ import mastermind.types.Error;
 
 public class TCPIP extends santaTecla.utils.TCPIP {
 
-
 	public static TCPIP createClientSocket() {
 		try {
 			Socket socket = new Socket("localhost", 2020);
