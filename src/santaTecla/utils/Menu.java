@@ -5,6 +5,7 @@ import java.util.ArrayList;
 public abstract class Menu extends WithConsoleView {
 
 	private static final String OPTION = "----- Choose one option -----";
+	
 	private ArrayList<Command> commandList;
 
 	public Menu() {
