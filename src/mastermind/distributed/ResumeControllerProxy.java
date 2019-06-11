@@ -1,6 +1,7 @@
 package mastermind.distributed;
 
 import mastermind.controllers.ResumeController;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
 import santaTecla.utils.TCPIP;
 

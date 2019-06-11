@@ -3,7 +3,6 @@ package mastermind.distributed.dispatchers;
 import java.util.HashMap;
 import java.util.Map;
 
-import mastermind.distributed.FrameType;
 import mastermind.distributed.dispatchers.TCPIP;
 
 public class DispatcherPrototype {
