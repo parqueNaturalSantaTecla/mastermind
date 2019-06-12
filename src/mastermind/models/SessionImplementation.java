@@ -77,20 +77,20 @@ public class SessionImplementation implements Session {
 		return this.game.isLooser();
 	}
 
-	public List<Color> getColors(int i) {
-		return this.game.getColors(i);
+	public List<Color> getColors(int position) {
+		return this.game.getColors(position);
 	}
 
 	public int getAttempts() {
 		return this.game.getAttempts();
 	}
 
-	public int getBlacks(int i) {
-		return this.game.getBlacks(i);
+	public int getBlacks(int position) {
+		return this.game.getBlacks(position);
 	}
 
-	public int getWhites(int i) {
-		return this.game.getWhites(i);
+	public int getWhites(int position) {
+		return this.game.getWhites(position);
 	}
 
 	public boolean hasName() {
