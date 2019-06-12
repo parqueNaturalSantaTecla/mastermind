@@ -3,7 +3,7 @@ package mastermind.distributed;
 import mastermind.distributed.dispatchers.FrameType;
 import mastermind.models.Session;
 import mastermind.models.StateValue;
-import santaTecla.utils.TCPIP;
+import mastermind.distributed.dispatchers.TCPIP;
 
 public class SessionProxy implements Session {
 	
