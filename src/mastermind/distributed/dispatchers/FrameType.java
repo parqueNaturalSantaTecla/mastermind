@@ -1,4 +1,4 @@
-package mastermind.distributed;
+package mastermind.distributed.dispatchers;
 
 public enum FrameType { 
 	START, 

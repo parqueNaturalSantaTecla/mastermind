@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.controllers.PlayController;
-import mastermind.distributed.FrameType;
 import mastermind.models.Session;
 import mastermind.types.Color;
 import mastermind.types.Error;
+import mastermind.distributed.dispatchers.FrameType;
 import mastermind.distributed.dispatchers.TCPIP;
 
 public class PlayControllerProxy extends PlayController {
