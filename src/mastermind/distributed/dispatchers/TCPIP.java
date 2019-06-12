@@ -9,7 +9,6 @@ import mastermind.types.Error;
 
 public class TCPIP extends santaTecla.utils.TCPIP {
 
-
 	public static TCPIP createClientSocket() {
 		try {
 			Socket socket = new Socket("localhost", 2020);
@@ -35,11 +34,10 @@ public class TCPIP extends santaTecla.utils.TCPIP {
 		}
 	}
 
-	
 	public TCPIP(Socket socket) {
 		super(socket);
 	}
-	
+
 	public TCPIP(ServerSocket serverSocket, Socket socket) {
 		super(serverSocket, socket);
 	}
@@ -47,15 +45,15 @@ public class TCPIP extends santaTecla.utils.TCPIP {
 	public void send(Color value) {
 		if (value == null) {
 			this.send("null");
-		}else {
-			this.send(value.name());			
+		} else {
+			this.send(value.name());
 		}
 	}
 
 	public void send(Error value) {
 		if (value == null) {
 			this.send("null");
-		}else {
+		} else {
 			this.send(value.name());
 		}
 	}
@@ -72,14 +70,14 @@ public class TCPIP extends santaTecla.utils.TCPIP {
 		String color = this.receiveLine();
 		if (color.equals("null")) {
 			return null;
-		}else {
-			return Color.valueOf(color);			
+		} else {
+			return Color.valueOf(color);
 		}
 	}
 
 	public void close() {
 		this.send(FrameType.CLOSE.name());
 		super.close();
-	}	
+	}
 
 }
