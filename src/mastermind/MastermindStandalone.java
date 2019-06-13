@@ -24,7 +24,7 @@ public class MastermindStandalone extends Mastermind {
 			System.out.println("Introduce 'file' para ficheros o 'db' para bases de datos");
 			System.exit(0);
 		}
-		this.logic = new LogicImplementation(this.sessionDaoMap.get(arg));
+		this.logic = new LogicImplementation(sessionImplementationDAO);
 		super.play();
 	}
 	
