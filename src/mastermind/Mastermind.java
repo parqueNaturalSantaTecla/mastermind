@@ -6,7 +6,7 @@ import mastermind.views.View;
 
 public abstract class Mastermind {
 	
-	protected static Logic logic;
+	protected Logic logic;
 	
 	private View view;
 	
@@ -17,7 +17,7 @@ public abstract class Mastermind {
 	protected void play() {
 		AcceptorController acceptorController;
 		do {
-			acceptorController = Mastermind.logic.getController();
+			acceptorController = this.logic.getController();
 			if (acceptorController != null){
 				this.view.interact(acceptorController);
 			}
