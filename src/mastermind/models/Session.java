@@ -18,7 +18,7 @@ public class Session {
 		this.state.next();		
 	}
 
-	public void proposeCombination(ProposedCombination proposedCombination) {
+	public void addProposedCombination(ProposedCombination proposedCombination) {
 		this.game.addProposedCombination(proposedCombination);
 		this.registry.registry();
 	}
