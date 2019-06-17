@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.models.Result;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 public class ResultView extends WithConsoleView {
 

@@ -3,10 +3,10 @@ package mastermind.views;
 import java.util.ArrayList;
 
 import mastermind.models.Mastermind;
-import mastermind.utils.Command;
-import mastermind.utils.Observer;
+import santaTecla.utils.Command;
+import santaTecla.utils.Observer;
 
-public class Menu extends mastermind.utils.Menu {
+public class Menu extends santaTecla.utils.Menu {
 
 	public Menu(Mastermind mastermind, Observer observer) {
 		this.commands = new ArrayList<Command>();

@@ -5,10 +5,10 @@ import mastermind.events.NewGameEvent;
 import mastermind.events.WonGameEvent;
 import mastermind.models.Mastermind;
 import mastermind.views.Menu;
-import mastermind.utils.Event;
-import mastermind.utils.Observed;
-import mastermind.utils.Observer;
-import mastermind.utils.YesNoDialog;
+import santaTecla.utils.Event;
+import santaTecla.utils.Observed;
+import santaTecla.utils.Observer;
+import santaTecla.utils.YesNoDialog;
 
 public class MastermindView extends Observed implements Observer{
 

@@ -6,7 +6,7 @@ import java.util.List;
 import mastermind.models.ProposedCombination;
 import mastermind.types.Color;
 import mastermind.types.Error;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 public class ProposedCombinationView extends WithConsoleView {
 

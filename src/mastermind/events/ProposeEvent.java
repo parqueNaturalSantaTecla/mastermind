@@ -1,6 +1,6 @@
 package mastermind.events;
 
-import mastermind.utils.Event;
+import santaTecla.utils.Event;
 
 public class ProposeEvent extends Event {
 

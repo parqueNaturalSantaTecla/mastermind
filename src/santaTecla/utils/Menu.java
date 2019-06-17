@@ -1,4 +1,4 @@
-package mastermind.utils;
+package santaTecla.utils;
 
 import java.util.ArrayList;
 import mastermind.views.MessageView;

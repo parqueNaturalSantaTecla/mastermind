@@ -5,10 +5,10 @@ import mastermind.events.ProposeEvent;
 import mastermind.events.RedoEvent;
 import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
-import mastermind.utils.Event;
-import mastermind.utils.Observed;
-import mastermind.utils.Observer;
 import mastermind.views.MastermindView;
+import santaTecla.utils.Event;
+import santaTecla.utils.Observed;
+import santaTecla.utils.Observer;
 
 class MastermindController implements Observer{
 	

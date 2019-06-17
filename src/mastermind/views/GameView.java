@@ -5,10 +5,10 @@ import java.util.List;
 
 import mastermind.events.UpdateGameEvent;
 import mastermind.models.Game;
-import mastermind.utils.Event;
-import mastermind.utils.Observed;
-import mastermind.utils.Observer;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.Event;
+import santaTecla.utils.Observed;
+import santaTecla.utils.Observer;
+import santaTecla.utils.WithConsoleView;
 
 public class GameView extends WithConsoleView implements Observer {
 

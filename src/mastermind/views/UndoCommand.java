@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.events.UndoEvent;
 import mastermind.models.Mastermind;
 import mastermind.views.Command;
-import mastermind.utils.Observer;
+import santaTecla.utils.Observer;
 
 public class UndoCommand extends Command {
 

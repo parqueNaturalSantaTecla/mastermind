@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.events.RedoEvent;
 import mastermind.models.Mastermind;
 import mastermind.views.Command;
-import mastermind.utils.Observer;
+import santaTecla.utils.Observer;
 
 public class RedoCommand extends Command{
 	

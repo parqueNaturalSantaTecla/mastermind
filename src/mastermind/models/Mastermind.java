@@ -2,7 +2,7 @@ package mastermind.models;
 
 import mastermind.events.LostGameEvent;
 import mastermind.events.WonGameEvent;
-import mastermind.utils.Observed;
+import santaTecla.utils.Observed;
 
 public class Mastermind extends Observed{
 	

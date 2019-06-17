@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.events.UpdateGameEvent;
-import mastermind.utils.Observed;
+import santaTecla.utils.Observed;
 
 public class Game extends Observed {
 
