@@ -8,9 +8,8 @@ import mastermind.models.Game;
 import santaTecla.utils.Event;
 import santaTecla.utils.Observed;
 import santaTecla.utils.Observer;
-import santaTecla.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView implements Observer {
+public class GameView implements Observer {
 
 	private Game game;
 
@@ -28,10 +27,10 @@ public class GameView extends WithConsoleView implements Observer {
 	}
 
 	void writeGame() {
-		this.console.writeln();
+		MessageView.NEW_LINE.writeln();
 		new AttemptsView(this.game).writeln();
 		this.secretCombinationView.writeln();
-		this.console.writeln();
+		MessageView.NEW_LINE.writeln();
 		for (int i = 0; i < this.proposedCombinationViews.size(); i++) {
 			this.proposedCombinationViews.get(i).write();
 			this.resultViews.get(i).writeln();

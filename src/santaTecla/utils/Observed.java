@@ -2,7 +2,7 @@ package santaTecla.utils;
 
 import java.util.ArrayList;
 
-public class Observed extends WithConsoleView{
+public class Observed {
 	
 	private ArrayList<Observer> observers;
 	
