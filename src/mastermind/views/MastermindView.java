@@ -33,14 +33,14 @@ public class MastermindView extends Observed implements Observer{
 	public void update(Observed observed, Event event) {
 		if (event instanceof WonGameEvent) {
 			MessageView.WINNER.writeln();
-			this.isNewGame();
+			this.resume();
 		} else if (event instanceof LostGameEvent) {
 			MessageView.LOOSER.writeln();
-			this.isNewGame();
+			this.resume();
 		}
 	}
 
-	private void isNewGame() {
+	private void resume() {
 		if (new YesNoDialog().read(MessageView.RESUME.getMessage())) {
 			this.notify(new NewGameEvent());
 		}
