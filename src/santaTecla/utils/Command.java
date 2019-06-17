@@ -1,18 +1,13 @@
 package santaTecla.utils;
 
-import mastermind.models.Session;
-
 public abstract class Command extends WithConsoleView {
 
 	protected String title;
 
 	protected boolean isActive;
 	
-	protected Session session;
-	
-	protected Command(String title, Session session) {
+	protected Command(String title) {
 		this.title = title;
-		this.session = session;
 	}
 	
 	public abstract void updateIsActive();

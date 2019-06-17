@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.models.Session;
-import santaTecla.utils.Command;
+import mastermind.views.Command;
 
 public class RedoCommand extends Command{
 	
