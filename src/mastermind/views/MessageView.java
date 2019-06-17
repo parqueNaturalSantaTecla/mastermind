@@ -2,7 +2,7 @@ package mastermind.views;
 
 import santaTecla.utils.Console;
 
-public enum MessageView {
+enum MessageView {
 	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
@@ -25,23 +25,23 @@ public enum MessageView {
 		this.console = new Console();
 	}
 	
-	public String getMessage() {
+	String getMessage() {
 		return this.message;
 	}
 	
-	public void write() {
+	void write() {
 		this.console.write(this.message);
 	}
 	
-	public void writeln() {
+	void writeln() {
 		this.console.writeln(this.message);
 	}
 	
-	public void writeln(int attempts) {
+	void writeln(int attempts) {
 		this.console.writeln(this.message.replaceAll("#attempts", ""+attempts));
 	}
 	
-	public void writeln(int blacks, int whites) {
+	void writeln(int blacks, int whites) {
 		this.console.writeln(this.message.replaceAll("#blacks", ""+blacks).replaceAll("#whites", ""+whites));
 	}
 

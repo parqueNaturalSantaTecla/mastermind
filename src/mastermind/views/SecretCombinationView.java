@@ -6,7 +6,7 @@ class SecretCombinationView {
 	
 	private SecretCombination secretCombination;
 	
-	public SecretCombinationView(SecretCombination secretCombination) {
+	SecretCombinationView(SecretCombination secretCombination) {
 		this.secretCombination = secretCombination;
 	}
 

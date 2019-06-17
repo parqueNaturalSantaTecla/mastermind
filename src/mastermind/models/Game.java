@@ -15,24 +15,24 @@ public class Game {
 
 	private int attempts;
 
-	public Game() {
+	Game() {
 		this.clear();
 	}
 
-	public void clear() {
+	void clear() {
 		this.secretCombination = new SecretCombination();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
 		this.attempts = 0;
 	}
 
-	public void addProposedCombination(ProposedCombination proposedCombination) {
+	void addProposedCombination(ProposedCombination proposedCombination) {
 		this.proposedCombinations.add(proposedCombination);
 		this.results.add(this.secretCombination.getResult(proposedCombination));
 		this.attempts++;
 	}
 
-	public Memento createMemento() {
+	Memento createMemento() {
 		Memento memento = new Memento(this.attempts);
 		for (int i = 0; i < this.proposedCombinations.size(); i++) {
 			memento.set(this.proposedCombinations.get(i).copy(), this.results.get(i).copy());
@@ -40,7 +40,7 @@ public class Game {
 		return memento;
 	}
 
-	public void set(Memento memento) {
+	void set(Memento memento) {
 		this.attempts = memento.getAttempts();
 		this.proposedCombinations = new ArrayList<ProposedCombination>();
 		this.results = new ArrayList<Result>();
@@ -50,11 +50,11 @@ public class Game {
 		}
 	}
 
-	public boolean isLooser() {
+	boolean isLooser() {
 		return this.attempts == Game.MAX_LONG;
 	}
 
-	public boolean isWinner() {
+	boolean isWinner() {
 		if (this.attempts == 0) {
 			return false;			
 		}

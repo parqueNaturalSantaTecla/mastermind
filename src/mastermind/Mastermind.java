@@ -15,7 +15,7 @@ public class Mastermind {
 
 	private Map<StateValue, Controller> controllers;
 
-	protected Mastermind() {
+	private Mastermind() {
 		this.session = new Session();
 		this.controllers = new HashMap<StateValue, Controller>();
 		this.controllers.put(StateValue.INITIAL, new StartController(this.session));
@@ -24,7 +24,7 @@ public class Mastermind {
 		this.controllers.put(StateValue.EXIT, null);
 	}
 
-	protected void play() {
+	private void play() {
 		Controller controller;
 		do {
 			controller = this.controllers.get(this.session.getValueState());

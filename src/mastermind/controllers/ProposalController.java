@@ -4,9 +4,9 @@ import mastermind.models.ProposedCombination;
 import mastermind.models.Session;
 import mastermind.views.ProposedCombinationView;
 
-public class ProposalController extends InGameController {
+class ProposalController extends InGameController {
 
-	public ProposalController(Session session) {
+	ProposalController(Session session) {
 		super(session);
 	}
 

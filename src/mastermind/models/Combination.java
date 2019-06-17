@@ -15,7 +15,7 @@ abstract class Combination {
 		this.colors = new ArrayList<Color>();
 	}
 	
-	public static int getWidth() {
+	static int getWidth() {
 		return Combination.WIDTH;
 	}
 	
