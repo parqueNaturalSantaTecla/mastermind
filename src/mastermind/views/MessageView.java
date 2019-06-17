@@ -2,7 +2,7 @@ package mastermind.views;
 
 import santaTecla.utils.Console;
 
-public enum MessageView {
+enum MessageView {
 	ATTEMPTS("#attempts attempt(s): "),
 	SECRET("*"),
 	RESUME("Do you want to continue"),
@@ -24,7 +24,7 @@ public enum MessageView {
 		this.message = message;
 	}
 	
-	public String getMessage() {
+	String getMessage() {
 		return this.message;
 	}
 	
