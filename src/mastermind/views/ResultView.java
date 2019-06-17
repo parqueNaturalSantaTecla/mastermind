@@ -1,9 +1,8 @@
 package mastermind.views;
 
 import mastermind.models.Result;
-import santaTecla.utils.WithConsoleView;
 
-class ResultView extends WithConsoleView {
+class ResultView {
 
 	private Result result;
 
@@ -12,8 +11,7 @@ class ResultView extends WithConsoleView {
 	}
 
 	void writeln() {
-		this.console.writeln(MessageView.RESULT.getMessage().replaceFirst("#blacks", "" + this.result.getBlacks())
-				.replaceFirst("#whites", "" + this.result.getWhites()));
+		MessageView.RESULT.writeln(this.result.getBlacks(), this.result.getWhites());
 	}
 
 }

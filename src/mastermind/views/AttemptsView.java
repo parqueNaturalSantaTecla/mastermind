@@ -2,9 +2,8 @@ package mastermind.views;
 
 import mastermind.models.Game;
 import mastermind.views.MessageView;
-import santaTecla.utils.WithConsoleView;
 
-class AttemptsView extends WithConsoleView {
+class AttemptsView {
 
 	private Game game;
 
@@ -13,7 +12,7 @@ class AttemptsView extends WithConsoleView {
 	}
 
 	void writeln() {
-		this.console.writeln(MessageView.ATTEMPTS.getMessage().replaceFirst("#attempts", "" + this.game.getAttempts()));
+		MessageView.ATTEMPTS.writeln(this.game.getAttempts());
 	}
 
 }

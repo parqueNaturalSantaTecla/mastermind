@@ -1,9 +1,8 @@
 package mastermind.views;
 
 import mastermind.models.Game;
-import santaTecla.utils.WithConsoleView;
 
-public class StartView extends WithConsoleView {
+public class StartView {
 
 	private Game game;
 	
@@ -12,7 +11,7 @@ public class StartView extends WithConsoleView {
 	}
 	
 	public void write() {
-		this.console.writeln(MessageView.TITLE.getMessage());
+		MessageView.TITLE.writeln();
 		new SecretCombinationView(this.game.getSecretCombination()).writeln();
 	}
 

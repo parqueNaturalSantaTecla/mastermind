@@ -1,9 +1,8 @@
 package mastermind.views;
 
 import mastermind.models.SecretCombination;
-import santaTecla.utils.WithConsoleView;
 
-class SecretCombinationView extends WithConsoleView {
+class SecretCombinationView {
 	
 	private SecretCombination secretCombination;
 	
@@ -13,9 +12,9 @@ class SecretCombinationView extends WithConsoleView {
 
 	void writeln() {
 		for (int i = 0; i < this.secretCombination.getColors().size(); i++) {
-			this.console.write(MessageView.SECRET.getMessage());
+			MessageView.SECRET.write();
 		}
-		this.console.writeln();
+		MessageView.NEW_LINE.writeln();
 	}
 	
 }
