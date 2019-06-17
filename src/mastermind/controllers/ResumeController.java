@@ -12,7 +12,7 @@ public class ResumeController extends Controller {
 	@Override
 	public void control() {
 		if (new ResumeView().write()) {
-			this.session.isNewGame();
+			this.session.clearGame();
 		} else {
 			this.session.next();
 		}
