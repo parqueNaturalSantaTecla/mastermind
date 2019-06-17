@@ -1,6 +1,6 @@
 package mastermind.views;
 
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 public class StartView extends WithConsoleView {
 

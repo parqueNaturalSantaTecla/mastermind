@@ -2,7 +2,7 @@ package mastermind.views;
 
 import java.util.List;
 
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 class ResultView extends WithConsoleView {
 

@@ -3,11 +3,11 @@ package mastermind.controllers;
 import java.util.HashMap;
 import java.util.Map;
 import mastermind.models.Session;
-import mastermind.utils.Command;
-import mastermind.utils.Menu;
 import mastermind.views.ProposeCommand;
 import mastermind.views.RedoCommand;
 import mastermind.views.UndoCommand;
+import santaTecla.utils.Command;
+import santaTecla.utils.Menu;
 
 public class PlayController extends Controller {
 

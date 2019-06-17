@@ -1,7 +1,7 @@
 package mastermind.views;
 
-import mastermind.utils.WithConsoleView;
 import mastermind.views.MessageView;
+import santaTecla.utils.WithConsoleView;
 
 class AttemptsView extends WithConsoleView{
 	

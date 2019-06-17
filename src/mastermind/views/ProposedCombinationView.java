@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.types.Color;
-import mastermind.utils.WithConsoleView;
+import santaTecla.utils.WithConsoleView;
 
 public class ProposedCombinationView extends WithConsoleView {
 

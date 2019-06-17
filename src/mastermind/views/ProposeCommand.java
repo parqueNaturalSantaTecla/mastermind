@@ -1,6 +1,6 @@
 package mastermind.views;
 
-import mastermind.utils.Command;
+import santaTecla.utils.Command;
 
 public class ProposeCommand extends Command {
 
