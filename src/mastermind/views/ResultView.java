@@ -2,14 +2,10 @@ package mastermind.views;
 
 import java.util.List;
 
-import santaTecla.utils.WithConsoleView;
-
-class ResultView extends WithConsoleView {
+class ResultView {
 
 	void writeln(List<Integer> results) {
-		this.console.writeln(MessageView.RESULT.getMessage()
-				.replaceFirst("#blacks", "" + results.get(0))
-				.replaceFirst("#whites", "" + results.get(1)));
+		MessageView.RESULT.writeln(results.get(0), results.get(1));
 	}
 
 }

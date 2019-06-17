@@ -4,16 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 import mastermind.types.Color;
-import santaTecla.utils.WithConsoleView;
 
-public class GameView extends WithConsoleView {
+public class GameView {
 
 	private int attempts;
 
 	private int width;
 
 	private List<List<Color>> allColors;
-	
+
 	private List<List<Integer>> allResults;
 
 	public GameView() {
@@ -22,7 +21,7 @@ public class GameView extends WithConsoleView {
 	}
 
 	public void writeGame() {
-		this.console.writeln();
+		MessageView.NEW_LINE.writeln();
 		new AttemptsView().writeln(this.attempts);
 		new SecretCombinationView().writeln(this.width);
 		for (int i = 0; i < this.allColors.size(); i++) {
@@ -32,13 +31,13 @@ public class GameView extends WithConsoleView {
 	}
 
 	public void writeLooser() {
-		this.console.writeln(MessageView.LOOSER.getMessage());
+		MessageView.LOOSER.writeln();
 	}
 
 	public void writeWinner() {
-		this.console.writeln(MessageView.WINNER.getMessage());
+		MessageView.WINNER.writeln();
 	}
-	
+
 	public void setAttempts(int attempts) {
 		this.attempts = attempts;
 	}

@@ -1,11 +1,9 @@
 package mastermind.views;
 
-import santaTecla.utils.WithConsoleView;
-
-public class StartView extends WithConsoleView {
+public class StartView {
 
 	public void write(int width) {
-		this.console.writeln(MessageView.TITLE.getMessage());
+		MessageView.TITLE.writeln();
 		new SecretCombinationView().writeln(width);
 	}
 
