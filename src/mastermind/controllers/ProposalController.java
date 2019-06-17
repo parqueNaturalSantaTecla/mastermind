@@ -12,8 +12,6 @@ import mastermind.views.ProposedCombinationView;
 
 class ProposalController extends InGameController {
 
-	public static final int NO_ERROR = -1;
-
 	ProposalController(Session session) {
 		super(session);
 	}
