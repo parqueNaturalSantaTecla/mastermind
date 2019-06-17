@@ -1,7 +1,7 @@
 package mastermind.views;
 
 import mastermind.models.Session;
-import mastermind.utils.Command;
+import santaTecla.utils.Command;
 
 public class ProposeCommand extends Command {
 

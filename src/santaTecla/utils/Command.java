@@ -1,4 +1,4 @@
-package mastermind.utils;
+package santaTecla.utils;
 
 import mastermind.models.Session;
 

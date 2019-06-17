@@ -1,6 +1,6 @@
 package mastermind.views;
 
-import mastermind.utils.YesNoDialog;
+import santaTecla.utils.YesNoDialog;
 
 public class ResumeView {
 
