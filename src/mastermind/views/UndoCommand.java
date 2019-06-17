@@ -7,7 +7,7 @@ import santaTecla.utils.Observer;
 
 public class UndoCommand extends Command {
 
-	public UndoCommand(Mastermind mastermind, Observer observer) {
+	UndoCommand(Mastermind mastermind, Observer observer) {
 		super(MessageView.UNDO_COMMAND.getMessage(), mastermind, observer);
 	}
 

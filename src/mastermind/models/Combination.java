@@ -5,7 +5,7 @@ import java.util.List;
 
 import mastermind.types.Color;
 
-abstract class Combination {
+public abstract class Combination {
 	
 	private static final int WIDTH = 4;
 

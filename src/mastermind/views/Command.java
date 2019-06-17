@@ -3,7 +3,7 @@ package mastermind.views;
 import mastermind.models.Mastermind;
 import santaTecla.utils.Observer;
 
-public abstract class Command extends santaTecla.utils.Command {
+abstract class Command extends santaTecla.utils.Command {
 	
 	protected Mastermind mastermind;
 	

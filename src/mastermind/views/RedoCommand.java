@@ -7,7 +7,7 @@ import santaTecla.utils.Observer;
 
 public class RedoCommand extends Command{
 	
-	public RedoCommand(Mastermind mastermind, Observer observer) {
+	RedoCommand(Mastermind mastermind, Observer observer) {
 		super(MessageView.REDO_COMMAND.getMessage(), mastermind, observer);
 	}
 

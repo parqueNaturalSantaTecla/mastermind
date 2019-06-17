@@ -7,7 +7,7 @@ import santaTecla.utils.Observer;
 
 public class ProposeCommand extends Command {
 
-	public ProposeCommand(Mastermind mastermind, Observer observer) {
+	ProposeCommand(Mastermind mastermind, Observer observer) {
 		super(MessageView.PROPOSE_COMMAND.getMessage(), mastermind, observer);
 	}
 
