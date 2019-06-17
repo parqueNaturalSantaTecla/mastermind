@@ -2,8 +2,9 @@ package mastermind.views;
 
 import mastermind.types.Color;
 import santaTecla.utils.Console;
+import santaTecla.utils.WithConsoleView;
 
-class ColorView {
+class ColorView extends WithConsoleView{
 
 	static final char[] INITIALS = { 'r', 'b', 'y', 'g', 'o', 'p' };
 
@@ -31,7 +32,7 @@ class ColorView {
 	}
 
 	void write() {
-		new Console().write(ColorView.INITIALS[this.color.ordinal()]);
+		this.console.write(ColorView.INITIALS[this.color.ordinal()]);
 	}
 
 }

@@ -1,9 +1,9 @@
 package mastermind.views;
 
 import mastermind.types.Error;
-import santaTecla.utils.Console;
+import santaTecla.utils.WithConsoleView;
 
-class ErrorView {
+class ErrorView extends WithConsoleView{
 
 	static final String[] MESSAGES = { 
 		"Repeated colors",
@@ -17,7 +17,7 @@ class ErrorView {
 	}
 	
 	void writeln() {
-		new Console().writeln(ErrorView.MESSAGES[this.error.ordinal()]);
+		this.console.writeln(ErrorView.MESSAGES[this.error.ordinal()]);
 	}	
 	
 }
