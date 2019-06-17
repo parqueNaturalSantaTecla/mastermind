@@ -1,7 +1,6 @@
 package mastermind.views;
 
 import mastermind.types.Color;
-import santaTecla.utils.Console;
 import santaTecla.utils.WithConsoleView;
 
 class ColorView extends WithConsoleView{
