@@ -45,8 +45,6 @@ public class Mastermind extends WithConsoleModel {
 					}
 					i++;
 				}
-//				this.proposedCombinations.add(proposedCombination);
-//				this.results.add(this.secretCombination.getResult(proposedCombination));
 				this.attempts++;
 				this.console.writeln();
 				Message.ATTEMPTS.writeln(this.attempts);
