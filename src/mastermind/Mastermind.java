@@ -1,8 +1,5 @@
 package mastermind;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import santaTecla.utils.WithConsoleModel;
 import santaTecla.utils.YesNoDialog;
 
@@ -12,9 +9,9 @@ public class Mastermind extends WithConsoleModel {
 
 	private SecretCombination secretCombination;
 
-	private List<ProposedCombination> proposedCombinations;
+	private ProposedCombination[] proposedCombinations;
 
-	private List<Result> results;
+	private Result[] results;
 
 	private int attempts;
 
@@ -24,8 +21,8 @@ public class Mastermind extends WithConsoleModel {
 
 	private void clear() {
 		this.secretCombination = new SecretCombination();
-		this.proposedCombinations = new ArrayList<ProposedCombination>();
-		this.results = new ArrayList<Result>();
+		this.proposedCombinations = new ProposedCombination[Mastermind.MAX_LONG];
+		this.results = new Result[Mastermind.MAX_LONG];
 		this.attempts = 0;
 	}
 
@@ -38,17 +35,27 @@ public class Mastermind extends WithConsoleModel {
 			do {
 				ProposedCombination proposedCombination = new ProposedCombination();
 				proposedCombination.read();
-				this.proposedCombinations.add(proposedCombination);
-				this.results.add(this.secretCombination.getResult(proposedCombination));
+				boolean added = false;
+				int i = 0;
+				while (!added && i < this.proposedCombinations.length) {
+					if (this.proposedCombinations[i] == null) {
+						this.proposedCombinations[i] = proposedCombination;
+						this.results[i] = this.secretCombination.getResult(proposedCombination);
+						added = true;
+					}
+					i++;
+				}
+//				this.proposedCombinations.add(proposedCombination);
+//				this.results.add(this.secretCombination.getResult(proposedCombination));
 				this.attempts++;
 				this.console.writeln();
 				Message.ATTEMPTS.writeln(this.attempts);
 				this.secretCombination.writeln();
-				for (int i = 0; i < this.attempts; i++) {
-					this.proposedCombinations.get(i).write();
-					this.results.get(i).writeln();
+				for (i = 0; i < this.attempts; i++) {
+					this.proposedCombinations[i].write();
+					this.results[i].writeln();
 				}
-				if (this.results.get(this.attempts - 1).isWinner()) {
+				if (this.results[this.attempts - 1].isWinner()) {
 					Message.WINNER.writeln();
 					finished = true;
 				} else if (this.attempts == Mastermind.MAX_LONG) {

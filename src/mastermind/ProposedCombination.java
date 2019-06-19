@@ -1,9 +1,9 @@
 package mastermind;
 
 class ProposedCombination extends Combination {
-	
+
 	void write() {
-		for (Color color: this.colors) {
+		for (Color color : this.colors) {
 			color.write();
 		}
 	}
@@ -22,28 +22,38 @@ class ProposedCombination extends Combination {
 					if (color == null) {
 						error = Error.WRONG_CHARACTERS;
 					} else {
-						if (this.colors.contains(color)) {
-							error = Error.DUPLICATED;
-						} else {
-							this.colors.add(color);
+						int j = 0;
+						boolean done = false;
+						while (j < this.colors.length && !done) {
+							if (this.colors[j] == color) {
+								error = Error.DUPLICATED;
+								done = true;
+							}
+							j++;
+							if (this.colors[j] == null) {
+								this.colors[j] = color;
+							}
 						}
 					}
 				}
 			}
 			if (error != null) {
 				error.writeln();
-				this.colors.clear();
+				for (int i= 0; i < this.colors.length; i++) {
+					this.colors[i] = null;
+				}
 			}
 		} while (error != null);
+
 	}
 
 	boolean contains(Color color, int position) {
-		return this.colors.get(position) == color;
+		return this.colors[position] == color;
 	}
 
 	boolean contains(Color color) {
-		for (int i = 0; i < this.colors.size(); i++) {
-			if (this.colors.get(i) == color) {
+		for (int i = 0; i < this.colors.length; i++) {
+			if (this.colors[i] == color) {
 				return true;
 			}
 		}
