@@ -24,6 +24,11 @@ enum Color {
 		return result;
 	}
 
+	static Color getInstance(int code) {
+		assert 0 <= code && code < Color.length();
+		return Color.values()[code];
+	}
+
 	static Color getInstance(char character) {
 		for (Color color : Color.values()) {
 			if (color.initial == character) {
