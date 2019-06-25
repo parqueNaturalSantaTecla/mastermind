@@ -35,6 +35,7 @@ public class Mastermind extends WithConsoleModel {
 			do {
 				ProposedCombination proposedCombination = new ProposedCombination();
 				proposedCombination.read();
+				System.out.println(proposedCombination.colors);
 				boolean added = false;
 				int i = 0;
 				while (!added && i < this.proposedCombinations.length) {

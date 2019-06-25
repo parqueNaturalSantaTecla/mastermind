@@ -29,10 +29,11 @@ class ProposedCombination extends Combination {
 								error = Error.DUPLICATED;
 								done = true;
 							}
-							j++;
 							if (this.colors[j] == null) {
 								this.colors[j] = color;
+								done = true;
 							}
+							j++;
 						}
 					}
 				}

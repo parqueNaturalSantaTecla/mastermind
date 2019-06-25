@@ -7,8 +7,19 @@ class SecretCombination extends Combination {
 	SecretCombination() {
 		Random random;
 		for (int i = 0; i < this.colors.length; i++) {
-			random = new Random(System.currentTimeMillis());
-			this.colors[i] = Color.getInstance(random.nextInt(Color.length()));
+			Color color;
+			boolean repeated;
+			do {
+				repeated  = false;
+				random = new Random(System.currentTimeMillis());
+				color = Color.getInstance(random.nextInt(Color.length()));
+				for (int j = 0; j < this.colors.length; j++) {
+					if (this.colors[j] == color) {
+						repeated = true;
+					}
+				}
+			} while (repeated);
+			this.colors[i] = color;
 		}
 		this.shuffleArray(this.colors);
 	}
