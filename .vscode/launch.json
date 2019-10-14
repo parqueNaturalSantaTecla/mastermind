@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - Mastermind",
+            "request": "launch",
+            "mainClass": "mastermind.Mastermind",
+            "projectName": "mastermind.mvc.pm"
+        }
+    ]
+}
